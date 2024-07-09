@@ -15,6 +15,34 @@ const Publication = () => {
   useEffect(() => {
     setstart_anime(true);
   }, []);
+
+  const itemsRefs = useRef<any>([]);
+
+  useEffect(() => {
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add("comeup");
+            observer.unobserve(entry.target);
+          }
+        });
+      },
+      { threshold: 0 },
+    );
+
+    itemsRefs.current.forEach((ref: any) => {
+      observer.observe(ref);
+    });
+
+    return () => {
+      itemsRefs.current.forEach((ref: any) => {
+        if (ref) {
+          observer.unobserve(ref);
+        }
+      });
+    };
+  }, []);
   return (
     <>
       <div className="w-full  md:py-[5vw]  md:px-[10%]">
@@ -22,7 +50,15 @@ const Publication = () => {
           {items.map((e: any, index: any) => {
             return (
               <>
-                <div className="w-full  flex justify-between md:rounded-[1vw] md:px-[3vw] md:py-[1.5vw] bg-[#FEFAFA] bg-opacity-[62%] items-center">
+                <div
+                  ref={(ref) => {
+                    if (ref) {
+                      itemsRefs.current[index] = ref;
+                    }
+                  }}
+                  key={index}
+                  className="w-full initial flex justify-between md:rounded-[1vw] md:px-[3vw] md:py-[1.5vw] bg-[#FEFAFA] bg-opacity-[62%] items-center"
+                >
                   {/* the first section */}
                   <div className="flex flex-col md:w-[50%] md:gap-[0.5vw]">
                     <h2

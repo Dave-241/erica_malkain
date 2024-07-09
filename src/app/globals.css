@@ -11,3 +11,13 @@
 .border2 {
   border: 1px solid green;
 }
+.initial {
+  transform: translateY(50%); /* or any other initial position */
+  opacity: 0;
+}
+.comeup {
+  transition: 0.6s ease;
+  transform: translateY(0%);
+  /* background-color: red; */
+  opacity: 1;
+}
