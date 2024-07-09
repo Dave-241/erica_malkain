@@ -6,9 +6,15 @@ import {
   Helvetica_light,
   Helvetica_medium,
 } from "@/app/utils/fonts";
+import { useEffect, useRef, useState } from "react";
 
 const Publication = () => {
   const items = ["", "", "", "", "", ""];
+  const [start_anime, setstart_anime] = useState(false);
+
+  useEffect(() => {
+    setstart_anime(true);
+  }, []);
   return (
     <>
       <div className="w-full  md:py-[5vw]  md:px-[10%]">
@@ -20,6 +26,7 @@ const Publication = () => {
                   {/* the first section */}
                   <div className="flex flex-col md:w-[50%] md:gap-[0.5vw]">
                     <h2
+                      //   ref={hero_ref}
                       className={`${Helvetica_bold.className} md:text-[1.3vw] uppercase text-[#440C0C]`}
                     >
                       Theory of collective mind. Trends in Cognitive Sciences.
