@@ -19,3 +19,6 @@ export const Helvetica_medium = localFont({
 export const Helvetica_light = localFont({
   src: "../../../public/fonts/helvetica_neue/HelveticaNeueLight.otf",
 });
+export const Media_san_regular = localFont({
+  src: "../../../public/fonts/media_sans/mediasans-regular-TRIAL-BF63c75479e5ff3.otf",
+});
