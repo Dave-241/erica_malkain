@@ -57,7 +57,7 @@ const Footer = () => {
                   <Link
                     href={"/"}
                     key={index}
-                    className={`border-[#A1AAA1] overflow-hidden border-opacity-[50%] md:w-[18vw] md:rounded-[2vw] md:h-[5vw] border flex justify-center items-center md:text-[1vw] text-white md:gap-[1vw] group relative`}
+                    className={`border-[#A1AAA1] overflow-hidden border-opacity-[50%] md:w-[15vw] md:rounded-[2vw] md:h-[5vw] border flex justify-center items-center md:text-[1vw] text-white md:gap-[1vw] group relative`}
                   >
                     <p
                       className="z-[10] group-hover:text-black"
