@@ -60,7 +60,7 @@ const Research_hero = () => {
           <p
             style={{
               transition: "0.9s ease",
-              transform: start_anime ? "translate(0,0)" : "translate(0%,80%)",
+              transform: start_anime ? "translate(0,0)" : "translate(0%,100%)",
             }}
             className={`text-[#DFE4DF] z-[10] md:text-[1.2vw]  ${Helvetica_light.className}`}
           >
