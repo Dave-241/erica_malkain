@@ -58,6 +58,7 @@ const Teaching_hero = () => {
           />
         </div>
       </div>
+      <div className="w-full md:h-[10vw]"></div>
     </>
   );
 };

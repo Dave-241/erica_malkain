@@ -83,7 +83,6 @@ const Footer = () => {
           <div className=" w-full  flex justify-start   md:h-[0.05vw] ">
             <div
               style={{
-                // width: start_anime ? "100%" : "0%",
                 transition: "0.5s ease",
               }}
               className="w-full h-full bg-[#2B3F2C] transition  duration-[0.4s]"
@@ -92,10 +91,13 @@ const Footer = () => {
 
           {/* footer copyright */}
           <div
-            className={` ${Helvetica_light.className}  w-full flex justify-between items-center text-[#6F7E70] md:px-[1vw] md:text-[1vw]`}
+            className={` ${Helvetica_light.className}  w-full flex justify-between items-center relative text-[#6F7E70] md:px-[1vw] md:text-[1vw]`}
           >
             <p className="">©2024</p>
-            <a href="mailto:ericajboothby@gmail.com" className="">
+            <a
+              href="mailto:ericajboothby@gmail.com"
+              className="absolute top-[50%] translate-x-[-50%] left-[50%] translate-y-[-50%]"
+            >
               ericajboothby@gmail.com
             </a>
             <Link href="malkain.com" className="">
