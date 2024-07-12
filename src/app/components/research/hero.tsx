@@ -21,7 +21,7 @@ const Research_hero = () => {
   });
   const [yvalue, setyvalue] = useState(0);
 
-  const y = useTransform(scrollYProgress, [0, 1], [1.3, 1]);
+  const y = useTransform(scrollYProgress, [0, 1], [1.35, 1]);
 
   useMotionValueEvent(y, "change", (latest) => {
     console.log(latest);
@@ -65,14 +65,15 @@ const Research_hero = () => {
             }}
             className={`text-[#DFE4DF] z-[10] md:text-[1.2vw]  ${Helvetica_light.className}`}
           >
-            Much of Erica's research examines people's beliefs about what others
-            think of them (i.e., “metaperception”), starting with the idea that
-            we often know what we think of others, but it is harder to know what
-            others think of us. After all, people don't often tell us, and so,
-            lacking direct evidence, we must rely on our own (often biased)
-            estimates. These metaperceptions (your own estimate of someo else's
-            judgement of you) can have a profound influence on our sense of self
-            and our performance in organizational settings
+            Much of Erica{"'"}s research examines people{"'"}s beliefs about
+            what others think of them (i.e., “metaperception”), starting with
+            the idea that we often know what we think of others, but it is
+            harder to know what others think of us. After all, people don{"'"}t
+            often tell us, and so, lacking direct evidence, we must rely on our
+            own (often biased) estimates. These metaperceptions (your own
+            estimate of someo else{"'"}s judgement of you) can have a profound
+            influence on our sense of self and our performance in organizational
+            settings
           </p>
         </div>
 
