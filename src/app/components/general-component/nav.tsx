@@ -7,11 +7,11 @@ const Nav = () => {
   const items = [
     {
       text: "Publications",
-      link: "/",
+      link: "/publication",
     },
     {
       text: "RESEARCH",
-      link: "/",
+      link: "/research",
     },
     {
       text: "teaching & consultation",
@@ -46,7 +46,7 @@ const Nav = () => {
           {items.map((e: any, index: any) => {
             return (
               <Link
-                href={"/"}
+                href={e.link}
                 style={{ whiteSpace: "nowrap" }}
                 key={index}
                 className="uppercase overflow-hidden  md:p-[0.5vw] group hover:[#103210]  hover:bg-[black] hover:bg-opacity-[20%]  md:rounded-[1.5vw] bg-[white] backdrop-blur-2xl bg-opacity-[20%] "
