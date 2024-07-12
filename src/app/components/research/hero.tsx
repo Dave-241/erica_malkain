@@ -31,7 +31,7 @@ const Research_hero = () => {
     <>
       <div
         ref={ref}
-        className="w-full md:flex flex-col hidden  items-center justify-end md:h-[55vw] relative overflow-hidden  md:gap-[1.1vw] md:pb-[7vw] md:px-[12vw]"
+        className="w-full md:flex flex-col hidden bg-[#908E8E]  items-center justify-end md:h-[55vw] relative overflow-hidden  md:gap-[1.1vw] md:pb-[7vw] md:px-[12vw]"
       >
         <Image
           src={hero}
