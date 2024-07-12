@@ -19,7 +19,7 @@ const Each_research = () => {
           }
         });
       },
-      { threshold: 0 },
+      //   { threshold: 0.1 },
     );
 
     itemsRefs.current.forEach((ref: any) => {
@@ -68,7 +68,7 @@ const Each_research = () => {
                 </p>
                 <Link
                   href={"/"}
-                  className={`uppercase  ${Helvetica_light.className} uppercase`}
+                  className={`uppercase md:w-[8.6vw] md:h-[2.9vw] md:rounded-[2vw] flex md:text-[1.1vw] text-[#000000] hover:bg-[#440C0C] hover:text-white items-center justify-center ${Helvetica_light.className} bg-white uppercase`}
                 >
                   Read more
                 </Link>
