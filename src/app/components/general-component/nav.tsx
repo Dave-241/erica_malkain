@@ -8,7 +8,7 @@ const Nav = () => {
   const items = [
     {
       text: "Publications",
-      link: "/publication",
+      link: "/publications",
     },
     {
       text: "RESEARCH",
