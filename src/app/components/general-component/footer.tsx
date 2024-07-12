@@ -30,7 +30,7 @@ const Footer = () => {
 
   return (
     <>
-      <div className="w-full  md:p-[1.5vw]">
+      <div className="w-full  hidden md:block md:p-[1.5vw]">
         <div className="w-full flex flex-col md:gap-[3vw] bg-[#001901] md:px-[4vw] md:pt-[4vw] md:pb-[2vw] md:rounded-[1.3vw] items-center">
           {/* footer name */}
           <div className="flex flex-col md:gap-[1.5vw] items-center ">

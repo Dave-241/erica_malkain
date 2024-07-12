@@ -4,24 +4,43 @@ import Image from "next/image";
 import hero from "../../../../public/images/research/hero.webp";
 import { Helvetica_light, spline_font } from "@/app/utils/fonts";
 import Link from "next/link";
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
+import { useMotionValueEvent, useScroll, useTransform } from "framer-motion";
 
 const Research_hero = () => {
   const [start_anime, setstart_anime] = useState(false);
   useEffect(() => {
     setstart_anime(true);
   }, []);
+
+  const ref = useRef(null);
+
+  const { scrollYProgress } = useScroll({
+    target: ref,
+    offset: ["end start", "end 110%"],
+  });
+  const [yvalue, setyvalue] = useState(0);
+
+  const y = useTransform(scrollYProgress, [0, 1], [1.3, 1]);
+
+  useMotionValueEvent(y, "change", (latest) => {
+    console.log(latest);
+    setyvalue(latest);
+  });
   return (
     <>
-      <div className="w-full flex flex-col  items-center justify-end md:h-[55vw] relative overflow-hidden  md:gap-[1.1vw] md:pb-[7vw] md:px-[12vw]">
+      <div
+        ref={ref}
+        className="w-full md:flex flex-col hidden  items-center justify-end md:h-[55vw] relative overflow-hidden  md:gap-[1.1vw] md:pb-[7vw] md:px-[12vw]"
+      >
         <Image
           src={hero}
           alt="hero image"
           className="absolute top-0 left-0 w-full h-fit"
           style={{
-            transition: "0.45s ease",
+            transition: yvalue > 1 ? "" : "0.45s ease",
             opacity: start_anime ? 1 : 0,
-            scale: start_anime ? 1 : 1.8,
+            scale: start_anime ? yvalue : 1.8,
           }}
         />
 
@@ -74,6 +93,26 @@ const Research_hero = () => {
             </div>
           </Link>
         </div>
+      </div>
+
+      {/* second section */}
+      <div className="w-full  md:px-[12vw]  flex-col md:flex hidden md:gap-[2vw] md:py-[7vw] ">
+        <h2
+          className={`md:text-[5vw]  md:leading-[5vw] ${spline_font.className} text-[#1E1E1E] font-light`}
+        >
+          A SCIENCE OF DATA & ANALYTICS
+        </h2>
+        <p
+          className={`${Helvetica_light.className} text-[#707270] md:text-[1.2vw]`}
+        >
+          Beliefs about whether our colleagues like us affect our sense of
+          belonging in the workplace and how psychologically safe we feel.
+          Beliefs about whether our managers take our contributions seriously
+          affect our sense of efficacy and satisfaction with our job. Thus, our
+          beliefs about how others see us shapes our sense of social connection,
+          with implications for our workplace performance, health, and
+          well-being. But to what extent are these metaperceptions accurate?
+        </p>
       </div>
     </>
   );

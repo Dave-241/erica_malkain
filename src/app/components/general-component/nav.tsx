@@ -42,7 +42,7 @@ const Nav = () => {
   return (
     <>
       <nav
-        className={`${Bt_Beau_Regualr.className} flex justify-between md:w-[80vw] z-[50]  items-center md:top-[2vw] fixed left-[50%] translate-x-[-50%]  `}
+        className={`${Bt_Beau_Regualr.className} md:flex hidden justify-between md:w-[80vw] z-[50]  items-center md:top-[2vw] fixed left-[50%] translate-x-[-50%]  `}
       >
         {/* desktop left section */}
         <div className=" flex">
