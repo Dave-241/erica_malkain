@@ -21,10 +21,9 @@ const Research_hero = () => {
   });
   const [yvalue, setyvalue] = useState(0);
 
-  const y = useTransform(scrollYProgress, [0, 1], [1.35, 1]);
+  const y = useTransform(scrollYProgress, [0, 1], [1.4, 1]);
 
   useMotionValueEvent(y, "change", (latest) => {
-    console.log(latest);
     setyvalue(latest);
   });
   return (
@@ -47,9 +46,9 @@ const Research_hero = () => {
         <div className=" overflow-hidden">
           <h1
             style={{
-              transition: "0.45s ease",
+              transition: "0.5s ease",
               //   opacity: start_anime ? 1 : 0,
-              transform: start_anime ? "translate(0,0)" : "translate(0%,80%)",
+              transform: start_anime ? "translate(0,0)" : "translate(0%,100%)",
             }}
             className={`${spline_font.className} font-bold z-[10] text-[#DFE4DF] md:text-[7vw]  md:leading-[7vw]`}
           >
