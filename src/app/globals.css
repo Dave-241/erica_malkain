@@ -15,6 +15,10 @@ a {
 .border2 {
   border: 1px solid green;
 }
+
+.edit_border {
+  border: 3px solid red;
+}
 .initial {
   transform: translateY(50%); /* or any other initial position */
   opacity: 0;
