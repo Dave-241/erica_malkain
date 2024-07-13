@@ -235,12 +235,12 @@ const Modal_edit_consulation = ({
               <br />
               {'<a href="LINK_TO_WET_CEMENT">Wet Cement</a>'}
               <br />
-              In this example, "Wet Cement" will appear as a clickable link that
-              redirects to the specified URL.
+              In this example, {'"Wet Cement"'} will appear as a clickable link
+              that redirects to the specified URL.
             </p>
             <p className=" normal-case md:text-[0.9vw] mt-2">
-              To add your own link, replace "ADD_LINK_HERE" with the desired URL
-              and "ADD_TEXT_HERE" with the text you want to display.
+              To add your own link, replace {'"ADD_LINK_HERE"'} with the desired
+              URL and {'"ADD_TEXT_HERE"'} with the text you want to display.
               <br />
               <span className="font-bold">
                 {'<a href="ADD_LINK_HERE">ADD_TEXT_HERE</a>'}
