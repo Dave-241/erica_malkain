@@ -12,6 +12,7 @@
     "framer-motion": "^11.2.14",
     "next": "13.4.12",
     "react": "^18",
+    "react-color-palette": "^7.2.1",
     "react-dom": "^18"
   },
   "devDependencies": {

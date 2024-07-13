@@ -37,6 +37,10 @@ const Each_consultation = () => {
   const [consultation_institute, setconsultation_institute] = useState("");
   const [consultation_year, setconsultation_year] = useState("");
   const [consultation_image_link, setconsultation_image_link] = useState("");
+  const [consultation_bg_color, setconsultation_bg_color] = useState("");
+  const [consultation_heading_text_color, setconsultation_heading_text_color] =
+    useState("");
+  const [add_consulation, setadd_consulation] = useState(false);
 
   const data_array = [
     {
@@ -98,6 +102,15 @@ const Each_consultation = () => {
     // setconsultation_image_link(true);
   };
 
+  const refresh_all_params = () => {
+    setconsultation_body("");
+    setconsultation_institute("");
+    setconsultation_year("");
+    setconsultation_image_link("");
+    setconsultation_bg_color("");
+    setconsultation_heading_text_color("");
+    setadd_consulation(true);
+  };
   return (
     <>
       {/* buttons to add consultation */}
@@ -106,6 +119,7 @@ const Each_consultation = () => {
           // refresh_all_params={refresh_all_params}
           setconsultation_title={setconsultation_title}
           setdelete_consulation={setdelete_consulation}
+          refresh_all_params={refresh_all_params}
         />
       )}
 
@@ -118,7 +132,27 @@ const Each_consultation = () => {
       )}
 
       {/* edit contents */}
-      {/* <Modal_edit_consulation /> */}
+      {add_consulation && (
+        <Modal_edit_consulation
+          setadd_consulation={setadd_consulation}
+          consultation_title={consultation_title}
+          setconsultation_title={setconsultation_title}
+          consultation_body={consultation_body}
+          setconsultation_body={setconsultation_body}
+          consultation_institute={consultation_institute}
+          setconsultation_institute={setconsultation_institute}
+          consultation_year={consultation_year}
+          setconsultation_year={setconsultation_year}
+          consultation_image_link={consultation_image_link}
+          setconsultation_image_link={setconsultation_image_link}
+          consultation_bg_color={consultation_bg_color}
+          setconsultation_bg_color={setconsultation_bg_color}
+          consultation_heading_text_color={consultation_heading_text_color}
+          setconsultation_heading_text_color={
+            setconsultation_heading_text_color
+          }
+        />
+      )}
       {/* the wrapper */}
       <div
         className="w-full md:h-[150vw] md:flex hidden items-end  

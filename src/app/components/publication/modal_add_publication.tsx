@@ -15,18 +15,15 @@ const Modal_add_publication = ({
   return (
     <>
       <div className="w-full h-full fixed top-0 left-0  bg-black bg-opacity-[50%] z-[1000] flex justify-center items-center">
-        <div
-          onClick={(e) => {
-            e.stopPropagation();
-          }}
-          className="bg-white md:px-[5%] justify-center md:rounded-[1vw] md:h-[35vw] md:w-[50vw] flex md:gap-[1vw] capitalize flex-col"
-        >
+        <div className="bg-white md:px-[5%] justify-center md:rounded-[1vw] md:h-[35vw] md:w-[50vw] flex md:gap-[1vw] capitalize flex-col">
           <p className="md:text-[2vw] text-center">
             {" "}
             {publication_title ? "edit" : "Add new"} publication here
           </p>
           <div className="flex flex-col md:gap-[0.3vw]">
-            <label htmlFor="title">Publication title</label>
+            <label className="capitalize md:text-[1vw]" htmlFor="title">
+              Publication title
+            </label>
             <input
               type="text"
               id="title"
@@ -39,10 +36,12 @@ const Modal_add_publication = ({
             />
           </div>
           <div className="flex flex-col md:gap-[0.3vw]">
-            <label htmlFor="title">Publication description</label>
+            <label className="capitalize md:text-[1vw]" htmlFor="description">
+              Publication description
+            </label>
             <textarea
               //   type="text"
-              id="title"
+              id="description"
               rows={4}
               //   rows={50}
               value={publication_body || ""}
@@ -58,11 +57,13 @@ const Modal_add_publication = ({
           <div className="w-full flex md:gap-[2vw]  justify-between">
             {/* the data link */}
             <div className="flex flex-col md:gap-[0.3vw] w-full">
-              <label htmlFor="title">view data link</label>
+              <label className="capitalize md:text-[1vw]" htmlFor="data_link">
+                view data link
+              </label>
               <input
                 type="text"
                 value={publication_data_link || ""}
-                id="title"
+                id="data_link"
                 onChange={(e) => {
                   setpublication_data_link(e.target.value);
                 }}
@@ -72,10 +73,12 @@ const Modal_add_publication = ({
             </div>
             {/* the download link */}
             <div className="flex flex-col md:gap-[0.3vw] w-full">
-              <label htmlFor="title">view pdf link</label>
+              <label className="capitalize md:text-[1vw]" htmlFor="pdf_link">
+                view pdf link
+              </label>
               <input
                 type="text"
-                id="title"
+                id="pdf_link"
                 onChange={(e) => {
                   setpublication_pdf_link(e.target.value);
                 }}
