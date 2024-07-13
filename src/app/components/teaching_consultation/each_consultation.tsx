@@ -13,6 +13,7 @@ import example from "../../../../public/images/consultation/example.png";
 import example2 from "../../../../public/images/consultation/example2.png";
 import example3 from "../../../../public/images/consultation/example3.png";
 import arrow from "../../../../public/images/consultation/arrow.png";
+import Edit_each_consulation from "./edit_consulation";
 const Each_consultation = () => {
   const sectionRef = useRef(null);
   const { scrollYProgress } = useScroll({
@@ -26,6 +27,8 @@ const Each_consultation = () => {
   const [calwidth, setcalwidth] = useState(0);
   const [yvalue, setyvalue] = useState(1);
   const [height, setheight] = useState(1);
+  const [isloggedin, setisloggedin] = useState(false);
+
   const data_array = [
     {
       bg: "#CBD4CB",
@@ -113,6 +116,7 @@ const Each_consultation = () => {
                         }%) translateX(-50%)`,
                 }}
               >
+                {isloggedin && <Edit_each_consulation />}
                 <div className="flex md:px-[10vw] justify-between w-full ">
                   {/* the left section */}
                   <div
