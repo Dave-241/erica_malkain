@@ -68,9 +68,19 @@ const Each_research = () => {
                 </p>
                 <Link
                   href={"/"}
-                  className={`uppercase md:w-[8.6vw] md:h-[2.9vw] md:rounded-[2vw] flex md:text-[1.1vw] text-[#000000] hover:bg-[#440C0C] hover:text-white items-center justify-center ${Helvetica_light.className} bg-white uppercase`}
+                  className={`uppercase md:w-[8.6vw] md:h-[2.9vw] md:rounded-[2vw] flex md:text-[1.1vw]  group overflow-hidden relative items-center justify-center  ${Helvetica_light.className} bg-white uppercase`}
                 >
-                  Read more
+                  <p
+                    style={{ transition: "0.5s ease" }}
+                    className="group-hover:text-white text-[#000000] z-[10] "
+                  >
+                    Read more
+                  </p>
+
+                  <div
+                    className="w-full h-full bg-[#440C0C] absolute left-0 top-[100%] group-hover:top-0 "
+                    style={{ transition: "0.5s ease" }}
+                  ></div>
                 </Link>
               </div>
             </div>

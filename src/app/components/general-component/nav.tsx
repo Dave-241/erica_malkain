@@ -7,6 +7,10 @@ import { usePathname } from "next/navigation";
 const Nav = () => {
   const items = [
     {
+      text: "Home",
+      link: "/",
+    },
+    {
       text: "Publications",
       link: "/publications",
     },
@@ -20,11 +24,11 @@ const Nav = () => {
     },
     {
       text: "WORKSHOP",
-      link: "/",
+      link: "/workshop",
     },
     {
       text: "MEDIA",
-      link: "/",
+      link: "/media",
     },
   ];
   const items_right = [
