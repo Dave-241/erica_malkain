@@ -11,7 +11,7 @@ const Edit_each_publication = ({
 }: any) => {
   return (
     <>
-      <div className="w-full edit_border absolute top-0 left-0 h-full flex justify-end items-start md:p-[0.5vw] md:gap-[1.5vw] capitalize bg-black bg-opacity-[30%]">
+      <div className="w-full edit_border absolute top-0 left-0 h-full flex justify-end items-start md:p-[0.5vw] md:gap-[1.5vw] md:text-[1vw] capitalize bg-black bg-opacity-[30%]">
         <button
           className=" md:w-[8vw] md:h-[2vw] capitalize bg-white  md:rounded-[0.5vw] hover:bg-opacity-[60%] backdrop-blur-2xl text-center border-red-500 border"
           onClick={() => {
@@ -23,9 +23,7 @@ const Edit_each_publication = ({
         <button
           className=" md:w-[8vw] md:h-[2vw] capitalize bg-white  md:rounded-[0.5vw] hover:bg-opacity-[60%] backdrop-blur-2xl text-center border-red-500 border"
           onClick={() => {
-            setpublication_title(
-              "Theory of collective mind. Trends in Cognitive Sciences.",
-            );
+            setpublication_title(title);
             setdelete_publication(true);
           }}
         >

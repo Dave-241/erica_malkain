@@ -1,11 +1,11 @@
 "use client";
 
-const Delete_publication = ({ setdelete_publication, title }: any) => {
+const Delete_consultation = ({ setdelete_consulation, title }: any) => {
   return (
     <>
       <div
         onClick={() => {
-          setdelete_publication(false);
+          setdelete_consulation(false);
         }}
         className="w-full border2 fixed h-full bg-black bg-opacity-[50%] flex justify-center items-center  top-0 left-0 z-[1000] overflow-hidden  "
       >
@@ -17,8 +17,8 @@ const Delete_publication = ({ setdelete_publication, title }: any) => {
         >
           <p className="text-center">
             {title
-              ? `     Are you sure you want to delete this publication? `
-              : "Are you sure you want to delete all publications"}{" "}
+              ? `     Are you sure you want to delete this consulation? `
+              : "Are you sure you want to delete all consulations"}{" "}
             <span className="text-red-500 uppercase">{title && title}</span>
           </p>
 
@@ -26,7 +26,7 @@ const Delete_publication = ({ setdelete_publication, title }: any) => {
             <button
               className=" md:px-[2vw] md:py-[0.5vw]capitalize bg-white  md:rounded-[0.5vw] hover:bg-opacity-[60%] md:text-[1vw] backdrop-blur-2xl text-center border-red-500 border"
               onClick={() => {
-                setdelete_publication(false);
+                setdelete_consulation(false);
               }}
             >
               Cancel
@@ -41,4 +41,4 @@ const Delete_publication = ({ setdelete_publication, title }: any) => {
   );
 };
 
-export default Delete_publication;
+export default Delete_consultation;

@@ -16,9 +16,7 @@ const Modal_add_publication = ({
     <>
       <div className="w-full h-full fixed top-0 left-0  bg-black bg-opacity-[50%] z-[1000] flex justify-center items-center">
         <div
-          //   onSubmit={submit_form}
           onClick={(e) => {
-            e.preventDefault();
             e.stopPropagation();
           }}
           className="bg-white md:px-[5%] justify-center md:rounded-[1vw] md:h-[35vw] md:w-[50vw] flex md:gap-[1vw] capitalize flex-col"

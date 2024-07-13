@@ -14,6 +14,9 @@ import example2 from "../../../../public/images/consultation/example2.png";
 import example3 from "../../../../public/images/consultation/example3.png";
 import arrow from "../../../../public/images/consultation/arrow.png";
 import Edit_each_consulation from "./edit_consulation";
+import Delete_consultation from "./delete_consultation";
+import Add_consultation from "./add_consultation";
+import Modal_edit_consulation from "./modal_edit_add_consultation";
 const Each_consultation = () => {
   const sectionRef = useRef(null);
   const { scrollYProgress } = useScroll({
@@ -27,7 +30,13 @@ const Each_consultation = () => {
   const [calwidth, setcalwidth] = useState(0);
   const [yvalue, setyvalue] = useState(1);
   const [height, setheight] = useState(1);
-  const [isloggedin, setisloggedin] = useState(false);
+  const [isloggedin, setisloggedin] = useState(true);
+  const [delete_consulation, setdelete_consulation] = useState(false);
+  const [consultation_title, setconsultation_title] = useState("");
+  const [consultation_body, setconsultation_body] = useState("");
+  const [consultation_institute, setconsultation_institute] = useState("");
+  const [consultation_year, setconsultation_year] = useState("");
+  const [consultation_image_link, setconsultation_image_link] = useState("");
 
   const data_array = [
     {
@@ -76,14 +85,46 @@ const Each_consultation = () => {
     setheight(latest);
   });
 
+  const edit_each_consulation_modal_param = (
+    title: any,
+    body: any,
+    institue: any,
+    year: any,
+  ) => {
+    setconsultation_title(title);
+    setconsultation_body(body);
+    setconsultation_institute(institue);
+    setconsultation_year(year);
+    // setconsultation_image_link(true);
+  };
+
   return (
     <>
+      {/* buttons to add consultation */}
+      {isloggedin && (
+        <Add_consultation
+          // refresh_all_params={refresh_all_params}
+          setconsultation_title={setconsultation_title}
+          setdelete_consulation={setdelete_consulation}
+        />
+      )}
+
+      {/* buttons to delete consultation */}
+      {delete_consulation && (
+        <Delete_consultation
+          setdelete_consulation={setdelete_consulation}
+          title={consultation_title}
+        />
+      )}
+
+      {/* edit contents */}
+      {/* <Modal_edit_consulation /> */}
       {/* the wrapper */}
       <div
         className="w-full md:h-[150vw] md:flex hidden items-end  
          relative"
         style={{
-          height: calwidth > 768 ? `${(data_array.length + 1) * 35}vw` : "",
+          height: calwidth > 768 ? `${data_array.length * 100}vh` : "",
         }}
         ref={sectionRef}
       >
@@ -116,7 +157,13 @@ const Each_consultation = () => {
                         }%) translateX(-50%)`,
                 }}
               >
-                {isloggedin && <Edit_each_consulation />}
+                {isloggedin && (
+                  <Edit_each_consulation
+                    setdelete_consulation={setdelete_consulation}
+                    setconsultation_title={setconsultation_title}
+                    title={e.heading}
+                  />
+                )}
                 <div className="flex md:px-[10vw] justify-between w-full ">
                   {/* the left section */}
                   <div

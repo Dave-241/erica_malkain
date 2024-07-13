@@ -16,7 +16,7 @@ import Modal_add_publication from "./modal_add_publication";
 const Publication = () => {
   const items = [
     {
-      title: "THEORY OF COLLECTIVE MIND. TRENDS IN COGNITIVE SCIENCES.",
+      title: " first THEORY OF COLLECTIVE MIND. TRENDS IN COGNITIVE SCIENCES.",
       body: "Shteynberg, G., Hirsh, J. B., Wolf, W., Bargh, J. A., Boothby, E. J., Colman, A. M., Echterhoff, G., & Rossignac-Milon, M. 2023. ",
       data_link: "malkain.com/data",
       pdf_link: "malkain.com/firs_data",
