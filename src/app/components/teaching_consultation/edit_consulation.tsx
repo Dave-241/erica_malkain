@@ -2,12 +2,15 @@
 
 const Edit_each_consulation = ({
   setdelete_consulation,
-  setconsultation_title,
   title,
   body,
-  view_data,
-  pdf_data,
-  edit_each_publication_modal_param,
+  bg,
+  text_color,
+  img,
+  read_more,
+  institue,
+  year,
+  edit_each_consulation_modal_param,
 }: any) => {
   return (
     <>
@@ -15,7 +18,16 @@ const Edit_each_consulation = ({
         <button
           className=" md:w-[10vw] md:h-[4vw] capitalize bg-white  md:rounded-[0.5vw] hover:bg-opacity-[60%] backdrop-blur-2xl text-center border-red-500 border"
           onClick={() => {
-            edit_each_publication_modal_param(title, body, view_data, pdf_data);
+            edit_each_consulation_modal_param(
+              title,
+              body,
+              institue,
+              year,
+              read_more,
+              img,
+              bg,
+              text_color,
+            );
           }}
         >
           edit
@@ -23,7 +35,6 @@ const Edit_each_consulation = ({
         <button
           className=" md:w-[10vw] md:h-[4vw] capitalize bg-white  md:rounded-[0.5vw] hover:bg-opacity-[60%] backdrop-blur-2xl text-center border-red-500 border"
           onClick={() => {
-            setconsultation_title(title);
             setdelete_consulation(true);
           }}
         >

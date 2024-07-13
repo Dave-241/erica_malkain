@@ -17,6 +17,7 @@ import Edit_each_consulation from "./edit_consulation";
 import Delete_consultation from "./delete_consultation";
 import Add_consultation from "./add_consultation";
 import Modal_edit_consulation from "./modal_edit_add_consultation";
+import { useColor } from "react-color-palette";
 const Each_consultation = () => {
   const sectionRef = useRef(null);
   const { scrollYProgress } = useScroll({
@@ -30,16 +31,18 @@ const Each_consultation = () => {
   const [calwidth, setcalwidth] = useState(0);
   const [yvalue, setyvalue] = useState(1);
   const [height, setheight] = useState(1);
-  const [isloggedin, setisloggedin] = useState(true);
+  const [isloggedin, setisloggedin] = useState(false);
   const [delete_consulation, setdelete_consulation] = useState(false);
   const [consultation_title, setconsultation_title] = useState("");
   const [consultation_body, setconsultation_body] = useState("");
   const [consultation_institute, setconsultation_institute] = useState("");
   const [consultation_year, setconsultation_year] = useState("");
   const [consultation_image_link, setconsultation_image_link] = useState("");
-  const [consultation_bg_color, setconsultation_bg_color] = useState("");
-  const [consultation_heading_text_color, setconsultation_heading_text_color] =
+  const [consulation_readmore_link, setconsulation_readmore_link] =
     useState("");
+  const [consultation_bg_color, setconsultation_bg_color] = useColor("#000000");
+  const [consultation_heading_text_color, setconsultation_heading_text_color] =
+    useColor("#000000");
   const [add_consulation, setadd_consulation] = useState(false);
 
   const data_array = [
@@ -82,7 +85,6 @@ const Each_consultation = () => {
 
   useMotionValueEvent(y, "change", (latest) => {
     setyvalue(latest);
-    // console.log(latest);
   });
 
   useMotionValueEvent(parent_height, "change", (latest) => {
@@ -94,21 +96,42 @@ const Each_consultation = () => {
     body: any,
     institue: any,
     year: any,
+    read_more: any,
+    img: any,
+    bg_color: any,
+    text_color: any,
   ) => {
     setconsultation_title(title);
     setconsultation_body(body);
     setconsultation_institute(institue);
     setconsultation_year(year);
-    // setconsultation_image_link(true);
+    setconsulation_readmore_link(read_more);
+    setconsultation_image_link(img);
+    setconsultation_bg_color((prevstate) => ({
+      ...prevstate,
+      hex: bg_color,
+    }));
+    setconsultation_heading_text_color((prevstate) => ({
+      ...prevstate,
+      hex: text_color,
+    }));
+    setadd_consulation(true);
   };
 
   const refresh_all_params = () => {
+    setconsultation_title("");
     setconsultation_body("");
     setconsultation_institute("");
     setconsultation_year("");
     setconsultation_image_link("");
-    setconsultation_bg_color("");
-    setconsultation_heading_text_color("");
+    setconsultation_bg_color((prevstate) => ({
+      ...prevstate,
+      hex: "#000000",
+    }));
+    setconsultation_heading_text_color((prevstate) => ({
+      ...prevstate,
+      hex: "#000000",
+    }));
     setadd_consulation(true);
   };
   return (
@@ -145,6 +168,8 @@ const Each_consultation = () => {
           setconsultation_year={setconsultation_year}
           consultation_image_link={consultation_image_link}
           setconsultation_image_link={setconsultation_image_link}
+          consulation_readmore_link={consulation_readmore_link}
+          setconsulation_readmore_link={setconsulation_readmore_link}
           consultation_bg_color={consultation_bg_color}
           setconsultation_bg_color={setconsultation_bg_color}
           consultation_heading_text_color={consultation_heading_text_color}
@@ -193,9 +218,19 @@ const Each_consultation = () => {
               >
                 {isloggedin && (
                   <Edit_each_consulation
+                    edit_each_consulation_modal_param={
+                      edit_each_consulation_modal_param
+                    }
                     setdelete_consulation={setdelete_consulation}
                     setconsultation_title={setconsultation_title}
                     title={e.heading}
+                    body={e.body}
+                    bg={e.bg}
+                    text_color={e.text}
+                    img={e.img}
+                    institue={e.institue}
+                    year={e.year}
+                    read_more={e.link}
                   />
                 )}
                 <div className="flex md:px-[10vw] justify-between w-full ">

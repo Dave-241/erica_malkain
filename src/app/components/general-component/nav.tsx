@@ -16,7 +16,7 @@ const Nav = () => {
     },
     {
       text: "teaching & consultation",
-      link: "/consultaion",
+      link: "/consultation",
     },
     {
       text: "WORKSHOP",

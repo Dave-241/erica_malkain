@@ -1,22 +1,31 @@
 "use client";
 
+import Image from "next/image";
 import { useState } from "react";
 import { ColorPicker, useColor } from "react-color-palette";
 import "react-color-palette/css";
 const Modal_edit_consulation = ({
   setadd_consulation,
-  consulation_title,
-  consulation_body,
-  consulation_data_link,
-  consulation_pdf_link,
-  setconsulation_title,
-  setconsulation_body,
-  setconsulation_data_link,
-  setconsulation_pdf_link,
+  consultation_title,
+  setconsultation_title,
+  consultation_body,
+  setconsultation_body,
+  consultation_institute,
+  setconsultation_institute,
+  consultation_year,
+  setconsultation_year,
+  consultation_image_link,
+  setconsultation_image_link,
+  setconsulation_readmore_link,
+  consulation_readmore_link,
+  consultation_bg_color,
+  setconsultation_bg_color,
+  consultation_heading_text_color,
+  setconsultation_heading_text_color,
 }: any) => {
   // title, background color, heading color , body, image
-  const [bg_color, setbg_color] = useColor("#000000");
-  const [textc_color, settextc_color] = useColor("#000000");
+  // const [bg_color, setbg_color] = useColor("#000000");
+  // const [textc_color, settextc_color] = useColor("#000000");
 
   const [isModalOpen, setIsModalOpen] = useState(false);
 
@@ -27,6 +36,8 @@ const Modal_edit_consulation = ({
   const handleCloseModal = () => {
     setIsModalOpen(false);
   };
+
+  console.log(consultation_bg_color);
   return (
     <>
       <div className="w-full border2 h-full flex justify-center items-center z-[1000] fixed top-0 left-0 bg-black bg-opacity-[60%]">
@@ -36,7 +47,7 @@ const Modal_edit_consulation = ({
         >
           <p className="md:text-[2vw] capitalize text-center">
             {" "}
-            {true ? "edit" : "Add new"} publication here
+            {consultation_title ? "edit" : "Add new"} publication here
           </p>{" "}
           <div className=" w-full flex justify-center md:gap-[3vw]">
             {/* the color section */}
@@ -46,17 +57,17 @@ const Modal_edit_consulation = ({
                 <ColorPicker
                   hideInput={["rgb", "hsv"]}
                   height={200}
-                  color={bg_color}
-                  onChange={setbg_color}
+                  color={consultation_bg_color}
+                  onChange={setconsultation_bg_color}
                 />
               </div>
               <div className="flex flex-col md:gap-[1vw] text-center">
-                <p className="md:text-[1vw]">select title color here</p>
+                <p className="md:text-[1vw]">select title color here </p>
                 <ColorPicker
                   hideInput={["rgb", "hsv"]}
-                  color={textc_color}
+                  color={consultation_heading_text_color}
                   height={200}
-                  onChange={settextc_color}
+                  onChange={setconsultation_heading_text_color}
                 />
               </div>
             </div>
@@ -71,9 +82,9 @@ const Modal_edit_consulation = ({
                   <input
                     type="text"
                     id="title"
-                    value={consulation_title || ""}
+                    value={consultation_title || ""}
                     onChange={(e) => {
-                      setconsulation_title(e.target.value);
+                      setconsultation_title(e.target.value);
                     }}
                     className="border rounded-[1vw] outline-none bg-[black] bg-opacity-[70%] placeholder:text-white placeholder:text-opacity-[50%] capitalize text-white md:h-[3vw] md:px-[3%] md:text-[1vw]"
                     placeholder="Eg : NEGOTIATION COURSE , WORKSHOPS . . ."
@@ -83,8 +94,15 @@ const Modal_edit_consulation = ({
                   style={{ whiteSpace: "nowrap" }}
                   className=" md:h-[80%] md:text-[0.9vw] md:px-[1.3vw] bg-[#103210] text-white md:rounded-[1vw] hover:bg-white hover:text-black hover:border-black border-[#103210] border"
                 >
-                  Choose Image
+                  {consultation_image_link ? "Replace" : "Choose"} Image
                 </button>
+                {consultation_image_link && (
+                  <Image
+                    src={consultation_image_link}
+                    alt="image link"
+                    className="w-[20%] h-fit"
+                  />
+                )}
               </div>
               <div className="flex flex-col md:gap-[0.3vw]">
                 <label
@@ -106,18 +124,18 @@ const Modal_edit_consulation = ({
                   id="description"
                   rows={5}
                   //   rows={50}
-                  value={consulation_body || ""}
+                  value={consultation_body || ""}
                   onChange={(e) => {
-                    setconsulation_body(e.target.value);
+                    setconsultation_body(e.target.value);
                   }}
                   className="border resize-none rounded-[1vw] outline-none bg-[black] bg-opacity-[70%] placeholder:text-white placeholder:text-opacity-[50%]  capitalize text-white  md:p-[2%] md:text-[1vw]"
                   placeholder="Eg : Erica is a consultant with <a href='Link_To_Behavioralize'> Behavioralize </a> , a data-driven company that applies behavioral science to understand and influence customer and managerial decision making, helping companies drive growth by identifying and solving their key behavioral challenges .."
                 />
               </div>
 
-              {/* the links for viewing */}
+              {/*  the read more link, the institute and the year */}
               <div className="w-full flex md:gap-[2vw]  justify-between">
-                {/* the data link */}
+                {/* the institure link */}
                 <div className="flex flex-col md:gap-[0.3vw] w-full">
                   <label
                     htmlFor="institute"
@@ -127,16 +145,16 @@ const Modal_edit_consulation = ({
                   </label>
                   <input
                     type="text"
-                    value={consulation_data_link || ""}
+                    value={consultation_institute || ""}
                     id="institute"
                     onChange={(e) => {
-                      setconsulation_data_link(e.target.value);
+                      setconsultation_institute(e.target.value);
                     }}
                     className="border rounded-[0.5vw] outline-none bg-[black] bg-opacity-[70%] placeholder:text-white placeholder:text-opacity-[50%] capitalize text-white md:h-[3vw] md:px-[3%] md:text-[1vw]"
                     placeholder="Eg : Wharton University, Wet Cement  .."
                   />
                 </div>
-                {/* the download link */}
+                {/* the year  */}
                 <div className="flex flex-col md:gap-[0.3vw] w-full">
                   <label htmlFor="year" className="capitalize md:text-[1vw]">
                     year
@@ -145,11 +163,27 @@ const Modal_edit_consulation = ({
                     type="text"
                     id="year"
                     onChange={(e) => {
-                      setconsulation_pdf_link(e.target.value);
+                      setconsultation_year(e.target.value);
                     }}
-                    value={consulation_pdf_link || ""}
+                    value={consultation_year || ""}
                     className="border rounded-[0.5vw] outline-none bg-[black] bg-opacity-[70%] placeholder:text-white placeholder:text-opacity-[50%] capitalize text-white md:h-[3vw] md:px-[3%] md:text-[1vw]"
                     placeholder="Eg : 2023, 2024.."
+                  />
+                </div>
+                {/* the readmore link */}
+                <div className="flex flex-col md:gap-[0.3vw] w-full">
+                  <label htmlFor="year" className="capitalize md:text-[1vw]">
+                    Read more link
+                  </label>
+                  <input
+                    type="text"
+                    id="year"
+                    onChange={(e) => {
+                      setconsulation_readmore_link(e.target.value);
+                    }}
+                    value={consulation_readmore_link || ""}
+                    className="border rounded-[0.5vw] outline-none bg-[black] bg-opacity-[70%] placeholder:text-white placeholder:text-opacity-[50%] normal-case text-white md:h-[3vw] md:px-[3%] md:text-[1vw]"
+                    placeholder="Eg : https://www.eric.com/consulation "
                   />
                 </div>
               </div>
