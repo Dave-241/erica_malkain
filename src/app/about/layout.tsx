@@ -1,10 +1,8 @@
 import type { Metadata } from "next";
-import { Inter } from "next/font/google";
-import "./globals.css";
 
 export const metadata: Metadata = {
-  title: "Erica Home ",
-  description: "Erica Home description",
+  title: "Erica About ",
+  description: "Erica About description",
 };
 
 export default function RootLayout({
@@ -14,7 +12,9 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en">
-      <body className={``}>{children}</body>
+      <body className={``} style={{ backgroundColor: "#DFE4DF" }}>
+        {children}
+      </body>
     </html>
   );
 }

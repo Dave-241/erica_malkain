@@ -61,7 +61,7 @@ const Workshop_hero = () => {
       </div>
       <div className="w-full md:py-[8vw] md:px-[10vw]">
         <h2
-          className={`uppercase ${spline_font.className} text-[#707270] font-light md:text-[4vw] md:leading-[3.8vw] text-center`}
+          className={`uppercase ${spline_font.className} text-[#707270] font-light md:text-[4vw] md:leading-[4vw] text-center`}
         >
           Led by Erica Boothby, Ph.D., Senior Lecturer at The Wharton School,
           University of Pennsylvania

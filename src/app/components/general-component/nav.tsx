@@ -7,10 +7,6 @@ import { usePathname } from "next/navigation";
 const Nav = () => {
   const items = [
     {
-      text: "Home",
-      link: "/",
-    },
-    {
       text: "Publications",
       link: "/publications",
     },
@@ -33,8 +29,8 @@ const Nav = () => {
   ];
   const items_right = [
     {
-      text: "contact",
-      link: "/contact",
+      text: "home",
+      link: "/",
     },
     {
       text: "about us",
@@ -84,9 +80,15 @@ const Nav = () => {
                 href={"/"}
                 style={{ whiteSpace: "nowrap" }}
                 key={index}
-                className="uppercase overflow-hidden  md:p-[0.4vw] group hover:[#103210] duration-[1s] md:rounded-[1.5vw]  bg-[white] backdrop-blur-2xl bg-opacity-[20%] "
+                className={`uppercase overflow-hidden  ${
+                  e.link == pathname ? "bg-[black]" : "bg-[white]"
+                }   md:p-[0.4vw] group hover:[#103210] duration-[1s] md:rounded-[1.5vw]   backdrop-blur-2xl bg-opacity[20%] `}
               >
-                <div className="w-full h-full bg-[#440C0C] group-hover:bg-white md:rounded-[1.3vw] flex justify-center items-center  md:py-[0.7vw] md:px-[1.5vw]">
+                <div
+                  className={`w-full h-full  ${
+                    e.link == pathname ? "bg-[#103210]" : "bg-[#440C0C] "
+                  } group-hover:bg-white md:rounded-[1.3vw] flex justify-center items-center  md:py-[0.7vw] md:px-[1.5vw]`}
+                >
                   <p className="inline-block md:text-[0.8vw] text-[white] group-hover:text-[#440C0C]">
                     {e.text}
                   </p>
