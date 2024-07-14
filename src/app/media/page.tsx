@@ -1,6 +1,7 @@
 import Contact from "../components/general-component/contact";
 import Footer from "../components/general-component/footer";
 import Nav from "../components/general-component/nav";
+import Categories from "../components/media/categories";
 import Media_hero from "../components/media/hero";
 
 export default function Meida() {
@@ -9,6 +10,7 @@ export default function Meida() {
       <>
         <Nav />
         <Media_hero />
+        <Categories />
         <Contact />
         <Footer />
       </>

@@ -30,7 +30,7 @@ const Media_hero = () => {
     <>
       <div
         ref={ref}
-        className="w-full md:flex justify-center items-center hidden   md:px-[2vw] flex-col md:py-[8vw] border2 md:gap-[2vw]"
+        className="w-full md:flex justify-center items-center hidden   md:px-[2vw] flex-col md:py-[8vw]  md:gap-[2vw]"
       >
         <div className="overflow-hidden z-[10]">
           <h1
@@ -51,7 +51,7 @@ const Media_hero = () => {
             opacity: start_anime ? 1 : 0,
             scale: start_anime ? 1 : 0.5,
           }}
-          className="border2 relative bg-[#A58D90] md:rounded-[11vw] bg md:h-[30vw] md:w-[22.8vw] z-[10] overflow-hidden"
+          className=" relative bg-[#A58D90] md:rounded-[11vw] bg md:h-[30vw] md:w-[22.8vw] z-[10] overflow-hidden"
         >
           {" "}
           <Image
@@ -81,8 +81,8 @@ const Media_hero = () => {
             LECTURE . PRINTS
           </p>
         </div>
-        <div className="h-[70%] md:w-[96vw] overflow-hidden  md:rounded-[1vw] border2  bg-[#A58D90] absolute md:top-[1vw] left-[50%] translate-x-[-50%]">
-          <div className="w-full h-full border2  relative">
+        <div className="h-[70%] md:w-[96vw] overflow-hidden  md:rounded-[1vw]   bg-[#A58D90] absolute md:top-[1vw] left-[50%] translate-x-[-50%]">
+          <div className="w-full h-full   relative">
             <Image
               src={hero}
               alt="hero image"
