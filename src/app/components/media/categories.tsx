@@ -5,6 +5,7 @@ import { useEffect, useRef, useState } from "react";
 import example from "../../../../public/images/media/example.webp";
 import Image from "next/image";
 import { useInView } from "framer-motion";
+import Link from "next/link";
 
 const Categories = () => {
   const [active, setactive] = useState(0);
@@ -16,19 +17,23 @@ const Categories = () => {
           img: example,
           caption:
             "Professor Erica Boothbys graduate seminar on the Ethica Implications of AI was both thought-provoking and enlightening",
+          link: "/",
         },
         {
           img: example,
+          link: "/",
           caption:
             "Professor Erica Boothbys graduate seminar on the Ethica Implications of AI was both thought-provoking and enlightening",
         },
         {
           img: example,
+          link: "/",
           caption:
             "Professor Erica Boothbys graduate seminar on the Ethica Implications of AI was both thought-provoking and enlightening",
         },
         {
           img: example,
+          link: "/",
           caption:
             "Professor Erica Boothbys graduate seminar on the Ethica Implications of AI was both thought-provoking and enlightening",
         },
@@ -39,21 +44,25 @@ const Categories = () => {
       body: [
         {
           img: example,
+          link: "/",
           caption:
             "Professor Erica Boothbys graduate seminar on the Ethica Implications of AI was both thought-provoking and enlightening",
         },
         {
           img: example,
+          link: "/",
           caption:
             "Professor Erica Boothbys graduate seminar on the Ethica Implications of AI was both thought-provoking and enlightening",
         },
         {
           img: example,
+          link: "/",
           caption:
             "Professor Erica Boothbys graduate seminar on the Ethica Implications of AI was both thought-provoking and enlightening",
         },
         {
           img: example,
+          link: "/",
           caption:
             "Professor Erica Boothbys graduate seminar on the Ethica Implications of AI was both thought-provoking and enlightening",
         },
@@ -64,21 +73,25 @@ const Categories = () => {
       body: [
         {
           img: example,
+          link: "/",
           caption:
             "Professor Erica Boothbys graduate seminar on the Ethica Implications of AI was both thought-provoking and enlightening",
         },
         {
           img: example,
+          link: "/",
           caption:
             "Professor Erica Boothbys graduate seminar on the Ethica Implications of AI was both thought-provoking and enlightening",
         },
         {
           img: example,
+          link: "/",
           caption:
             "Professor Erica Boothbys graduate seminar on the Ethica Implications of AI was both thought-provoking and enlightening",
         },
         {
           img: example,
+          link: "/",
           caption:
             "Professor Erica Boothbys graduate seminar on the Ethica Implications of AI was both thought-provoking and enlightening",
         },
@@ -175,15 +188,19 @@ const Categories = () => {
                 <div className=" flex flex-wrap md:gap-[1.7vw]">
                   {e.body.map((internal: any, internal_index: any) => {
                     return (
-                      <div
+                      <Link
+                        href={internal.link}
                         key={internal_index}
-                        className={`md:w-[30.6vw]  md:rounded-[1.5vw] flex flex-col md:p-[0.5vw] md:mt-[0.4vw] bg-white`}
+                        className={`md:w-[30.6vw]  md:rounded-[1.5vw] flex flex-col md:p-[0.5vw] group md:mt-[0.4vw] bg-white`}
                       >
-                        <Image
-                          src={internal.img}
-                          alt={internal.caption}
-                          className="w-full h-fit"
-                        />
+                        <div className="overflow-hidden md:rounded-[1vw]">
+                          <Image
+                            src={internal.img}
+                            alt={internal.caption}
+                            style={{ transition: "0.8s ease" }}
+                            className="w-full scale-[1.1] group-hover:scale-[1] h-fit"
+                          />
+                        </div>
 
                         <div className="overflow-hidden">
                           <p
@@ -198,7 +215,7 @@ const Categories = () => {
                             {internal.caption}
                           </p>
                         </div>
-                      </div>
+                      </Link>
                     );
                   })}
                 </div>
