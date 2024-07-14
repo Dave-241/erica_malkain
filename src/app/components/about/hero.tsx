@@ -131,7 +131,7 @@ const About_hero = () => {
           </div>
 
           {/* <div className="  flex justify-end md:px-[10%]"> */}
-          <div className="flex flex-col md:w-[60%] md:px-[6%] h-[100vh] justify-center  items-start md:gap-[2vw]">
+          <div className="flex flex-col border2 md:w-[60%] md:px-[6%] h-[100vh] justify-center  items-start md:gap-[2vw]">
             <p
               className={`${Helvetica_light.className} md:text-[1.1vw] text-[#707270]`}
             >
@@ -162,6 +162,21 @@ const About_hero = () => {
             {/* </div> */}
           </div>
         </div>
+
+        {/* the below content */}
+        <p
+          className={`text-[#707270] md:text-[1vw] ${Helvetica_light.className} text-center`}
+        >
+          {" "}
+          In 2022, she was awarded the American Psychological Societys Rising
+          Star Award. Prior to arriving at Wharton, Erica completed her Ph.D. in
+          Social Psychology at Yale University and was a Postdoctoral Fellow in
+          the Behavioral Economics and Decision Research Center at Cornell
+          University. She has a B.A. in Philosophy and a Minor in Italian from
+          Boston University. A native of Santa Cruz, California, Erica is
+          passionate about surfing, painting, playing the fiddle, and all things
+          Italian.
+        </p>
       </div>
     </>
   );
