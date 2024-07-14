@@ -209,7 +209,7 @@ const Each_workshop = () => {
                           {internal.heading}
                         </h6>
 
-                        <p className="font-medium md:text-[1.1vw] text-[#000000]">
+                        <p className="font-normal md:text-[1.1vw] text-[#000000]">
                           {internal.caption}
                         </p>
                       </div>
