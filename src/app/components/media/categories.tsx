@@ -173,7 +173,7 @@ const Categories = () => {
   }, [subItemsRefs]);
   return (
     <>
-      <div className="w-full  md:pb-[10vw] relative flex  ">
+      <div className="w-full  md:pb-[10vw] md:mt-[-5vw]  relative flex  ">
         <div className=" md:h-[100vh] md:w-[30vw] flex items-center justify-start sticky top-0 left-0 md:pt-[8vw] md:gap-[2vw] flex-col">
           {items.map((e: any, index: any) => {
             return (
