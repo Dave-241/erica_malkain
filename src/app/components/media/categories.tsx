@@ -6,8 +6,30 @@ import example from "../../../../public/images/media/example.webp";
 import Image from "next/image";
 import { useInView } from "framer-motion";
 import Link from "next/link";
+import { useRouter, useSearchParams } from "next/navigation";
+// import { useRouter } from "next/router";
 
 const Categories = () => {
+  const searchParams = useSearchParams();
+  const router = useRouter();
+
+  const search = searchParams.get("id");
+
+  const handleClick = (id: any) => {
+    router.push(`media/?id=${id}`);
+  };
+
+  useEffect(() => {
+    // const { scrollTo } = router.;
+
+    if (search) {
+      const element = document.getElementById(search);
+      if (element) {
+        element.scrollIntoView({ behavior: "smooth" });
+      }
+    }
+  }, [search]);
+
   const [active, setactive] = useState(0);
   const items = [
     {
@@ -102,13 +124,33 @@ const Categories = () => {
   //   for tracking the major categories
   const itemsRefs = useRef<any>([]);
 
-  itemsRefs.current = [];
+  useEffect(() => {
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          const index = itemsRefs.current.findIndex(
+            (ref: any) => ref === entry.target,
+          );
+          if (entry.isIntersecting && index !== -1) {
+            // console.log("Item is in view, Index:", index);
+            setactive(index);
+            // Perform any action you need here when item comes into view
+          }
+        });
+      },
+      { threshold: 0.1 },
+    );
 
-  const addToRefs = (el: any) => {
-    if (el && !itemsRefs.current.includes(el)) {
-      itemsRefs.current.push(el);
-    }
-  };
+    itemsRefs.current.forEach((ref: any) => {
+      if (ref) observer.observe(ref);
+    });
+
+    return () => {
+      itemsRefs.current.forEach((ref: any) => {
+        if (ref) observer.unobserve(ref);
+      });
+    };
+  }, []);
 
   //   for tracking minor categories
   const subItemsRefs = useRef<any[]>([]);
@@ -120,7 +162,6 @@ const Categories = () => {
           const observer = new IntersectionObserver((entries) => {
             if (entries[0].isIntersecting) {
               ref.classList.add("media_comeup");
-              console.log(ref);
               observer.unobserve(ref);
             }
           }, {});
@@ -138,9 +179,14 @@ const Categories = () => {
             return (
               <button
                 key={index}
+                onClick={() => {
+                  handleClick(e.title);
+                }}
                 style={{ transition: "0.8s ease" }}
                 className={` ${
-                  active == index ? "scale-[1.05]" : "opacity-[40%]"
+                  active == index
+                    ? "scale-[1.05]"
+                    : "opacity-[40%] hover:opacity-[100%]"
                 } ${
                   spline_font.className
                 } bg-[black] font-semibold uppercase overflow-hidden  md:w-[13vw] md:h-[4.9vw] md:p-[0.6vw]  group hover:[#103210]  hover:bg-[black] hover:bg-opacity-[20%]  md:rounded-[1.8vw]  backdrop-blur-2xl bg-opacity-[20%] `}
@@ -161,23 +207,15 @@ const Categories = () => {
 
         <div className="md:w-[69vw]  flex flex-col md:gap-[6vw] justify-center ">
           {items.map((e: any, index: any) => {
-            const ref = useRef(null);
-            const inView = useInView(ref, {
-              //   once: true,
-            });
-
-            useEffect(() => {
-              if (inView) {
-                setactive(index);
-              }
-            }, [inView]);
-
-            // const subItemRef = useRef(null);
-            const subItemRefs = useRef<any[]>([]);
             return (
               <div
                 key={index}
-                ref={ref}
+                id={e.title}
+                ref={(ref) => {
+                  if (ref) {
+                    itemsRefs.current[index] = ref;
+                  }
+                }}
                 className=" md:gap-[1.35vw]  md:w-[100%] flex flex-col"
               >
                 <h2
