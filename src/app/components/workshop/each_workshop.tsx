@@ -69,6 +69,39 @@ const Each_workshop = () => {
     const scale = maxScale - (maxScale - minScale) * scaleFactor;
     return Math.max(minScale, Math.min(maxScale, scale)); // Ensure scale stays within bounds
   };
+
+  const calculateScaleUp = (
+    index: number,
+    data_array: any[],
+    yvalue: number,
+  ): number => {
+    const maxScale = 1.2;
+    const minScale = 1;
+    const exprValue =
+      ((index + 2 - yvalue) * 100 - 150 * (-index + yvalue)) / -1;
+
+    if (exprValue <= 50) {
+      return maxScale - (maxScale - minScale) * (exprValue / 50);
+    } else {
+      return minScale;
+    }
+  };
+  const degScaleUp = (
+    index: number,
+    data_array: any[],
+    yvalue: number,
+  ): number => {
+    const maxScale = 4;
+    const minScale = 0;
+    const exprValue =
+      ((index + 2 - yvalue) * 100 - 150 * (-index + yvalue)) / -1;
+
+    if (exprValue <= 50) {
+      return maxScale - (maxScale - minScale) * (exprValue / 50);
+    } else {
+      return minScale;
+    }
+  };
   return (
     <>
       {/* the wrapper */}
@@ -77,7 +110,7 @@ const Each_workshop = () => {
         ref={sectionRef}
         style={{ height: `${data_array_items.length * 100}vh` }}
       >
-        <div className="flex justify-center items-center   sticky bottom-0 h-[100vh]  w-full ">
+        <div className="flex justify-center items-center  overflow-hidden  sticky bottom-0 h-[100vh]  w-full ">
           {/* the customize scroll bar starts */}
           <div className="absolute md:right-[3vw] z-[10] border-[#0e257756]  flex w-[2%] right-[1.5%]  top-[50%] translate-y-[-50%] md:w-[0.6vw] rounded-[3vw]  lg:h-[28vw] md:h-[40vw] h-[140vw] bg-white overflow-hidden">
             <div
@@ -90,11 +123,7 @@ const Each_workshop = () => {
             return (
               <div
                 key={index}
-                className={` absolute top-[50%] translate-x-[-50%] left-[50%]  lg:rounded-[2vw] md:w-[95vw] w-[95%] h-[150vw] md:h-[95%] md:rounded-[3vw]  overflow-hidden rounded-[7.5vw]  bg-[#0E2477] flex  ${
-                  index % 2 === 0
-                    ? "md:flex-row flex-col"
-                    : "md:flex-row-reverse flex-col"
-                } justify-between items-center md:p-[2vw] p-[4vw] gap-[4vw] md:gap-[2vw] text-white`}
+                className={` absolute top-[50%] translate-x-[-50%] left-[50%]  lg:rounded-[2vw] md:w-[95vw] w-[95%] h-[150vw] md:h-[95%] md:rounded-[3vw]  overflow-hidden rounded-[7.5vw]  bg-[#0E2477] flex justify-center items-center text-center`}
                 style={{
                   transition: "opacity 0.6s ease, filter  jjj0.6s ease",
                   backgroundColor: e.bg,
@@ -108,7 +137,15 @@ const Each_workshop = () => {
                     index + 1 - yvalue >= 0 && index + 1 - yvalue <= 1
                       ? `translateY(${
                           (index + 2 - yvalue) * 100 - 150 * (-index + yvalue)
-                        }%) translateX(-50%)`
+                        }%) translateX(-50%) scale(${calculateScaleUp(
+                          index,
+                          data_array_items,
+                          yvalue,
+                        )})  rotate(${degScaleUp(
+                          index,
+                          data_array_items,
+                          yvalue,
+                        )}deg) `
                       : index + 1 - yvalue <= 0
                       ? `translateY(-50%) translateX(-50%)  scale(${calculateScale(
                           index,
@@ -127,7 +164,11 @@ const Each_workshop = () => {
                   //       ? `blur(${(yvalue - index) * 1.2}px)`
                   //       : ``,
                 }}
-              ></div>
+              >
+                {calculateScaleUp(index, data_array_items, yvalue)}
+                <br />
+                {(index + 2 - yvalue) * 100 - 150 * (-index + yvalue)}
+              </div>
             );
           })}
         </div>
