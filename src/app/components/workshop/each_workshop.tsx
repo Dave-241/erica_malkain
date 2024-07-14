@@ -276,7 +276,7 @@ const Each_workshop = () => {
       >
         <div className="flex justify-center items-center  overflow-hidden  sticky bottom-0 h-[100vh]  w-full ">
           {/* the customize scroll bar starts */}
-          <div className="absolute md:right-[3vw] z-[10] border-[#0e257756]  flex w-[2%] right-[1.5%]  top-[50%] translate-y-[-50%] md:w-[0.6vw] rounded-[3vw]  lg:h-[28vw] md:h-[40vw] h-[140vw] bg-white overflow-hidden">
+          <div className="absolute md:right-[3vw] z-[10] border-[#0e257756]  flex w-[2%] right-[1.5%]  top-[50%] translate-y-[-50%] md:w-[0.6vw] rounded-[3vw]   md:h-[90%]  bg-white border-[#103210] border border-opacity-[40%] overflow-hidden">
             <div
               className="w-full rounded-[3vw] bg-[#0E2477]"
               style={{ height: `${height * 10}%` }}
