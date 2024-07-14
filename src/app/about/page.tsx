@@ -1,3 +1,4 @@
+import About_hero from "../components/about/hero";
 import Contact from "../components/general-component/contact";
 import Footer from "../components/general-component/footer";
 import Nav from "../components/general-component/nav";
@@ -9,7 +10,7 @@ export default function Meida() {
     <>
       <>
         <Nav />
-
+        <About_hero />
         <Contact />
         <Footer />
       </>

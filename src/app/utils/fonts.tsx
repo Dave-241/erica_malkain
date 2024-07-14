@@ -1,6 +1,6 @@
 import localFont from "next/font/local";
 
-import { Spline_Sans, EB_Garamond } from "next/font/google";
+import { Spline_Sans, EB_Garamond, Cormorant_Garamond } from "next/font/google";
 
 export const spline_font = Spline_Sans({
   subsets: ["latin"],
@@ -8,6 +8,10 @@ export const spline_font = Spline_Sans({
 
 export const eb_gramond_font = EB_Garamond({
   subsets: ["latin"],
+});
+export const eb_gramond_italic_font = EB_Garamond({
+  subsets: ["latin"],
+  style: "italic",
 });
 
 export const Bt_Beau_Regualr = localFont({
