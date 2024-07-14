@@ -9,6 +9,7 @@ import { useEffect, useRef, useState } from "react";
 import hero1 from "../../../../public/images/about/hero1.webp";
 import hero2 from "../../../../public/images/about/hero2.webp";
 import Image from "next/image";
+import bg from "../../../../public/images/about/bg.webp";
 import Link from "next/link";
 import { useMotionValueEvent, useScroll, useTransform } from "framer-motion";
 const About_hero = () => {
@@ -25,18 +26,31 @@ const About_hero = () => {
   //     offset: ["start end", "end 50%"],
   //   });
 
-  const { scrollYProgress } = useScroll({
+  const { scrollYProgress: scrollYProgress1 } = useScroll({
     target: ref,
-    offset: ["50% 50%", "end end"], // Start calculating at 50% of the ref element
+    offset: ["40% 40%", "80% end"], // Start calculating at 40% of the ref element, end at 80%
   });
 
-  const [yvalue, setyvalue] = useState(0);
+  const { scrollYProgress: scrollYProgress_img } = useScroll({
+    target: ref,
+    offset: ["80% 80%", "100% end"], // Start calculating at 40% of the ref element, end at 80%
+  });
+  //   this is to opac the image
+
+  const bg_img_opac = useTransform(scrollYProgress_img, [0, 1], [0, 1]);
+  useMotionValueEvent(bg_img_opac, "change", (latest) => {
+    //   console.log(latest);
+    setbg_img_opacity(latest);
+  });
+
+  const [yvalue, setyvalue] = useState(-50);
   const [opac_one_img, setopac_one_img] = useState(1);
   const [opac_two_img, setopac_two_img] = useState(0);
+  const [bg_img_opacity, setbg_img_opacity] = useState(0);
 
-  const y = useTransform(scrollYProgress, [0, 1], [-50, 25]);
-  const opac_one = useTransform(scrollYProgress, [0, 1], [1, 0]);
-  const opac_two = useTransform(scrollYProgress, [0, 1], [0, 1]);
+  const y = useTransform(scrollYProgress1, [0, 1], [-50, 25]);
+  const opac_one = useTransform(scrollYProgress1, [0, 1], [1, 0]);
+  const opac_two = useTransform(scrollYProgress1, [0, 1], [0, 1]);
 
   useMotionValueEvent(y, "change", (latest) => {
     console.log(latest);
@@ -53,19 +67,43 @@ const About_hero = () => {
   return (
     <>
       <div className="w-full  md:py-[7vw] flex-col hidden md:px-[8vw] md:gap-[5vw]  md:flex">
-        <h1
-          className={`md:text-[15vw]  md:leading-[14vw] border2  text-center   text-[#1E1E1E] ${eb_gramond_italic_font.className}`}
-        >
-          Erica Boothby
-        </h1>
+        <div className="overflow-hidden ">
+          <h1
+            style={{
+              transition: "0.65s ease",
+              transform: start_anime ? "translate(0,0)" : "translate(0%,100%)",
+            }}
+            className={`md:text-[15vw]  md:leading-[20vw]   text-center   text-[#1E1E1E] ${eb_gramond_italic_font.className}`}
+          >
+            Erica Boothby
+          </h1>
+        </div>
 
-        <p
-          className={`${Helvetica_light.className} md:text-[1.4vw] md:leading-[1.6vw]`}
+        <div className="overflow-hidden">
+          <p
+            style={{
+              transition: "0.65s ease",
+              transform: start_anime ? "translate(0,0)" : "translate(0%,100%)",
+            }}
+            className={`${Helvetica_light.className} md:text-[1.4vw] md:leading-[1.6vw]`}
+          >
+            Educator, Scholar, <br /> Professor & Speaker
+          </p>
+        </div>
+        <div
+          className="w-full  h-[250vh]  md:mt-[-10vh] flex items-start  relative "
+          ref={ref}
         >
-          Educator, Scholar, <br /> Professor & Speaker
-        </p>
-
-        <div className="w-full border2 h-[200vh] flex items-start  " ref={ref}>
+          <div className="w-full h-full  absolute top-0 left-0  flex items-end">
+            <div className="w-full h-[100vh]  flex justify-center items-center ">
+              <Image
+                src={bg}
+                style={{ opacity: bg_img_opacity }}
+                alt="background"
+                className="md:w-[45vw] h-fit"
+              />
+            </div>
+          </div>
           <div
             style={{
               //   transition: "0.9s ease",
@@ -92,7 +130,7 @@ const About_hero = () => {
             </div>
           </div>
 
-          {/* <div className=" border2 flex justify-end md:px-[10%]"> */}
+          {/* <div className="  flex justify-end md:px-[10%]"> */}
           <div className="flex flex-col md:w-[60%] md:px-[6%] h-[100vh] justify-center  items-start md:gap-[2vw]">
             <p
               className={`${Helvetica_light.className} md:text-[1.1vw] text-[#707270]`}
