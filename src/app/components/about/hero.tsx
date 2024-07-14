@@ -28,7 +28,7 @@ const About_hero = () => {
 
   const { scrollYProgress: scrollYProgress1 } = useScroll({
     target: ref,
-    offset: ["40% 40%", "80% end"], // Start calculating at 40% of the ref element, end at 80%
+    offset: ["40% 40%", "90% end"], // Start calculating at 40% of the ref element, end at 80%
   });
 
   const { scrollYProgress: scrollYProgress_img } = useScroll({
@@ -165,7 +165,7 @@ const About_hero = () => {
 
         {/* the below content */}
         <p
-          className={`text-[#707270] md:text-[1vw] md:px-[10vw] ${Helvetica_light.className} text-center`}
+          className={`text-[#707270] md:text-[1vw] md:px-[15vw] ${Helvetica_light.className} text-center`}
         >
           {" "}
           In 2022, she was awarded the American Psychological Societys Rising

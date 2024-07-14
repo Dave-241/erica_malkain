@@ -1,6 +1,6 @@
 import localFont from "next/font/local";
 
-import { Spline_Sans, EB_Garamond, Cormorant_Garamond } from "next/font/google";
+import { Spline_Sans, EB_Garamond, DM_Sans } from "next/font/google";
 
 export const spline_font = Spline_Sans({
   subsets: ["latin"],
@@ -8,6 +8,10 @@ export const spline_font = Spline_Sans({
 
 export const eb_gramond_font = EB_Garamond({
   subsets: ["latin"],
+});
+export const dm_sans_font = DM_Sans({
+  subsets: ["latin"],
+  weight: "500",
 });
 export const eb_gramond_italic_font = EB_Garamond({
   subsets: ["latin"],

@@ -40,3 +40,9 @@ a {
   transition: 1s ease;
   transform: translateY(0%);
 }
+
+.absolute_center {
+  transform: translate(-50%, -50%);
+  left: 50%;
+  top: 50%;
+}
