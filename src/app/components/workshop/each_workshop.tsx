@@ -51,6 +51,141 @@ const Each_workshop = () => {
         },
       ],
     },
+    {
+      title:
+        "Negotiation Fundamentals: Building the Foundation for Strategic Mastery",
+      body: [
+        {
+          heading: "goals",
+          caption:
+            "Learn how to regulate emotions, recognize cognitive biases, and improve communication during challenging conversations",
+          bg: "#CBD4CB",
+          text: "#546A54",
+        },
+        {
+          heading: "relevance",
+          caption:
+            "These skills will help you collaborate better, find win-win solutions, and improve workplace outcomes by incorporating diverse viewpoints. They're essential for  fostering a culture of cooperation and excellence.",
+          bg: "#D4CBCB",
+          text: "#82825C",
+        },
+        {
+          heading: "APPLICATIONS",
+          caption:
+            "Use these techniques to negotiate budgets, share resources, manage stakeholders, and enhance teamwork across departments. Turn conflicts into opportunities for growth and innovation",
+          bg: "#D4D4CB",
+          text: "#82825C",
+        },
+      ],
+    },
+    {
+      title:
+        "Negotiation Fundamentals: Building the Foundation for Strategic Mastery",
+      body: [
+        {
+          heading: "goals",
+          caption:
+            "Learn how to regulate emotions, recognize cognitive biases, and improve communication during challenging conversations",
+          bg: "#CBD4CB",
+          text: "#546A54",
+        },
+        {
+          heading: "relevance",
+          caption:
+            "These skills will help you collaborate better, find win-win solutions, and improve workplace outcomes by incorporating diverse viewpoints. They're essential for  fostering a culture of cooperation and excellence.",
+          bg: "#D4CBCB",
+          text: "#82825C",
+        },
+        {
+          heading: "APPLICATIONS",
+          caption:
+            "Use these techniques to negotiate budgets, share resources, manage stakeholders, and enhance teamwork across departments. Turn conflicts into opportunities for growth and innovation",
+          bg: "#D4D4CB",
+          text: "#82825C",
+        },
+      ],
+    },
+    {
+      title:
+        "Negotiation Fundamentals: Building the Foundation for Strategic Mastery",
+      body: [
+        {
+          heading: "goals",
+          caption:
+            "Learn how to regulate emotions, recognize cognitive biases, and improve communication during challenging conversations",
+          bg: "#CBD4CB",
+          text: "#546A54",
+        },
+        {
+          heading: "relevance",
+          caption:
+            "These skills will help you collaborate better, find win-win solutions, and improve workplace outcomes by incorporating diverse viewpoints. They're essential for  fostering a culture of cooperation and excellence.",
+          bg: "#D4CBCB",
+          text: "#82825C",
+        },
+        {
+          heading: "APPLICATIONS",
+          caption:
+            "Use these techniques to negotiate budgets, share resources, manage stakeholders, and enhance teamwork across departments. Turn conflicts into opportunities for growth and innovation",
+          bg: "#D4D4CB",
+          text: "#82825C",
+        },
+      ],
+    },
+    {
+      title:
+        "Negotiation Fundamentals: Building the Foundation for Strategic Mastery",
+      body: [
+        {
+          heading: "goals",
+          caption:
+            "Learn how to regulate emotions, recognize cognitive biases, and improve communication during challenging conversations",
+          bg: "#CBD4CB",
+          text: "#546A54",
+        },
+        {
+          heading: "relevance",
+          caption:
+            "These skills will help you collaborate better, find win-win solutions, and improve workplace outcomes by incorporating diverse viewpoints. They're essential for  fostering a culture of cooperation and excellence.",
+          bg: "#D4CBCB",
+          text: "#82825C",
+        },
+        {
+          heading: "APPLICATIONS",
+          caption:
+            "Use these techniques to negotiate budgets, share resources, manage stakeholders, and enhance teamwork across departments. Turn conflicts into opportunities for growth and innovation",
+          bg: "#D4D4CB",
+          text: "#82825C",
+        },
+      ],
+    },
+    {
+      title:
+        "Negotiation Fundamentals: Building the Foundation for Strategic Mastery",
+      body: [
+        {
+          heading: "goals",
+          caption:
+            "Learn how to regulate emotions, recognize cognitive biases, and improve communication during challenging conversations",
+          bg: "#CBD4CB",
+          text: "#546A54",
+        },
+        {
+          heading: "relevance",
+          caption:
+            "These skills will help you collaborate better, find win-win solutions, and improve workplace outcomes by incorporating diverse viewpoints. They're essential for  fostering a culture of cooperation and excellence.",
+          bg: "#D4CBCB",
+          text: "#82825C",
+        },
+        {
+          heading: "APPLICATIONS",
+          caption:
+            "Use these techniques to negotiate budgets, share resources, manage stakeholders, and enhance teamwork across departments. Turn conflicts into opportunities for growth and innovation",
+          bg: "#D4D4CB",
+          text: "#82825C",
+        },
+      ],
+    },
   ];
 
   const y = useTransform(
@@ -135,7 +270,7 @@ const Each_workshop = () => {
     <>
       {/* the wrapper */}
       <div
-        className="w-full lg:h-[150vw] flex items-end h-[300vh] md:h-[300vh]  relative"
+        className="w-full lg:h-[150vw] flex items-end  md:mb-[5vw] h-[300vh] md:h-[300vh]  relative"
         ref={sectionRef}
         style={{ height: `${data_array_items.length * 110}vh` }}
       >
