@@ -26,7 +26,7 @@ const Consulation_advert = () => {
     <>
       <div
         ref={ref}
-        className="w-full  md:py-[5vw] flex justify-center items-center"
+        className="w-full  md:py-[10vw] flex justify-center items-center"
       >
         <div className="md:w-[90vw] md:h-[40vw]  overflow-hidden md:rounded-[1.5vw] flex">
           <div className="w-[50%] h-full  relative">
@@ -44,7 +44,9 @@ const Consulation_advert = () => {
               TEACHING / TRAINING / CONSULTATING
             </h4>
 
-            <p className={`text-white ${Helvetica_light.className}`}>
+            <p
+              className={`text-white md:text-[1vw] ${Helvetica_light.className}`}
+            >
               Erica teaches a course on Negotiations at The Wharton School at
               the University of Pennsylvania, for which she has received a
               Wharton Teaching Excellence award. Her course has received an
