@@ -6,6 +6,7 @@ import img from "../../../../public/services/example.png";
 import Image from "next/image";
 import white_arrow from "../../../../public/services/white_arrow.png";
 import Link from "next/link";
+import { spline_font } from "@/app/utils/fonts";
 
 const Each_workshop = () => {
   const sectionRef = useRef(null);
@@ -23,14 +24,30 @@ const Each_workshop = () => {
   const [height, setheight] = useState(1);
 
   const data_array_items = [
-    { bg: "#FF5733" },
-    { bg: "#33FF57" },
-    { bg: "#5733FF" },
-    { bg: "#33FFFF" },
-    { bg: "#FF5733" },
-    { bg: "#33FF57" },
-    { bg: "#5733FF" },
-    { bg: "#33FFFF" },
+    {
+      title:
+        "Negotiation Fundamentals: Building the Foundation for Strategic Mastery",
+      body: [
+        {
+          heading: "goals",
+          caption:
+            "Learn how to regulate emotions, recognize cognitive biases, and improve communication during challenging conversations",
+          bg: "#CBD4CB",
+        },
+        {
+          heading: "relevance",
+          caption:
+            "These skills will help you collaborate better, find win-win solutions, and improve workplace outcomes by incorporating diverse viewpoints. They're essential for  fostering a culture of cooperation and excellence.",
+          bg: "#D4CBCB",
+        },
+        {
+          heading: "APPLICATIONS",
+          caption:
+            "Use these techniques to negotiate budgets, share resources, manage stakeholders, and enhance teamwork across departments. Turn conflicts into opportunities for growth and innovation",
+          bg: "#D4D4CB",
+        },
+      ],
+    },
   ];
 
   const y = useTransform(
@@ -117,7 +134,7 @@ const Each_workshop = () => {
       <div
         className="w-full lg:h-[150vw] flex items-end h-[300vh] md:h-[300vh]  relative"
         ref={sectionRef}
-        style={{ height: `${data_array_items.length * 100}vh` }}
+        style={{ height: `${data_array_items.length * 110}vh` }}
       >
         <div className="flex justify-center items-center  overflow-hidden  sticky bottom-0 h-[100vh]  w-full ">
           {/* the customize scroll bar starts */}
@@ -132,7 +149,7 @@ const Each_workshop = () => {
             return (
               <div
                 key={index}
-                className={` absolute top-[50%] translate-x-[-50%] left-[50%]  lg:rounded-[2vw] md:w-[95vw] w-[95%] h-[150vw] md:h-[95%] md:rounded-[3vw]  overflow-hidden rounded-[7.5vw]  bg-[#0E2477] flex justify-center items-center text-center`}
+                className={` absolute top-[50%] translate-x-[-50%] left-[50%]   md:w-[95vw] w-[95%] h-[150vw] md:h-[95%] md:rounded-[2vw]  overflow-hidden rounded-[7.5vw]  bg-[white] flex flex-col justify-center items-center text-center md:gap-[2vw]`}
                 style={{
                   transition: "opacity 0.6s ease, filter  jjj0.6s ease",
                   backgroundColor: e.bg,
@@ -170,13 +187,29 @@ const Each_workshop = () => {
                           yvalue + 1 + index * 100
                         }%) translateX(-50%)`,
                 }}
-              ></div>
+              >
+                <h4
+                  className={`md:text-[2vw] md:leading-[2.5vw] ${spline_font.className} font-bold md:w-[50%]`}
+                >
+                  {e.title}
+                </h4>
+
+                <div className="flex justify-center md:gap-[2vw] border2 w-full">
+                  {e.body.map((internal: any, internal_index: any) => {
+                    return (
+                      <div
+                        className={`${spline_font.className} md:h-[60vh]`}
+                        key={internal_index}
+                        style={{ backgroundColor: e.bg }}
+                      ></div>
+                    );
+                  })}
+                </div>
+              </div>
             );
           })}
         </div>
       </div>
-
-      <div className="h-[100vh] bg-[black]"></div>
     </>
   );
 };
