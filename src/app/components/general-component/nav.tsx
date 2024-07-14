@@ -77,7 +77,7 @@ const Nav = () => {
           {items_right.map((e: any, index: any) => {
             return (
               <Link
-                href={"/"}
+                href={e.link}
                 style={{ whiteSpace: "nowrap" }}
                 key={index}
                 className={`uppercase overflow-hidden  ${
