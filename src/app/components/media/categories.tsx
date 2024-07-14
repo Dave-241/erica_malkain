@@ -3,6 +3,7 @@
 import { spline_font } from "@/app/utils/fonts";
 import { useState } from "react";
 import example from "../../../../public/images/media/example.webp";
+import Image from "next/image";
 
 const Categories = () => {
   const [active, setactive] = useState(0);
@@ -10,6 +11,11 @@ const Categories = () => {
     {
       title: "podcast",
       body: [
+        {
+          img: example,
+          caption:
+            "Professor Erica Boothbys graduate seminar on the Ethica Implications of AI was both thought-provoking and enlightening",
+        },
         {
           img: example,
           caption:
@@ -45,6 +51,11 @@ const Categories = () => {
           caption:
             "Professor Erica Boothbys graduate seminar on the Ethica Implications of AI was both thought-provoking and enlightening",
         },
+        {
+          img: example,
+          caption:
+            "Professor Erica Boothbys graduate seminar on the Ethica Implications of AI was both thought-provoking and enlightening",
+        },
       ],
     },
     {
@@ -65,13 +76,18 @@ const Categories = () => {
           caption:
             "Professor Erica Boothbys graduate seminar on the Ethica Implications of AI was both thought-provoking and enlightening",
         },
+        {
+          img: example,
+          caption:
+            "Professor Erica Boothbys graduate seminar on the Ethica Implications of AI was both thought-provoking and enlightening",
+        },
       ],
     },
   ];
   return (
     <>
-      <div className="w-full border2 relative flex  ">
-        <div className="border2 md:h-[100vh] md:w-[30vw] flex items-center justify-start sticky top-0 left-0 md:pt-[8vw] md:gap-[2vw] flex-col">
+      <div className="w-full  relative flex  ">
+        <div className=" md:h-[100vh] md:w-[30vw] flex items-center justify-start sticky top-0 left-0 md:pt-[8vw] md:gap-[2vw] flex-col">
           {items.map((e: any, index: any) => {
             return (
               <button
@@ -97,17 +113,41 @@ const Categories = () => {
           })}
         </div>
 
-        <div className="md:w-[69vw] border2 flex flex-col md:gap-[5vw] justify-center ">
+        <div className="md:w-[69vw]  flex flex-col md:gap-[6vw] justify-center ">
           {items.map((e: any, index: any) => {
             return (
-              <div key={index} className="border2   md:w-[80%] flex flex-col">
+              <div
+                key={index}
+                className=" md:gap-[1.35vw]  md:w-[100%] flex flex-col"
+              >
                 <h2
                   className={`uppercase text-[#4F0A19] font-semibold ${spline_font.className} md:text-[4vw]`}
                 >
                   {e.title}
                 </h2>
 
-                <div className="border2 flex flex-wrap md:gap-[2vw]"></div>
+                <div className=" flex flex-wrap md:gap-[1.7vw]">
+                  {e.body.map((internal: any, internal_index: any) => {
+                    return (
+                      <div
+                        key={internal_index}
+                        className={`md:w-[30.6vw] md:rounded-[1.5vw] flex flex-col md:p-[0.5vw] md:mt-[0.4vw] bg-white`}
+                      >
+                        <Image
+                          src={internal.img}
+                          alt={internal.caption}
+                          className="w-full h-fit"
+                        />
+
+                        <p
+                          className={` md:p-[1.5vw]  ${spline_font.className} font-medium md:text-[1vw]`}
+                        >
+                          {internal.caption}
+                        </p>
+                      </div>
+                    );
+                  })}
+                </div>
               </div>
             );
           })}
