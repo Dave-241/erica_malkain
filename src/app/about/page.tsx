@@ -1,4 +1,5 @@
 import About_hero from "../components/about/hero";
+import Consulation_advert from "../components/general-component/consultation_ad";
 import Contact from "../components/general-component/contact";
 import Footer from "../components/general-component/footer";
 import Nav from "../components/general-component/nav";
@@ -13,6 +14,7 @@ export default function Meida() {
         <Nav />
         <About_hero />
         <Recent_publication />
+        <Consulation_advert />
         <Contact />
         <Footer />
       </>
