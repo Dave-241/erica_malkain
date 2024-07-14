@@ -97,37 +97,29 @@ const Categories = () => {
     }
   };
 
-  const sub_itemsRefs = useRef<any>([]);
+  //   for tracking minor categories
+  const subItemsRefs = useRef<any[]>([]);
 
   useEffect(() => {
-    const observer = new IntersectionObserver(
-      (entries) => {
-        entries.forEach((entry) => {
-          if (entry.isIntersecting) {
-            entry.target.classList.add("research_comeup");
-            console.log(entry.target);
-            observer.unobserve(entry.target);
-          }
-        });
-      },
-      //   { threshold: 0.1 },
-    );
-
-    sub_itemsRefs.current.forEach((ref: any) => {
-      observer.observe(ref);
-    });
-
-    return () => {
-      sub_itemsRefs.current.forEach((ref: any) => {
+    subItemsRefs.current.forEach((subItemRefs) => {
+      subItemRefs.forEach((ref: any) => {
         if (ref) {
-          observer.unobserve(ref);
+          const observer = new IntersectionObserver((entries) => {
+            if (entries[0].isIntersecting) {
+              ref.classList.add("media_comeup");
+              console.log(ref);
+              observer.unobserve(ref);
+            }
+          }, {});
+
+          observer.observe(ref);
         }
       });
-    };
-  }, []);
+    });
+  }, [subItemsRefs]);
   return (
     <>
-      <div className="w-full  relative flex  ">
+      <div className="w-full  md:pb-[10vw] relative flex  ">
         <div className=" md:h-[100vh] md:w-[30vw] flex items-center justify-start sticky top-0 left-0 md:pt-[8vw] md:gap-[2vw] flex-col">
           {items.map((e: any, index: any) => {
             return (
@@ -167,6 +159,8 @@ const Categories = () => {
               }
             }, [inView]);
 
+            // const subItemRef = useRef(null);
+            const subItemRefs = useRef<any[]>([]);
             return (
               <div
                 key={index}
@@ -178,18 +172,12 @@ const Categories = () => {
                 >
                   {e.title}
                 </h2>
-
                 <div className=" flex flex-wrap md:gap-[1.7vw]">
                   {e.body.map((internal: any, internal_index: any) => {
                     return (
                       <div
-                        ref={(ref) => {
-                          if (ref) {
-                            sub_itemsRefs.current[index] = ref;
-                          }
-                        }}
                         key={internal_index}
-                        className={`md:w-[30.6vw] md:rounded-[1.5vw] flex flex-col md:p-[0.5vw] md:mt-[0.4vw] bg-white`}
+                        className={`md:w-[30.6vw]  md:rounded-[1.5vw] flex flex-col md:p-[0.5vw] md:mt-[0.4vw] bg-white`}
                       >
                         <Image
                           src={internal.img}
@@ -197,11 +185,19 @@ const Categories = () => {
                           className="w-full h-fit"
                         />
 
-                        <p
-                          className={` md:p-[1.5vw] research_initial  ${spline_font.className} font-medium md:text-[1vw]`}
-                        >
-                          {internal.caption}
-                        </p>
+                        <div className="overflow-hidden">
+                          <p
+                            ref={(el) => {
+                              if (!subItemsRefs.current[index]) {
+                                subItemsRefs.current[index] = [];
+                              }
+                              subItemsRefs.current[index][internal_index] = el;
+                            }}
+                            className={` md:p-[1.5vw] research_initial  ${spline_font.className} font-medium md:text-[1vw]`}
+                          >
+                            {internal.caption}
+                          </p>
+                        </div>
                       </div>
                     );
                   })}
