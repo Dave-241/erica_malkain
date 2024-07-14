@@ -33,18 +33,21 @@ const Each_workshop = () => {
           caption:
             "Learn how to regulate emotions, recognize cognitive biases, and improve communication during challenging conversations",
           bg: "#CBD4CB",
+          text: "#546A54",
         },
         {
           heading: "relevance",
           caption:
             "These skills will help you collaborate better, find win-win solutions, and improve workplace outcomes by incorporating diverse viewpoints. They're essential for  fostering a culture of cooperation and excellence.",
           bg: "#D4CBCB",
+          text: "#82825C",
         },
         {
           heading: "APPLICATIONS",
           caption:
             "Use these techniques to negotiate budgets, share resources, manage stakeholders, and enhance teamwork across departments. Turn conflicts into opportunities for growth and innovation",
           bg: "#D4D4CB",
+          text: "#82825C",
         },
       ],
     },
@@ -149,7 +152,7 @@ const Each_workshop = () => {
             return (
               <div
                 key={index}
-                className={` absolute top-[50%] translate-x-[-50%] left-[50%]   md:w-[95vw] w-[95%] h-[150vw] md:h-[95%] md:rounded-[2vw]  overflow-hidden rounded-[7.5vw]  bg-[white] flex flex-col justify-center items-center text-center md:gap-[2vw]`}
+                className={` absolute top-[50%] translate-x-[-50%] left-[50%]   md:w-[95vw] w-[95%] h-[150vw] md:h-[95%] md:rounded-[2vw]  overflow-hidden rounded-[7.5vw]  bg-[white] flex flex-col justify-center items-center text-center md:gap-[3vw]`}
                 style={{
                   transition: "opacity 0.6s ease, filter  jjj0.6s ease",
                   backgroundColor: e.bg,
@@ -194,14 +197,22 @@ const Each_workshop = () => {
                   {e.title}
                 </h4>
 
-                <div className="flex justify-center md:gap-[2vw] border2 w-full">
+                <div className="flex justify-center md:gap-[2vw] md:px-[4vw]  w-full">
                   {e.body.map((internal: any, internal_index: any) => {
                     return (
                       <div
-                        className={`${spline_font.className} md:h-[60vh]`}
+                        className={`${spline_font.className}  w-full flex flex-col justify-between text-start md:rounded-[1.5vw] md:py-[3%] md:px-[2vw] lg:h-[60vh] md:h-[50vh]`}
                         key={internal_index}
-                        style={{ backgroundColor: e.bg }}
-                      ></div>
+                        style={{ backgroundColor: internal.bg }}
+                      >
+                        <h6 className="font-medium uppercase md:text-[2vw]  ">
+                          {internal.heading}
+                        </h6>
+
+                        <p className="font-medium md:text-[1.1vw] text-[#000000]">
+                          {internal.caption}
+                        </p>
+                      </div>
                     );
                   })}
                 </div>
