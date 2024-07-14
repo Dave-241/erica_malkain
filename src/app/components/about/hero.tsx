@@ -131,7 +131,7 @@ const About_hero = () => {
           </div>
 
           {/* <div className="  flex justify-end md:px-[10%]"> */}
-          <div className="flex flex-col border2 md:w-[60%] md:px-[6%] h-[100vh] justify-center  items-start md:gap-[2vw]">
+          <div className="flex flex-col  md:w-[60%] md:px-[6%] h-[100vh] justify-center  items-start md:gap-[2vw]">
             <p
               className={`${Helvetica_light.className} md:text-[1.1vw] text-[#707270]`}
             >
@@ -165,7 +165,7 @@ const About_hero = () => {
 
         {/* the below content */}
         <p
-          className={`text-[#707270] md:text-[1vw] ${Helvetica_light.className} text-center`}
+          className={`text-[#707270] md:text-[1vw] md:px-[10vw] ${Helvetica_light.className} text-center`}
         >
           {" "}
           In 2022, she was awarded the American Psychological Societys Rising
