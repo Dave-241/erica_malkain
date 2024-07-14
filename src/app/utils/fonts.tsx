@@ -1,10 +1,13 @@
 import localFont from "next/font/local";
 
-import { Spline_Sans } from "next/font/google";
+import { Spline_Sans, EB_Garamond } from "next/font/google";
 
 export const spline_font = Spline_Sans({
   subsets: ["latin"],
-  //   weight: ["400", "700"], // Specify the weights you need
+});
+
+export const eb_gramond_font = EB_Garamond({
+  subsets: ["latin"],
 });
 
 export const Bt_Beau_Regualr = localFont({

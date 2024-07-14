@@ -56,9 +56,10 @@ const Teaching_hero = () => {
               scale: start_anime ? yvalue : 1.8,
             }}
           />
+          <div className="w-full h-full left-0 top-0 absolute bg-black bg-opacity-[43%]"></div>
         </div>
       </div>
-      <div className="w-full md:h-[10vw]"></div>
+      <div className="w-full md:h-[8vw]"></div>
     </>
   );
 };

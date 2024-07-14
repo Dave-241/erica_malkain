@@ -42,6 +42,7 @@ const Research_hero = () => {
             scale: start_anime ? yvalue : 1.8,
           }}
         />
+        <div className="w-full h-full left-0 top-0 absolute bg-black bg-opacity-[43%]"></div>
 
         <div className=" overflow-hidden">
           <h1

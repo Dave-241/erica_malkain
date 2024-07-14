@@ -34,11 +34,11 @@ const Nav = () => {
   const items_right = [
     {
       text: "contact",
-      link: "/",
+      link: "/contact",
     },
     {
       text: "about us",
-      link: "/",
+      link: "/about",
     },
   ];
 
