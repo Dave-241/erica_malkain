@@ -22,7 +22,22 @@ const Each_workshop = () => {
   const [scale_y2value, setscale_y2value] = useState(0);
   const [height, setheight] = useState(1);
 
-  const y = useTransform(scrollYProgress, [0, 1], [1, 4.5]);
+  const data_array_items = [
+    { bg: "#FF5733" },
+    { bg: "#33FF57" },
+    { bg: "#5733FF" },
+    { bg: "#33FFFF" },
+    { bg: "#FF5733" },
+    { bg: "#33FF57" },
+    { bg: "#5733FF" },
+    { bg: "#33FFFF" },
+  ];
+
+  const y = useTransform(
+    scrollYProgress,
+    [0, 1],
+    [1, data_array_items.length + 0.5],
+  );
   const scale_y = useTransform(scrollYProgress, [0, 1], [10, 1]);
   const parent_height = useTransform(scrollYProgress, [0, 1], [1, 10]);
 
@@ -37,33 +52,8 @@ const Each_workshop = () => {
     setheight(latest);
   });
 
-  //   const data_array = ["", "", "", ""];
-  const data_array_items = [
-    { bg: "#FF5733" },
-    { bg: "#33FF57" },
-    { bg: "#5733FF" },
-    { bg: "#33FFFF" },
-  ];
-
-  const createEmptyArray = (length: any) => {
-    return Array(length).fill("");
-  };
-
-  //   const calculateScale = (index: any, data_array: any, yvalue: any) => {
-  //     // Create an array of the same length as data_array filled with undefined values
-  //     const emptyArray = createEmptyArray(data_array.length);
-  //     console.log(emptyArray);
-  //     // Calculate minScale based on the values in data_array
-  //     const minScale = Math.min(...emptyArray) / 2 + yvalue / 10;
-  //     const maxScale = 1;
-  //     const scaleFactor = (yvalue - (index + 1)) / 6; // adjust this value to control the scaling speed
-  //     const scale = maxScale - (maxScale - minScale) * scaleFactor;
-
-  //     return scale;
-  //   };
-
   const calculateScale = (index: any, data_array: any, yvalue: any) => {
-    const minScale = 0.8;
+    const minScale = 0.05;
     const maxScale = 1;
     const scaleFactor = (yvalue - (index + 1)) / 6;
     const scale = maxScale - (maxScale - minScale) * scaleFactor;
@@ -102,6 +92,25 @@ const Each_workshop = () => {
       return minScale;
     }
   };
+  const degScale = (
+    index: number,
+    data_array: any[],
+    yvalue: number,
+  ): number => {
+    const maxScale = 0.6;
+    const minScale = 0;
+    const exprValue =
+      ((index + 2 - yvalue) * 100 - 150 * (-index + yvalue)) / -1;
+
+    if (exprValue >= 50) {
+      if (index == data_array.length - 1) {
+        return 0;
+      }
+      return maxScale - (maxScale - minScale) * (exprValue / 50);
+    } else {
+      return minScale;
+    }
+  };
   return (
     <>
       {/* the wrapper */}
@@ -115,7 +124,7 @@ const Each_workshop = () => {
           <div className="absolute md:right-[3vw] z-[10] border-[#0e257756]  flex w-[2%] right-[1.5%]  top-[50%] translate-y-[-50%] md:w-[0.6vw] rounded-[3vw]  lg:h-[28vw] md:h-[40vw] h-[140vw] bg-white overflow-hidden">
             <div
               className="w-full rounded-[3vw] bg-[#0E2477]"
-              style={{ height: `${height * 10}%`, transition: "0.2s" }}
+              style={{ height: `${height * 10}%` }}
             ></div>
           </div>
           {/* the customized scroll bar ends */}
@@ -141,34 +150,27 @@ const Each_workshop = () => {
                           index,
                           data_array_items,
                           yvalue,
-                        )})  rotate(${degScaleUp(
-                          index,
-                          data_array_items,
-                          yvalue,
-                        )}deg) `
+                        )})  rotate(${
+                          index % 2 === 0
+                            ? degScaleUp(index, data_array_items, yvalue)
+                            : degScaleUp(index, data_array_items, yvalue) * -1
+                        }deg) `
                       : index + 1 - yvalue <= 0
                       ? `translateY(-50%) translateX(-50%)  scale(${calculateScale(
                           index,
                           data_array_items,
                           yvalue,
-                        )})
+                        )}) rotate(${
+                          index % 2 === 0
+                            ? degScale(index, data_array_items, yvalue) * -1
+                            : degScale(index, data_array_items, yvalue)
+                        }deg) 
 `
                       : `translateY(${
                           yvalue + 1 + index * 100
                         }%) translateX(-50%)`,
-
-                  //   filter:
-                  //     index + 1 - yvalue >= 0 && index + 1 - yvalue <= 1
-                  //       ? ``
-                  //       : index + 1 - yvalue <= -0.8
-                  //       ? `blur(${(yvalue - index) * 1.2}px)`
-                  //       : ``,
                 }}
-              >
-                {calculateScaleUp(index, data_array_items, yvalue)}
-                <br />
-                {(index + 2 - yvalue) * 100 - 150 * (-index + yvalue)}
-              </div>
+              ></div>
             );
           })}
         </div>
