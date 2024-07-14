@@ -201,7 +201,7 @@ const Each_workshop = () => {
                   {e.body.map((internal: any, internal_index: any) => {
                     return (
                       <div
-                        className={`${spline_font.className}  w-full flex flex-col justify-between text-start md:rounded-[1.5vw] md:py-[3%] md:px-[2vw] lg:h-[60vh] md:h-[50vh]`}
+                        className={`${spline_font.className}  w-full flex flex-col justify-between text-start md:rounded-[1.5vw] md:py-[3%] md:px-[2vw] lg:h-[60vh] md:h-[40vh]`}
                         key={internal_index}
                         style={{ backgroundColor: internal.bg }}
                       >
