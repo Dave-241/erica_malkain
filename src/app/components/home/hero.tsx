@@ -45,26 +45,30 @@ const Hero_home = () => {
         />
         <div className="w-full h-full left-0 top-0 z-[10] absolute bg-black bg-opacity-[43%]"></div>
         {/* left text */}
-        <h1
-          style={{
-            transition: "0.65s ease",
-            transform: start_anime ? "translate(0,0)" : "translate(0%,100%)",
-          }}
-          className={`md:text-[15vw] z-[10] md:leading-[16.5vw]     ${eb_gramond_italic_font.className}`}
-        >
-          Erica
-        </h1>
+        <div className=" z-[10] ">
+          <h1
+            style={{
+              transition: "0.65s ease",
+              transform: start_anime ? "translate(0,0)" : "translate(0%,100%)",
+            }}
+            className={`md:text-[17vw] z-[10] md:leading-[16.5vw]     ${eb_gramond_italic_font.className}`}
+          >
+            Erica
+          </h1>
+        </div>
 
         {/* right text */}
-        <h1
-          style={{
-            transition: "0.65s ease",
-            transform: start_anime ? "translate(0,0)" : "translate(0%,100%)",
-          }}
-          className={`md:text-[15vw]  md:leading-[16.5vw] z-[10]   text-end  ${eb_gramond_italic_font.className}`}
-        >
-          Boothby
-        </h1>
+        <div className=" z-[10] md:pr-[1vw]">
+          <h1
+            style={{
+              transition: "0.65s ease",
+              transform: start_anime ? "translate(0,0)" : "translate(0%,100%)",
+            }}
+            className={`md:text-[17vw]  md:leading-[20vw]    text-end  ${eb_gramond_italic_font.className}`}
+          >
+            Boothby
+          </h1>
+        </div>
       </div>
     </>
   );
