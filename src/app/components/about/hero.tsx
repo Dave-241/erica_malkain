@@ -117,7 +117,14 @@ const About_hero = () => {
             <div className="w-full md:h-[36vw] overflow-hidden relative ">
               <Image
                 src={hero1}
-                style={{ opacity: opac_one_img }}
+                style={{
+                  opacity: opac_one_img,
+                  transition: "0.65s ease",
+                  transform: start_anime
+                    ? ""
+                    : "translateY(-50%) translateX(-50%)  scale(1.6)",
+                  filter: start_anime ? "" : "blur(4px)",
+                }}
                 alt="Erica Boothby"
                 className="w-full absolute top-[50%] translate-x-[-50%] left-[50%] translate-y-[-50%] h-fit z-[10]"
               />
