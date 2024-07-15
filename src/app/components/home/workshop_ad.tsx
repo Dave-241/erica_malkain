@@ -104,11 +104,11 @@ const Workshop_ad = () => {
                   transform:
                     index + 1 - yvalue >= 0 && index + 1 - yvalue <= 1
                       ? `translateY(${
-                          (index + 2 - yvalue) * 100 - 150 * (-index + yvalue)
+                          (index + 2 - yvalue) * 100 - 130 * (-index + yvalue)
                         }%) translateX(-50%)`
                       : index + 1 - yvalue <= 0
                       ? `translateY(${
-                          -50 -
+                          -30 -
                           (yvalue - (index + 1)) *
                             (calwidth < 765 ? 15 / 1.5 : 9 / 1.2)
                           // i am changing this value for scale (15/#change)
