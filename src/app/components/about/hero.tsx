@@ -66,14 +66,14 @@ const About_hero = () => {
   });
   return (
     <>
-      <div className="w-full  md:py-[7vw] flex-col hidden md:px-[8vw] md:gap-[5vw]  md:flex">
+      <div className="w-full  md:py-[7vw] flex-col hidden md:px-[7vw] md:gap-[5vw]  md:flex">
         <div className="overflow-hidden ">
           <h1
             style={{
               transition: "0.65s ease",
               transform: start_anime ? "translate(0,0)" : "translate(0%,100%)",
             }}
-            className={`md:text-[15vw]  md:leading-[20vw]   text-center   text-[#1E1E1E] ${eb_gramond_italic_font.className}`}
+            className={`md:text-[14.7vw]  md:leading-[20vw]   text-center   text-[#1E1E1E] ${eb_gramond_italic_font.className}`}
           >
             Erica Boothby
           </h1>
