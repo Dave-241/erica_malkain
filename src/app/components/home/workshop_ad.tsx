@@ -7,7 +7,11 @@ import example from "../../../../public/images/workshop/example1.webp";
 import example2 from "../../../../public/images/workshop/example2.webp";
 import example3 from "../../../../public/images/workshop/example3.webp";
 import Image from "next/image";
-import { Helvetica_bold, Helvetica_light } from "@/app/utils/fonts";
+import {
+  Helvetica_bold,
+  Helvetica_light,
+  spline_font,
+} from "@/app/utils/fonts";
 import Link from "next/link";
 const Workshop_ad = () => {
   const sectionRef = useRef(null);
@@ -86,6 +90,13 @@ const Workshop_ad = () => {
               style={{ height: `${height * 10}%` }}
             ></div>
           </div>
+
+          {/* the heading text */}
+          <h1
+            className={`text-[#5C3C43] absolute left-[20%] top-[22%] translate-x-[-50%] translate-y-[-80%] z-[10] uppercase md:text-[4vw] ${spline_font.className} font-medium`}
+          >
+            workshop
+          </h1>
           {/* the customized scroll bar ends */}
           {data_array.map((e: any, index: any) => {
             return (
