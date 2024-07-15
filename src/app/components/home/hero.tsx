@@ -3,7 +3,7 @@ import Image from "next/image";
 import hero from "../../../../public/images/home/hero.webp";
 import { useEffect, useRef, useState } from "react";
 import { useMotionValueEvent, useScroll, useTransform } from "framer-motion";
-import { eb_gramond_italic_font } from "@/app/utils/fonts";
+import { Helvetica_light, eb_gramond_italic_font } from "@/app/utils/fonts";
 
 const Hero_home = () => {
   const [start_anime, setstart_anime] = useState(false);
@@ -20,7 +20,7 @@ const Hero_home = () => {
   });
   const [yvalue, setyvalue] = useState(1);
 
-  const y = useTransform(scrollYProgress, [0, 1], [1, 1.25]);
+  const y = useTransform(scrollYProgress, [0, 1], [1, 1.3]);
   useMotionValueEvent(y, "change", (latest) => {
     setyvalue(latest);
   });
@@ -45,7 +45,18 @@ const Hero_home = () => {
         />
         <div className="w-full h-full left-0 top-0 z-[10] absolute bg-black bg-opacity-[43%]"></div>
         {/* left text */}
-        <div className=" z-[10] ">
+        <div className="z-[10] md:w-[20vw]   absolute top-[35%] translate-y-[-50%] right-[10vw] overflow-hidden">
+          <p
+            style={{
+              transition: "0.5s ease",
+              transform: start_anime ? "translate(0,0)" : "translate(0%,100%)",
+            }}
+            className={`${Helvetica_light.className} md:text-[1.5vw] ]  z-[10]`}
+          >
+            Educator, Scholar, Professor & Speaker
+          </p>
+        </div>
+        <div className=" z-[10] overflow-hidden">
           <h1
             style={{
               transition: "0.65s ease",
@@ -58,7 +69,7 @@ const Hero_home = () => {
         </div>
 
         {/* right text */}
-        <div className=" z-[10] md:pr-[1vw]">
+        <div className=" z-[10] md:pr-[1vw] overflow-hidden">
           <h1
             style={{
               transition: "0.65s ease",
