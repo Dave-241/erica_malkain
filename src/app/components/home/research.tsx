@@ -1,9 +1,11 @@
 "use client";
-import { spline_font } from "@/app/utils/fonts";
+import { dm_sans_font, spline_font } from "@/app/utils/fonts";
 import { useMotionValueEvent, useScroll, useTransform } from "framer-motion";
 import { useEffect, useRef, useState } from "react";
 import arrow from "../../../../public/images/home/arrow.png";
+import example from "../../../../public/images/home/example.webp";
 import Image from "next/image";
+import Link from "next/link";
 
 const Home_research = () => {
   const items = [
@@ -53,7 +55,7 @@ const Home_research = () => {
   const translate_value_calc = useTransform(
     scrollYProgress_img,
     [0, 1],
-    [0, (100 / items.length) * (items.length - 3)],
+    [0, (100 / items.length) * (items.length - 3.55)],
   );
   useMotionValueEvent(translate_value_calc, "change", (latest) => {
     settranslate_value(latest);
@@ -81,23 +83,51 @@ const Home_research = () => {
         <div className="w-full h-[100vh] sticky top-0 left-0 flex items-center ">
           <div className="w-full  absolute  top-[50%] translate-y-[-50%]  md:min-h-[32vw]  overflow-hidden  ">
             <div
-              className={`md:w-[20vw] bg-[#DFE4DF] z-[10] flex  justify-center items-center md:h-full   absolute left-0 md:gap-[1vw] `}
+              className={`md:w-[25vw]  via-[#DFE4DF]  bg-gradient-to-r from-[#DFE4DF]   z-[10] flex  justify-center items-center md:h-full   absolute left-0 md:gap-[1vw] `}
             >
-              <p className={`${spline_font.className} md:text-[1vw] font-bold`}>
+              {/* <div className="absolute left-0 h-full bg-[#DFE4DF] top-0 w-[60%]"></div>
+              <div className="absolute right-0 h-full via-[#DFE4DF]  bg-gradient-to-r from-[#DFE4DF]  top-0 w-[40%]"></div> */}
+
+              <p
+                className={`${spline_font.className} z-[10] md:text-[1vw] font-bold`}
+              >
                 SCROLL TOO SEE MORE
               </p>
-              <Image src={arrow} alt="arrow" className="md:w-[2.4vw] h-fit" />
+              <Image
+                src={arrow}
+                alt="arrow"
+                className="md:w-[2.4vw] z-[10] h-fit"
+              />
             </div>
             <div
               style={{ transform: `translateX(-${translate_value}%)` }}
-              className="absolute boder2 md:gap-[1.2vw] md:px-[1.5vw] flex h-full top-0 left-[20vw]"
+              className="absolute boder2 md:gap-[1.2vw] md:px-[1.5vw] flex h-full top-0 left-[22vw]"
             >
               {items.map((e: any, index: any) => {
                 return (
-                  <div
+                  <Link
+                    href={"/"}
                     key={index}
-                    className={`md:w-[25vw] bg-white md:h-full `}
-                  ></div>
+                    className={`md:w-[20vw] group  flex flex-col justify-between  md:h-full `}
+                  >
+                    <div className="w-full md:h-[27vw]  md:rounded-[1.5vw]  overflow-hidden relative flex justify-center items-center ">
+                      <Image
+                        src={example}
+                        alt={e.title}
+                        style={{
+                          transition: "0.7s ease",
+                          //   transform: `translate(-50%,-50%)`,
+                        }}
+                        className="w-full  group-hover:scale-[1] scale-[1.1]   h-fit"
+                      />
+                    </div>
+
+                    <p
+                      className={`${dm_sans_font.className} md:pl-[0.5vw] uppercase md:pr-[3vw] font-medium md:text-[1.2vw]`}
+                    >
+                      Do we know what people think of us?
+                    </p>
+                  </Link>
                 );
               })}
             </div>
