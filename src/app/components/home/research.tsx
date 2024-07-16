@@ -74,7 +74,7 @@ const Home_research = () => {
     <>
       <div
         ref={ref}
-        className="w-full md:block hidden relative border2 md:my-[10vw]"
+        className="w-full md:block hidden relative  md:my-[10vw]"
         style={{ height: calWidth > 768 ? `${items.length * 50}vh` : "" }}
       >
         {/* this is the section for the scrollable elements */}
@@ -104,7 +104,7 @@ const Home_research = () => {
           </div>{" "}
           <div className="absolute md:right-[3vw] z-[10] border-[#0e257756]  flex w-[2%] left-[50%] translate-x-[-50%]  bottom-[8%] translate-y-[100%] md:w-[50%] rounded-[3vw]   md:h-[0.35vw]  bg-white border-[#103210] border border-opacity-[20%] overflow-hidden">
             <div
-              className="w-full rounded-[3vw] bg-[#103210]"
+              className="w-full  bg-[#103210]"
               style={{ width: `${width_for_progress * 10}%` }}
             ></div>
           </div>

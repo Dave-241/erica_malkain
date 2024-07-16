@@ -191,7 +191,7 @@ const Each_consultation = () => {
           {/* the customize scroll bar starts */}
           <div className="absolute md:right-[3vw] z-[10] border-[#0e257756]  flex w-[2%] right-[1.5%]  top-[50%] translate-y-[-50%] md:w-[0.6vw] rounded-[3vw]  lg:h-[28vw] md:h-[40vw] bg-black mix-blend-overlay border2 h-[140vw]  overflow-hidden">
             <div
-              className="w-full   rounded-[3vw] bg-[#0E2477]"
+              className="w-full    bg-[#0E2477]"
               style={{ height: `${height * 10}%` }}
             ></div>
           </div>
