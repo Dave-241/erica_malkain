@@ -90,7 +90,7 @@ const Nav = () => {
                 style={{ whiteSpace: "nowrap" }}
                 key={index}
                 className={`uppercase overflow-hidden  ${
-                  e.link == pathname ? "bg-[black]" : "bg-[white]"
+                  e.link == pathname ? "bg-[white]" : "bg-[white]"
                 }   md:p-[0.4vw] group hover:[#103210] duration-[1s] md:rounded-[1.5vw]   backdrop-blur-2xl bg-opacity-[20%] `}
               >
                 <div

@@ -43,7 +43,7 @@ const Hero_home = () => {
           alt="hero image"
           className="absolute_center left-[50%] top-[50%] absolute w-full h-fit"
         />
-        <div className="w-full h-full left-0 top-0 z-[10] absolute bg-black bg-opacity-[43%]"></div>
+        <div className="w-full h-full left-0 top-0 z-[10] absolute bg-black bg-opacity-[20%]"></div>
         {/* left text */}
         <div className="z-[10] md:w-[20vw]   absolute top-[35%] translate-y-[-50%] right-[10vw] overflow-hidden">
           <p
