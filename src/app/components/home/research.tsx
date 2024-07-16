@@ -44,20 +44,41 @@ const Home_research = () => {
   //   this is to handle scrolling
   const ref = useRef(null);
 
+  //   this is for switching animation values
+  const [switch_animation, setswitch_animation] = useState(false);
+  const [switch_animation_value, setswitch_animation_value] = useState(20);
+
   const { scrollYProgress: scrollYProgress_img } = useScroll({
     target: ref,
-    offset: ["10% 10%", "100% end"], // Start calculating at 40% of the ref element, end at 80%
+    offset: ["5% 5%", "100% end"], // Start calculating at 40% of the ref element, end at 80%
+  });
+  const { scrollYProgress: scrollYProgress_animation_value } = useScroll({
+    target: ref,
+    offset: ["start start", "50% end"], // Start calculating at 40% of the ref element, end at 80%
   });
   //   this is to opac the image
 
-  const [translate_value, settranslate_value] = useState(-50);
+  const [translate_value, settranslate_value] = useState(20);
 
+  const animation_value_calc = useTransform(
+    scrollYProgress_animation_value,
+    [0, 1],
+    [100, 0],
+  );
+  useMotionValueEvent(animation_value_calc, "change", (latest) => {
+    // settranslate_value(latest);
+    setswitch_animation(false);
+    setswitch_animation_value(latest);
+  });
+
+  //   this is for setting the actual movemet
   const translate_value_calc = useTransform(
     scrollYProgress_img,
     [0, 1],
-    [0, (100 / items.length) * (items.length - 3.55)],
+    [15, -(100 / items.length) * (items.length - 3.55)],
   );
   useMotionValueEvent(translate_value_calc, "change", (latest) => {
+    setswitch_animation(true);
     settranslate_value(latest);
   });
   const [width_for_progress, setwidth_for_progress] = useState(1);
@@ -80,8 +101,11 @@ const Home_research = () => {
         style={{ height: calWidth > 768 ? `${items.length * 50}vh` : "" }}
       >
         {/* this is the section for the scrollable elements */}
-        <div className="w-full h-[100vh] flex-col justify-center sticky top-0 left-0 flex md:gap-[2vw] ">
+        <div className="w-full h-[100vh] flex-col justify-center sticky top-0 left-0 flex md:gap-[2vw] overflow-hidden ">
           <h2
+            style={{
+              transform: `translateX(-${switch_animation_value}%)`,
+            }}
             className={`${spline_font.className} z-[60]  md:text-[6vw] md:px-[10vw] font-medium text-[#5C3C43] md:pt-[4vw] md:leading-[6vw]`}
           >
             RESEARCH
@@ -113,7 +137,9 @@ const Home_research = () => {
             </div>
 
             <div
-              style={{ transform: `translateX(-${translate_value}%)` }}
+              style={{
+                transform: `translateX(${translate_value}%)`,
+              }}
               className="absolute  md:gap-[1.2vw] md:px-[1.5vw] flex h-full top-0 left-[22vw]"
             >
               {items.map((e: any, index: any) => {
