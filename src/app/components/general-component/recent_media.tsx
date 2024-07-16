@@ -3,7 +3,8 @@ import Link from "next/link";
 import example from "../../../../public/images/media/example.webp";
 import Image from "next/image";
 import { Helvetica_light, spline_font } from "@/app/utils/fonts";
-import { useEffect, useRef } from "react";
+import { useEffect, useRef, useState } from "react";
+import { useInView } from "framer-motion";
 
 const Recent_media = () => {
   const items = [
@@ -27,36 +28,48 @@ const Recent_media = () => {
     },
   ];
 
-  const itemsRefs = useRef<any>([]);
+  // const itemsRefs = useRef<any>([]);
+
+  // useEffect(() => {
+  //   const observer = new IntersectionObserver(
+  //     (entries) => {
+  //       entries.forEach((entry) => {
+  //         if (entry.isIntersecting) {
+  //           entry.target.classList.add("research_comeup");
+  //           observer.unobserve(entry.target);
+  //         }
+  //       });
+  //     },
+  //     { threshold: 0 },
+  //   );
+
+  //   itemsRefs.current.forEach((ref: any) => {
+  //     observer.observe(ref);
+  //   });
+
+  //   return () => {
+  //     itemsRefs.current.forEach((ref: any) => {
+  //       if (ref) {
+  //         observer.unobserve(ref);
+  //       }
+  //     });
+  //   };
+  // }, []);
+  const ref = useRef(null);
+  const [start_anime, setstart_anime] = useState(false);
+  const isinview = useInView(ref);
 
   useEffect(() => {
-    const observer = new IntersectionObserver(
-      (entries) => {
-        entries.forEach((entry) => {
-          if (entry.isIntersecting) {
-            entry.target.classList.add("research_comeup");
-            observer.unobserve(entry.target);
-          }
-        });
-      },
-      { threshold: 0 },
-    );
-
-    itemsRefs.current.forEach((ref: any) => {
-      observer.observe(ref);
-    });
-
-    return () => {
-      itemsRefs.current.forEach((ref: any) => {
-        if (ref) {
-          observer.unobserve(ref);
-        }
-      });
-    };
-  }, []);
+    if (isinview) {
+      setstart_anime(isinview);
+    }
+  }, [isinview]);
   return (
     <>
-      <div className="w-full md:px-[10vw] bg-[#D8DFD8]  md:gap-[2.3vw] md:flex md:py-[7vw] hidden flex-col">
+      <div
+        ref={ref}
+        className="w-full md:px-[10vw] bg-[#D8DFD8]  md:gap-[2.3vw] md:flex md:py-[7vw] hidden flex-col"
+      >
         <h1
           className={`text-[#5C3C43] uppercase md:text-[4vw] ${spline_font.className} font-medium`}
         >
@@ -67,15 +80,12 @@ const Recent_media = () => {
           {items.map((internal: any, index: any) => {
             return (
               <Link
-                ref={(ref) => {
-                  if (ref) {
-                    itemsRefs.current[index] = ref;
-                  }
-                }}
                 style={{ transition: `${(index + 1) / 2}s ease` }}
                 href={internal.link}
                 key={index}
-                className={`md:w-[30.6vw] research_initial md:rounded-[1.5vw] flex flex-col md:p-[0.3vw] group md:mt-[0.4vw] bg-white`}
+                className={`md:w-[30.6vw] ${
+                  start_anime ? "research_comeup" : "research_initial"
+                }  md:rounded-[1.5vw] flex flex-col md:p-[0.3vw] group md:mt-[0.4vw] bg-white`}
               >
                 <div className="overflow-hidden md:rounded-[1.5vw]">
                   <Image

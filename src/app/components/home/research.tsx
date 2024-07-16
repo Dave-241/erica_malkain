@@ -106,7 +106,7 @@ const Home_research = () => {
             style={{
               transform: `translateX(-${switch_animation_value}%)`,
             }}
-            className={`${spline_font.className} z-[60]  md:text-[6vw] md:px-[10vw] font-medium text-[#5C3C43] md:pt-[4vw] md:leading-[6vw]`}
+            className={`${spline_font.className} z-[60]  md:text-[7vw] md:px-[10vw] font-medium text-[#5C3C43] md:pt-[4vw] md:leading-[7vw]`}
           >
             RESEARCH
           </h2>
