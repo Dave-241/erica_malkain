@@ -1,5 +1,4 @@
 import type { Metadata } from "next";
-import { Inter } from "next/font/google";
 import "./globals.css";
 
 export const metadata: Metadata = {
@@ -14,9 +13,7 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en">
-      <body className={``} style={{ backgroundColor: "#DFE4DF" }}>
-        {children}
-      </body>
+      <body style={{ backgroundColor: "#DFE4DF" }}>{children}</body>
     </html>
   );
 }
