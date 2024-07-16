@@ -80,8 +80,13 @@ const Home_research = () => {
         style={{ height: calWidth > 768 ? `${items.length * 50}vh` : "" }}
       >
         {/* this is the section for the scrollable elements */}
-        <div className="w-full h-[100vh] sticky top-0 left-0 flex items-center ">
-          <div className="w-full  absolute  top-[50%] translate-y-[-50%]  md:min-h-[32vw]  overflow-hidden  ">
+        <div className="w-full h-[100vh] sticky top-0 left-0 flex items-start ">
+          <h2
+            className={`${spline_font.className} z-[60]  md:text-[8vw] md:px-[10vw] font-medium text-[#5C3C43]  md:leading-[8vw]`}
+          >
+            RESEARCH
+          </h2>
+          <div className="w-full  absolute  top-[55%] translate-y-[-50%]  md:min-h-[33vw]  overflow-hidden  ">
             <div
               className={`md:w-[25vw]  via-[#DFE4DF]  bg-gradient-to-r from-[#DFE4DF]   z-[10] flex  justify-center items-center md:h-full   absolute left-0 md:gap-[1vw] `}
             >
@@ -99,9 +104,10 @@ const Home_research = () => {
                 className="md:w-[2.4vw] z-[10] h-fit"
               />
             </div>
+
             <div
               style={{ transform: `translateX(-${translate_value}%)` }}
-              className="absolute boder2 md:gap-[1.2vw] md:px-[1.5vw] flex h-full top-0 left-[22vw]"
+              className="absolute  md:gap-[1.2vw] md:px-[1.5vw] flex h-full top-0 left-[22vw]"
             >
               {items.map((e: any, index: any) => {
                 return (
@@ -123,16 +129,16 @@ const Home_research = () => {
                     </div>
 
                     <p
-                      className={`${dm_sans_font.className} md:pl-[0.5vw] uppercase md:pr-[3vw] font-medium md:text-[1.2vw]`}
+                      className={`${dm_sans_font.className} md:pl-[0.5vw] uppercase md:pr-[2vw] font-medium md:text-[1.1vw]`}
                     >
-                      Do we know what people think of us?
+                      Do we know what people think of us ? people think of us?
                     </p>
                   </Link>
                 );
               })}
             </div>
           </div>{" "}
-          <div className="absolute md:right-[3vw] z-[10] border-[#0e257756]  flex w-[2%] left-[50%] translate-x-[-50%]  bottom-[8%] translate-y-[100%] md:w-[50%] rounded-[3vw]   md:h-[0.35vw]  bg-white border-[#103210] border border-opacity-[20%] overflow-hidden">
+          <div className="absolute md:right-[3vw] z-[10] border-[#0e257756]  flex w-[2%] left-[50%] translate-x-[-50%]  bottom-[5%] translate-y-[100%] md:w-[50%] rounded-[3vw]   md:h-[0.35vw]  bg-white border-[#103210] border border-opacity-[20%] overflow-hidden">
             <div
               className="w-full  bg-[#103210]"
               style={{ width: `${width_for_progress * 10}%` }}
