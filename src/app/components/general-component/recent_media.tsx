@@ -28,33 +28,6 @@ const Recent_media = () => {
     },
   ];
 
-  // const itemsRefs = useRef<any>([]);
-
-  // useEffect(() => {
-  //   const observer = new IntersectionObserver(
-  //     (entries) => {
-  //       entries.forEach((entry) => {
-  //         if (entry.isIntersecting) {
-  //           entry.target.classList.add("research_comeup");
-  //           observer.unobserve(entry.target);
-  //         }
-  //       });
-  //     },
-  //     { threshold: 0 },
-  //   );
-
-  //   itemsRefs.current.forEach((ref: any) => {
-  //     observer.observe(ref);
-  //   });
-
-  //   return () => {
-  //     itemsRefs.current.forEach((ref: any) => {
-  //       if (ref) {
-  //         observer.unobserve(ref);
-  //       }
-  //     });
-  //   };
-  // }, []);
   const ref = useRef(null);
   const [start_anime, setstart_anime] = useState(false);
   const isinview = useInView(ref);

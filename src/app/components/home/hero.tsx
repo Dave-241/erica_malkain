@@ -16,7 +16,7 @@ const Hero_home = () => {
   const { scrollYProgress } = useScroll({
     target: ref,
     // offset: ["end start", "end 110%"],
-    offset: ["2% 2%", "150% end"],
+    offset: ["2% 2%", "140% end"],
   });
   const [yvalue, setyvalue] = useState(1);
 
@@ -69,13 +69,13 @@ const Hero_home = () => {
         </div>
 
         {/* right text */}
-        <div className=" z-[10] md:pr-[1vw] overflow-hidden">
+        <div className=" z-[10] md:pr-[2vw] overflow-hidden">
           <h1
             style={{
               transition: "0.65s ease",
               transform: start_anime ? "translate(0,0)" : "translate(0%,100%)",
             }}
-            className={`md:text-[17vw]  md:leading-[20vw]    text-end  ${eb_gramond_italic_font.className}`}
+            className={`md:text-[17vw]  md:leading-[22vw]    text-end  ${eb_gramond_italic_font.className}`}
           >
             Boothby
           </h1>

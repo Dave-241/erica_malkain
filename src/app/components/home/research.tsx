@@ -8,18 +8,11 @@ import Image from "next/image";
 import Link from "next/link";
 
 const Home_research = () => {
-  const items = [
-    {
-      first: true,
-    },
-    "",
-    "",
-    "",
-    "",
-    "",
-    "",
-    "",
-  ];
+  const items = ["", "", "", "", "", ""];
+
+  // useEffect(() => {
+  //   items.push({})
+  // },[])
 
   const [calWidth, setCalWidth] = useState(0);
   const width = globalThis.innerWidth;
@@ -45,16 +38,20 @@ const Home_research = () => {
   const ref = useRef(null);
 
   //   this is for switching animation values
-  const [switch_animation, setswitch_animation] = useState(false);
+  const [opac_animation, setopac_animation] = useState(1);
   const [switch_animation_value, setswitch_animation_value] = useState(20);
 
   const { scrollYProgress: scrollYProgress_img } = useScroll({
     target: ref,
-    offset: ["5% 5%", "100% end"], // Start calculating at 40% of the ref element, end at 80%
+    offset: ["-40% -40%", "100% end"], // Start calculating at 40% of the ref element, end at 80%
+  });
+  const { scrollYProgress: scrollYProgress_opac_text } = useScroll({
+    target: ref,
+    offset: ["0% 0%", "100% end"], // Start calculating at 40% of the ref element, end at 80%
   });
   const { scrollYProgress: scrollYProgress_animation_value } = useScroll({
     target: ref,
-    offset: ["start start", "50% end"], // Start calculating at 40% of the ref element, end at 80%
+    offset: ["-120% -120%", "40% end"], // Start calculating at 40% of the ref element, end at 80%
   });
   //   this is to opac the image
 
@@ -65,20 +62,27 @@ const Home_research = () => {
     [0, 1],
     [100, 0],
   );
+
+  // for the scroll to view text
+  const animation_opac_text = useTransform(
+    scrollYProgress_opac_text,
+    [0, 1],
+    [1, 0],
+  );
   useMotionValueEvent(animation_value_calc, "change", (latest) => {
-    // settranslate_value(latest);
-    setswitch_animation(false);
     setswitch_animation_value(latest);
+  });
+  useMotionValueEvent(animation_opac_text, "change", (latest) => {
+    setopac_animation(latest);
   });
 
   //   this is for setting the actual movemet
   const translate_value_calc = useTransform(
     scrollYProgress_img,
     [0, 1],
-    [15, -(100 / items.length) * (items.length - 3.55)],
+    [10, -(100 / items.length) * (items.length - 3.55)],
   );
   useMotionValueEvent(translate_value_calc, "change", (latest) => {
-    setswitch_animation(true);
     settranslate_value(latest);
   });
   const [width_for_progress, setwidth_for_progress] = useState(1);
@@ -97,7 +101,7 @@ const Home_research = () => {
     <>
       <div
         ref={ref}
-        className="w-full md:block hidden relative  md:my-[10vw]"
+        className="w-full md:block hidden border2 relative  md:mb-[10vw]"
         style={{ height: calWidth > 768 ? `${items.length * 50}vh` : "" }}
       >
         {/* this is the section for the scrollable elements */}
@@ -106,24 +110,17 @@ const Home_research = () => {
             style={{
               transform: `translateX(-${switch_animation_value}%)`,
             }}
-            className={`${spline_font.className} z-[60]  md:text-[7vw] md:px-[10vw] font-medium text-[#5C3C43] md:pt-[4vw] md:leading-[7vw]`}
+            className={`${spline_font.className} z-[60]  md:text-[7vw] md:px-[10vw] font-medium text-[#5C3C43]  md:leading-[7vw]`}
           >
             RESEARCH
           </h2>
-          <div className="w-full relative   md:min-h-[30vw]  overflow-hidden  ">
+          <div className="w-full relative   md:min-h-[33vw]  overflow-hidden  ">
             <div
-              className={`md:w-[25vw]  via-[#DFE4DF]  bg-gradient-to-r from-[#DFE4DF]   z-[10] flex  justify-center items-center md:h-full   absolute left-0 md:gap-[1vw] `}
+              style={{
+                opacity: opac_animation,
+              }}
+              className={`md:w-[25vw]   bg-[#DFE4DF] z-[5]   flex  justify-center items-center md:h-full   absolute left-0 md:gap-[1vw] `}
             >
-              {/* <div className="absolute left-0 h-full bg-[#DFE4DF] top-0 w-[60%]"></div>
-              <div className="absolute right-0 h-full via-[#DFE4DF]  bg-gradient-to-r from-[#DFE4DF]  top-0 w-[40%]"></div> */}
-
-              <div className="absolute md:left-[2vw] z-[10] border-[#0e257756]  flex w-[1.5%]   bottom-[5%] md:translate-y-[-50%] md:top-[50%] md:w-[2%] rounded-[3vw]   md:h-[80%]  bg-white border-[#103210] border border-opacity-[20%] overflow-hidden">
-                <div
-                  className="w-full  bg-[#103210]"
-                  style={{ height: `${width_for_progress * 10}%` }}
-                ></div>
-              </div>
-
               <p
                 className={`${spline_font.className} z-[10] md:text-[1vw] font-bold`}
               >
@@ -140,16 +137,16 @@ const Home_research = () => {
               style={{
                 transform: `translateX(${translate_value}%)`,
               }}
-              className="absolute  md:gap-[1.2vw] md:px-[1.5vw] flex h-full top-0 left-[22vw]"
+              className="absolute  md:gap-[1.2vw]  md:px-[1.5vw] z-[10] flex h-full top-0 left-[22vw]"
             >
               {items.map((e: any, index: any) => {
                 return (
                   <Link
                     href={"/"}
                     key={index}
-                    className={`md:w-[20vw] group  flex flex-col justify-between  md:h-full `}
+                    className={`md:w-[26vw] group  flex flex-col justify-between  md:h-full `}
                   >
-                    <div className="w-full md:h-[24vw]  md:rounded-[1.5vw]  overflow-hidden relative flex justify-center items-center ">
+                    <div className="w-full md:h-[29vw]  md:rounded-[1.5vw]  overflow-hidden relative flex justify-center items-center ">
                       <Image
                         src={example}
                         alt={e.title}
