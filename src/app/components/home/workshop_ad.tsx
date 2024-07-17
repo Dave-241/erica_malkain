@@ -130,7 +130,7 @@ const Workshop_ad = () => {
                         )})
 `
                       : `translateY(${
-                          yvalue + 1 + index * 100
+                          yvalue + 1 + index * 120
                         }%) translateX(-50%)`,
 
                   filter:
