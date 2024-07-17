@@ -35,7 +35,7 @@ const Home_research = () => {
 
   //   this is for switching animation values
   const [opac_animation, setopac_animation] = useState(1);
-  const [switch_animation_value, setswitch_animation_value] = useState(20);
+  const [switch_animation_value, setswitch_animation_value] = useState(100);
 
   const { scrollYProgress: scrollYProgress_img } = useScroll({
     target: ref,
@@ -51,7 +51,7 @@ const Home_research = () => {
   });
   //   this is to opac the image
 
-  const [translate_value, settranslate_value] = useState(20);
+  const [translate_value, settranslate_value] = useState(10);
 
   const animation_value_calc = useTransform(
     scrollYProgress_animation_value,

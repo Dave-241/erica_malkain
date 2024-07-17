@@ -4,6 +4,9 @@ import Image from "next/image";
 
 import bg_1 from "../../../../public/images/home/hero.webp";
 import quote from "../../../../public/images/home/quote.png";
+import next_img from "../../../../public/images/home/next.png";
+import prev_img from "../../../../public/images/home/prev.png";
+
 import { useEffect, useRef, useState } from "react";
 import { useInView } from "framer-motion";
 import {
@@ -11,6 +14,7 @@ import {
   Helvetica_medium,
   spline_font,
 } from "@/app/utils/fonts";
+import { NEXT_CLIENT_SSR_ENTRY_SUFFIX } from "next/dist/shared/lib/constants";
 const Reviews = () => {
   const items = [
     {
@@ -38,6 +42,7 @@ const Reviews = () => {
       postion: "Harvard grad student",
       body: "Creating state-of-the-art medical software  from intuitive patient management to  scalable mobile apps, for both healthcare professionals and patients.",
     },
+
     {
       title: "Jason Jhay",
       top_img: bg_1,
@@ -88,26 +93,48 @@ const Reviews = () => {
     window.addEventListener("resize", handleResize);
     return () => window.removeEventListener("resize", handleResize);
   }, []);
+  const [currentIndex, setCurrentIndex] = useState(0);
+  const [translateX, setTranslateX] = useState(0);
 
+  const handleLeftClick = () => {
+    if (currentIndex > 0) {
+      setCurrentIndex(currentIndex - 1);
+      setTranslateX(translateX + 100 / items.length); // Adjust 100 to your container width
+    }
+  };
+
+  const handleRightClick = () => {
+    if (currentIndex < items.length - 4) {
+      // Adjust based on the number of items you want to show at once
+      setCurrentIndex(currentIndex + 1);
+      setTranslateX(translateX - 100 / items.length); // Adjust 100 to your container width
+    }
+  };
   return (
     <>
-      <div className="   px-[3vw] sm:px-0 md:my-[10vw]  flex flex-col md:gap-[3.5vw]  items-center">
+      <div className="   px-[3vw] sm:px-0 md:mt-[10vw]  flex flex-col md:gap-[3.5vw]  items-center">
         <h2
           className={` text-center text-[5vw] uppercase ${spline_font.className} font-medium md:text-[5.3vw] text-[#5C3C43] `}
         >
           WHAT PEOPLE SAY ABOUT ERICA{" "}
         </h2>
 
-        <div className=" w-full  overflow-hidden md:h-[35vw]  relative   ">
+        <div className=" w-full   overflow-hidden md:h-[35vw]  relative   ">
           <div
             ref={ref}
             className={`absolute top-[50%] translate-y-[-50%]  md:h-full overflow-hidden left-0  w-auto   sm:px-[3vw] h-full flex md:gap-[2vw] `}
+            // style={{
+            //   //   transform:
+            //   //     windowWidth && windowWidth <= 650
+            //   //       ? `translateX(-${current_index * 82}vw)`
+            //   //       : "none",
+
+            //   transition: "1s ease",
+            // }}
+
             style={{
-              //   transform:
-              //     windowWidth && windowWidth <= 650
-              //       ? `translateX(-${current_index * 82}vw)`
-              //       : "none",
-              transition: "1s ease",
+              transform: `translateX(${translateX}%) translateY(-50%)`,
+              transition: "0.7s ease",
             }}
           >
             {items.map((e: any, index: any) => {
@@ -167,33 +194,35 @@ const Reviews = () => {
           </div>
         </div>
 
-        {/* <div
-          className={` w-full hidden   sm:flex justify-center sm:gap-[6vw] gap-[2vw] items-center`}
+        <div
+          className={` w-full  md:mt-[-3vw]    flex md:mb-[3vw]  justify-center md:gap-[3vw] gap-[2vw] items-center`}
         >
           <Image
-            src={prev_works}
-            onClick={() => {
-              if (current_index <= 0) {
-                return;
-              }
-              setcurrent_index(current_index - 1);
-            }}
+            src={prev_img}
+            // onClick={() => {
+            // //   if (current_index <= 0) {
+            // //     return;
+            // //   }
+            // //   setcurrent_index(current_index - 1);
+            // }}
+            onClick={handleLeftClick}
             alt="prev "
-            className="sm:w-[11vw] w-[2.9vw] hover:cursor-pointer  h-fit"
+            className="md:w-[3vw] w-[2.9vw] hover:cursor-pointer  h-fit"
           />
           <Image
-            src={next_works}
-            onClick={() => {
-              if (current_index >= items.length - 1) {
-                return;
-              }
-              setcurrent_index(current_index + 1);
-              console.log(current_index);
-            }}
+            src={next_img}
+            // onClick={() => {
+            //   if (current_index >= items.length - 1) {
+            //     return;
+            //   }
+            //   setcurrent_index(current_index + 1);
+            //   console.log(current_index);
+            // }}
+            onClick={handleRightClick}
             alt="next "
-            className="sm:w-[11vw] w-[2.9vw] hover:cursor-pointer  h-fit"
+            className="md:w-[3vw] w-[2.9vw] hover:cursor-pointer  h-fit"
           />
-        </div> */}
+        </div>
       </div>
     </>
   );
