@@ -5,6 +5,7 @@ import Recent_media from "./components/general-component/recent_media";
 import Recent_publication from "./components/general-component/recent_publication";
 import Hero_home from "./components/home/hero";
 import Home_research from "./components/home/research";
+import Reviews from "./components/home/reviews";
 import Workshop_ad from "./components/home/workshop_ad";
 
 export default function Home() {
@@ -18,6 +19,7 @@ export default function Home() {
           <Recent_publication />
           <Recent_media />
           <Workshop_ad />
+          <Reviews />
           <Contact />
           <Footer />
         </div>
