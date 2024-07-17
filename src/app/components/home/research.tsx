@@ -8,11 +8,7 @@ import Image from "next/image";
 import Link from "next/link";
 
 const Home_research = () => {
-  const items = ["", "", "", "", "", ""];
-
-  // useEffect(() => {
-  //   items.push({})
-  // },[])
+  const items = ["", "", "", "", ""];
 
   const [calWidth, setCalWidth] = useState(0);
   const width = globalThis.innerWidth;
@@ -47,7 +43,7 @@ const Home_research = () => {
   });
   const { scrollYProgress: scrollYProgress_opac_text } = useScroll({
     target: ref,
-    offset: ["0% 0%", "100% end"], // Start calculating at 40% of the ref element, end at 80%
+    offset: ["-10% -10%", "40% end"], // Start calculating at 40% of the ref element, end at 80%
   });
   const { scrollYProgress: scrollYProgress_animation_value } = useScroll({
     target: ref,
@@ -80,12 +76,11 @@ const Home_research = () => {
   const translate_value_calc = useTransform(
     scrollYProgress_img,
     [0, 1],
-    [10, -(100 / items.length) * (items.length - 3.55)],
+    [10, -(100 / items.length) * (items.length - 2.8)],
   );
   useMotionValueEvent(translate_value_calc, "change", (latest) => {
     settranslate_value(latest);
   });
-  const [width_for_progress, setwidth_for_progress] = useState(1);
 
   const parent_width_for_progress = useTransform(
     scrollYProgress_img,
@@ -93,15 +88,11 @@ const Home_research = () => {
     [1, 10],
   );
 
-  useMotionValueEvent(parent_width_for_progress, "change", (latest) => {
-    setwidth_for_progress(latest);
-  });
-
   return (
     <>
       <div
         ref={ref}
-        className="w-full md:block hidden border2 relative  md:mb-[10vw]"
+        className="w-full md:block hidden  relative  md:mb-[10vw]"
         style={{ height: calWidth > 768 ? `${items.length * 50}vh` : "" }}
       >
         {/* this is the section for the scrollable elements */}
