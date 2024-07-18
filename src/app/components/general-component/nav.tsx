@@ -8,6 +8,10 @@ import { useEffect } from "react";
 const Nav = () => {
   const items = [
     {
+      text: "Home",
+      link: "/",
+    },
+    {
       text: "Publications",
       link: "/publications",
     },
@@ -19,20 +23,13 @@ const Nav = () => {
       text: "teaching & consultation",
       link: "/consultation",
     },
-    {
-      text: "WORKSHOP",
-      link: "/workshop",
-    },
+
     {
       text: "MEDIA",
       link: "/media",
     },
   ];
   const items_right = [
-    {
-      text: "home",
-      link: "/",
-    },
     {
       text: "about us",
       link: "/about",
@@ -41,13 +38,13 @@ const Nav = () => {
 
   const pathname = usePathname();
 
-  useEffect(() => {
-    if (typeof window !== "undefined") {
-      // Your code that uses the window object
-      window.scrollTo({ top: 0, left: 0, behavior: "smooth" });
-    }
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, []);
+  // useEffect(() => {
+  //   if (typeof window !== "undefined") {
+  //     // Your code that uses the window object
+  //     window.scrollTo({ top: 0, left: 0, behavior: "smooth" });
+  //   }
+  //   // eslint-disable-next-line react-hooks/exhaustive-deps
+  // }, []);
   return (
     <>
       <nav

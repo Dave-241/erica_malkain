@@ -4,8 +4,8 @@ import Image from "next/image";
 
 import bg_1 from "../../../../public/images/home/hero.webp";
 import quote from "../../../../public/images/home/quote.png";
-import next_img from "../../../../public/images/home/next.png";
-import prev_img from "../../../../public/images/home/prev.png";
+import next_img from "../../../../public/images/home/next.webp";
+import prev_img from "../../../../public/images/home/prev.webp";
 
 import { useEffect, useRef, useState } from "react";
 import { useInView } from "framer-motion";
@@ -14,7 +14,6 @@ import {
   Helvetica_medium,
   spline_font,
 } from "@/app/utils/fonts";
-import { NEXT_CLIENT_SSR_ENTRY_SUFFIX } from "next/dist/shared/lib/constants";
 const Reviews = () => {
   const items = [
     {
