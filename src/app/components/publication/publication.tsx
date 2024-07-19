@@ -170,7 +170,7 @@ const Publication = () => {
                     }
                   }}
                   key={index}
-                  className="w-full initial px-[4%] py-[8%] rounded-[5vw] md:flex-row flex-col  flex md:justify-between md:rounded-[1vw] md:px-[3vw] relative md:py-[1.5vw] bg-[#FEFAFA] bg-opacity-[62%] md:gap-0 gap-[4vw] md:items-center"
+                  className="w-full initial px-[4%] py-[8%] rounded-[5vw] md:flex-row flex-col  flex md:justify-between md:rounded-[1vw] md:px-[3vw] relative md:py-[1.5vw] bg-[#FEFAFA] bg-opacity-[62%] md:gap-[1vw] gap-[4vw] md:items-center"
                 >
                   {isloggedin && (
                     <Edit_each_publication
@@ -190,13 +190,13 @@ const Publication = () => {
                   <div className="flex flex-col gap-[4vw] md:w-[50%] md:gap-[0.5vw]">
                     <h2
                       //   ref={hero_ref}
-                      className={`${Helvetica_bold.className} text-[5vw] leading-[5vw] md:text-[1.3vw] uppercase text-[#440C0C]`}
+                      className={`${Helvetica_bold.className} text-[5vw] leading-[5vw] md:text-[1.3vw] md:leading-[2vw] uppercase text-[#440C0C]`}
                     >
                       {e.title}
                     </h2>
 
                     <p
-                      className={`${Helvetica_light.className} md:text-[1.1vw] text-[4vw] leading-[5vw] text-[#a46035]`}
+                      className={`${Helvetica_light.className} md:text-[1.1vw] md:leading-[1.5vw] text-[4vw] leading-[5vw] text-[#a46035]`}
                     >
                       {e.body}
                     </p>
