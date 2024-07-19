@@ -158,8 +158,8 @@ const Publication = () => {
         />
       )}
 
-      <div className="w-full  md:py-[5vw]  md:px-[10%]">
-        <div className=" w-full flex flex-col md:gap-[1.5vw]">
+      <div className="w-full  md:py-[5vw]  px-[3%]  md:px-[10%]">
+        <div className=" w-full flex flex-col md:gap-[1.5vw] gap-[5vw]">
           {items.map((e: any, index: any) => {
             return (
               <>
@@ -170,7 +170,7 @@ const Publication = () => {
                     }
                   }}
                   key={index}
-                  className="w-full initial flex justify-between md:rounded-[1vw] md:px-[3vw] relative md:py-[1.5vw] bg-[#FEFAFA] bg-opacity-[62%] items-center"
+                  className="w-full initial px-[4%] py-[8%] rounded-[5vw] md:flex-row flex-col  flex md:justify-between md:rounded-[1vw] md:px-[3vw] relative md:py-[1.5vw] bg-[#FEFAFA] bg-opacity-[62%] md:gap-0 gap-[4vw] md:items-center"
                 >
                   {isloggedin && (
                     <Edit_each_publication
@@ -187,34 +187,34 @@ const Publication = () => {
                     />
                   )}
                   {/* the first section */}
-                  <div className="flex flex-col md:w-[50%] md:gap-[0.5vw]">
+                  <div className="flex flex-col gap-[4vw] md:w-[50%] md:gap-[0.5vw]">
                     <h2
                       //   ref={hero_ref}
-                      className={`${Helvetica_bold.className} md:text-[1.3vw] uppercase text-[#440C0C]`}
+                      className={`${Helvetica_bold.className} text-[5vw] leading-[5vw] md:text-[1.3vw] uppercase text-[#440C0C]`}
                     >
                       {e.title}
                     </h2>
 
                     <p
-                      className={`${Helvetica_light.className} md:text-[1.1vw] text-[#a46035]`}
+                      className={`${Helvetica_light.className} md:text-[1.1vw] text-[3.5vw] leading-[4vw] text-[#a46035]`}
                     >
                       {e.body}
                     </p>
                   </div>
 
                   <div
-                    className={`${Bt_Beau_Regualr.className} flex capitalize md:gap-[1vw]  items-center`}
+                    className={`${Bt_Beau_Regualr.className} md:text-[1vw] gap-[4vw] text-[3.5vw] flex capitalize md:gap-[1vw]  items-center`}
                   >
                     {" "}
                     <Link
                       href={e.data_link}
-                      className=" md:rounded-[1.7vw] md:text-[1vw] border-[#440C0C] md:border-[0.1vw] bg-[#FEF6F6] flex justify-center items-center md:py-[0.8vw] md:px-[2vw] text-[#440C0C]  hover:bg-[white]"
+                      className=" md:rounded-[1.7vw] border-[#440C0C] border-[0.1vw]  bg-[#FEF6F6] flex justify-center items-center md:py-[0.8vw] md:px-[2vw] px-[6vw] py-[3vw] text-[#440C0C]  hover:bg-[white] rounded-[7vw]"
                     >
                       DATA
                     </Link>
                     <Link
                       href={e.pdf_link}
-                      className=" md:rounded-[1.7vw] border-[#440C0C] md:text-[1vw] md:border-[0.1vw] bg-[#440C0C] flex justify-center items-center md:py-[0.8vw] md:px-[2vw] text-white hover:bg-[#C1A391] hover:border-[#C1A391]"
+                      className=" md:rounded-[1.7vw] border-[#440C0C]   md:border-[0.1vw] bg-[#440C0C] flex justify-center items-center md:py-[0.8vw] md:px-[2vw]  px-[6vw] py-[3vw] text-white hover:bg-[#C1A391] hover:border-[#C1A391] rounded-[7vw]"
                     >
                       PDF
                     </Link>
