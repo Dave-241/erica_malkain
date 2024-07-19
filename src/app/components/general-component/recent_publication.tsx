@@ -66,7 +66,7 @@ const Recent_publication = () => {
         <h2
           className={`text-[#5C3C43] md:text-[5vw] uppercase ${spline_font.className} font-medium `}
         >
-          Recent Publcations
+          Recent Publications
         </h2>
 
         <div className="flex flex-col md:gap-[2vw]">
@@ -88,15 +88,12 @@ const Recent_publication = () => {
                   <div
                     className={`flex md:gap-[2vw] md:text-[1.2vw] items-center  ${Helvetica_medium.className}`}
                   >
-                    <p className={`${dm_sans_font.className} `}>
-                      {index + 1 <= 9 ? `0${index + 1}` : `${index + 1}`}.
-                    </p>
                     <h2 className={`text-[#000000]  uppercase`}>{e.title}</h2>
                   </div>
                   {/* this includes body  and arrow  */}
                   <div className="flex md:gap-[1vw] justify-end items-center ">
                     <p
-                      className={`text-[#565956] md:w-[80%] md:text-[1vw]  ${Helvetica_light.className}`}
+                      className={`text-[#434543] md:w-[80%] md:text-[1.1vw]  ${Helvetica_light.className}`}
                     >
                       {e.body}
                     </p>
