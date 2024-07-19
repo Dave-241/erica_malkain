@@ -21,11 +21,6 @@ const About_hero = () => {
   //   this is to handle scrolling
   const ref = useRef(null);
 
-  //   const { scrollYProgress } = useScroll({
-  //     target: ref,
-  //     offset: ["start end", "end 50%"],
-  //   });
-
   const { scrollYProgress: scrollYProgress1 } = useScroll({
     target: ref,
     offset: ["40% 40%", "90% end"], // Start calculating at 40% of the ref element, end at 80%
@@ -64,6 +59,28 @@ const About_hero = () => {
     console.log(latest);
     setopac_two_img(latest);
   });
+
+  // this is for width calculation
+  const [calWidth, setCalWidth] = useState(0);
+  const width = globalThis.innerWidth;
+  const handleResize = () => {
+    setCalWidth(globalThis.innerWidth);
+  };
+
+  useEffect(() => {
+    window.addEventListener("resize", handleResize);
+
+    // Initial call to set the width on component mount
+    handleResize();
+
+    return () => {
+      window.removeEventListener("resize", handleResize);
+    };
+  }, [width]);
+
+  useEffect(() => {
+    handleResize();
+  }, [width]);
   return (
     <>
       <div className="w-full  md:py-[4vw] flex-col  md:px-[7vw]  md:gap-[3vw]  flex">
@@ -79,7 +96,7 @@ const About_hero = () => {
           </h1>
         </div>
 
-        <div className="overflow-hidden md:mt-[-2vw]">
+        <div className="overflow-hidden md:mt-[-2vw] md:text-start text-center">
           <p
             style={{
               transition: "0.65s ease",
@@ -91,16 +108,16 @@ const About_hero = () => {
           </p>
         </div>
         <div
-          className="w-full   h-[250vh]  md:mt-[-10vh] flex items-start  relative "
+          className="w-full   md:h-[250vh] border2  md:mt-[-10vh] flex items-start  relative "
           ref={ref}
         >
-          <div className="w-full h-full  absolute top-0 left-0  flex items-end">
-            <div className="w-full h-[100vh]  flex justify-center items-center ">
+          <div className="w-full h-full  md:absolute top-0 left-0  flex items-end">
+            <div className="w-full md:h-[100vh]  flex justify-center items-center ">
               <Image
                 src={bg}
-                style={{ opacity: bg_img_opacity }}
+                style={{ opacity: calWidth < 768 ? "" : bg_img_opacity }}
                 alt="background"
-                className="md:w-[45vw] h-fit"
+                className="md:w-[45vw] md:block hidden  h-fit"
               />
             </div>
           </div>
@@ -117,7 +134,7 @@ const About_hero = () => {
               <Image
                 src={hero1}
                 style={{
-                  opacity: opac_one_img,
+                  opacity: calWidth < 768 ? "" : opac_one_img,
                   transition: "0.65s ease",
                   transform: start_anime
                     ? ""
@@ -125,7 +142,7 @@ const About_hero = () => {
                   filter: start_anime ? "" : "blur(4px)",
                 }}
                 alt="Erica Boothby"
-                className="w-full absolute top-[50%] translate-x-[-50%] left-[50%] translate-y-[-50%] h-fit z-[10]"
+                className="w-full absolute top-[50%] md:block hidden translate-x-[-50%] left-[50%] translate-y-[-50%] h-fit z-[10]"
               />
               <Image
                 src={hero2}
