@@ -158,7 +158,7 @@ const Publication = () => {
         />
       )}
 
-      <div className="w-full  md:py-[5vw]  px-[3%]  md:px-[10%]">
+      <div className="w-full py-[10vw]  md:py-[5vw]  px-[3%]  md:px-[10%]">
         <div className=" w-full flex flex-col md:gap-[1.5vw] gap-[5vw]">
           {items.map((e: any, index: any) => {
             return (
@@ -196,7 +196,7 @@ const Publication = () => {
                     </h2>
 
                     <p
-                      className={`${Helvetica_light.className} md:text-[1.1vw] text-[3.5vw] leading-[4vw] text-[#a46035]`}
+                      className={`${Helvetica_light.className} md:text-[1.1vw] text-[4vw] leading-[5vw] text-[#a46035]`}
                     >
                       {e.body}
                     </p>
