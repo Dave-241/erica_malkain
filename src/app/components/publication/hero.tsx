@@ -11,18 +11,18 @@ const Publication_hero = () => {
   }, []);
   return (
     <>
-      <div className="w-full md:h-[3vw] "></div>
+      <div className="w-full md:h-[3vw] h-[5vw] "></div>
       <div
-        className={` ${spline_font.className} font-bold w-full flex md:leading-[7.6vw] relative items-center  md:px-[10%] md:text-[7vw] text-[#440C0C] md:min-h-[20vw]`}
+        className={` ${spline_font.className}  font-bold w-full flex md:leading-[7.6vw] text-[12vw] min-h-[40vw] leading-[13vw] relative items-center px-[3%]  md:px-[10%] md:text-[7vw] text-[#440C0C] md:min-h-[20vw]`}
       >
         <h1
           className={` ${
             start_anime ? "" : "translate-x-[30%] opacity-0"
-          } uppercase transition  duration-[0.4s]`}
+          } uppercase transition   duration-[0.4s]`}
         >
           publications{" "}
         </h1>
-        <div className=" w-full left-0 md:px-[5%] flex justify-start absolute bottom-0  md:h-[0.05vw] ">
+        <div className=" w-full left-0 md:px-[5%] px-[3%] flex justify-start absolute bottom-0 h-[0.1vw]  md:h-[0.05vw] ">
           <div
             style={{
               width: start_anime ? "100%" : "0%",
