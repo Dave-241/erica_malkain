@@ -16,8 +16,8 @@ export default function Home() {
         <div className="bg-[#DFE4DF]">
           <Nav />
           <Hero_home />
-          {/* <div className="h-[20vw] bg-black"></div>
-          <Approach /> */}
+          {/* <div className="h-[20vw] bg-black"></div> */}
+          {/* <Approach /> */}
           <Home_research />
           <Recent_publication />
           <Recent_media />

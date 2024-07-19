@@ -66,7 +66,7 @@ const About_hero = () => {
   });
   return (
     <>
-      <div className="w-full  md:py-[7vw] flex-col hidden md:px-[7vw] md:gap-[5vw]  md:flex">
+      <div className="w-full  md:py-[4vw] flex-col hidden md:px-[7vw]  md:gap-[3vw]  md:flex">
         <div className="overflow-hidden ">
           <h1
             style={{
@@ -79,19 +79,19 @@ const About_hero = () => {
           </h1>
         </div>
 
-        <div className="overflow-hidden">
+        <div className="overflow-hidden md:mt-[-2vw]">
           <p
             style={{
               transition: "0.65s ease",
               transform: start_anime ? "translate(0,0)" : "translate(0%,100%)",
             }}
-            className={`${Helvetica_light.className} md:text-[1.4vw] md:leading-[1.6vw]`}
+            className={`${Helvetica_light.className}  md:text-[1.4vw] md:leading-[1.6vw]`}
           >
             Educator, Scholar, <br /> Professor & Speaker
           </p>
         </div>
         <div
-          className="w-full  h-[250vh]  md:mt-[-10vh] flex items-start  relative "
+          className="w-full   h-[250vh]  md:mt-[-10vh] flex items-start  relative "
           ref={ref}
         >
           <div className="w-full h-full  absolute top-0 left-0  flex items-end">
@@ -106,7 +106,6 @@ const About_hero = () => {
           </div>
           <div
             style={{
-              //   transition: "0.9s ease",
               transform:
                 yvalue >= 50
                   ? `translateX(${-50}%) `
@@ -140,7 +139,7 @@ const About_hero = () => {
           {/* <div className="  flex justify-end md:px-[10%]"> */}
           <div className="flex flex-col  md:w-[60%] md:px-[6%] h-[100vh] justify-center  items-start md:gap-[2vw]">
             <p
-              className={`${Helvetica_light.className} md:text-[1.1vw] text-[#707270]`}
+              className={`${Helvetica_light.className} md:text-[1.1vw] text-[black]`}
             >
               Erica Boothby is a Researcher and Instructor in the Operations,
               Information, & Decisions Department at The Wharton School at the
@@ -172,7 +171,7 @@ const About_hero = () => {
 
         {/* the below content */}
         <p
-          className={`text-[#707270] md:text-[1vw] md:px-[15vw] ${Helvetica_light.className} text-center`}
+          className={`text-[#707270] md:text-[1.3vw] md:mt-[-2vw] md:px-[12vw] ${Helvetica_light.className} text-center`}
         >
           {" "}
           In 2022, she was awarded the American Psychological Societys Rising

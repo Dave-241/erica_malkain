@@ -31,20 +31,20 @@ const Nav = () => {
   ];
   const items_right = [
     {
-      text: "about us",
+      text: "about ",
       link: "/about",
     },
   ];
 
   const pathname = usePathname();
 
-  useEffect(() => {
-    if (typeof window !== "undefined") {
-      // Your code that uses the window object
-      window.scrollTo({ top: 0, left: 0, behavior: "smooth" });
-    }
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, []);
+  // useEffect(() => {
+  //   if (typeof window !== "undefined") {
+  //     // Your code that uses the window object
+  //     window.scrollTo({ top: 0, left: 0, behavior: "smooth" });
+  //   }
+  //   // eslint-disable-next-line react-hooks/exhaustive-deps
+  // }, []);
   return (
     <>
       <nav

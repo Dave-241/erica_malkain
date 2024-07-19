@@ -46,20 +46,14 @@ a {
   left: 50%;
   top: 50%;
 }
-@keyframes drawMainPath {
-  to {
-    stroke-dashoffset: 0;
-  }
-}
-
-@keyframes drawPath {
-  to {
-    stroke-dashoffset: 0;
-  }
-}
-
-.path-animation {
+.animated-path {
   stroke-dasharray: 1000;
   stroke-dashoffset: 1000;
-  animation: drawPath 2s ease forwards;
+  animation: dash 5s linear forwards;
+}
+
+@keyframes dash {
+  to {
+    stroke-dashoffset: 50;
+  }
 }
