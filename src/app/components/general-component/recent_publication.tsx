@@ -106,7 +106,9 @@ const Recent_publication = () => {
                 }}
                 onMouseEnter={() => setactive(index)}
                 onMouseLeave={() => setactive(null)}
-                className="w-full overflow-hidden md:h-[37vw]  relative flex-col flex justify-end  hover:border-none    group border-b-[#565956] border-b-[0.1vw] "
+                className={`w-full overflow-hidden md:h-[37vw]  relative ${
+                  active == index ? "border-none" : ""
+                } flex-col flex justify-end     group border-b-[#565956] border-b-[0.1vw] `}
               >
                 <div
                   className={` md:w-[46.5%]  flex justify-center items-center  ${
