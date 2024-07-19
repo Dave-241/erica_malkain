@@ -9,15 +9,28 @@ import Image from "next/image";
 import img_black from "../../../../public/images/publication/black.png";
 import img_white from "../../../../public/images/publication/white.png";
 import Link from "next/link";
-import { useEffect, useRef } from "react";
+import example from "../../../../public/images/publication/example.webp";
+import { useEffect, useRef, useState } from "react";
 
 const Recent_publication = () => {
   const items = [
     {
-      title: " first THEORY OF COLLECTIVE MIND. TRENDS IN COGNITIVE SCIENCES.",
-      body: "Shteynberg, G., Hirsh, J. B., Wolf, W., Bargh, J. A., Boothby, E. J., Colman, A. M., Echterhoff, G., & Rossignac-Milon, M. 2023. ",
+      title: "THEORY OF COLLECTIVE MIND. TRENDS IN COGNITIVE SCIENCES.",
+      body: "Shteynberg, G., Hirsh, J. B., Wolf, W., Bargh, J. A., Boothby, E. J., Colman, A. M., Echterhoff, G., & Rossignac-Milon, M. 2023.",
       data_link: "malkain.com/data",
-      pdf_link: "malkain.com/firs_data",
+      pdf_link: "malkain.com/pdf",
+    },
+    {
+      title: "THEORY OF COLLECTIVE MIND. TRENDS IN COGNITIVE SCIENCES.",
+      body: "Shteynberg, G., Hirsh, J. B., Wolf, W., Bargh, J. A., Boothby, E. J., Colman, A. M., Echterhoff, G., & Rossignac-Milon, M. 2023.",
+      data_link: "malkain.com/data",
+      pdf_link: "malkain.com/pdf",
+    },
+    {
+      title: "THEORY OF COLLECTIVE MIND. TRENDS IN COGNITIVE SCIENCES.",
+      body: "Shteynberg, G., Hirsh, J. B., Wolf, W., Bargh, J. A., Boothby, E. J., Colman, A. M., Echterhoff, G., & Rossignac-Milon, M. 2023.",
+      data_link: "malkain.com/data",
+      pdf_link: "malkain.com/pdf",
     },
     {
       title: "THEORY OF COLLECTIVE MIND. TRENDS IN COGNITIVE SCIENCES.",
@@ -34,6 +47,9 @@ const Recent_publication = () => {
   ];
 
   const itemsRefs = useRef<any>([]);
+  //  const itemsRefs = useRef<any>([]);
+  const [heights, setHeights] = useState<number[]>([]);
+  const [active, setactive] = useState<any>(0);
 
   useEffect(() => {
     const observer = new IntersectionObserver(
@@ -60,6 +76,16 @@ const Recent_publication = () => {
       });
     };
   }, []);
+
+  useEffect(() => {
+    if (itemsRefs.current) {
+      const newHeights = itemsRefs.current.map(
+        (ref: any) => ref?.clientHeight || 0,
+      );
+      setHeights(newHeights);
+    }
+  }, [itemsRefs.current]);
+
   return (
     <>
       <div className="w-full md:gap-[6vw]  md:flex hidden md:px-[10vw] bg-[#D8DFD8] md:py-[5vw] flex-col">
@@ -74,11 +100,41 @@ const Recent_publication = () => {
             return (
               <div
                 key={index}
-                className="w-full overflow-hidden  border-b-[#565956] border-b-[0.1vw] "
+                style={{
+                  transition: "0.7s ease",
+                  height: active == index ? "" : heights[index] || "auto",
+                }}
+                onMouseEnter={() => setactive(index)}
+                onMouseLeave={() => setactive(null)}
+                className="w-full overflow-hidden md:h-[37vw]  relative flex-col flex justify-end  hover:border-none    group border-b-[#565956] border-b-[0.1vw] "
               >
-                {/* first section which includes the s/n and also the title */}
                 <div
-                  className="w-full  research_initial md:gap-[10vw] md:py-[1.2vw] border-opacity-[50%] flex justify-between   "
+                  className={` md:w-[46.5%]  flex justify-center items-center  ${
+                    active == index ? "md:bottom-0" : "md:bottom-[100%]"
+                  } absolute md:h-[37vw] overflow-hidden md:rounded-[1vw]`}
+                  style={{
+                    transition: "0.7s ease",
+                  }}
+                >
+                  <div className="w-full h-full  relative">
+                    {" "}
+                    <Image
+                      src={example}
+                      alt={e.title}
+                      style={
+                        {
+                          // transform: "translateX(-50%) translateY(-50%) ",
+                        }
+                      }
+                      className={` w-full absolute h-fit left-[50%] top-[50%] translate-x-[-50%] scale-[1.1] translate-y-[-50%] `}
+                    />
+                  </div>
+                </div>
+
+                {/* first section which includes the s/n and also the title */}
+
+                <div
+                  className="w-full  research_initial   md:gap-[10vw] md:py-[1.2vw] border-opacity-[50%] flex justify-between   "
                   ref={(ref) => {
                     if (ref) {
                       itemsRefs.current[index] = ref;
@@ -86,40 +142,50 @@ const Recent_publication = () => {
                   }}
                 >
                   <div
-                    className={`flex md:gap-[2vw]  md:w-[50%] md:text-[1.2vw] items-center  ${Helvetica_medium.className}`}
+                    style={{
+                      transition: "0.5s ease",
+                    }}
+                    className={`flex md:gap-[2vw] h-full  ${
+                      active == index
+                        ? "md:translate-x-[160%] md:translate-y-[-130%]"
+                        : ""
+                    } md:w-[35%] md:text-[1.2vw] items-center  ${
+                      Helvetica_medium.className
+                    }`}
                   >
                     <h2 className={`text-[#000000]  uppercase`}>{e.title}</h2>
                   </div>
                   {/* this includes body  and arrow  */}
-                  <div className="flex md:gap-[1vw] justify-end items-center ">
+                  <div className="flex md:gap-[1vw] md:w-[60%] justify-end items-center ">
                     <p
-                      className={`text-[#434543] md:w-[80%] md:text-[1.1vw]  ${Helvetica_light.className}`}
+                      className={`text-[black] md:w-[80%] md:text-[1.1vw]  ${Helvetica_light.className}`}
                     >
                       {e.body}
+                      {/* 434543 */}
                     </p>
 
                     <Link
                       href={"/"}
                       style={{ whiteSpace: "nowrap" }}
-                      className={`flex justify-center bg-transparent items-center overflow-hidden border-opacity-[50%]  border-[#565956] border-[0.1vw] rounded-[100%]  md:w-[2.5vw] md:h-[2.5vw] group relative`}
+                      className={`flex justify-center bg-transparent items-center overflow-hidden border-opacity-[50%]  border-[black] border-[0.1vw] rounded-[100%]  md:w-[2.5vw] md:h-[2.5vw]  relative`}
                     >
                       <Image
                         src={img_black}
                         alt="arrow image"
                         style={{ transition: "0.5s ease" }}
-                        className="w-[60%] group-hover:opacity-[0%] opacity-[100%] absolute absolute_center z-[10] h-fit"
+                        className="w-[60%]  opacity-[100%] absolute absolute_center z-[10] h-fit"
                       />
-                      <Image
+                      {/* <Image
                         src={img_white}
                         alt="arrow image"
                         style={{ transition: "0.5s ease" }}
-                        className="w-[60%] absolute group-hover:opacity-[100%]  opacity-[0%] absolute_center z-[10] h-fit"
-                      />
+                        className="w-[60%] absolute hover:opacity-[100%]  opacity-[0%] absolute_center z-[10] h-fit"
+                      /> */}
 
-                      <div
+                      {/* <div
                         className="w-full h-full bg-[#440C0C] absolute left-0 top-[100%] group-hover:top-0 "
                         style={{ transition: "0.5s ease" }}
-                      ></div>
+                      ></div> */}
                     </Link>
                   </div>
                 </div>

@@ -47,35 +47,35 @@ const Each_consultation = () => {
 
   const data_array = [
     {
-      bg: "#CBD4CB",
+      bg: "#4CB163",
       institue: "Wharton University",
       year: "2023",
       heading: "NEGOTIATION COURSE",
-      text: "#546A54",
+      text: "#BFCFC5",
       img: example,
       link: "/",
       body: 'Erica teaches a course on Negotiations at The Wharton School at the University of Pennsylvania, for which she has received a Wharton Teaching Excellence award. Her course has received an average rating of 3.8/4.0 and consistently receives among the highest marks in "overall quality" across the entire Wharton School. Erica was named one of <a href="malkain.com"> Poets&Quants 50 Best Professors of 2023. </a>',
     },
     {
-      bg: "#D4CBCB",
+      bg: "#2F8F45",
       institue: "Wet Cement",
       heading: "Workshops",
       year: "2024",
       img: example2,
       link: "/",
 
-      text: "#B16565",
+      text: "#B2EECA",
       body: 'Erica works with <a href="malkain.com"> Wet Cement </a>, a purpose-driven company whose mission is to empower people, teams, and organizations to fearlessly achieve their potential, to co-design and <a href="malkain.com"> lead Wet Cements Win-Win Negotiations training </a>.  Wet Cement especially aims to empower women and other members of underrepresented groups at the negotiating table, so that they can more effectively advance their careers. ',
     },
     {
-      bg: "#D4D4CB",
+      bg: "#1A6E30",
       institue: "Behavioralize",
       heading: "BEHAVIORAL SCIENCE CONSULTING",
       year: "2023",
       img: example3,
       link: "/",
 
-      text: "#82825C",
+      text: "#8DCE9F",
       body: "Erica is a consultant with <a href='malkain.com'> Behavioralize </a> , a data-driven company that applies behavioral science to understand and influence customer and managerial decision making, helping companies drive growth by identifying and solving their key behavioral challenges",
     },
   ];
@@ -249,34 +249,34 @@ const Each_consultation = () => {
                     <Image
                       src={e.img}
                       alt={e.heading}
-                      className="w-full h-fit md:rounded-[1vw]"
+                      className="w-full h-fit md:rounded-[6vw]"
                     />
                   </div>
 
                   {/* now the writing  */}
                   <div className=" md:w-[30vw] flex flex-col md:gap-[2vw]">
                     <p
-                      className={` ${Helvetica_light.className} border-l-[0.3vw] border-[#1E1E1E] md:pl-[1vw] md:py-[1vw] text-[#1E1E1E] md:text-[1vw] [&_a]:underline underline-offset-4`}
+                      className={` ${Helvetica_light.className} border-l-[0.3vw] border-[white] md:pl-[1vw] md:py-[1vw] text-[white] md:text-[1vw] [&_a]:underline underline-offset-4`}
                       dangerouslySetInnerHTML={{ __html: e.body }}
                     ></p>
 
                     <Link
                       href={e.link}
-                      className={` ${Bt_Beau_Regualr.className} md:text-[1vw] md:w-[10vw] flex justify-center items-center md:h-[2.6vw]  border-[#000000] border-[0.1vw] md:rounded-[0.7vw]  md:ml-[1vw] group relative overflow-hidden`}
+                      className={` ${Bt_Beau_Regualr.className} md:text-[1vw] md:w-[10vw] flex justify-center items-center md:h-[2.6vw]  border-[white] border-[0.1vw] md:rounded-[3.7vw]  md:ml-[1vw] group relative overflow-hidden`}
                     >
                       <p
                         style={{ transition: "0.5s ease" }}
-                        className="group-hover:text-white z-[10] text-[#000000]"
+                        className="group-hover:text-white z-[10] text-[white]"
                       >
                         {" "}
                         Read more{" "}
                       </p>
 
-                      <Image
+                      {/* <Image
                         src={arrow}
                         alt="arrow"
                         className="md:w-[1.7vw] z-[10] h-fit"
-                      />
+                      /> */}
                       <div
                         className="w-full h-full bg-[#440C0C] absolute left-0 top-[100%] group-hover:top-0 "
                         style={{ transition: "0.5s ease" }}
@@ -286,13 +286,13 @@ const Each_consultation = () => {
                 </div>
                 {/* institue and location segment */}
                 <div
-                  className={` ${Bt_Beau_Regualr.className} w-full border-y border-[#000000] border-opacity-[58%] md:py-[1.6vw] flex justify-center items-center md:gap-[4vw] text-[#000000] text-opacity-[60%] md:text-[1.1vw] md:px-[10vw]`}
+                  className={` ${Bt_Beau_Regualr.className} w-full border-y border-[white]  md:py-[1.6vw] flex justify-center items-center md:gap-[4vw] text-white text-opacity-[100%] md:text-[1.1vw] md:px-[10vw]`}
                 >
                   <p className="" style={{ whiteSpace: "nowrap" }}>
                     {e.institue}
                   </p>
-                  <div className="w-full relative md:h-[0.1vw] bg-[#000000] bg-opacity-[50%] flex justify-end items-center">
-                    <div className="md:w-[0.4vw] md:h-[0.4vw] rounded-[100%] bg-[#000000]  "></div>
+                  <div className="w-full relative md:h-[0.1vw] bg-[white]  flex justify-end items-center">
+                    <div className="md:w-[0.4vw] md:h-[0.4vw] rounded-[100%] bg-[white]   "></div>
                   </div>
                   <p className="" style={{ whiteSpace: "nowrap" }}>
                     ({e.year})
