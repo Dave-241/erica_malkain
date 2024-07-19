@@ -86,7 +86,7 @@ const Recent_publication = () => {
                   }}
                 >
                   <div
-                    className={`flex md:gap-[2vw] md:text-[1.2vw] items-center  ${Helvetica_medium.className}`}
+                    className={`flex md:gap-[2vw]  md:w-[50%] md:text-[1.2vw] items-center  ${Helvetica_medium.className}`}
                   >
                     <h2 className={`text-[#000000]  uppercase`}>{e.title}</h2>
                   </div>
