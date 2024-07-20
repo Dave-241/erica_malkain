@@ -83,14 +83,19 @@ const About_hero = () => {
   }, [width]);
   return (
     <>
-      <div className="w-full  md:py-[4vw] gap-[10vw] pb-[10vw] flex-col px-[5%] md:px-[7vw]  md:gap-[3vw]  flex">
-        <div className="overflow-hidden ">
+      <div className="w-full pt-[20vw]  md:py-[4vw] gap-[7vw] pb-[10vw] flex-col px-[3%] md:px-[7vw]  md:gap-[3vw]  flex">
+        <div className="md:overflow-hidden  ">
           <h1
             style={{
               transition: "0.65s ease",
-              transform: start_anime ? "translate(0,0)" : "translate(0%,100%)",
+              transform:
+                calWidth < 760
+                  ? ""
+                  : start_anime
+                  ? "translate(0,0)"
+                  : "translate(0%,100%)",
             }}
-            className={`md:text-[14.7vw] text-[25vw] leading-[32vw]  md:leading-[20vw]   text-center   text-[#1E1E1E] ${eb_gramond_italic_font.className}`}
+            className={`md:text-[14.7vw] text-[25vw] leading-[27vw]  md:leading-[20vw]   text-center   text-[#1E1E1E] ${eb_gramond_italic_font.className}`}
           >
             Erica Boothby
           </h1>
@@ -108,7 +113,7 @@ const About_hero = () => {
           </p>
         </div>
         <div
-          className="w-full gap-[10vw]   md:h-[250vh]  md:flex-row flex-col md:mt-[-10vh] flex items-start  relative "
+          className="w-full gap-[7vw]   md:h-[250vh]  md:flex-row flex-col md:mt-[-10vh] flex items-start  relative "
           ref={ref}
         >
           <div className="w-full  h-full   hidden md:absolute md:top-0 md:left-0  md:flex items-end">
@@ -169,7 +174,7 @@ const About_hero = () => {
               research examines peoples perceptions of what others think of
               them, including illusions and biases that interfere with social
               connection and interventions designed to improve peoples social
-              lives. {calWidth}
+              lives.
             </p>
 
             <Link
