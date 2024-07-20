@@ -106,6 +106,9 @@ const Footer = () => {
           </div>
         </div>
       </div>
+
+      {/* this is just while i am deving */}
+      <div className="w-ful md:hidden h-[20vw]"></div>
     </>
   );
 };
