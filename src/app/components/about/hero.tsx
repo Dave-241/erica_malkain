@@ -83,7 +83,7 @@ const About_hero = () => {
   }, [width]);
   return (
     <>
-      <div className="w-full  md:py-[4vw] flex-col  md:px-[7vw]  md:gap-[3vw]  flex">
+      <div className="w-full  md:py-[4vw] gap-[10vw] pb-[10vw] flex-col px-[5%] md:px-[7vw]  md:gap-[3vw]  flex">
         <div className="overflow-hidden ">
           <h1
             style={{
@@ -102,33 +102,35 @@ const About_hero = () => {
               transition: "0.65s ease",
               transform: start_anime ? "translate(0,0)" : "translate(0%,100%)",
             }}
-            className={`${Helvetica_light.className}  md:text-[1.4vw] md:leading-[1.6vw]`}
+            className={`${Helvetica_light.className} text-[4vw] leading-[4.5vw] md:text-[1.4vw] md:leading-[1.6vw]`}
           >
             Educator, Scholar, <br /> Professor & Speaker
           </p>
         </div>
         <div
-          className="w-full   md:h-[250vh] border2  md:mt-[-10vh] flex items-start  relative "
+          className="w-full gap-[10vw]   md:h-[250vh]  md:flex-row flex-col md:mt-[-10vh] flex items-start  relative "
           ref={ref}
         >
-          <div className="w-full h-full  md:absolute top-0 left-0  flex items-end">
+          <div className="w-full  h-full   hidden md:absolute md:top-0 md:left-0  md:flex items-end">
             <div className="w-full md:h-[100vh]  flex justify-center items-center ">
               <Image
                 src={bg}
-                style={{ opacity: calWidth < 768 ? "" : bg_img_opacity }}
+                style={{ opacity: bg_img_opacity }}
                 alt="background"
-                className="md:w-[45vw] md:block hidden  h-fit"
+                className="md:w-[45vw]   h-fit"
               />
             </div>
           </div>
           <div
             style={{
               transform:
-                yvalue >= 50
+                calWidth < 760
+                  ? ""
+                  : yvalue >= 50
                   ? `translateX(${-50}%) `
                   : ` translateX(${yvalue}%)  `,
             }}
-            className="sticky top-0 left-[25%] z-[20]  md:w-[40%] h-[100vh] flex items-center"
+            className="md:sticky md:top-0 md:left-[25%] z-[20]  md:w-[40%] md:h-[100vh] flex items-center"
           >
             <div className="w-full md:h-[36vw] overflow-hidden relative ">
               <Image
@@ -136,27 +138,30 @@ const About_hero = () => {
                 style={{
                   opacity: calWidth < 768 ? "" : opac_one_img,
                   transition: "0.65s ease",
-                  transform: start_anime
-                    ? ""
-                    : "translateY(-50%) translateX(-50%)  scale(1.6)",
+                  transform:
+                    calWidth < 760
+                      ? ""
+                      : start_anime
+                      ? ""
+                      : "translateY(-50%) translateX(-50%)  scale(1.6)",
                   filter: start_anime ? "" : "blur(4px)",
                 }}
                 alt="Erica Boothby"
-                className="w-full absolute top-[50%] md:block hidden translate-x-[-50%] left-[50%] translate-y-[-50%] h-fit z-[10]"
+                className="w-full md:absolute md:top-[50%] border2  md:translate-x-[-50%] md:left-[50%] md:translate-y-[-50%] h-fit z-[10]"
               />
               <Image
                 src={hero2}
-                style={{ opacity: opac_two_img }}
+                style={{ opacity: calWidth < 768 ? "" : opac_two_img }}
                 alt="Erica Boothby"
-                className="w-full absolute top-[50%] translate-x-[-50%] left-[50%] translate-y-[-50%] h-fit "
+                className="w-full md:absolute md:top-[50%] border2 md:block hidden md:translate-x-[-50%] md:left-[50%] md:translate-y-[-50%] h-fit "
               />
             </div>
           </div>
 
           {/* <div className="  flex justify-end md:px-[10%]"> */}
-          <div className="flex flex-col  md:w-[60%] md:px-[6%] h-[100vh] justify-center  items-start md:gap-[2vw]">
+          <div className="flex flex-col   md:w-[60%] md:px-[6%] md:h-[100vh] justify-center  items-start md:gap-[2vw]">
             <p
-              className={`${Helvetica_light.className} md:text-[1.1vw] text-[black]`}
+              className={`${Helvetica_light.className} md:text-[1.1vw] text-center md:text-start text-[3.5vw] text-[#707270] md:text-[black]`}
             >
               Erica Boothby is a Researcher and Instructor in the Operations,
               Information, & Decisions Department at The Wharton School at the
@@ -164,7 +169,7 @@ const About_hero = () => {
               research examines peoples perceptions of what others think of
               them, including illusions and biases that interfere with social
               connection and interventions designed to improve peoples social
-              lives.
+              lives. {calWidth}
             </p>
 
             <Link
@@ -174,7 +179,7 @@ const About_hero = () => {
                 transform: start_anime ? "translate(0,0)" : "translate(0%,80%)",
               }}
               href={"/"}
-              className={` ${Helvetica_light.className} uppercase overflow-hidden  md:p-[0.5vw] group hover:[#103210]  hover:bg-[black] hover:bg-opacity-[20%]  md:rounded-[2vw] bg-[#440C0C] backdrop-blur-2xl bg-opacity-[20%] `}
+              className={` ${Helvetica_light.className} md:block hidden uppercase overflow-hidden  md:p-[0.5vw] group hover:[#103210]  hover:bg-[black] hover:bg-opacity-[20%]  md:rounded-[2vw] bg-[#440C0C] backdrop-blur-2xl bg-opacity-[20%] `}
             >
               <div className="w-full h-full bg-[#440C0C] group-hover:bg-[#103210] md:rounded-[1.7vw] flex justify-center items-center  md:py-[0.7vw] md:px-[1.5vw]">
                 <p className="inline-block md:text-[1vw] text-[white] group-hover:text-white">
@@ -188,7 +193,7 @@ const About_hero = () => {
 
         {/* the below content */}
         <p
-          className={`text-[#707270] md:text-[1.3vw] md:mt-[-2vw] md:px-[12vw] ${Helvetica_light.className} text-center`}
+          className={`text-[#707270] md:text-[1.3vw] md:mt-[-2vw] text-[3.5vw] md:px-[12vw] ${Helvetica_light.className} text-center`}
         >
           {" "}
           In 2022, she was awarded the American Psychological Societys Rising
