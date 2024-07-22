@@ -136,7 +136,7 @@ const Recent_publication = () => {
                 {/* first section which includes the s/n and also the title */}
 
                 <div
-                  className="w-full  research_initial py-[6vw] md:flex-row flex-col  gap-[3vw]  md:gap-[10vw] md:py-[1.2vw] border-opacity-[50%] flex justify-between   "
+                  className="w-full  research_initial py-[6vw] md:flex-row flex-col  gap-[5vw]  md:gap-[10vw] md:py-[1.2vw] border-opacity-[50%] flex justify-between   "
                   ref={(ref) => {
                     if (ref) {
                       itemsRefs.current[index] = ref;
