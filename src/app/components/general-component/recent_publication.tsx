@@ -88,11 +88,11 @@ const Recent_publication = () => {
 
   return (
     <>
-      <div className="w-full md:gap-[6vw] py-[15vw] flex px-[3%] md:px-[10vw] bg-[#D8DFD8] md:py-[5vw] flex-col">
+      <div className="w-full md:gap-[6vw] gap-[6vw] py-[15vw] flex px-[3.5%] md:px-[10vw] bg-[#D8DFD8] md:py-[5vw] flex-col">
         <h2
-          className={`text-[#5C3C43] md:text-[5vw] uppercase ${spline_font.className} font-medium `}
+          className={`text-[#5C3C43] md:text-[5vw] md:text-start text-center text-[10vw] leading-[10.5vw] border2 uppercase ${spline_font.className} font-medium `}
         >
-          Recent Publications
+          <span className="md:block hidden">Recent</span> Publications
         </h2>
 
         <div className="flex flex-col  gap-[5vw] md:gap-[2vw]">
