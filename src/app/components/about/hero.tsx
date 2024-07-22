@@ -210,6 +210,24 @@ const About_hero = () => {
           passionate about surfing, painting, playing the fiddle, and all things
           Italian.
         </p>
+
+        <div className="flex justify-center w-full md:hidden  ">
+          <Link
+            style={{
+              whiteSpace: "nowrap",
+              transition: "0.9s ease",
+              // transform: start_anime ? "translate(0,0)" : "translate(0%,80%)",
+            }}
+            href={"/"}
+            className={` ${Helvetica_light.className} uppercase overflow-hidden  md:p-[0.5vw] p-[2vw] rounded-[8vw] group hover:[#103210]  hover:bg-[black] hover:bg-opacity-[20%]  md:rounded-[2vw] bg-[#440C0C] backdrop-blur-2xl bg-opacity-[20%] w-fit  `}
+          >
+            <div className="w-full h-full bg-[#440C0C] group-hover:bg-[#103210] md:rounded-[1.7vw] rounded-[7vw] flex justify-center items-center py-[2.5vw] px-[8vw]  md:py-[0.7vw] md:px-[1.5vw]">
+              <p className="inline-block md:text-[1vw]  text-[3.5vw] text-[white] group-hover:text-white">
+                View CV
+              </p>
+            </div>
+          </Link>
+        </div>
       </div>
     </>
   );

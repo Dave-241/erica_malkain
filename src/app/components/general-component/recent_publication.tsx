@@ -88,14 +88,14 @@ const Recent_publication = () => {
 
   return (
     <>
-      <div className="w-full md:gap-[6vw]  md:flex hidden md:px-[10vw] bg-[#D8DFD8] md:py-[5vw] flex-col">
+      <div className="w-full md:gap-[6vw] py-[10vw] flex px-[3%] md:px-[10vw] bg-[#D8DFD8] md:py-[5vw] flex-col">
         <h2
           className={`text-[#5C3C43] md:text-[5vw] uppercase ${spline_font.className} font-medium `}
         >
           Recent Publications
         </h2>
 
-        <div className="flex flex-col md:gap-[2vw]">
+        <div className="flex flex-col  gap-[5vw] md:gap-[2vw]">
           {items.map((e: any, index: any) => {
             return (
               <div
@@ -107,11 +107,11 @@ const Recent_publication = () => {
                 onMouseEnter={() => setactive(index)}
                 onMouseLeave={() => setactive(null)}
                 className={`w-full overflow-hidden md:h-[37vw]  relative ${
-                  active == index ? "border-none" : ""
-                } flex-col flex justify-end     group border-b-[#565956] border-b-[0.1vw] `}
+                  active == index ? "md:border-none" : ""
+                } flex-col  flex justify-end      group border-b-[#565956] border-b-[0.1vw] `}
               >
                 <div
-                  className={` md:w-[46.5%]  flex justify-center items-center  ${
+                  className={` md:w-[46.5%]  flex justify-center  items-center  ${
                     active == index ? "md:bottom-0" : "md:bottom-[100%]"
                   } absolute md:h-[37vw] overflow-hidden md:rounded-[1vw]`}
                   style={{
@@ -136,7 +136,7 @@ const Recent_publication = () => {
                 {/* first section which includes the s/n and also the title */}
 
                 <div
-                  className="w-full  research_initial   md:gap-[10vw] md:py-[1.2vw] border-opacity-[50%] flex justify-between   "
+                  className="w-full  research_initial py-[6vw] md:flex-row flex-col  gap-[3vw]  md:gap-[10vw] md:py-[1.2vw] border-opacity-[50%] flex justify-between   "
                   ref={(ref) => {
                     if (ref) {
                       itemsRefs.current[index] = ref;
@@ -151,16 +151,16 @@ const Recent_publication = () => {
                       active == index
                         ? "md:translate-x-[160%] md:translate-y-[-130%]"
                         : ""
-                    } md:w-[35%] md:text-[1.2vw] items-center  ${
+                    } md:w-[35%] md:text-[1.2vw] text-[4.5vw] leading-[5vw] items-center  ${
                       Helvetica_medium.className
                     }`}
                   >
                     <h2 className={`text-[#000000]  uppercase`}>{e.title}</h2>
                   </div>
                   {/* this includes body  and arrow  */}
-                  <div className="flex md:gap-[1vw] md:w-[60%] justify-end items-center ">
+                  <div className="flex md:gap-[1vw] md:w-[60%] justify-between md:justify-end items-center ">
                     <p
-                      className={`text-[black] md:w-[80%] md:text-[1.1vw]  ${Helvetica_light.className}`}
+                      className={`text-[black] md:w-[80%] w-[90%] text-[3.5vw] leading-[4vw] md:text-[1.1vw]  ${Helvetica_light.className}`}
                     >
                       {e.body}
                       {/* 434543 */}
@@ -169,7 +169,7 @@ const Recent_publication = () => {
                     <Link
                       href={"/"}
                       style={{ whiteSpace: "nowrap" }}
-                      className={`flex justify-center bg-transparent items-center overflow-hidden border-opacity-[50%]  border-[black] border-[0.1vw] rounded-[100%]  md:w-[2.5vw] md:h-[2.5vw]  relative`}
+                      className={`flex justify-center bg-transparent  w-[10vw] h-[10vw] items-center overflow-hidden border-opacity-[50%]  border-[black] border-[0.1vw] rounded-[100%]  md:w-[2.5vw] md:h-[2.5vw]  relative`}
                     >
                       <Image
                         src={img_black}
