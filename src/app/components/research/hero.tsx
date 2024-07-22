@@ -8,6 +8,29 @@ import { useEffect, useRef, useState } from "react";
 import { useMotionValueEvent, useScroll, useTransform } from "framer-motion";
 
 const Research_hero = () => {
+  // this is to calculate for the width
+
+  const [calWidth, setCalWidth] = useState(0);
+  const width = globalThis.innerWidth;
+  const handleResize = () => {
+    setCalWidth(globalThis.innerWidth);
+  };
+
+  useEffect(() => {
+    window.addEventListener("resize", handleResize);
+
+    // Initial call to set the width on component mount
+    handleResize();
+
+    return () => {
+      window.removeEventListener("resize", handleResize);
+    };
+  }, [width]);
+
+  useEffect(() => {
+    handleResize();
+  }, [width]);
+
   const [start_anime, setstart_anime] = useState(false);
   useEffect(() => {
     setstart_anime(true);
@@ -19,27 +42,30 @@ const Research_hero = () => {
     target: ref,
     offset: ["end start", "end 110%"],
   });
-  const [yvalue, setyvalue] = useState(0);
+  const [yvalue, setyvalue] = useState(1);
 
   const y = useTransform(scrollYProgress, [0, 1], [1.4, 1]);
 
   useMotionValueEvent(y, "change", (latest) => {
     setyvalue(latest);
   });
+
+  // this is to calculate for the width
+
   return (
     <>
       <div
         ref={ref}
-        className="w-full md:flex flex-col hidden bg-[#908E8E]  items-center justify-end md:h-[55vw] relative overflow-hidden  md:gap-[1.1vw] md:pb-[7vw] md:px-[12vw]"
+        className="w-full flex flex-col  bg-[#908E8E]  items-center justify-end md:h-[55vw] h-[200vw] relative overflow-hidden  md:gap-[1.1vw] md:pb-[7vw] md:px-[12vw]"
       >
         <Image
           src={hero}
           alt="hero image"
-          className="absolute top-0 left-0 w-full h-fit"
+          className="absolute md:top-0 md:left-0 top-[50%] translate-x-[-50%] translate-y-[-50%] left-[50%] scale-[3] w-full h-fit"
           style={{
             transition: yvalue > 1 ? "" : "0.45s ease",
             opacity: start_anime ? 1 : 0,
-            scale: start_anime ? yvalue : 1.8,
+            scale: calWidth < 768 ? "" : start_anime ? yvalue : 1.8,
           }}
         />
         <div className="w-full h-full left-0 top-0 absolute bg-black bg-opacity-[43%]"></div>
