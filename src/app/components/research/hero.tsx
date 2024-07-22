@@ -56,12 +56,12 @@ const Research_hero = () => {
     <>
       <div
         ref={ref}
-        className="w-full flex flex-col  bg-[#908E8E]  items-center justify-end md:h-[55vw] h-[200vw] relative overflow-hidden  md:gap-[1.1vw] md:pb-[7vw] md:px-[12vw]"
+        className="w-full flex flex-col  bg-[#908E8E]  items-center justify-end md:h-[55vw] h-[200vw] relative overflow-hidden  md:gap-[1.1vw] md:pb-[7vw] gap-[4vw] md:px-[12vw] px-[3.5%]"
       >
         <Image
           src={hero}
           alt="hero image"
-          className="absolute md:top-0 md:left-0 top-[50%] translate-x-[-50%] translate-y-[-50%] left-[50%] scale-[3] w-full h-fit"
+          className="absolute md:top-0 md:left-0 top-[50%] translate-x-[-50%] translate-y-[-50%] left-[50%]  scale-[3] w-full h-fit"
           style={{
             transition: yvalue > 1 ? "" : "0.45s ease",
             opacity: start_anime ? 1 : 0,
@@ -76,7 +76,7 @@ const Research_hero = () => {
               transition: "0.5s ease",
               transform: start_anime ? "translate(0,0)" : "translate(0%,100%)",
             }}
-            className={`${spline_font.className} font-bold z-[10] text-[#DFE4DF] md:text-[7vw]  md:leading-[7vw]`}
+            className={`${spline_font.className} font-bold z-[10] text-[#DFE4DF] md:text-[7vw]  md:leading-[7vw]  text-[10vw] leading-[11vw]`}
           >
             RESEARCH OVERVIEW.
           </h1>
@@ -88,7 +88,7 @@ const Research_hero = () => {
               transition: "0.9s ease",
               transform: start_anime ? "translate(0,0)" : "translate(0%,100%)",
             }}
-            className={`text-[#DFE4DF] z-[10] md:text-[1.2vw]  ${Helvetica_light.className}`}
+            className={`text-[#DFE4DF] z-[10] md:text-[1.2vw] text-[4vw] leading-[4.8vw]  ${Helvetica_light.className}`}
           >
             Much of Erica{"'"}s research examines people{"'"}s beliefs about
             what others think of them (i.e., “metaperception”), starting with
@@ -110,10 +110,10 @@ const Research_hero = () => {
               transform: start_anime ? "translate(0,0)" : "translate(0%,80%)",
             }}
             href={"/"}
-            className="uppercase overflow-hidden  md:p-[0.5vw] group hover:[#103210]  hover:bg-[black] hover:bg-opacity-[20%]  md:rounded-[1.5vw] bg-[#440C0C] backdrop-blur-2xl bg-opacity-[20%] "
+            className="uppercase overflow-hidden  md:p-[0.5vw] p-[2vw] group hover:[#103210]  hover:bg-[black] hover:bg-opacity-[20%]  rounded-[8vw]  md:rounded-[1.5vw] bg-[#440C0C] backdrop-blur-2xl bg-opacity-[20%] "
           >
-            <div className="w-full h-full bg-[#440C0C] group-hover:bg-[#103210] md:rounded-[1.3vw] flex justify-center items-center  md:py-[0.7vw] md:px-[1.5vw]">
-              <p className="inline-block md:text-[1vw] text-[white] group-hover:text-white">
+            <div className="w-full h-full bg-[#440C0C] group-hover:bg-[#103210] md:rounded-[1.3vw]  rounded-[7vw] flex justify-center items-center  md:py-[0.7vw] md:px-[1.5vw] py-[2.5vw] px-[8vw]">
+              <p className="inline-block md:text-[1vw] text-[white] group-hover:text-white text-[3.5vw]">
                 View PUBLICATIONS
               </p>
             </div>
