@@ -88,7 +88,7 @@ const Recent_publication = () => {
 
   return (
     <>
-      <div className="w-full md:gap-[6vw] py-[10vw] flex px-[3%] md:px-[10vw] bg-[#D8DFD8] md:py-[5vw] flex-col">
+      <div className="w-full md:gap-[6vw] py-[15vw] flex px-[3%] md:px-[10vw] bg-[#D8DFD8] md:py-[5vw] flex-col">
         <h2
           className={`text-[#5C3C43] md:text-[5vw] uppercase ${spline_font.className} font-medium `}
         >

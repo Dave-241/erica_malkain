@@ -26,7 +26,7 @@ const Consulation_advert = () => {
     <>
       <div
         ref={ref}
-        className="w-full py-[5vw] md:py-[10vw] flex px-[5%]  justify-center items-center"
+        className="w-full py-[15vw] md:py-[10vw] flex px-[5%]  justify-center items-center"
       >
         <div className="md:w-[90vw] md:h-[40vw] rounded-[5vw]  overflow-hidden md:rounded-[1.5vw] flex md:flex-row flex-col">
           <div className="md:w-[50%] w-full md:h-full h-[75vw]  overflow-hidden relative">
