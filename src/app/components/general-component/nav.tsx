@@ -33,7 +33,7 @@ const Nav = () => {
   ];
   const items_right = [
     {
-      text: "about ",
+      text: "about me",
       link: "/about",
     },
     {
@@ -54,7 +54,7 @@ const Nav = () => {
   return (
     <>
       <nav
-        className={`${Bt_Beau_Regualr.className} flex  justify-between md:w-[80vw] w-full md:px-0 px-[3%] top-[3vw] z-[50]  items-center md:top-[2vw] fixed left-[50%] translate-x-[-50%]  `}
+        className={`${Bt_Beau_Regualr.className} flex  justify-between md:w-[80vw] w-full md:px-0 px-[3%] top-[5vw] z-[50]  items-center md:top-[2vw] fixed left-[50%] translate-x-[-50%]  `}
       >
         {/* desktop left section */}
         <div className=" md:flex hidden  ">
@@ -88,16 +88,16 @@ const Nav = () => {
         {/* this is mobile ham buger */}
         <button
           style={{ whiteSpace: "nowrap" }}
-          className={`uppercase overflow-hidden md:hidden inline-block bg-[white]   md:p-[0.4vw] p-[1vw] group hover:[#103210] duration-[1s] md:rounded-[1.5vw] rounded-[8vw]  backdrop-blur-2xl bg-opacity-[20%] `}
+          className={`uppercase overflow-hidden md:hidden inline-block bg-[white]   md:p-[0.4vw] p-[1.3vw] group hover:[#103210] duration-[1s] md:rounded-[1.5vw] rounded-[8vw]  backdrop-blur-2xl bg-opacity-[20%] `}
         >
           <div
-            className={`w-full h-full  bg-white group-hover:bg-white md:rounded-[1.3vw] rounded-[7vw] flex justify-center items-center  py-[2.5vw] px-[7vw]  md:py-[0.7vw] md:px-[1.5vw]`}
+            className={` bg-white group-hover:bg-white md:rounded-[1.3vw] rounded-[7vw] flex justify-center items-center   md:h-auto md:w-auto w-[25vw]  h-[10vw]   md:py-[0.7vw] md:px-[1.5vw]`}
           >
-            <p className="inline-block md:text-[0.8vw] text-[#103210] group-hover:text-[#440C0C] text-[3vw]">
+            <p className=" md:text-[0.8vw] text-[#103210] group-hover:text-[#440C0C] flex items-center justify-center gap-[10%] text-[3vw]">
               <Image
                 src={ham}
                 alt="hamburger img"
-                className="inline-flex w-[5vw] h-fit"
+                className=" w-[40%]  h-fit"
               />
               Menu
             </p>
@@ -115,12 +115,12 @@ const Nav = () => {
                   e.link == pathname
                     ? "md:bg-[white] bg-[#440C0C] "
                     : "md:bg-[white] bg-[#440C0C] "
-                }   md:p-[0.4vw] p-[1vw] group hover:[#103210] duration-[1s] md:rounded-[1.5vw] rounded-[8vw]  backdrop-blur-2xl bg-opacity-[20%] `}
+                }   md:p-[0.4vw] p-[1.3vw] group hover:[#103210] duration-[1s] md:rounded-[1.5vw] rounded-[8vw]  backdrop-blur-2xl bg-opacity-[20%] `}
               >
                 <div
-                  className={`w-full h-full  ${
+                  className={`  ${
                     e.link == pathname ? "bg-[#103210]" : "bg-[#440C0C] "
-                  } group-hover:bg-white md:rounded-[1.3vw] rounded-[7vw] flex justify-center items-center  py-[2.3vw] px-[7.5vw]  md:py-[0.7vw] md:px-[1.5vw]`}
+                  } group-hover:bg-white md:rounded-[1.3vw] rounded-[7vw] flex justify-center items-center  md:h-auto md:w-auto w-[25vw]  h-[10vw]  md:py-[0.7vw] md:px-[1.5vw]`}
                 >
                   <p className="inline-block md:text-[0.8vw] text-[white] group-hover:text-[#440C0C] text-[3vw]">
                     {e.text}
