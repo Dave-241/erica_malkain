@@ -11,7 +11,7 @@ const Publication_hero = () => {
   }, []);
   return (
     <>
-      <div className="w-full md:h-[3vw] h-[5vw] "></div>
+      <div className="w-full md:h-[3vw] h-[15vw] "></div>
       <div
         className={` ${spline_font.className}  font-bold w-full flex md:leading-[7.6vw] text-[12vw] min-h-[40vw] leading-[13vw] relative items-center px-[3%]  md:px-[10%] md:text-[7vw] text-[#440C0C] md:min-h-[20vw]`}
       >

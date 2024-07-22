@@ -83,7 +83,7 @@ const About_hero = () => {
   }, [width]);
   return (
     <>
-      <div className="w-full pt-[20vw]  md:py-[4vw] gap-[7vw] pb-[10vw] flex-col px-[3%] md:px-[7vw]  md:gap-[3vw]  flex">
+      <div className="w-full pt-[30vw]  md:py-[4vw] gap-[7vw] pb-[10vw] flex-col px-[3%] md:px-[7vw]  md:gap-[3vw]  flex">
         <div className="md:overflow-hidden  ">
           <h1
             style={{
