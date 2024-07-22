@@ -61,7 +61,7 @@ const Research_hero = () => {
         <Image
           src={hero}
           alt="hero image"
-          className="absolute md:top-0 md:left-0 top-[50%] translate-x-[-50%] translate-y-[-50%] left-[50%]  scale-[3] w-full h-fit"
+          className="absolute md:top-0 md:left-0 top-[50%] translate-x-[-50%] translate-y-[-50%]  md:translate-x-0 md:translate-y-0 left-[50%] md:scale-[1]  scale-[3] w-full h-fit"
           style={{
             transition: yvalue > 1 ? "" : "0.45s ease",
             opacity: start_anime ? 1 : 0,
@@ -88,7 +88,7 @@ const Research_hero = () => {
               transition: "0.9s ease",
               transform: start_anime ? "translate(0,0)" : "translate(0%,100%)",
             }}
-            className={`text-[#DFE4DF] z-[10] md:text-[1.2vw] text-[4vw] leading-[4.8vw]  ${Helvetica_light.className}`}
+            className={`text-[#DFE4DF] md:leading-[1.6vw] z-[10] md:text-[1.2vw] text-[4vw] leading-[4.8vw]  ${Helvetica_light.className}`}
           >
             Much of Erica{"'"}s research examines people{"'"}s beliefs about
             what others think of them (i.e., “metaperception”), starting with
@@ -107,7 +107,7 @@ const Research_hero = () => {
             style={{
               whiteSpace: "nowrap",
               transition: "0.9s ease",
-              transform: start_anime ? "translate(0,0)" : "translate(0%,80%)",
+              transform: start_anime ? "translate(0,0)" : "translate(0%,100%)",
             }}
             href={"/"}
             className="uppercase overflow-hidden  md:p-[0.5vw] p-[2vw] group hover:[#103210]  hover:bg-[black] hover:bg-opacity-[20%]  rounded-[8vw]  md:rounded-[1.5vw] bg-[#440C0C] backdrop-blur-2xl bg-opacity-[20%] "
@@ -129,7 +129,7 @@ const Research_hero = () => {
           A SCIENCE OF DATA & ANALYTICS
         </h2>
         <p
-          className={`${Helvetica_light.className} text-[#707270] text-[4vw] leading-[5vw] md:text-[1.2vw]`}
+          className={`${Helvetica_light.className} text-[#707270] text-[4vw] leading-[5vw] md:text-[1.2vw] md:leading-[1.8vw]`}
         >
           Beliefs about whether our colleagues like us affect our sense of
           belonging in the workplace and how psychologically safe we feel.

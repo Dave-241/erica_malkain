@@ -39,62 +39,81 @@ const Each_research = () => {
 
   return (
     <>
-      {items.map((e: any, index: any) => {
-        return (
-          <div
-            key={index}
-            className="w-full border-t border-[#9CA09C] md:py-[5vw] md:gap-[6vw] md:flex hidden justify-center items-start"
-          >
-            {/* the details */}
-            <div className="  overflow-hidden">
-              <div
-                ref={(ref) => {
-                  if (ref) {
-                    itemsRefs.current[index] = ref;
-                  }
-                }}
-                className="w-[22vw]  research_initial flex flex-col md:gap-[1vw]"
-              >
-                <h3
-                  className={`${spline_font.className}  md:text-[2vw]  font-medium md:leading-[2.2vw]`}
+      <div className="w-full flex flex-col md:gap-0 gap-[7.5vw]  md:px-0 px-[3%]">
+        {items.map((e: any, index: any) => {
+          return (
+            <div
+              key={index}
+              className="w-full border-t border-[#9CA09C] md:py-[5vw] md:gap-[6vw] flex  justify-center md:rounded-none rounded-[5vw] overflow-hidden md:bg-transparent bg-[#F2F2F0] md:flex-row flex-col items-start px-[4%] py-[6%] gap-[3vw]"
+            >
+              {/* the details */}
+              <div className="  overflow-hidden">
+                <div
+                  ref={(ref) => {
+                    if (ref) {
+                      itemsRefs.current[index] = ref;
+                    }
+                  }}
+                  className="md:w-[22vw] w-full  research_initial flex flex-col md:gap-[1vw] gap-[3vw]"
                 >
-                  Do we know what people think of us?
-                </h3>
-                <p
-                  className={`${Helvetica_light.className} md:text-[1vw] text-[#707270] `}
-                >
-                  Beliefs about whether our colleagues like us affect our sense
-                  of belonging in the workplace and how{" "}
-                </p>
-                <Link
-                  href={"/"}
-                  className={`uppercase md:w-[8.6vw] md:h-[2.9vw] md:rounded-[2vw] flex md:text-[1.1vw]  group overflow-hidden relative items-center justify-center  ${Helvetica_light.className} bg-white uppercase`}
-                >
-                  <p
-                    style={{ transition: "0.5s ease" }}
-                    className="group-hover:text-white text-[#000000] z-[10] "
+                  <h3
+                    className={`${spline_font.className} uppercase  md:text-[2vw]  font-medium md:leading-[2.2vw] text-[7vw] leading-[7.8vw]`}
                   >
-                    Read more
+                    Do we know what people think of us?
+                  </h3>
+                  <p
+                    className={`${Helvetica_light.className} md:text-[1vw] text-[#707270] text-[4vw] leading-[4.8vw] md:leading-[1.3vw]`}
+                  >
+                    Beliefs about whether our colleagues like us affect our
+                    sense of belonging in the workplace and how{" "}
                   </p>
+                  <Link
+                    href={"/"}
+                    className={`uppercase md:w-[8.6vw] md:h-[2.9vw] md:rounded-[2vw]  md:text-[1.1vw]  group overflow-hidden relative items-center justify-center  ${Helvetica_light.className} bg-white uppercase md:flex hidden `}
+                  >
+                    <p
+                      style={{ transition: "0.5s ease" }}
+                      className="group-hover:text-white text-[#000000] z-[10] "
+                    >
+                      Read more
+                    </p>
 
-                  <div
-                    className="w-full h-full bg-[#440C0C] absolute left-0 top-[100%] group-hover:top-0 "
-                    style={{ transition: "0.5s ease" }}
-                  ></div>
-                </Link>
+                    <div
+                      className="w-full h-full bg-[#440C0C] absolute left-0 top-[100%] group-hover:top-0 "
+                      style={{ transition: "0.5s ease" }}
+                    ></div>
+                  </Link>
+                </div>
               </div>
+              {/* the picture */}
+              <div className="md:w-[45vw]  ">
+                <Image
+                  src={example}
+                  alt="example blog"
+                  className="w-full h-fit md:rounded-none rounded-[3vw]"
+                />
+              </div>
+
+              <Link
+                href={"/"}
+                className={`uppercase w-full h-[12vw] border-[#440C0C] border md:rounded-[2vw] flex md:hidden md:text-[1.1vw]  group overflow-hidden relative items-center text-[#440C0C] rounded-[5vw] justify-center  ${Helvetica_light.className} bg-[#FEF6F6] uppercase`}
+              >
+                <p
+                  style={{ transition: "0.5s ease" }}
+                  className="group-hover:text-white  text-[#000000] z-[10] "
+                >
+                  Read more
+                </p>
+
+                <div
+                  className="w-full h-full bg-[#440C0C] absolute left-0 top-[100%] group-hover:top-0 "
+                  style={{ transition: "0.5s ease" }}
+                ></div>
+              </Link>
             </div>
-            {/* the picture */}
-            <div className="md:w-[45vw] ">
-              <Image
-                src={example}
-                alt="example blog"
-                className="w-full h-fit"
-              />
-            </div>
-          </div>
-        );
-      })}
+          );
+        })}
+      </div>
     </>
   );
 };
