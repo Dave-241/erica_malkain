@@ -56,7 +56,7 @@ const Research_hero = () => {
     <>
       <div
         ref={ref}
-        className="w-full flex flex-col  bg-[#908E8E]  items-center justify-end md:h-[55vw] h-[200vw] relative overflow-hidden  md:gap-[1.1vw] md:pb-[7vw] gap-[4vw] md:px-[12vw] pb-[10vw] px-[3.5%]"
+        className="w-full flex flex-col  bg-[#908E8E]  items-center justify-end md:h-[55vw] h-[180vw] relative overflow-hidden  md:gap-[1.1vw] md:pb-[7vw] gap-[4vw] md:px-[12vw] pb-[12vw] px-[3.5%]"
       >
         <Image
           src={hero}
@@ -122,7 +122,7 @@ const Research_hero = () => {
       </div>
 
       {/* second section */}
-      <div className="w-full  md:px-[12vw] px-[4%] py-[15vw] gap-[8vw] flex-col flex  md:gap-[2vw] md:py-[7vw] ">
+      <div className="w-full  md:px-[12vw] px-[4%] py-[20vw] gap-[8vw] flex-col flex  md:gap-[2vw] md:py-[7vw] ">
         <h2
           className={`md:text-[5vw]  md:leading-[5vw] ${spline_font.className} text-[#1E1E1E] md:font-light font-medium text-[10vw] leading-[11vw]`}
         >
