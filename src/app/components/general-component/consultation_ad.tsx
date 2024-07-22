@@ -15,7 +15,7 @@ const Consulation_advert = () => {
     target: ref,
     offset: ["0% 0%", "100% end"], // Start when the container starts entering, end when the entire container is in the viewport
   });
-  const [bg_img, setbg_img] = useState(0);
+  const [bg_img, setbg_img] = useState(1.1);
 
   const bg_img_value = useTransform(scrollYProgress1, [0, 1], [1.1, 1]);
   useMotionValueEvent(bg_img_value, "change", (latest) => {
