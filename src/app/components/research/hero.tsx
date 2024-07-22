@@ -122,14 +122,14 @@ const Research_hero = () => {
       </div>
 
       {/* second section */}
-      <div className="w-full  md:px-[12vw]  flex-col md:flex hidden md:gap-[2vw] md:py-[7vw] ">
+      <div className="w-full  md:px-[12vw] px-[4%] py-[15vw] gap-[8vw] flex-col flex  md:gap-[2vw] md:py-[7vw] ">
         <h2
-          className={`md:text-[5vw]  md:leading-[5vw] ${spline_font.className} text-[#1E1E1E] font-light`}
+          className={`md:text-[5vw]  md:leading-[5vw] ${spline_font.className} text-[#1E1E1E] md:font-light font-medium text-[10vw] leading-[11vw]`}
         >
           A SCIENCE OF DATA & ANALYTICS
         </h2>
         <p
-          className={`${Helvetica_light.className} text-[#707270] md:text-[1.2vw]`}
+          className={`${Helvetica_light.className} text-[#707270] text-[4vw] leading-[5vw] md:text-[1.2vw]`}
         >
           Beliefs about whether our colleagues like us affect our sense of
           belonging in the workplace and how psychologically safe we feel.
