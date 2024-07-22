@@ -56,7 +56,7 @@ const Research_hero = () => {
     <>
       <div
         ref={ref}
-        className="w-full flex flex-col  bg-[#908E8E]  items-center justify-end md:h-[55vw] h-[200vw] relative overflow-hidden  md:gap-[1.1vw] md:pb-[7vw] gap-[4vw] md:px-[12vw] px-[3.5%]"
+        className="w-full flex flex-col  bg-[#908E8E]  items-center justify-end md:h-[55vw] h-[200vw] relative overflow-hidden  md:gap-[1.1vw] md:pb-[7vw] gap-[4vw] md:px-[12vw] pb-[10vw] px-[3.5%]"
       >
         <Image
           src={hero}
