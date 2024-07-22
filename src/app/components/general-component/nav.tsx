@@ -4,6 +4,8 @@ import { Bt_Beau_Regualr } from "@/app/utils/fonts";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { useEffect } from "react";
+import ham from "../../../../public/images/general/ham.png";
+import Image from "next/image";
 
 const Nav = () => {
   const items = [
@@ -34,6 +36,10 @@ const Nav = () => {
       text: "about ",
       link: "/about",
     },
+    {
+      text: "contact ",
+      link: "/contact",
+    },
   ];
 
   const pathname = usePathname();
@@ -48,10 +54,10 @@ const Nav = () => {
   return (
     <>
       <nav
-        className={`${Bt_Beau_Regualr.className} md:flex hidden justify-between md:w-[80vw] z-[50]  items-center md:top-[2vw] fixed left-[50%] translate-x-[-50%]  `}
+        className={`${Bt_Beau_Regualr.className} flex  justify-between md:w-[80vw] w-full md:px-0 px-[3%] top-[3vw] z-[50]  items-center md:top-[2vw] fixed left-[50%] translate-x-[-50%]  `}
       >
         {/* desktop left section */}
-        <div className=" flex">
+        <div className=" md:flex hidden  ">
           {items.map((e: any, index: any) => {
             return (
               <Link
@@ -79,7 +85,26 @@ const Nav = () => {
             );
           })}
         </div>
-        <div className=" flex">
+        {/* this is mobile ham buger */}
+        <button
+          style={{ whiteSpace: "nowrap" }}
+          className={`uppercase overflow-hidden md:hidden inline-block bg-[white]   md:p-[0.4vw] p-[1vw] group hover:[#103210] duration-[1s] md:rounded-[1.5vw] rounded-[8vw]  backdrop-blur-2xl bg-opacity-[20%] `}
+        >
+          <div
+            className={`w-full h-full  bg-white group-hover:bg-white md:rounded-[1.3vw] rounded-[7vw] flex justify-center items-center  py-[2.5vw] px-[7vw]  md:py-[0.7vw] md:px-[1.5vw]`}
+          >
+            <p className="inline-block md:text-[0.8vw] text-[#103210] group-hover:text-[#440C0C] text-[3vw]">
+              <Image
+                src={ham}
+                alt="hamburger img"
+                className="inline-flex w-[5vw] h-fit"
+              />
+              Menu
+            </p>
+          </div>
+        </button>
+
+        <div className=" flex ">
           {items_right.map((e: any, index: any) => {
             return (
               <Link
@@ -87,15 +112,17 @@ const Nav = () => {
                 style={{ whiteSpace: "nowrap" }}
                 key={index}
                 className={`uppercase overflow-hidden  ${
-                  e.link == pathname ? "bg-[white]" : "bg-[white]"
-                }   md:p-[0.4vw] group hover:[#103210] duration-[1s] md:rounded-[1.5vw]   backdrop-blur-2xl bg-opacity-[20%] `}
+                  e.link == pathname
+                    ? "md:bg-[white] bg-[#440C0C] "
+                    : "md:bg-[white] bg-[#440C0C] "
+                }   md:p-[0.4vw] p-[1vw] group hover:[#103210] duration-[1s] md:rounded-[1.5vw] rounded-[8vw]  backdrop-blur-2xl bg-opacity-[20%] `}
               >
                 <div
                   className={`w-full h-full  ${
                     e.link == pathname ? "bg-[#103210]" : "bg-[#440C0C] "
-                  } group-hover:bg-white md:rounded-[1.3vw] flex justify-center items-center  md:py-[0.7vw] md:px-[1.5vw]`}
+                  } group-hover:bg-white md:rounded-[1.3vw] rounded-[7vw] flex justify-center items-center  py-[2.3vw] px-[7.5vw]  md:py-[0.7vw] md:px-[1.5vw]`}
                 >
-                  <p className="inline-block md:text-[0.8vw] text-[white] group-hover:text-[#440C0C]">
+                  <p className="inline-block md:text-[0.8vw] text-[white] group-hover:text-[#440C0C] text-[3vw]">
                     {e.text}
                   </p>
                 </div>
