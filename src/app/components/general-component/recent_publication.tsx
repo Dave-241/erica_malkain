@@ -90,9 +90,9 @@ const Recent_publication = () => {
     <>
       <div className="w-full md:gap-[6vw] gap-[6vw] py-[15vw] flex px-[3.5%] md:px-[10vw] bg-[#D8DFD8] md:py-[5vw] flex-col">
         <h2
-          className={`text-[#5C3C43] md:text-[5vw] md:text-start text-center text-[10vw] leading-[10.5vw] border2 uppercase ${spline_font.className} font-medium `}
+          className={`text-[#5C3C43] md:text-[5vw] md:text-start text-center text-[10vw] md:leading-[6vw] leading-[10.5vw]  uppercase ${spline_font.className} font-medium `}
         >
-          <span className="md:block hidden">Recent</span> Publications
+          <span className="md:inline-block hidden">Recent</span> Publications
         </h2>
 
         <div className="flex flex-col  gap-[5vw] md:gap-[2vw]">
@@ -147,11 +147,11 @@ const Recent_publication = () => {
                     style={{
                       transition: "0.5s ease",
                     }}
-                    className={`flex md:gap-[2vw] h-full  ${
+                    className={`flex md:gap-[2vw] h-full  md:h-fit  ${
                       active == index
                         ? "md:translate-x-[160%] md:translate-y-[-130%]"
                         : ""
-                    } md:w-[35%] md:text-[1.2vw] text-[4.5vw] leading-[5vw] items-center  ${
+                    } md:w-[35%] md:text-[1.2vw] text-[4.5vw] md:leading-[1.8vw] leading-[5vw] items-center  ${
                       Helvetica_medium.className
                     }`}
                   >
@@ -160,7 +160,7 @@ const Recent_publication = () => {
                   {/* this includes body  and arrow  */}
                   <div className="flex md:gap-[1vw] md:w-[60%] justify-between md:justify-end items-center ">
                     <p
-                      className={`text-[black] md:w-[80%] w-[90%] text-[3.5vw] leading-[4vw] md:text-[1.1vw]  ${Helvetica_light.className}`}
+                      className={`text-[black] md:w-[80%] w-[90%] text-[3.5vw] md:leading-[1.5vw] leading-[4.15vw] md:text-[1.1vw]  ${Helvetica_light.className}`}
                     >
                       {e.body}
                       {/* 434543 */}
