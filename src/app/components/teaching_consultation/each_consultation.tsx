@@ -200,7 +200,7 @@ const Each_consultation = () => {
           height:
             calwidth > 768
               ? `${data_array.length * 100}vh`
-              : `${data_array.length * 120}vh`,
+              : `${data_array.length * 110}vh`,
         }}
         ref={sectionRef}
       >
@@ -217,7 +217,7 @@ const Each_consultation = () => {
             return (
               <div
                 key={index}
-                className={` absolute top-[50%] translate-x-[-50%] left-[50%] translate-y-[-50%]  w-full md:gap-[4vw] flex flex-col justify-center items-center  h-full  overflow-hidden   `}
+                className={` absolute top-[50%] translate-x-[-50%] left-[50%] translate-y-[-50%]  w-full md:gap-[4vw] flex flex-col justify-center items-center gap-[10vw] h-full  overflow-hidden   `}
                 style={{
                   transition: "opacity 0.6s ease",
                   backgroundColor: e.bg,
@@ -250,14 +250,14 @@ const Each_consultation = () => {
                     read_more={e.link}
                   />
                 )}
-                <div className="flex md:px-[10vw] justify-between w-full ">
+                <div className="flex md:px-[10vw] px-[5%] md:flex-row flex-col  md:justify-between w-full md:gap-0 gap-[10vw] ">
                   {/* the left section */}
                   <div
                     className="flex  flex-col  md:w-[30vw] md:gap-[4vw]"
                     style={{ backgroundColor: e.bg }}
                   >
                     <h2
-                      className={` ${spline_font.className} font-semibold md:text-[4vw] md:leading-[4.4vw]`}
+                      className={` ${spline_font.className} font-semibold md:text-[4vw] md:leading-[4.4vw] text-[10vw] leading-[11vw]`}
                       style={{ color: e.text }}
                     >
                       {e.heading}
@@ -266,20 +266,20 @@ const Each_consultation = () => {
                     <Image
                       src={e.img}
                       alt={e.heading}
-                      className="w-full h-fit md:rounded-[6vw]"
+                      className="w-full md:inline-block hidden h-fit md:rounded-[6vw]"
                     />
                   </div>
 
                   {/* now the writing  */}
-                  <div className=" md:w-[30vw] flex flex-col md:gap-[2vw]">
+                  <div className=" md:w-[30vw] gap-[3vw] flex flex-col md:gap-[2vw]">
                     <p
-                      className={` ${Helvetica_light.className} border-l-[0.3vw] border-[white] md:pl-[1vw] md:py-[1vw] text-[white] md:text-[1vw] [&_a]:underline underline-offset-4`}
+                      className={` ${Helvetica_light.className} md:border-l-[0.3vw] text-[3.5vw] pl-[3vw] border-l-[1.2vw] py-[3vw] border-[white] md:pl-[1vw] md:py-[1vw] text-[white] md:text-[1vw] [&_a]:underline underline-offset-4`}
                       dangerouslySetInnerHTML={{ __html: e.body }}
                     ></p>
 
                     <Link
                       href={e.link}
-                      className={` ${Bt_Beau_Regualr.className} md:text-[1vw] md:w-[10vw] flex justify-center items-center md:h-[2.6vw]  border-[white] border-[0.1vw] md:rounded-[3.7vw]  md:ml-[1vw] group relative overflow-hidden`}
+                      className={` ${Bt_Beau_Regualr.className} md:text-[1vw] md:w-[10vw] w-[40vw] h-[10vw] ml-[5vw] flex justify-center items-center md:h-[2.6vw]  border-[white] border-[0.1vw] md:rounded-[3.7vw]  md:ml-[1vw] group relative overflow-hidden rounded-[3vw]`}
                     >
                       <p
                         style={{ transition: "0.5s ease" }}
@@ -301,15 +301,24 @@ const Each_consultation = () => {
                     </Link>
                   </div>
                 </div>
+
+                {/* this image is for mobile */}
+                <div className="md:hidden px-[5%]">
+                  <Image
+                    src={e.img}
+                    alt={e.heading}
+                    className="w-full   h-fit rounded-[10vw]"
+                  />
+                </div>
                 {/* institue and location segment */}
                 <div
-                  className={` ${Bt_Beau_Regualr.className} w-full border-y border-[white]  md:py-[1.6vw] flex justify-center items-center md:gap-[4vw] text-white text-opacity-[100%] md:text-[1.1vw] md:px-[10vw]`}
+                  className={` ${Bt_Beau_Regualr.className} w-full border-y border-[white]  md:py-[1.6vw] flex justify-center items-center md:gap-[4vw] text-white text-opacity-[100%] md:text-[1.1vw] text-[4vw]  md:px-[10vw] px-[5%] gap-[3vw] py-[7vw]`}
                 >
                   <p className="" style={{ whiteSpace: "nowrap" }}>
                     {e.institue}
                   </p>
-                  <div className="w-full relative md:h-[0.1vw] bg-[white]  flex justify-end items-center">
-                    <div className="md:w-[0.4vw] md:h-[0.4vw] rounded-[100%] bg-[white]   "></div>
+                  <div className="w-full relative h-[0.5vw] md:h-[0.1vw] bg-[white]  flex justify-end items-center">
+                    <div className="md:w-[0.4vw] w-[1vw] h-[1vw] md:h-[0.4vw] rounded-[100%] bg-[white]   "></div>
                   </div>
                   <p className="" style={{ whiteSpace: "nowrap" }}>
                     ({e.year})
