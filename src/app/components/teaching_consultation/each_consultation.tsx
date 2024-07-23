@@ -217,7 +217,7 @@ const Each_consultation = () => {
             return (
               <div
                 key={index}
-                className={` absolute top-[50%] translate-x-[-50%] left-[50%] translate-y-[-50%]  w-full md:gap-[4vw] flex flex-col justify-center items-center gap-[10vw] h-full  overflow-hidden   `}
+                className={` absolute top-[50%] translate-x-[-50%] left-[50%] translate-y-[-50%]  w-full md:gap-[4vw] flex flex-col justify-center items-center gap-[7vw] h-full  overflow-hidden   `}
                 style={{
                   transition: "opacity 0.6s ease",
                   backgroundColor: e.bg,
@@ -250,7 +250,7 @@ const Each_consultation = () => {
                     read_more={e.link}
                   />
                 )}
-                <div className="flex md:px-[10vw] px-[5%] md:flex-row flex-col  md:justify-between w-full md:gap-0 gap-[10vw] ">
+                <div className="flex md:px-[10vw] px-[5%] md:flex-row flex-col  md:justify-between w-full md:gap-0 gap-[7vw] ">
                   {/* the left section */}
                   <div
                     className="flex  flex-col  md:w-[30vw] md:gap-[4vw]"
@@ -312,7 +312,7 @@ const Each_consultation = () => {
                 </div>
                 {/* institue and location segment */}
                 <div
-                  className={` ${Bt_Beau_Regualr.className} w-full border-y border-[white]  md:py-[1.6vw] flex justify-center items-center md:gap-[4vw] text-white text-opacity-[100%] md:text-[1.1vw] text-[4vw]  md:px-[10vw] px-[5%] gap-[3vw] py-[7vw]`}
+                  className={` ${Bt_Beau_Regualr.className} w-full border-y border-[white]  md:py-[1.6vw] flex justify-center items-center md:gap-[4vw] text-white text-opacity-[100%] md:text-[1.1vw] text-[3.5vw]  md:px-[10vw] px-[5%] gap-[3vw] py-[3vw]`}
                 >
                   <p className="" style={{ whiteSpace: "nowrap" }}>
                     {e.institue}
