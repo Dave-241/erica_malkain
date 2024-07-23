@@ -18,7 +18,7 @@ const Recent_media = () => {
       img: example,
       link: "/",
       caption:
-        "Professor Erica Boothbys graduate seminar on the Ethica Implications of AI was both thought-provoking and enlightening",
+        "Professor Erica Boothbys graduate seminar on the Ethica Implications of AI was both thought-provoking and enlightening ",
     },
     {
       img: example,
@@ -41,48 +41,74 @@ const Recent_media = () => {
     <>
       <div
         ref={ref}
-        className="w-full md:px-[10vw] bg-[#D8DFD8]  md:gap-[2.3vw] md:flex md:py-[7vw] hidden flex-col"
+        className="w-full md:px-[10vw] bg-[#D8DFD8]  md:gap-[2.3vw] flex md:py-[7vw]  flex-col overflow-hidden gap-[10vw] py-[15vw]"
       >
         <h1
-          className={`text-[#5C3C43] uppercase md:text-[4vw] ${spline_font.className} font-medium`}
+          className={`text-[#5C3C43] uppercase md:text-[4vw] ${spline_font.className} font-medium md:text-start text-center  md:leading-[5.3vw] text-[10vw] leading-[11.5vw]`}
         >
           Recent Media
         </h1>
 
-        <div className="w-full flex md:gap-[1.5vw] overflow-hidden ">
-          {items.map((internal: any, index: any) => {
-            return (
+        <div className="w-full relative  overflow-hidden">
+          <div
+            className=" flex md:flex-nowrap
+        overflow-x-auto md:overflow-x-visible
+        snap-x snap-mandatory md:snap-none
+        scrollbar-hide  md:scrollbar-default
+        md:justify-center
+        gap-[5%] md:gap-[1.5vw]
+        px-[5%] pb-[10vw] md:pb-0 md:px-0"
+          >
+            {items.map((internal, index) => (
               <Link
-                style={{ transition: `${(index + 1) / 2}s ease` }}
                 href={internal.link}
                 key={index}
-                className={`md:w-[30.6vw] ${
-                  start_anime ? "research_comeup" : "research_initial"
-                }  md:rounded-[1.5vw] flex flex-col md:p-[0.3vw] group md:mt-[0.4vw] bg-white`}
+                style={{ transition: `${(index + 1) / 2}s ease` }}
+                className={`
+             flex-none md:flex-auto
+              w-[80vw] md:w-[33.6vw]
+              ${start_anime ? "research_comeup" : "research_initial"}
+              flex flex-col
+              rounded-[5vw] md:rounded-[1.5vw]
+              p-[1.5vw] md:p-[0.3vw]
+             
+              snap-center
+              group
+              bg-white
+            `}
               >
-                <div className="overflow-hidden md:rounded-[1.5vw]">
+                <div className="overflow-hidden rounded-[4vw] md:rounded-[1.5vw]">
                   <Image
                     src={internal.img}
                     alt={internal.caption}
                     style={{ transition: "0.8s ease" }}
-                    className="w-full scale-[1.1] group-hover:scale-[1] h-fit"
+                    className="w-full scale-[1.1] group-hover:scale-[1] h-auto"
                   />
                 </div>
 
-                <div className="overflow-hidden">
+                <div className="">
                   <p
-                    className={` md:p-[1.5vw]   ${spline_font.className} font-bold md:text-[1vw]`}
+                    className={`
+                p-[3vw] md:p-[1.5vw]
+                ${spline_font.className}
+                font-bold
+                text-[4vw] md:text-[1vw]
+                leading-[5vw] md:leading-[1.4vw]
+              `}
                   >
                     {internal.caption}
                   </p>
                 </div>
               </Link>
-            );
-          })}
+            ))}
+          </div>
         </div>
 
         {/* the see all btn */}
-        <div className="w-full flex justify-center">
+        <div
+          className="w-full md:mt-0
+         mt-[-7vw] flex justify-center"
+        >
           <Link
             style={{
               whiteSpace: "nowrap",
@@ -90,10 +116,10 @@ const Recent_media = () => {
               // transform: start_anime ? "translate(0,0)" : "translate(0%,80%)",
             }}
             href={"/"}
-            className={` ${Helvetica_light.className} uppercase overflow-hidden  md:p-[0.5vw] w-fit group hover:[#103210]  hover:bg-[black] hover:bg-opacity-[20%]  md:rounded-[2vw] bg-[black] backdrop-blur-2xl bg-opacity-[20%] `}
+            className={` ${Helvetica_light.className} uppercase overflow-hidden  md:p-[0.5vw] p-[2vw] rounded-[8vw] w-fit group hover:[#103210]  hover:bg-[black] hover:bg-opacity-[20%]  md:rounded-[2vw] bg-[black] backdrop-blur-2xl bg-opacity-[20%] `}
           >
-            <div className="w-full h-full bg-[#440C0C] group-hover:bg-[#103210] md:rounded-[1.7vw] flex justify-center items-center  md:py-[0.7vw] md:px-[1.5vw]">
-              <p className="inline-block md:text-[1vw] text-[white] group-hover:text-white">
+            <div className="w-full h-full bg-[#440C0C] group-hover:bg-[#103210] md:rounded-[1.7vw] rounded-[7vw] flex justify-center items-center   py-[2.5vw] px-[8vw] md:py-[0.7vw] md:px-[1.5vw]">
+              <p className="inline-block md:text-[1vw] text-[white] group-hover:text-white text-[3.5vw]">
                 see all
               </p>
             </div>
