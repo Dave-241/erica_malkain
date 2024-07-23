@@ -78,13 +78,13 @@ const Workshop_ad = () => {
     <>
       {/* the wrapper */}
       <div
-        className="w-full  flex items-end h-[300vh] md:h-[300vh] bg-[#DFE4DF] relative"
+        className="w-full   flex items-end h-[300vh] md:h-[300vh] bg-[#DFE4DF] relative"
         ref={sectionRef}
         style={{ height: `${data_array.length * 110}vh ` }}
       >
         <div className="flex justify-center items-center   sticky bottom-0 h-[100vh] bg-[#DFE4DF] w-full ">
           {/* the customize scroll bar starts */}
-          <div className="absolute md:right-[3vw] z-[10] border-[#0e257756]  flex w-[2%] right-[1.5%]  top-[50%] translate-y-[-50%] md:w-[0.6vw] rounded-[3vw]  lg:h-[25vw] md:h-[30vw] h-[140vw] bg-[white]   overflow-hidden">
+          <div className="absolute md:right-[3vw] z-[10] border-[#0e257756]  flex w-[1%] right-[1.5%]  top-[50%] translate-y-[-50%] md:w-[0.6vw] rounded-[3vw]  lg:h-[25vw] md:h-[30vw] h-[140vw] bg-[white]   overflow-hidden">
             <div
               className="w-full rounded-[3vw] bg-[#103210]"
               style={{ height: `${height * 10}%` }}
@@ -93,7 +93,7 @@ const Workshop_ad = () => {
 
           {/* the heading text */}
           <h1
-            className={`text-[#5C3C43] absolute left-[20%] top-[22%] translate-x-[-50%] translate-y-[-80%] z-[10] uppercase md:text-[4vw] ${spline_font.className} font-medium`}
+            className={`text-[#5C3C43] absolute md:left-[20%] left-[50%] md:top-[22%] top-[15%] text-[10vw]  translate-x-[-50%] translate-y-[-80%] z-[10] uppercase md:text-[4vw] ${spline_font.className} font-medium`}
           >
             workshop
           </h1>
@@ -102,7 +102,7 @@ const Workshop_ad = () => {
             return (
               <div
                 key={index}
-                className={` absolute top-[50%] translate-x-[-50%] left-[50%]   md:w-[90vw] w-[90%] h-[150vw] md:h-[30vw] lg:h-[25vw] md:rounded-[2vw]  overflow-hidden rounded-[7.5vw]   flex   justify-between items-center  text-white`}
+                className={` absolute top-[50%] translate-x-[-50%] left-[50%]   md:w-[90vw] w-[95%] h-[140vw] md:h-[30vw] lg:h-[25vw] md:rounded-[2vw]  overflow-hidden rounded-[7.5vw]   flex   justify-between items-center md:flex-row flex-col text-white`}
                 style={{
                   backgroundColor: e.bg,
                   transition: "opacity 0.6s ease, filter  jjj0.6s ease",
@@ -143,16 +143,16 @@ const Workshop_ad = () => {
                       : "",
                 }}
               >
-                <div className="w-[50%] h-full   relative">
+                <div className="md:w-[50%] md:h-full h-[50%]  w-full   relative">
                   <Image
                     src={e.img}
                     alt={e.heading}
                     className="absolute absolute_center   w-full h-full"
                   />
                 </div>
-                <div className="w-[50%] h-full  md:px-[5%] justify-center  flex flex-col md:gap-[1.5vw]">
+                <div className="md:w-[50%]  md:h-full h-[50%] w-full px-[5%] md:px-[5%] justify-center gap-[7vw] flex flex-col md:gap-[1.5vw]">
                   <h4
-                    className={`md:text-[2.5vw] ${Helvetica_bold.className} text-[#000000] md:leading-[2.8vw]`}
+                    className={`md:text-[2.5vw] text-[6vw] leading-[7.3vw] ${Helvetica_bold.className} text-[#000000] md:leading-[2.8vw]`}
                   >
                     {e.heading}
                   </h4>
@@ -164,10 +164,10 @@ const Workshop_ad = () => {
                       // transform: start_anime ? "translate(0,0)" : "translate(0%,80%)",
                     }}
                     href={"/"}
-                    className={` ${Helvetica_light.className} uppercase overflow-hidden  md:p-[0.5vw] w-fit group hover:[#103210]  hover:bg-[black] hover:bg-opacity-[20%]  md:rounded-[2vw] bg-[black] backdrop-blur-2xl bg-opacity-[20%] `}
+                    className={` ${Helvetica_light.className} uppercase overflow-hidden  md:p-[0.5vw] p-[2vw] rounded-[8vw] w-fit group hover:[#103210]  hover:bg-[black] hover:bg-opacity-[20%]  md:rounded-[2vw] bg-[black] backdrop-blur-2xl bg-opacity-[20%] `}
                   >
-                    <div className="w-full h-full bg-[#440C0C] group-hover:bg-[#103210] md:rounded-[1.7vw] flex justify-center items-center  md:py-[0.7vw] md:px-[1.5vw]">
-                      <p className="inline-block md:text-[1vw] text-[white] group-hover:text-white">
+                    <div className="w-full h-full bg-[#440C0C] group-hover:bg-[#103210] md:rounded-[1.7vw] rounded-[7vw] flex justify-center items-center  py-[2.5vw] px-[8vw]   md:py-[0.7vw] md:px-[1.5vw]">
+                      <p className="inline-block md:text-[1vw] text-[3.5vw] text-[white] group-hover:text-white">
                         see all
                       </p>
                     </div>
