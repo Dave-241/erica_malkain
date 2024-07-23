@@ -44,7 +44,7 @@ const Each_research = () => {
           return (
             <div
               key={index}
-              className="w-full border-t border-[#9CA09C] md:py-[5vw] md:gap-[6vw] flex  justify-center md:rounded-none rounded-[5vw] overflow-hidden md:bg-transparent bg-[#F2F2F0] md:flex-row flex-col items-start px-[4%] py-[6%] gap-[3vw]"
+              className="w-full border-none md:border-t border-[#9CA09C] md:py-[5vw] md:gap-[6vw] flex  justify-center md:rounded-none rounded-[5vw] overflow-hidden md:bg-transparent bg-[#F2F2F0] md:flex-row flex-col items-start px-[4%] py-[6%] gap-[3vw]"
             >
               {/* the details */}
               <div className="  overflow-hidden">

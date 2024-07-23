@@ -112,10 +112,8 @@ const Nav = () => {
                 style={{ whiteSpace: "nowrap" }}
                 key={index}
                 className={`uppercase overflow-hidden  ${
-                  e.link == pathname
-                    ? "md:bg-[white] bg-[#440C0C] "
-                    : "md:bg-[white] bg-[#440C0C] "
-                }   md:p-[0.4vw] p-[1.3vw] group hover:[#103210] duration-[1s] md:rounded-[1.5vw] rounded-[8vw]  backdrop-blur-2xl bg-opacity-[20%] `}
+                  e.link == pathname ? " bg-[#440C0C] " : " bg-[#440C0C] "
+                }   md:p-[0.4vw] p-[1.3vw] group hover:[#103210] duration-[1s] md:rounded-[1.5vw] rounded-[8vw]  backdrop-blur-2xl bg-opacity-[10%] `}
               >
                 <div
                   className={`  ${

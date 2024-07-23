@@ -152,13 +152,13 @@ const About_hero = () => {
                   filter: start_anime ? "" : "blur(4px)",
                 }}
                 alt="Erica Boothby"
-                className="w-full md:absolute md:top-[50%] border2  md:translate-x-[-50%] md:left-[50%] md:translate-y-[-50%] h-fit z-[10]"
+                className="w-full md:absolute md:top-[50%]   md:translate-x-[-50%] md:left-[50%] md:translate-y-[-50%] h-fit z-[10]"
               />
               <Image
                 src={hero2}
                 style={{ opacity: calWidth < 768 ? "" : opac_two_img }}
                 alt="Erica Boothby"
-                className="w-full md:absolute md:top-[50%] border2 md:block hidden md:translate-x-[-50%] md:left-[50%] md:translate-y-[-50%] h-fit "
+                className="w-full md:absolute md:top-[50%]  md:block hidden md:translate-x-[-50%] md:left-[50%] md:translate-y-[-50%] h-fit "
               />
             </div>
           </div>
