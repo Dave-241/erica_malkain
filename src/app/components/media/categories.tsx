@@ -174,7 +174,7 @@ const Categories = () => {
   return (
     <>
       <div className="h-[30vw]"></div>
-      <div className="w-full   md:pb-[10vw] md:mt-[-5vw] md:flex-row flex-col  relative flex  ">
+      <div className="w-full md:gap-0 gap-[15vw]  md:pb-[10vw] md:mt-[-5vw] md:flex-row flex-col  relative flex  ">
         <div className=" md:h-[100vh] md:w-[30vw] flex items-center md:justify-start justify-between md:px-0 px-[3%] sticky  md:bg-transparent bg-[#DFE4DF] bg-opacity-[10%] backdrop-blur-2xl md:backdrop-blur-none z-[10] top-0 pt-[25vw] left-0 md:pt-[8vw] md:pb-0 pb-[5vw] md:gap-[2vw] md:flex-col ">
           {items.map((e: any, index: any) => {
             return (
@@ -206,7 +206,7 @@ const Categories = () => {
           })}
         </div>
 
-        <div className="md:w-[69vw]  flex flex-col md:gap-[6vw] justify-center ">
+        <div className="md:w-[69vw] md:px-0 gap-[15vw] px-[3%] flex flex-col md:gap-[6vw] justify-center ">
           {items.map((e: any, index: any) => {
             return (
               <div
@@ -217,22 +217,22 @@ const Categories = () => {
                     itemsRefs.current[index] = ref;
                   }
                 }}
-                className=" md:gap-[1.35vw]  md:w-[100%] flex flex-col"
+                className=" md:gap-[1.35vw] gap-[5vw]  md:w-[100%] flex flex-col"
               >
                 <h2
-                  className={`uppercase text-[#4F0A19] font-semibold ${spline_font.className} md:text-[4vw]`}
+                  className={`uppercase text-[#4F0A19] md:text-start text-center font-semibold ${spline_font.className} text-[10vw] leading-[11vw] md:text-[4vw]`}
                 >
                   {e.title}
                 </h2>
-                <div className=" flex flex-wrap md:gap-[1.7vw]">
+                <div className=" flex flex-wrap gap-[5vw] md:gap-[1.7vw]">
                   {e.body.map((internal: any, internal_index: any) => {
                     return (
                       <Link
                         href={internal.link}
                         key={internal_index}
-                        className={`md:w-[30.6vw]  md:rounded-[1.5vw] flex flex-col md:p-[0.5vw] group md:mt-[0.4vw] bg-white`}
+                        className={`md:w-[30.6vw] rounded-[5vw] p-[2vw]  md:rounded-[1.5vw] md:gap-0 gap-[3vw] flex flex-col md:p-[0.5vw] group md:mt-[0.4vw] bg-white`}
                       >
-                        <div className="overflow-hidden md:rounded-[1vw]">
+                        <div className="overflow-hidden rounded-[4vw] md:rounded-[1vw]">
                           <Image
                             src={internal.img}
                             alt={internal.caption}
@@ -249,7 +249,7 @@ const Categories = () => {
                               }
                               subItemsRefs.current[index][internal_index] = el;
                             }}
-                            className={` md:p-[1.5vw] research_initial  ${spline_font.className} font-medium md:text-[1vw]`}
+                            className={` md:p-[1.5vw] p-[3vw] research_initial  ${spline_font.className} font-medium md:text-[1vw] text-[4vw] leading-[5vw]`}
                           >
                             {internal.caption}
                           </p>
