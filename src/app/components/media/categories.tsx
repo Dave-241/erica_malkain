@@ -173,8 +173,9 @@ const Categories = () => {
   }, [subItemsRefs]);
   return (
     <>
-      <div className="w-full  md:pb-[10vw] md:mt-[-5vw]  relative flex  ">
-        <div className=" md:h-[100vh] md:w-[30vw] flex items-center justify-start sticky top-0 left-0 md:pt-[8vw] md:gap-[2vw] flex-col">
+      <div className="h-[30vw]"></div>
+      <div className="w-full   md:pb-[10vw] md:mt-[-5vw] md:flex-row flex-col  relative flex  ">
+        <div className=" md:h-[100vh] md:w-[30vw] flex items-center md:justify-start justify-between md:px-0 px-[3%] sticky  md:bg-transparent bg-[#DFE4DF] bg-opacity-[10%] backdrop-blur-2xl md:backdrop-blur-none z-[10] top-0 pt-[25vw] left-0 md:pt-[8vw] md:pb-0 pb-[5vw] md:gap-[2vw] md:flex-col ">
           {items.map((e: any, index: any) => {
             return (
               <button
@@ -186,16 +187,16 @@ const Categories = () => {
                 className={` ${
                   active == index
                     ? "scale-[1.05]"
-                    : "opacity-[40%] hover:opacity-[100%]"
+                    : "md:opacity-[40%] opacity-[60%] hover:opacity-[100%]"
                 } ${
                   spline_font.className
-                } bg-[black] font-semibold uppercase overflow-hidden  md:w-[13vw] md:h-[4.9vw] md:p-[0.6vw]  group hover:[#103210]  hover:bg-[black] hover:bg-opacity-[20%]  md:rounded-[1.8vw]  backdrop-blur-2xl bg-opacity-[20%] `}
+                } bg-[black] font-semibold uppercase overflow-hidden  md:w-[13vw] w-[29vw] h-[10vw] rounded-[3vw] p-[1.1vw] md:h-[4.9vw] md:p-[0.6vw]  group hover:[#103210]  hover:bg-[black] hover:bg-opacity-[20%]  md:rounded-[1.8vw]  backdrop-blur-2xl bg-opacity-[20%] `}
               >
                 <div
-                  className={`w-full   h-full bg-white  group-hover:bg-[#103210] md:rounded-[1.3vw] flex justify-center items-center  md:py-[0.6vw] md:px-[1.5vw]`}
+                  className={`w-full   h-full bg-white  group-hover:bg-[#103210] md:rounded-[1.3vw] flex justify-center items-center rounded-[2.3vw]  md:py-[0.6vw] md:px-[1.5vw]`}
                 >
                   <p
-                    className={`inline-block  md:text-[1.1vw] text-[#103210]  group-hover:text-white`}
+                    className={`inline-block  md:text-[1.1vw] text-[3vw] text-[#103210]  group-hover:text-white`}
                   >
                     {e.title}
                   </p>
