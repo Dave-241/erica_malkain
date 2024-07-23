@@ -20,7 +20,7 @@ const Contact = () => {
             CONTACT ME
           </h3>
           <p
-            className={`text-[#000000] md:pr-0 pr-[5%] ${Helvetica_light.className} md:text-[1.2vw] text-[4.5vw] leading-[5.5vw]`}
+            className={`text-[#000000] md:pr-0 pr-[5%] ${Helvetica_light.className} md:text-[1.2vw] text-[4.5vw] md:leading-[1.5vw] leading-[5.5vw]`}
           >
             Lets talk about research, seminars and educational studies
           </p>
