@@ -28,6 +28,20 @@ const Each_consultation = () => {
   useEffect(() => {
     setcalwidth(width);
   }, [width]);
+  const handleResize = () => {
+    setcalwidth(globalThis.innerWidth);
+  };
+
+  useEffect(() => {
+    window.addEventListener("resize", handleResize);
+
+    // Initial call to set the width on component mount
+    handleResize();
+
+    return () => {
+      window.removeEventListener("resize", handleResize);
+    };
+  }, [width]);
   const [calwidth, setcalwidth] = useState(0);
   const [yvalue, setyvalue] = useState(1);
   const [height, setheight] = useState(1);
@@ -180,10 +194,13 @@ const Each_consultation = () => {
       )}
       {/* the wrapper */}
       <div
-        className="w-full md:h-[150vw] md:flex hidden items-end  
+        className="w-full md:h-[150vw] flex  items-end  
          relative"
         style={{
-          height: calwidth > 768 ? `${data_array.length * 100}vh` : "",
+          height:
+            calwidth > 768
+              ? `${data_array.length * 100}vh`
+              : `${data_array.length * 120}vh`,
         }}
         ref={sectionRef}
       >

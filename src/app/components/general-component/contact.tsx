@@ -11,7 +11,7 @@ import Image from "next/image";
 const Contact = () => {
   return (
     <>
-      <div className="w-full  md:py-[6vw] flex md:flex-row flex-col px-[3%] py-[20vw]  justify-between items-start md:px-[14vw] gap-[6vw]">
+      <div className="w-full  md:py-[6vw] flex md:flex-row flex-col px-[3%] py-[20vw]  justify-between items-start md:px-[14vw] gap-[10vw]">
         {/* the left section */}
         <div className="flex flex-col gap-[4vw] md:w-[30vw]  md:gap-[2vw]">
           <h3
@@ -20,7 +20,7 @@ const Contact = () => {
             CONTACT ME
           </h3>
           <p
-            className={`text-[#000000] md:pr-0 pr-[5%] ${Helvetica_light.className} md:text-[1.2vw] text-[4.5vw] md:leading-[1.5vw] leading-[5.5vw]`}
+            className={`text-[#000000] md:pr-0 pr-[5%] ${Helvetica_light.className} md:text-[1.2vw] text-[5vw] md:leading-[1.5vw] leading-[6vw]`}
           >
             Lets talk about research, seminars and educational studies
           </p>
