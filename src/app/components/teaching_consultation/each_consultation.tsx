@@ -217,7 +217,7 @@ const Each_consultation = () => {
             return (
               <div
                 key={index}
-                className={` absolute top-[50%] translate-x-[-50%] left-[50%] translate-y-[-50%]  w-full md:gap-[4vw] flex flex-col justify-center items-center gap-[7vw] h-full  overflow-hidden   `}
+                className={` absolute top-[50%] translate-x-[-50%] left-[50%] translate-y-[-50%]  w-full md:gap-[4vw] flex flex-col md:justify-center justify-end md:pb-0 pb-[15vw] items-center gap-[7vw] h-full  overflow-hidden   `}
                 style={{
                   transition: "opacity 0.6s ease",
                   backgroundColor: e.bg,
