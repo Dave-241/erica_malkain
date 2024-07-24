@@ -18,11 +18,7 @@ const Workshop_ad = () => {
   const { scrollYProgress } = useScroll({
     target: sectionRef,
   });
-  const width = globalThis.innerWidth;
-  useEffect(() => {
-    setcalwidth(width);
-  }, [width]);
-  const [calwidth, setcalwidth] = useState(0);
+
   const [yvalue, setyvalue] = useState(1);
   const [scale_y2value, setscale_y2value] = useState(0);
   const [height, setheight] = useState(1);
@@ -74,6 +70,31 @@ const Workshop_ad = () => {
     const scale = maxScale - (maxScale - minScale) * scaleFactor;
     return Math.max(minScale, Math.min(maxScale, scale)); // Ensure scale stays within bounds
   };
+
+  // THIS IS FOR DETERMINING THE WIDTH OF THE SCREEN
+  // THIS IS FOR DETERMINING THE WIDTH OF THE SCREEN
+  // THIS IS FOR DETERMINING THE WIDTH OF THE SCREEN
+  // THIS IS FOR DETERMINING THE WIDTH OF THE SCREEN
+  // THIS IS FOR DETERMINING THE WIDTH OF THE SCREEN
+  const width = globalThis.innerWidth;
+  useEffect(() => {
+    setcalwidth(width);
+  }, [width]);
+  const handleResize = () => {
+    setcalwidth(globalThis.innerWidth);
+  };
+
+  useEffect(() => {
+    window.addEventListener("resize", handleResize);
+
+    // Initial call to set the width on component mount
+    handleResize();
+
+    return () => {
+      window.removeEventListener("resize", handleResize);
+    };
+  }, [width]);
+  const [calwidth, setcalwidth] = useState(0);
   return (
     <>
       {/* the wrapper */}
@@ -121,7 +142,7 @@ const Workshop_ad = () => {
                       ? `translateY(${
                           -30 -
                           (yvalue - (index + 1)) *
-                            (calwidth < 765 ? 15 / 1.5 : 9 / 1.2)
+                            (calwidth < 765 ? 15 / 2.2 : 9 / 1.2)
                           // i am changing this value for scale (15/#change)
                         }%) translateX(-50%)  scale(${calculateScale(
                           index,
