@@ -52,7 +52,7 @@ const Recent_media = () => {
         <div className="w-full relative  overflow-hidden">
           <div
             className=" flex md:flex-nowrap
-        overflow-x-auto md:overflow-x-visible
+        overflow-x-auto overflow-y-hidden md:overflow-x-visible
         snap-x snap-mandatory md:snap-none
         scrollbar-hide  md:scrollbar-default
         md:justify-center
