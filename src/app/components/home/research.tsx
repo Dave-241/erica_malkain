@@ -10,26 +10,26 @@ import Link from "next/link";
 const Home_research = () => {
   const items = ["", "", "", "", ""];
 
-  const [calWidth, setCalWidth] = useState(0);
-  const width = globalThis.innerWidth;
-  const handleResize = () => {
-    setCalWidth(globalThis.innerWidth);
-  };
+  // const [calWidth, setCalWidth] = useState(0);
+  // const width = globalThis.innerWidth;
+  // const handleResize = () => {
+  //   setCalWidth(globalThis.innerWidth);
+  // };
 
-  useEffect(() => {
-    window.addEventListener("resize", handleResize);
+  // useEffect(() => {
+  //   window.addEventListener("resize", handleResize);
 
-    // Initial call to set the width on component mount
-    handleResize();
+  //   // Initial call to set the width on component mount
+  //   handleResize();
 
-    return () => {
-      window.removeEventListener("resize", handleResize);
-    };
-  }, [width]);
+  //   return () => {
+  //     window.removeEventListener("resize", handleResize);
+  //   };
+  // }, [width]);
 
-  useEffect(() => {
-    handleResize();
-  }, [width]);
+  // useEffect(() => {
+  //   handleResize();
+  // }, [width]);
   //   this is to handle scrolling
   const ref = useRef(null);
 
@@ -88,24 +88,52 @@ const Home_research = () => {
     [1, 10],
   );
 
+  // THIS IS FOR DETERMINING THE WIDTH OF THE SCREEN
+  // THIS IS FOR DETERMINING THE WIDTH OF THE SCREEN
+  // THIS IS FOR DETERMINING THE WIDTH OF THE SCREEN
+  // THIS IS FOR DETERMINING THE WIDTH OF THE SCREEN
+  // THIS IS FOR DETERMINING THE WIDTH OF THE SCREEN
+  const width = globalThis.innerWidth;
+  useEffect(() => {
+    setcalwidth(width);
+  }, [width]);
+  const handleResize = () => {
+    setcalwidth(globalThis.innerWidth);
+  };
+
+  useEffect(() => {
+    window.addEventListener("resize", handleResize);
+
+    // Initial call to set the width on component mount
+    handleResize();
+
+    return () => {
+      window.removeEventListener("resize", handleResize);
+    };
+  }, [width]);
+  const [calwidth, setcalwidth] = useState(0);
+
   return (
     <>
       <div
         ref={ref}
-        className="w-full md:block hidden  relative  md:mb-[10vw]"
-        style={{ height: calWidth > 768 ? `${items.length * 50}vh` : "" }}
+        className="w-full   py-[15vw] md:py-0 relative  md:mb-[10vw]"
+        style={{ height: calwidth > 768 ? `${items.length * 50}vh` : "" }}
       >
         {/* this is the section for the scrollable elements */}
-        <div className="w-full h-[100vh] flex-col justify-center sticky top-0 left-0 flex md:gap-[2vw] overflow-hidden ">
+        <div className="w-full md:h-[100vh] gap-[10vw] flex-col justify-center sticky top-0 left-0  flex md:gap-[2vw] overflow-hidden ">
           <h2
             style={{
-              transform: `translateX(-${switch_animation_value}%)`,
+              transform:
+                calwidth < 768 ? "" : `translateX(-${switch_animation_value}%)`,
             }}
-            className={`${spline_font.className} z-[60]  md:text-[7vw] md:px-[10vw] font-medium text-[#5C3C43]  md:leading-[7vw]`}
+            className={`${spline_font.className} z-[60]  md:text-[7vw] md:px-[10vw] font-medium text-[#5C3C43] md:text-start text-center  md:leading-[7vw] text-[10vw] leading-[11.5vw] `}
           >
             RESEARCH
           </h2>
-          <div className="w-full relative   md:min-h-[33vw]  overflow-hidden  ">
+          {/* i had to split the design into mobile and destop because of the complexity of the design  */}
+          {/* SO THIS IS THE DESKTOP PAGE */}
+          <div className="w-full relative md:block hidden  md:min-h-[33vw]  overflow-hidden  ">
             <div
               style={{
                 opacity: opac_animation,
@@ -126,7 +154,8 @@ const Home_research = () => {
 
             <div
               style={{
-                transform: `translateX(${translate_value}%)`,
+                transform:
+                  calwidth < 765 ? "" : `translateX(${translate_value}%)`,
               }}
               className="absolute  md:gap-[1.2vw]  md:px-[1.5vw] z-[10] flex h-full top-0 left-[22vw]"
             >
@@ -159,6 +188,45 @@ const Home_research = () => {
               })}
             </div>
           </div>{" "}
+          {/* AND THIS IS FOR THE MOBILE PAGE  */}
+          <div className="w-full relative md:hidden overflow-hidden">
+            <div
+              className=" flex md:flex-nowrap
+        overflow-x-auto 
+        snap-x snap-mandatory md:snap-none
+        scrollbar-hide 
+        gap-[5%] 
+        px-[5%] pb-[10vw] "
+            >
+              {items.map((e: any, index: any) => {
+                return (
+                  <Link
+                    href={"/"}
+                    key={index}
+                    className={`md:w-[26vw] group gap-[2vw]  flex flex-col justify-between w-[80vw]   flex-none md:flex-auto snap-center`}
+                  >
+                    <div className="w-full h-[100vw]     overflow-hidden rounded-[5vw] relative flex justify-center items-center ">
+                      <Image
+                        src={example}
+                        alt={e.title}
+                        style={{
+                          transition: "0.7s ease",
+                        }}
+                        className="w-full  group-hover:scale-[1] scale-[1.1]   h-fit"
+                      />
+                    </div>
+
+                    <p
+                      className={`${dm_sans_font.className} uppercase  font-medium leading-[5vw] p-[3vw]  text-[4vw] 
+                 `}
+                    >
+                      Do we know what people think of us ? people think of us?
+                    </p>
+                  </Link>
+                );
+              })}
+            </div>
+          </div>
         </div>
       </div>
     </>

@@ -109,6 +109,31 @@ const Reviews = () => {
       setTranslateX(translateX - 100 / items.length); // Adjust 100 to your container width
     }
   };
+  // THIS IS FOR DETERMINING THE WIDTH OF THE SCREEN
+  // THIS IS FOR DETERMINING THE WIDTH OF THE SCREEN
+  // THIS IS FOR DETERMINING THE WIDTH OF THE SCREEN
+  // THIS IS FOR DETERMINING THE WIDTH OF THE SCREEN
+  // THIS IS FOR DETERMINING THE WIDTH OF THE SCREEN
+  const width = globalThis.innerWidth;
+  useEffect(() => {
+    setcalwidth(width);
+  }, [width]);
+  const handleResize = () => {
+    setcalwidth(globalThis.innerWidth);
+  };
+
+  useEffect(() => {
+    window.addEventListener("resize", handleResize);
+
+    // Initial call to set the width on component mount
+    handleResize();
+
+    return () => {
+      window.removeEventListener("resize", handleResize);
+    };
+  }, [width]);
+  const [calwidth, setcalwidth] = useState(0);
+
   return (
     <>
       <div className="   px-[3vw] sm:px-0 md:mt-[10vw]  flex flex-col md:gap-[3.5vw]  items-center">
@@ -142,14 +167,14 @@ const Reviews = () => {
                   // ref={itemRefs[index]}
                   data-index={index}
                   key={index}
-                  className="relative h-full md:rounded-[2vw]   md:h-[80%]  md:w-[22vw] md:gap-[2vw] group sm:flex sm:items-end "
+                  className="relative h-full bg-black md:rounded-[2vw]   md:h-[80%]  md:w-[22vw] md:gap-[2vw] group sm:flex sm:items-end "
                 >
-                  <Image
+                  {/* <Image
                     src={e.top_img}
                     alt={e.title}
                     style={{ transition: "1s ease" }}
                     className="w-full h-full absolute md:rounded-[2vw]   z-[0] left-0    top-0    "
-                  />
+                  /> */}
                   <div
                     className={` md:h-full md:rounded-[2vw]  ${
                       animate_modal == index ? "h-[75%]" : "h-full"
