@@ -24,18 +24,43 @@ const Hero_home = () => {
   useMotionValueEvent(y, "change", (latest) => {
     setyvalue(latest);
   });
+
+  // THIS IS FOR DETERMINING THE WIDTH OF THE SCREEN
+  // THIS IS FOR DETERMINING THE WIDTH OF THE SCREEN
+  // THIS IS FOR DETERMINING THE WIDTH OF THE SCREEN
+  // THIS IS FOR DETERMINING THE WIDTH OF THE SCREEN
+  // THIS IS FOR DETERMINING THE WIDTH OF THE SCREEN
+  const width = globalThis.innerWidth;
+  useEffect(() => {
+    setcalwidth(width);
+  }, [width]);
+  const handleResize = () => {
+    setcalwidth(globalThis.innerWidth);
+  };
+
+  useEffect(() => {
+    window.addEventListener("resize", handleResize);
+
+    // Initial call to set the width on component mount
+    handleResize();
+
+    return () => {
+      window.removeEventListener("resize", handleResize);
+    };
+  }, [width]);
+  const [calwidth, setcalwidth] = useState(0);
+
   return (
     <>
       <div
         ref={ref}
-        className="w-full md:flex md:px-[10vw] md:pb-[15vw] hidden flex-col justify-end  overflow-hidden md:h-[62vw] relative text-[#DFE4DF]"
+        className="w-full flex md:px-[10vw] md:pb-[15vw]  flex-col justify-end  overflow-hidden md:h-[62vw] h-[180vw] relative text-[#DFE4DF]  px-[3%] pb-[25vw]"
       >
         <Image
           style={{
             transition: yvalue > 1 ? "" : "0.45s ease",
-            // opacity: start_anime ? 1 : 0,
-            transform: `translate(-50%,-50%) scale(${
-              start_anime ? yvalue : 1.4
+            transform: `translate(-50%, -50%) scale(${
+              calwidth < 765 ? "3" : start_anime ? yvalue : 1.4
             })`,
             filter: start_anime ? "" : "blur(10px)",
           }}
@@ -43,15 +68,15 @@ const Hero_home = () => {
           alt="hero image"
           className="absolute_center left-[50%] top-[50%] absolute w-full h-fit"
         />
-        <div className="w-full h-full left-0 top-0 z-[10] absolute bg-black bg-opacity-[20%]"></div>
+        <div className="w-full md:h-full h-[60%] bg-gradient-to-t from-[black] left-0 md:top-0 bottom-0 z-[10] absolute md:bg-black   md:bg-opacity-[20%]"></div>
         {/* left text */}
-        <div className="z-[10] md:w-[20vw]   absolute top-[35%] translate-y-[-50%] right-[10vw] overflow-hidden">
+        <div className="z-[10] md:w-[20vw] bottom-0  absolute md:bottom-[65%] translate-y-[-50%] md:px-0 px-[25vw] block md:flex justify-start md:right-[10vw]  overflow-hidden ">
           <p
             style={{
               transition: "0.5s ease",
               transform: start_anime ? "translate(0,0)" : "translate(0%,100%)",
             }}
-            className={`${Helvetica_light.className} md:text-[1.5vw] ]  z-[10]`}
+            className={`${Helvetica_light.className} md:text-[1.5vw] text-[4vw] md:leading-[2.3vw] leading-[5vw]  z-[10]`}
           >
             Educator, Scholar, Professor & Speaker
           </p>
@@ -62,7 +87,7 @@ const Hero_home = () => {
               transition: "0.65s ease",
               transform: start_anime ? "translate(0,0)" : "translate(0%,100%)",
             }}
-            className={`md:text-[17vw] z-[10] md:leading-[16.5vw]     ${eb_gramond_italic_font.className}`}
+            className={`md:text-[17vw] text-[28vw] leading-[31vw]  z-[10] md:leading-[16.5vw] ${eb_gramond_italic_font.className}`}
           >
             Erica
           </h1>
@@ -75,7 +100,7 @@ const Hero_home = () => {
               transition: "0.65s ease",
               transform: start_anime ? "translate(0,0)" : "translate(0%,100%)",
             }}
-            className={`md:text-[17vw]  md:leading-[22vw]    text-end  ${eb_gramond_italic_font.className}`}
+            className={`md:text-[17vw]  md:leading-[22vw] text-[28vw] leading-[36vw]   md:text-end  ${eb_gramond_italic_font.className}`}
           >
             Boothby
           </h1>
