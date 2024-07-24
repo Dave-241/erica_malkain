@@ -68,15 +68,15 @@ const Hero_home = () => {
           alt="hero image"
           className="absolute_center left-[50%] top-[50%] absolute w-full h-fit"
         />
-        <div className="w-full md:h-full h-[60%] bg-gradient-to-t from-[black] left-0 md:top-0 bottom-0 z-[10] absolute md:bg-black   md:bg-opacity-[20%]"></div>
+        <div className="w-full md:h-full h-[50%] bg-gradient-to-t from-[black] via-black left-0 md:top-0 bottom-0 z-[10] absolute md:bg-black   md:bg-opacity-[20%]"></div>
         {/* left text */}
-        <div className="z-[10] md:w-[20vw] bottom-0  absolute md:bottom-[65%] translate-y-[-50%] md:px-0 px-[25vw] block md:flex justify-start md:right-[10vw]  overflow-hidden ">
+        <div className="z-[10] md:w-[20vw] bottom-[2%]  absolute md:bottom-[65%] translate-y-[-50%] md:px-0  block md:flex justify-start md:right-[10vw]  overflow-hidden ">
           <p
             style={{
               transition: "0.5s ease",
               transform: start_anime ? "translate(0,0)" : "translate(0%,100%)",
             }}
-            className={`${Helvetica_light.className} md:text-[1.5vw] text-[4vw] md:leading-[2.3vw] leading-[5vw]  z-[10]`}
+            className={`${Helvetica_light.className} md:text-[1.5vw] text-[4vw] md:leading-[2.3vw] leading-[5vw]  z-[10] md:w-auto w-[50vw] `}
           >
             Educator, Scholar, Professor & Speaker
           </p>
@@ -94,7 +94,7 @@ const Hero_home = () => {
         </div>
 
         {/* right text */}
-        <div className=" z-[10] md:pr-[2vw] overflow-hidden">
+        <div className=" z-[10] md:pr-[2vw]  md:mt-0 mt-[-4vw] overflow-hidden">
           <h1
             style={{
               transition: "0.65s ease",
