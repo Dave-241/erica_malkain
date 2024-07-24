@@ -114,7 +114,7 @@ const Workshop_ad = () => {
 
           {/* the heading text */}
           <h1
-            className={`text-[#5C3C43] absolute md:left-[20%] left-[50%] md:top-[22%] top-[15%] text-[10vw]  translate-x-[-50%] translate-y-[-80%] z-[10] uppercase md:text-[4vw] ${spline_font.className} font-medium`}
+            className={`text-[#5C3C43] absolute md:left-[20%] left-[50%] md:top-[22%] top-[20%] text-[10vw]  translate-x-[-50%] translate-y-[-80%] z-[10] uppercase md:text-[4vw] ${spline_font.className} font-medium`}
           >
             workshop
           </h1>
