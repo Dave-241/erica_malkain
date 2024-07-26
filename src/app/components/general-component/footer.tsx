@@ -57,7 +57,7 @@ const Footer = () => {
                   <Link
                     href={"/"}
                     key={index}
-                    className={`border-[#A1AAA1] overflow-hidden border-opacity-[50%] md:w-[15vw] md:rounded-[2vw] w-[60vw] h-[18vw] rounded-[7vw] md:h-[5vw] border flex justify-center items-center md:text-[1vw] text-[4.5vw] text-white md:gap-[1vw] group gap-[3vw] relative`}
+                    className={`border-[#A1AAA1] overflow-hidden border-opacity-[50%] md:w-[15vw] md:rounded-[2vw] w-[60vw] h-[18vw] rounded-[7vw] md:h-[5vw] border flex justify-center items-center md:text-[1vw] text-[4vw] text-white md:gap-[1vw] group gap-[3vw] relative`}
                   >
                     <p
                       className="z-[10] group-hover:text-black"
@@ -67,7 +67,7 @@ const Footer = () => {
                     </p>
                     <Image
                       src={img}
-                      className="md:w-[2vw] w-[8vw] z-[10]"
+                      className="md:w-[2vw] w-[7vw] z-[10]"
                       alt={e.text}
                     />
                     <div
