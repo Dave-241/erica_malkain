@@ -136,7 +136,7 @@ const Reviews = () => {
 
   return (
     <>
-      <div className=" gap-[10vw]  md:py-0 pt-[10vw] pb-[4vw]  md:mt-[10vw]  flex flex-col md:gap-[3.5vw]  items-center">
+      <div className=" gap-[10vw]  md:py-0 pt-[20vw] pb-[4vw]  md:mt-[10vw]  flex flex-col md:gap-[3.5vw]  items-center">
         <h2
           className={` text-center  uppercase ${spline_font.className} font-medium md:text-[5.3vw] text-[9vw] leading-[10vw] md:leading-[6vw]  text-[#5C3C43] `}
         >
