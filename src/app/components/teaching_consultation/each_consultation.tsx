@@ -257,7 +257,7 @@ const Each_consultation = () => {
                     style={{ backgroundColor: e.bg }}
                   >
                     <h2
-                      className={` ${spline_font.className} font-semibold md:text-[4vw] md:leading-[4.4vw] text-[10vw] leading-[11vw]`}
+                      className={` ${spline_font.className} font-semibold md:text-[4vw] md:leading-[4.4vw] border2 text-[10vw] leading-[11vw]`}
                       style={{ color: e.text }}
                     >
                       {e.heading}

@@ -13,12 +13,12 @@ const Footer = () => {
   const socai_items = [
     {
       link: "/",
-      text: "Google Scholar",
+      text: "Linked in",
       logo: "",
     },
     {
       link: "/",
-      text: "Linked in",
+      text: "Google Scholar",
       logo: "",
     },
     {
@@ -30,13 +30,13 @@ const Footer = () => {
 
   return (
     <>
-      <div className="w-full  md:p-[1.5vw]">
-        <div className="w-full flex flex-col md:gap-[3vw] bg-[#001901] md:px-[4vw] md:pt-[4vw] md:pb-[2vw] md:rounded-[1.3vw] items-center">
+      <div className="w-full p-[3%]  md:p-[1.5vw]">
+        <div className="w-full flex flex-col md:gap-[3vw] bg-[#001901] md:px-[4vw] md:pt-[4vw] pt-[15vw] pb-[8vw] gap-[7vw] md:pb-[2vw] md:rounded-[1.3vw] rounded-[5vw] items-center">
           {/* footer name */}
-          <div className="flex flex-col md:gap-[1.5vw] items-center ">
+          <div className="flex flex-col md:gap-[1.5vw] gap-[7vw] items-center ">
             <div className="w-full flex justify-center">
               <h2
-                className={`text-white ${Media_san_regular.className} text-center md:text-[6vw] uppercase font-light md:leading-[5.5vw]`}
+                className={`text-white text-[11.5vw] leading-[12.5vw] ${Media_san_regular.className} text-center md:text-[6vw] uppercase font-light md:leading-[5.5vw]`}
               >
                 {" "}
                 <span
@@ -50,14 +50,14 @@ const Footer = () => {
 
             {/* the footer socail links */}
             <div
-              className={`w-full flex justify-center md:gap-[4vw] items-center ${Helvetica_light.className} `}
+              className={`w-full flex md:flex-row gap-[5vw] flex-col justify-center md:gap-[4vw] items-center ${Helvetica_light.className} `}
             >
               {socai_items.map((e: any, index: any) => {
                 return (
                   <Link
                     href={"/"}
                     key={index}
-                    className={`border-[#A1AAA1] overflow-hidden border-opacity-[50%] md:w-[15vw] md:rounded-[2vw] md:h-[5vw] border flex justify-center items-center md:text-[1vw] text-white md:gap-[1vw] group relative`}
+                    className={`border-[#A1AAA1] overflow-hidden border-opacity-[50%] md:w-[15vw] md:rounded-[2vw] w-[60vw] h-[18vw] rounded-[7vw] md:h-[5vw] border flex justify-center items-center md:text-[1vw] text-[4.5vw] text-white md:gap-[1vw] group gap-[3vw] relative`}
                   >
                     <p
                       className="z-[10] group-hover:text-black"
@@ -67,7 +67,7 @@ const Footer = () => {
                     </p>
                     <Image
                       src={img}
-                      className="md:w-[2vw] z-[10]"
+                      className="md:w-[2vw] w-[8vw] z-[10]"
                       alt={e.text}
                     />
                     <div
@@ -80,7 +80,7 @@ const Footer = () => {
             </div>
           </div>
           {/* fotter line */}
-          <div className=" w-full  flex justify-start   md:h-[0.05vw] ">
+          <div className=" w-full  flex justify-start  h-[0.05vw] ">
             <div
               style={{
                 transition: "0.5s ease",
@@ -91,12 +91,12 @@ const Footer = () => {
 
           {/* footer copyright */}
           <div
-            className={` ${Helvetica_light.className}  w-full flex justify-between items-center relative text-[#6F7E70] md:px-[1vw] md:text-[1vw]`}
+            className={` ${Helvetica_light.className}  md:flex-row flex-col  w-full flex justify-between items-center relative text-[#6F7E70] md:px-[1vw] md:text-[1vw] text-[4vw] md:gap-0 gap-[5vw]`}
           >
             <p className="">©2024</p>
             <a
               href="mailto:ericajboothby@gmail.com"
-              className="absolute top-[50%] translate-x-[-50%] left-[50%] translate-y-[-50%]"
+              className="md:absolute md:top-[50%] md:translate-x-[-50%] md:left-[50%] md:translate-y-[-50%]"
             >
               ericajboothby@gmail.com
             </a>
@@ -106,9 +106,6 @@ const Footer = () => {
           </div>
         </div>
       </div>
-
-      {/* this is just while i am deving */}
-      <div className="w-ful md:hidden h-[20vw]"></div>
     </>
   );
 };
