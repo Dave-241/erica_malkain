@@ -100,7 +100,11 @@ const Footer = () => {
             >
               ericajboothby@gmail.com
             </a>
-            <Link href="malkain.com" className="">
+            <Link
+              href="https://www.malkain.com/"
+              target="_blank"
+              className="underline underline-offset-4"
+            >
               Design & Dev By Malkain
             </Link>
           </div>
