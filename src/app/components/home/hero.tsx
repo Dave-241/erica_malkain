@@ -54,7 +54,7 @@ const Hero_home = () => {
     <>
       <div
         ref={ref}
-        className="w-full flex md:px-[10vw] md:pb-[15vw]  flex-col justify-end  overflow-hidden md:h-[62vw] h-[180vw] relative text-[#DFE4DF]  px-[3%] pb-[25vw]"
+        className="w-full flex md:px-[10vw] md:pb-[9vw]  flex-col justify-end  overflow-hidden md:h-[62vw] h-[180vw] relative text-[#DFE4DF]  px-[3%] pb-[25vw]"
       >
         <Image
           style={{
@@ -70,7 +70,7 @@ const Hero_home = () => {
         />
         <div className="w-full md:h-full h-[50%] bg-gradient-to-t from-[black]  md:from-transparent md:via-transparent via-black left-0 md:top-0 bottom-0 z-[10] absolute md:bg-black   md:bg-opacity-[20%]"></div>
         {/* left text */}
-        <div className="z-[10] md:w-[20vw] bottom-[2%]  absolute md:bottom-[65%] translate-y-[-50%] md:px-0  block md:flex justify-start md:right-[10vw]  overflow-hidden ">
+        <div className="z-[10] md:w-[20vw] bottom-[2%]  absolute md:bottom-[50%] translate-y-[-50%] md:px-0  block md:flex justify-start md:right-[10vw]  overflow-hidden ">
           <p
             style={{
               transition: "0.5s ease",

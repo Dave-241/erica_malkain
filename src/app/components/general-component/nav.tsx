@@ -3,9 +3,10 @@
 import { Bt_Beau_Regualr } from "@/app/utils/fonts";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import ham from "../../../../public/images/general/ham.png";
 import Image from "next/image";
+import Mobile_nav from "./mobile_nav";
 
 const Nav = () => {
   const items = [
@@ -42,6 +43,18 @@ const Nav = () => {
     },
   ];
 
+  const mobile_nav = [
+    {
+      text: "View CV",
+      // link: "/",
+      button: true,
+    },
+    {
+      text: "WORKSHOP ",
+      link: "/workshop",
+    },
+  ];
+
   const pathname = usePathname();
 
   // useEffect(() => {
@@ -51,6 +64,8 @@ const Nav = () => {
   //   }
   //   // eslint-disable-next-line react-hooks/exhaustive-deps
   // }, []);
+
+  const [open_menu, setopen_menu] = useState(false);
   return (
     <>
       <nav
@@ -87,6 +102,9 @@ const Nav = () => {
         </div>
         {/* this is mobile ham buger */}
         <button
+          onClick={() => {
+            setopen_menu(true);
+          }}
           style={{ whiteSpace: "nowrap" }}
           className={`uppercase overflow-hidden md:hidden inline-block bg-[white]   md:p-[0.4vw] p-[1.3vw] group hover:[#103210] duration-[1s] md:rounded-[1.5vw] rounded-[8vw]  backdrop-blur-2xl bg-opacity-[20%] `}
         >
@@ -129,6 +147,13 @@ const Nav = () => {
           })}
         </div>
       </nav>
+      {open_menu && (
+        <Mobile_nav
+          setopen_menu={setopen_menu}
+          items={items}
+          mobile_nav={mobile_nav}
+        />
+      )}
     </>
   );
 };
