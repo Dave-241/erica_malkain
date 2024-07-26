@@ -65,7 +65,7 @@ const Publication = () => {
     },
   ];
   const [start_anime, setstart_anime] = useState(false);
-  const [isloggedin, setisloggedin] = useState(false);
+  const [isloggedin, setisloggedin] = useState(true);
   const [delete_publication, setdelete_publication] = useState(false);
   const [publication_title, setpublication_title] = useState("");
   const [publication_body, setpublication_body] = useState("");

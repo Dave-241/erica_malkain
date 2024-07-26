@@ -16,7 +16,7 @@ const Login = () => {
           WELCOME ERICA
         </h1>
 
-        <div className="md:w-[25vw] flex flex-col md:gap-[2vw] ">
+        <div className="md:w-[25vw]  text-[1vw] flex flex-col md:gap-[2vw] ">
           <input
             type="text"
             placeholder="Username or email here . . ."
