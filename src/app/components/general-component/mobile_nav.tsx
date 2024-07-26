@@ -23,10 +23,10 @@ const Mobile_nav = ({ items, mobile_nav, setopen_menu }: any) => {
     setstart_text(false);
     setTimeout(() => {
       setstart_anime(false);
-    }, 650);
+    }, 300);
     setTimeout(() => {
       setopen_menu(false);
-    }, 1000);
+    }, 800);
   };
   return (
     <>
@@ -35,7 +35,7 @@ const Mobile_nav = ({ items, mobile_nav, setopen_menu }: any) => {
         style={{
           transform: start_anime ? "scale(1)" : "scale(0)",
           transformOrigin: "top left",
-          transition: " 0.6s ease",
+          transition: " 0.4s ease",
         }}
       >
         {/* this is for the mobile nav */}
@@ -45,7 +45,7 @@ const Mobile_nav = ({ items, mobile_nav, setopen_menu }: any) => {
             style={{
               whiteSpace: "nowrap",
               transform: start_text ? "translateY(0)" : "translateY(100%)",
-              transition: "0.7s ease",
+              transition: "0.5s ease",
             }}
             className={`uppercase overflow-hidden md:hidden inline-block bg-[white]   md:p-[0.4vw] p-[1.3vw] group hover:[#103210] duration-[1s] md:rounded-[1.5vw] rounded-[8vw]  backdrop-blur-2xl bg-opacity-[20%] `}
           >
@@ -74,7 +74,7 @@ const Mobile_nav = ({ items, mobile_nav, setopen_menu }: any) => {
                     transform: start_text
                       ? "translateY(0)"
                       : "translateY(100%)",
-                    transition: `transform 0.5s ease ${index * 0.1}s`,
+                    transition: `transform 0.5s ease ${index * 0.06}s`,
                   }}
                   className={` ${
                     e.link == pathname ? "bg-[black]" : "bg-[white]"
@@ -112,7 +112,7 @@ const Mobile_nav = ({ items, mobile_nav, setopen_menu }: any) => {
                     transform: start_text
                       ? "translateY(0)"
                       : "translateY(100%)",
-                    transition: `transform 0.5s ease 0.5s`,
+                    transition: `transform 0.4s ease 0.4s`,
                   }}
                   className={` ${
                     e.link == pathname ? "bg-[black]" : "bg-[white]"
