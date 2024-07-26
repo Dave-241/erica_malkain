@@ -161,7 +161,7 @@ const Reviews = () => {
                   // ref={itemRefs[index]}
                   data-index={index}
                   key={index}
-                  className="relative  flex-none md:flex-auto h-[100vw] bg-black md:rounded-[2vw] rounded-[5vw] snap-center md:h-[80%]  md:w-[22vw] w-[70vw] md:gap-[2vw] group flex items-end "
+                  className="relative  flex-none md:flex-auto h-[100vw] bg-black md:rounded-[2vw] rounded-[5vw] snap-center md:h-[80%]  md:w-[22vw] w-[75vw] md:gap-[2vw] group flex items-end "
                 >
                   {/* <Image
                     src={e.top_img}
