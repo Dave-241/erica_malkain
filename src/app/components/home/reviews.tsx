@@ -136,28 +136,22 @@ const Reviews = () => {
 
   return (
     <>
-      <div className="   px-[3vw] sm:px-0 md:mt-[10vw]  flex flex-col md:gap-[3.5vw]  items-center">
+      <div className=" gap-[10vw]    md:mt-[10vw]  flex flex-col md:gap-[3.5vw]  items-center">
         <h2
-          className={` text-center text-[5vw] uppercase ${spline_font.className} font-medium md:text-[5.3vw] text-[#5C3C43] `}
+          className={` text-center  uppercase ${spline_font.className} font-medium md:text-[5.3vw] text-[9vw] leading-[10vw] md:leading-[6vw]  text-[#5C3C43] `}
         >
           WHAT PEOPLE SAY ABOUT ERICA{" "}
         </h2>
 
-        <div className=" w-full   overflow-hidden md:h-[35vw]  relative   ">
+        <div className=" w-full md:overflow-hidden  h-[120vw] md:h-[35vw]  relative   ">
           <div
             ref={ref}
-            className={`absolute top-[50%] translate-y-[-50%]  md:h-full overflow-hidden left-0  w-auto   sm:px-[3vw] h-full flex md:gap-[2vw] `}
-            // style={{
-            //   //   transform:
-            //   //     windowWidth && windowWidth <= 650
-            //   //       ? `translateX(-${current_index * 82}vw)`
-            //   //       : "none",
-
-            //   transition: "1s ease",
-            // }}
-
+            className={`md:absolute md:top-[50%] md:translate-y-[-50%]  md:h-full md:overflow-hidden overflow-x-auto overflow-y-hidden left-0  w-auto   md:px-[3vw] px-[3%] h-full gap-[5vw]  flex md:gap-[2vw]  snap-x snap-mandatory md:snap-none`}
             style={{
-              transform: `translateX(${translateX}%) translateY(-50%)`,
+              transform:
+                calwidth < 760
+                  ? ""
+                  : `translateX(${translateX}%) translateY(-50%)`,
               transition: "0.7s ease",
             }}
           >
@@ -167,7 +161,7 @@ const Reviews = () => {
                   // ref={itemRefs[index]}
                   data-index={index}
                   key={index}
-                  className="relative h-full bg-black md:rounded-[2vw]   md:h-[80%]  md:w-[22vw] md:gap-[2vw] group sm:flex sm:items-end "
+                  className="relative  flex-none md:flex-auto h-[100vw] bg-black md:rounded-[2vw] rounded-[5vw] snap-center md:h-[80%]  md:w-[22vw] w-[70vw] md:gap-[2vw] group flex items-end "
                 >
                   {/* <Image
                     src={e.top_img}
@@ -178,7 +172,7 @@ const Reviews = () => {
                   <div
                     className={` md:h-full md:rounded-[2vw]  ${
                       animate_modal == index ? "h-[75%]" : "h-full"
-                    }  cursor-pointer rounded-[1.5vw] md:px-[1.5vw] md:py-[2.5vw] group-hover:translate-y-[20%] group-hover:rotate-[5deg] py-[6vw] px-[4vw] flex flex-col justify-between md:gap-[4vw]  relative  w-full h-full main_item `}
+                    }  cursor-pointer md:rounded-[1.5vw] rounded-[5vw] md:px-[1.5vw] md:py-[2.5vw] group-hover:md:translate-y-[20%] group-hover:translate-y-[12%] group-hover:rotate-[5deg] py-[6vw] px-[4vw] flex flex-col justify-between md:gap-[4vw]  relative  w-full h-full main_item `}
                     style={{
                       backgroundColor: "#4F0A19",
                       transition: "1s ease",
@@ -186,27 +180,27 @@ const Reviews = () => {
                   >
                     <div className="flex flex-col">
                       <h2
-                        className={` text-white  ${Helvetica_light.className} md:text-[1.3vw]`}
+                        className={` text-white  ${Helvetica_light.className} md:text-[1.3vw] text-[6vw]`}
                       >
                         {e.title}
                       </h2>
 
                       <p
-                        className={` text-white  ${Helvetica_light.className} md:text-[1.1vw] text-opacity-[60%]`}
+                        className={` text-white  ${Helvetica_light.className} md:text-[1.1vw] text-[4vw] text-opacity-[60%]`}
                       >
                         {e.postion}
                       </p>
                     </div>
 
-                    <div className="flex flex-col md:gap-[3vw]">
+                    <div className="flex flex-col gap-[5vw] md:gap-[3vw]">
                       <Image
                         src={quote}
                         alt={"quote"}
                         // style={{ transition: "1s ease" }}
-                        className="md:w-[2.5vw] h-fit  "
+                        className="md:w-[2.5vw] w-[10vw] h-fit  "
                       />
                       <p
-                        className={` ${Helvetica_light.className} md:text-[1vw]  text-white `}
+                        className={` ${Helvetica_light.className} md:text-[1vw]  text-white text-[3.5vw] md:leading-[1.4vw] leading-[4.5vw] `}
                       >
                         {e.body}
                       </p>
@@ -219,29 +213,16 @@ const Reviews = () => {
         </div>
 
         <div
-          className={` w-full  md:mt-[-3vw]    flex md:mb-[3vw]  justify-center md:gap-[3vw] gap-[2vw] items-center`}
+          className={` w-full  md:mt-[-3vw] mt-[-10vw] md:flex hidden     md:mb-[3vw]  justify-center md:gap-[3vw] gap-[2vw] items-center`}
         >
           <Image
             src={prev_img}
-            // onClick={() => {
-            // //   if (current_index <= 0) {
-            // //     return;
-            // //   }
-            // //   setcurrent_index(current_index - 1);
-            // }}
             onClick={handleLeftClick}
             alt="prev "
             className="md:w-[3vw] w-[2.9vw] hover:cursor-pointer  h-fit"
           />
           <Image
             src={next_img}
-            // onClick={() => {
-            //   if (current_index >= items.length - 1) {
-            //     return;
-            //   }
-            //   setcurrent_index(current_index + 1);
-            //   console.log(current_index);
-            // }}
             onClick={handleRightClick}
             alt="next "
             className="md:w-[3vw] w-[2.9vw] hover:cursor-pointer  h-fit"
