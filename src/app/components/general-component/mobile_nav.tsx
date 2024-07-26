@@ -107,7 +107,7 @@ const Mobile_nav = ({ items, mobile_nav, setopen_menu }: any) => {
             return (
               <div className="overflow-hidden  flex w-full h-fit " key={index}>
                 <Link
-                  href={e.link}
+                  href={"/"}
                   style={{
                     transform: start_text
                       ? "translateY(0)"
