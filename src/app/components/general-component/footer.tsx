@@ -30,7 +30,7 @@ const Footer = () => {
 
   return (
     <>
-      <div className="w-full p-[3%]  md:p-[1.5vw]">
+      <div className="w-full p-[1.7%]  md:p-[1.5vw]">
         <div className="w-full flex flex-col md:gap-[3vw] bg-[#001901] md:px-[4vw] md:pt-[4vw] pt-[15vw] pb-[8vw] gap-[7vw] md:pb-[2vw] md:rounded-[1.3vw] rounded-[5vw] items-center">
           {/* footer name */}
           <div className="flex flex-col md:gap-[2vw] gap-[7vw] items-center ">
@@ -91,7 +91,7 @@ const Footer = () => {
 
           {/* footer copyright */}
           <div
-            className={` ${Helvetica_light.className}  md:flex-row flex-col  w-full flex justify-between items-center relative text-[#6F7E70] md:px-[1vw] md:text-[1vw] text-[4vw] md:gap-0 gap-[5vw]`}
+            className={` ${Helvetica_light.className}  md:flex-row flex-col  w-full flex justify-between items-center relative text-[#6F7E70] md:px-[1vw] md:text-[1vw] text-[4vw] md:gap-0 gap-[2vw]`}
           >
             <p className="">©2024</p>
             <a
