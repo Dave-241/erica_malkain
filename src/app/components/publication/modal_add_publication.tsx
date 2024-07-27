@@ -143,7 +143,7 @@ const Modal_add_publication = ({
               onChange={(e) => {
                 setpublication_body(e.target.value);
               }}
-              className="border  md:rounded-[1vw] rounded-[1.5vw]  outline-none bg-[black] bg-opacity-[70%] placeholder:text-white capitalize text-white  p-[2%] md:text-[1vw] text-[3.5vw]"
+              className="border  md:rounded-[1vw] rounded-[1.5vw]  outline-none bg-[black] bg-opacity-[70%] placeholder:text-white capitalize text-white resize-none p-[2%] md:text-[1vw] text-[3.5vw]"
               placeholder="input publication description here .."
             />
           </div>
@@ -164,7 +164,7 @@ const Modal_add_publication = ({
                 onChange={(e) => {
                   setpublication_data_link(e.target.value);
                 }}
-                className="border md:rounded-[0.5vw] outline-none bg-[black] bg-opacity-[70%] placeholder:text-white capitalize text-white md:h-[3vw] h-[10vw] rounded-[1.5vw] px-[3%] md:text-[1vw] text-[3.5vw]"
+                className="border md:rounded-[0.5vw] outline-none bg-[black] bg-opacity-[70%] placeholder:text-white capitalize text-white md:h-[3vw] w-full h-[10vw] rounded-[1.5vw] px-[3%] md:text-[1vw] text-[3.5vw]"
                 placeholder="input your data link here .."
               />
             </div>
