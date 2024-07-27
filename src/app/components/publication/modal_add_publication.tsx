@@ -183,7 +183,7 @@ const Modal_add_publication = ({
                   setpublication_pdf_link(e.target.value);
                 }}
                 value={publication_pdf_link || ""}
-                className="border md:rounded-[0.5vw] outline-none bg-[black] bg-opacity-[70%] placeholder:text-white capitalize text-white md:h-[3vw] h-[10vw] rounded-[1.5vw] px-[3%] md:text-[1vw] text-[3.5vw]"
+                className="border md:rounded-[0.5vw] outline-none bg-[black] bg-opacity-[70%] placeholder:text-white capitalize text-white md:h-[3vw] w-full h-[10vw] rounded-[1.5vw] px-[3%] md:text-[1vw] text-[3.5vw]"
                 placeholder="input your pdf download link here .."
               />
             </div>
