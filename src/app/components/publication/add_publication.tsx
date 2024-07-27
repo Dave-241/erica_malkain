@@ -36,15 +36,15 @@ const Add_publication = ({
 
   return (
     <>
-      <div className="w-full  md:py-[2vw] md:px-[10vw] flex md:gap-[2vw]">
+      <div className="w-full py-[5vw] gap-[5%] px-[3%] md:py-[2vw] md:px-[10vw] flex md:gap-[2vw] md:text-[1vw] text-[3.5vw]">
         <button
-          className=" md:px-[3vw] md:py-[1vw] capitalize bg-white  md:rounded-[0.5vw] hover:bg-opacity-[60%] backdrop-blur-2xl text-center border-red-500 border"
+          className=" md:px-[3vw] py-[3%] md:w-auto w-full md:py-[1vw] capitalize bg-white rounded-[0.5rem]  md:rounded-[0.5vw] hover:bg-opacity-[60%] backdrop-blur-2xl text-center "
           onClick={refresh_all_params}
         >
           Add new publication
         </button>
         <button
-          className=" md:px-[3vw] md:py-[1vw] capitalize bg-white  md:rounded-[0.5vw] hover:bg-opacity-[60%] backdrop-blur-2xl text-center border-red-500 border"
+          className=" md:px-[3vw] py-[3%] md:w-auto w-full md:py-[1vw] capitalize bg-white rounded-[0.5rem]  md:rounded-[0.5vw] hover:bg-opacity-[60%] backdrop-blur-2xl text-center "
           onClick={() => {
             setpublication_title("");
             // setdelete_publication(true);

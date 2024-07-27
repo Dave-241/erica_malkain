@@ -45,9 +45,9 @@ const Edit_each_publication = ({
 
   return (
     <>
-      <div className="w-full  absolute top-0 left-0 h-full flex justify-end items-start md:p-[0.5vw] md:gap-[1.5vw] md:text-[1vw] capitalize bg-black bg-opacity-[50%] md:rounded-[1vw]">
+      <div className="w-full  absolute top-0 left-0 h-full flex justify-end items-start md:p-[0.5vw] md:gap-[1.5vw] p-[5vw] text-[3.5vw] gap-[5vw] md:text-[1vw] capitalize bg-black bg-opacity-[50%] rounded-[5vw] md:rounded-[1vw]">
         <button
-          className=" md:w-[8vw] md:h-[3vw] capitalize bg-white  md:rounded-[0.5vw] hover:bg-opacity-[60%] backdrop-blur-2xl text-center border-red-500 border"
+          className=" md:w-[8vw] md:h-[3vw] h-[10vw] w-[30vw] rounded-[2vw] capitalize bg-white  md:rounded-[0.5vw] hover:bg-opacity-[60%] backdrop-blur-2xl text-center "
           onClick={() => {
             edit_each_publication_modal_param(
               title,
@@ -61,7 +61,7 @@ const Edit_each_publication = ({
           edit
         </button>
         <button
-          className=" md:w-[8vw] md:h-[3vw] capitalize bg-white  md:rounded-[0.5vw] hover:bg-opacity-[60%] backdrop-blur-2xl text-center border-red-500 border"
+          className=" md:w-[8vw] md:h-[3vw] h-[10vw] w-[30vw] rounded-[2vw] capitalize bg-white  md:rounded-[0.5vw] hover:bg-opacity-[60%] backdrop-blur-2xl text-center "
           onClick={() => {
             setpublication_title(title);
             setdelete_publication(true);
