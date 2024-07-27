@@ -120,7 +120,7 @@ const Publication = ({ product_data }: any) => {
     // Real-time subscription
     const handleInserts = (payload: any) => {
       console.log("Insert received!", payload);
-      setdata((prevData) => [payload.new, ...prevData]);
+      window.location.reload();
     };
 
     const handleUpdates = (payload: any) => {
@@ -144,17 +144,17 @@ const Publication = ({ product_data }: any) => {
       .on(
         "postgres_changes",
         { event: "INSERT", schema: "public", table: "publication" },
-        fetchInitialData,
+        handleInserts,
       )
       .on(
         "postgres_changes",
         { event: "UPDATE", schema: "public", table: "publication" },
-        fetchInitialData,
+        handleUpdates,
       )
       .on(
         "postgres_changes",
         { event: "DELETE", schema: "public", table: "publication" },
-        fetchInitialData,
+        handleDeletes,
       )
       .subscribe();
 
