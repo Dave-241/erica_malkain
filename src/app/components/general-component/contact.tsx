@@ -39,7 +39,7 @@ const Contact = () => {
             placeholder="Eg example@gmail.com"
             className=" outline-none border-b-[0.2vw] border-opacity-[40%] border-[#000000] md:pb-[0.7vw] w-full h-[13vw] pb-[1vw] md:h-[4vw] bg-transparent md:pl-[0.5vw] pl-[1.7vw] focus:border-[#103210] focus:border-opacity-[100%] transition duration-[0.6s] md:pr-[5vw] placeholder:text-[#000000] md:text-[1.2vw] text-[4vw]"
           />
-          <div className="relative  w-full md:h-[7vw] h-[27vw] ">
+          <div className="relative  w-full md:h-[8vw] h-[27vw] ">
             <textarea
               // type="text"
               placeholder="If you're interested in booking Erica for an event, workshop, consulting, or collaborating as a social science researcher, let's talk"

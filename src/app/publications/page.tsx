@@ -1,16 +1,29 @@
+import { notFound } from "next/navigation";
 import Contact from "../components/general-component/contact";
 import Footer from "../components/general-component/footer";
 import Nav from "../components/general-component/nav";
 import Publication_hero from "../components/publication/hero";
 import Publication from "../components/publication/publication";
+import { supabase } from "../utils/supabaseClient";
+export const revalidate = 0;
+const fetchProducts = async () => {
+  const { data, error } = await supabase
+    .from("publication")
+    .select("*")
+    .order("created_at", { ascending: false });
 
-export default function Home() {
+  // if (error) throw notFound();
+  console.log(data);
+  return data;
+};
+export default async function Home() {
+  const product_data = await fetchProducts();
   return (
     <>
       <>
         <Nav />
         <Publication_hero />
-        <Publication />
+        <Publication product_data={product_data} />
         <Contact />
         <Footer />
       </>

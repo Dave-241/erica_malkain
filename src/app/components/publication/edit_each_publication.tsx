@@ -1,5 +1,7 @@
 "use client";
 
+import { supabase } from "@/app/utils/supabaseClient";
+
 const Edit_each_publication = ({
   setdelete_publication,
   setpublication_title,
@@ -8,23 +10,62 @@ const Edit_each_publication = ({
   view_data,
   pdf_data,
   edit_each_publication_modal_param,
+  id,
 }: any) => {
+  const deletePublicationById = async (id: number) => {
+    try {
+      // Perform the delete operation
+      const { error } = await supabase
+        .from("publication")
+        .delete()
+        .eq("id", id);
+
+      if (error) {
+        throw new Error(error.message);
+      }
+
+      // Optionally: Update the UI state after deletion
+      // setProductData((prevData) => prevData.filter((item) => item.id !== id));
+    } catch (error) {
+      console.error("Error deleting publication:", error);
+    }
+  };
+
+  // Example of using the delete function in the component
+  const handleDeleteClick = (id: number) => {
+    // Confirm delete action
+    if (
+      window.confirm(
+        "Are you sure you want to delete this publication? Note : This can't be undone",
+      )
+    ) {
+      deletePublicationById(id);
+    }
+  };
+
   return (
     <>
-      <div className="w-full edit_border absolute top-0 left-0 h-full flex justify-end items-start md:p-[0.5vw] md:gap-[1.5vw] md:text-[1vw] capitalize bg-black bg-opacity-[30%]">
+      <div className="w-full  absolute top-0 left-0 h-full flex justify-end items-start md:p-[0.5vw] md:gap-[1.5vw] md:text-[1vw] capitalize bg-black bg-opacity-[50%] md:rounded-[1vw]">
         <button
-          className=" md:w-[8vw] md:h-[2vw] capitalize bg-white  md:rounded-[0.5vw] hover:bg-opacity-[60%] backdrop-blur-2xl text-center border-red-500 border"
+          className=" md:w-[8vw] md:h-[3vw] capitalize bg-white  md:rounded-[0.5vw] hover:bg-opacity-[60%] backdrop-blur-2xl text-center border-red-500 border"
           onClick={() => {
-            edit_each_publication_modal_param(title, body, view_data, pdf_data);
+            edit_each_publication_modal_param(
+              title,
+              body,
+              view_data,
+              pdf_data,
+              id,
+            );
           }}
         >
           edit
         </button>
         <button
-          className=" md:w-[8vw] md:h-[2vw] capitalize bg-white  md:rounded-[0.5vw] hover:bg-opacity-[60%] backdrop-blur-2xl text-center border-red-500 border"
+          className=" md:w-[8vw] md:h-[3vw] capitalize bg-white  md:rounded-[0.5vw] hover:bg-opacity-[60%] backdrop-blur-2xl text-center border-red-500 border"
           onClick={() => {
             setpublication_title(title);
             setdelete_publication(true);
+            handleDeleteClick(id);
           }}
         >
           delete

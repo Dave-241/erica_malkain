@@ -15,65 +15,17 @@ import Modal_add_publication from "./modal_add_publication";
 import { useRouter } from "next/navigation";
 import { supabase } from "@/app/utils/supabaseClient";
 
-const Publication = () => {
-  const items = [
-    {
-      title: " first THEORY OF COLLECTIVE MIND. TRENDS IN COGNITIVE SCIENCES.",
-      body: "Shteynberg, G., Hirsh, J. B., Wolf, W., Bargh, J. A., Boothby, E. J., Colman, A. M., Echterhoff, G., & Rossignac-Milon, M. 2023. ",
-      data_link: "malkain.com/data",
-      pdf_link: "malkain.com/firs_data",
-    },
-    {
-      title: "THEORY OF COLLECTIVE MIND. TRENDS IN COGNITIVE SCIENCES.",
-      body: "Shteynberg, G., Hirsh, J. B., Wolf, W., Bargh, J. A., Boothby, E. J., Colman, A. M., Echterhoff, G., & Rossignac-Milon, M. 2023.",
-      data_link: "malkain.com/data",
-      pdf_link: "malkain.com/pdf",
-    },
-    {
-      title: "THEORY OF COLLECTIVE MIND. TRENDS IN COGNITIVE SCIENCES.",
-      body: "Shteynberg, G., Hirsh, J. B., Wolf, W., Bargh, J. A., Boothby, E. J., Colman, A. M., Echterhoff, G., & Rossignac-Milon, M. 2023.",
-      data_link: "malkain.com/data",
-      pdf_link: "malkain.com/pdf",
-    },
-    {
-      title: "THEORY OF COLLECTIVE MIND. TRENDS IN COGNITIVE SCIENCES.",
-      body: "Shteynberg, G., Hirsh, J. B., Wolf, W., Bargh, J. A., Boothby, E. J., Colman, A. M., Echterhoff, G., & Rossignac-Milon, M. 2023.",
-      data_link: "malkain.com/data",
-      pdf_link: "malkain.com/pdf",
-    },
-    {
-      title: "THEORY OF COLLECTIVE MIND. TRENDS IN COGNITIVE SCIENCES.",
-      body: "Shteynberg, G., Hirsh, J. B., Wolf, W., Bargh, J. A., Boothby, E. J., Colman, A. M., Echterhoff, G., & Rossignac-Milon, M. 2023.",
-      data_link: "malkain.com/data",
-      pdf_link: "malkain.com/pdf",
-    },
-    {
-      title: "THEORY OF COLLECTIVE MIND. TRENDS IN COGNITIVE SCIENCES.",
-      body: "Shteynberg, G., Hirsh, J. B., Wolf, W., Bargh, J. A., Boothby, E. J., Colman, A. M., Echterhoff, G., & Rossignac-Milon, M. 2023.",
-      data_link: "malkain.com/data",
-      pdf_link: "malkain.com/pdf",
-    },
-    {
-      title: "THEORY OF COLLECTIVE MIND. TRENDS IN COGNITIVE SCIENCES.",
-      body: "Shteynberg, G., Hirsh, J. B., Wolf, W., Bargh, J. A., Boothby, E. J., Colman, A. M., Echterhoff, G., & Rossignac-Milon, M. 2023.",
-      data_link: "malkain.com/data",
-      pdf_link: "malkain.com/pdf",
-    },
-    {
-      title: "THEORY OF COLLECTIVE MIND. TRENDS IN COGNITIVE SCIENCES.",
-      body: "Shteynberg, G., Hirsh, J. B., Wolf, W., Bargh, J. A., Boothby, E. J., Colman, A. M., Echterhoff, G., & Rossignac-Milon, M. 2023.",
-      data_link: "malkain.com/last_dat",
-      pdf_link: "malkain.com/pdf",
-    },
-  ];
+const Publication = ({ product_data }: any) => {
+  const [data, setdata] = useState<any[]>(product_data ? product_data : []);
   const [start_anime, setstart_anime] = useState(false);
-  const [isloggedin, setisloggedin] = useState(true);
+  const [isloggedin, setisloggedin] = useState(false);
   const [delete_publication, setdelete_publication] = useState(false);
   const [publication_title, setpublication_title] = useState("");
   const [publication_body, setpublication_body] = useState("");
   const [publication_data_link, setpublication_data_link] = useState("");
   const [publication_pdf_link, setpublication_pdf_link] = useState(" ");
   const [add_publication, setadd_publication] = useState(false);
+  const [edit_ID, setedit_ID] = useState("");
 
   useEffect(() => {
     setstart_anime(true);
@@ -128,12 +80,14 @@ const Publication = () => {
     body: any,
     view_data: any,
     pdf_link: any,
+    id: any,
   ) => {
     setpublication_title(title);
     setpublication_body(body);
     setpublication_data_link(view_data);
     setpublication_pdf_link(pdf_link);
     setadd_publication(true);
+    setedit_ID(id);
   };
 
   const refresh_all_params = () => {
@@ -142,8 +96,73 @@ const Publication = () => {
     setpublication_data_link("");
     setpublication_pdf_link("");
     setadd_publication(true);
+    setedit_ID("");
   };
 
+  // this is to implement tracking
+  // Set up real-time subscription
+  useEffect(() => {
+    const fetchInitialData = async () => {
+      const { data, error } = await supabase
+        .from("publication")
+        .select("*")
+        .order("created_at", { ascending: false });
+
+      if (error) {
+        console.error("Error fetching initial data:", error);
+      } else {
+        setdata(data);
+      }
+    };
+
+    fetchInitialData();
+
+    // Real-time subscription
+    const handleInserts = (payload: any) => {
+      console.log("Insert received!", payload);
+      setdata((prevData) => [payload.new, ...prevData]);
+    };
+
+    const handleUpdates = (payload: any) => {
+      console.log("Update received!", payload);
+      setdata((prevData) =>
+        prevData.map((item) =>
+          item.id === payload.new.id ? payload.new : item,
+        ),
+      );
+    };
+
+    const handleDeletes = (payload: any) => {
+      console.log("Delete received!", payload);
+      setdata((prevData) =>
+        prevData.filter((item) => item.id !== payload.old.id),
+      );
+    };
+
+    const subscription = supabase
+      .channel("publication_channel")
+      .on(
+        "postgres_changes",
+        { event: "INSERT", schema: "public", table: "publication" },
+        fetchInitialData,
+      )
+      .on(
+        "postgres_changes",
+        { event: "UPDATE", schema: "public", table: "publication" },
+        fetchInitialData,
+      )
+      .on(
+        "postgres_changes",
+        { event: "DELETE", schema: "public", table: "publication" },
+        fetchInitialData,
+      )
+      .subscribe();
+
+    // Cleanup subscription on unmount
+    return () => {
+      supabase.removeChannel(subscription);
+    };
+  }, []);
   return (
     <>
       {/* add publication */}
@@ -154,13 +173,7 @@ const Publication = () => {
           setdelete_publication={setdelete_publication}
         />
       )}
-      {/* delete publications */}
-      {delete_publication && (
-        <Delete_publication
-          setdelete_publication={setdelete_publication}
-          title={publication_title}
-        />
-      )}
+
       {/* modal to add publications */}
       {add_publication && (
         <Modal_add_publication
@@ -173,12 +186,13 @@ const Publication = () => {
           setpublication_body={setpublication_body}
           setpublication_data_link={setpublication_data_link}
           setpublication_pdf_link={setpublication_pdf_link}
+          edit_ID={edit_ID}
         />
       )}
 
       <div className="w-full py-[10vw]  md:py-[5vw]  px-[3%]  md:px-[10%]">
         <div className=" w-full flex flex-col md:gap-[1.5vw] gap-[5vw]">
-          {items.map((e: any, index: any) => {
+          {data.map((e: any, index: any) => {
             return (
               <>
                 <div
@@ -198,9 +212,10 @@ const Publication = () => {
                         edit_each_publication_modal_param
                       }
                       title={e.title}
-                      body={e.body}
+                      body={e.description}
                       view_data={e.data_link}
                       pdf_data={e.pdf_link}
+                      id={e.id}
                       setadd_publdcication={setadd_publication}
                     />
                   )}
@@ -216,7 +231,7 @@ const Publication = () => {
                     <p
                       className={`${Helvetica_light.className} md:text-[1.1vw] md:leading-[1.5vw] text-[4vw] leading-[5vw] text-[#a46035]`}
                     >
-                      {e.body}
+                      {e.description}
                     </p>
                   </div>
 
