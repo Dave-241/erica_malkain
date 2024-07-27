@@ -12,6 +12,8 @@ import Add_publication from "./add_publication";
 import Delete_publication from "./delete_publication";
 import Link from "next/link";
 import Modal_add_publication from "./modal_add_publication";
+import { useRouter } from "next/navigation";
+import { supabase } from "@/app/utils/supabaseClient";
 
 const Publication = () => {
   const items = [
@@ -104,6 +106,22 @@ const Publication = () => {
       });
     };
   }, []);
+  const router = useRouter();
+
+  // check if logged in
+  useEffect(() => {
+    // Check initial session
+    const checkInitialSession = async () => {
+      const {
+        data: { session },
+      } = await supabase.auth.getSession();
+      if (session) {
+        setisloggedin(true);
+      }
+    };
+
+    checkInitialSession();
+  }, [router]);
 
   const edit_each_publication_modal_param = (
     title: any,
