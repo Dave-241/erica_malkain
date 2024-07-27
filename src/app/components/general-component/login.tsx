@@ -1,62 +1,67 @@
 "use client";
 
 import { Bt_Beau_Regualr } from "@/app/utils/fonts";
-import { useState } from "react";
+import { supabase } from "@/app/utils/supabaseClient";
+import { useEffect, useState } from "react";
+import { Auth } from "@supabase/auth-ui-react";
+import { ThemeSupa } from "@supabase/auth-ui-shared";
+import { useRouter } from "next/navigation";
 
 const Login = () => {
   const [showpassword, setshowpassword] = useState(false);
   const [username, setusername] = useState("");
   const [password, setpassword] = useState("");
+
+  const router = useRouter();
+  useEffect(() => {
+    const {
+      data: { subscription },
+    } = supabase.auth.onAuthStateChange((event) => {
+      if (event === "SIGNED_IN") {
+        router.push("/");
+      }
+    });
+
+    return () => subscription.unsubscribe();
+  }, [router]);
+
+  const [view, setView] = useState<any>("sign_in");
+  const viewToMessageMap: any = {
+    sign_in: { title: "Sign In" },
+    sign_up: { title: "Sign Up" },
+    forgotten_password: { title: "Forgot Password" },
+    // Add other views and their corresponding titles here
+  };
+
   return (
     <>
-      <div className="w-full flex-col md:gap-[4vw]  h-[100vh] flex justify-center items-center">
-        <h1
-          className={`${Bt_Beau_Regualr.className} md:text-[4vw] text-[#103210]`}
-        >
-          WELCOME ERICA
-        </h1>
-
-        <div className="md:w-[25vw]  text-[1vw] flex flex-col md:gap-[2vw] ">
-          <input
-            type="text"
-            placeholder="Username or email here . . ."
-            autoComplete="email"
-            value={username || ""}
-            onChange={(e) => {
-              setusername(e.target.value);
-            }}
-            className=" md:h-[3.5vw] bg-white w-full focus:border-black focus:border transition duration-[0.6s] md:px-[3%] md:rounded-[1vw] border outline-none "
+      <div className="w-full flex flex-col items-center h-[100vh] justify-center">
+        <h1 className="text-[3rem]">
+          {viewToMessageMap[view]?.title || "Authentication"}
+        </h1>{" "}
+        <div className="md:w-[50%] w-[90%]">
+          <Auth
+            supabaseClient={supabase}
+            providers={[]}
+            // controls whether to display only social providers
+            // onlyThirdPartyProviders
+            redirectTo="/"
+            // comes with preconfigured themes, can add custom themes
+            appearance={{ theme: ThemeSupa }}
+            // controls how to display the social provider icons
+            socialLayout="horizontal"
+            view={view}
+            showLinks={false}
           />
-          <div className="flex flex-col items-start md:gap-[0.3vw] w-full">
-            <input
-              type={showpassword ? "text" : "password"}
-              placeholder="Password here . . ."
-              autoComplete="password"
-              value={password || ""}
-              onChange={(e) => {
-                setpassword(e.target.value);
-              }}
-              className=" md:h-[3.5vw] bg-white focus:border w-full md:px-[3%] md:rounded-[1vw] transition duration-[0.6s] focus:border-black outline-none "
-            />
-            <div className="flex justify-between w-full">
-              <button
-                onClick={() => {
-                  setshowpassword(!showpassword);
-                }}
-              >
-                {showpassword ? "hide" : "show"} password
-              </button>
-
-              <button className="underline hover:text-[#103210] capitalize underline-offset-4">
-                forgotten password ?
-              </button>
-            </div>
-          </div>
-
-          <button className="w-full md:h-[5vw] bg-[#103210] text-white md:rounded-[1vw] text-center capitalize md:text-[1.5vw]">
-            sign in
-          </button>
         </div>
+        {/* <button
+          className="underline underline-offset-4"
+          onClick={() => {
+            setView("forgotten_password");
+          }}
+        >
+          Forgot your password?
+        </button> */}
       </div>
     </>
   );
