@@ -88,7 +88,7 @@ const Login = () => {
         )}
 
         {loggedin && (
-          <div className="flex items-center  md:gap-[4rem]">
+          <div className="flex items-center md:flex-row flex-col gap-[3rem]  md:gap-[4rem]">
             {" "}
             <button
               className="underline  text-[2rem] underline-offset-8"
