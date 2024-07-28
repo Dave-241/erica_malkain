@@ -12,7 +12,7 @@ import Link from "next/link";
 import example from "../../../../public/images/publication/example.webp";
 import { useEffect, useRef, useState } from "react";
 
-const Recent_publication = () => {
+const Recent_publication = ({ product_data }: any) => {
   const items = [
     {
       title: "THEORY OF COLLECTIVE MIND. TRENDS IN COGNITIVE SCIENCES.",
@@ -86,6 +86,13 @@ const Recent_publication = () => {
     }
   }, [itemsRefs.current]);
 
+  useEffect(() => {
+    if (active == null) {
+      setTimeout(() => {
+        setactive(0);
+      }, 3000);
+    }
+  }, [active]);
   return (
     <>
       <div className="w-full md:gap-[6vw] gap-[6vw] py-[15vw] flex px-[3.5%] md:px-[10vw] bg-[#D8DFD8] md:py-[5vw] flex-col">
@@ -96,7 +103,7 @@ const Recent_publication = () => {
         </h2>
 
         <div className="flex flex-col  gap-[5vw] md:gap-[2vw]">
-          {items.map((e: any, index: any) => {
+          {product_data.map((e: any, index: any) => {
             return (
               <div
                 key={index}
@@ -106,7 +113,7 @@ const Recent_publication = () => {
                 }}
                 onMouseEnter={() => setactive(index)}
                 onMouseLeave={() => setactive(null)}
-                className={`w-full overflow-hidden  md:h-[37vw] h-[95vw]  relative ${
+                className={`w-full cursor-cell overflow-hidden  md:h-[37vw] h-[95vw]  relative ${
                   active == index
                     ? "md:border-none rounded-[2vw] md:rounded-none md:px-0 px-[5%]"
                     : ""
@@ -123,7 +130,10 @@ const Recent_publication = () => {
                   <div className="w-full h-full  relative">
                     {" "}
                     <Image
-                      src={example}
+                      src={e.image_link}
+                      unoptimized
+                      width="0"
+                      height="0"
                       alt={e.title}
                       className={` w-full absolute h-fit left-[50%] top-[50%] translate-x-[-50%] scale-[1.1] translate-y-[-50%] `}
                     />
@@ -187,12 +197,11 @@ const Recent_publication = () => {
                         Helvetica_light.className
                       }`}
                     >
-                      {e.body}
-                      {/* 434543 */}
+                      {e.description} {/* 434543 */}
                     </p>
 
                     <Link
-                      href={"/"}
+                      href={e.pdf_link}
                       style={{ whiteSpace: "nowrap" }}
                       className={`flex justify-center bg-transparent  w-[10vw] h-[10vw] items-center  ${
                         active == index

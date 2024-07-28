@@ -5,6 +5,7 @@ import Image from "next/image";
 import { useState } from "react";
 import example2 from "../../../../public/images/consultation/example2.png";
 import { v4 } from "uuid";
+import Image_list from "../general-component/image";
 
 const Modal_add_publication = ({
   setadd_publdcication,
@@ -17,6 +18,8 @@ const Modal_add_publication = ({
   setpublication_data_link,
   setpublication_pdf_link,
   edit_ID,
+  image_link,
+  setimage_link,
 }: any) => {
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState("");
@@ -27,7 +30,8 @@ const Modal_add_publication = ({
       !publication_title ||
       !publication_body ||
       !publication_data_link ||
-      !publication_pdf_link
+      !publication_pdf_link ||
+      !image_link
     ) {
       setError("All fields are required.");
       return;
@@ -46,7 +50,7 @@ const Modal_add_publication = ({
           description: publication_body,
           data_link: publication_data_link,
           pdf_link: publication_pdf_link,
-          image: "PLACEHOLDER",
+          image_link: image_link,
         })
         .eq("id", edit_ID);
 
@@ -60,7 +64,7 @@ const Modal_add_publication = ({
           description: publication_body,
           data_link: publication_data_link,
           pdf_link: publication_pdf_link,
-          image: "PLACEHOLDER",
+          image_link: image_link,
         },
       ]);
     }
@@ -78,10 +82,17 @@ const Modal_add_publication = ({
       setpublication_body("");
       setpublication_data_link("");
       setpublication_pdf_link("");
+      setimage_link("");
     }
   };
+
+  const [open_img, setopen_img] = useState(false);
   return (
     <>
+      {open_img && (
+        <Image_list setopen_img={setopen_img} setimage_link={setimage_link} />
+      )}
+
       <div className="w-full h-full fixed top-0 left-0  bg-black bg-opacity-[80%] md:bg-opacity-[50%] z-[1000] flex justify-center  items-center">
         <div className="bg-white md:px-[5%] justify-center md:rounded-[1vw] md:h-[35vw] md:py-0 py-[10vw] w-[95%] px-[3%] md:w-[50vw]  rounded-[2vw] flex md:gap-[1vw] capitalize flex-col gap-[6vw]">
           <p className="md:text-[2vw] text-[8vw] text-center">
@@ -111,14 +122,20 @@ const Modal_add_publication = ({
             <div className="flex w-full md:h-[3vw]  h-[13vw] md:gap-[1vw] gap-[5%] ">
               <button
                 style={{ whiteSpace: "nowrap" }}
-                className="  h-full w-full md:text-[0.9vw] md:px-[1.3vw] bg-[#103210] text-white md:rounded-[0.5vw] hover:bg-white hover:text-black  rounded-[2vw] hover:border-black border-[#103210] border"
+                className="  h-full w-full md:text-[0.7vw] md:px-[1.3vw] bg-[#103210] text-white md:rounded-[0.5vw] hover:bg-white hover:text-black  rounded-[2vw] hover:border-black border-[#103210] border"
+                onClick={() => {
+                  setopen_img(true);
+                }}
               >
-                {example2 ? "Replace" : "Choose"} Image
+                {image_link ? "Replace" : "Choose"} BG Image
               </button>
-              {example2 && (
+              {image_link && (
                 <div className="h-full w-full md:rounded-[0.5vw] rounded-[2vw] relative overflow-hidden">
                   <Image
-                    src={example2}
+                    src={image_link}
+                    unoptimized
+                    width="0"
+                    height="0"
                     alt="image link"
                     className="w-full  absolute  absolute_center h-fit"
                   />

@@ -26,6 +26,7 @@ const Publication = ({ product_data }: any) => {
   const [publication_pdf_link, setpublication_pdf_link] = useState(" ");
   const [add_publication, setadd_publication] = useState(false);
   const [edit_ID, setedit_ID] = useState("");
+  const [image_link, setimage_link] = useState("");
 
   useEffect(() => {
     setstart_anime(true);
@@ -81,6 +82,7 @@ const Publication = ({ product_data }: any) => {
     view_data: any,
     pdf_link: any,
     id: any,
+    img: any,
   ) => {
     setpublication_title(title);
     setpublication_body(body);
@@ -88,6 +90,7 @@ const Publication = ({ product_data }: any) => {
     setpublication_pdf_link(pdf_link);
     setadd_publication(true);
     setedit_ID(id);
+    setimage_link(img);
   };
 
   const refresh_all_params = () => {
@@ -97,6 +100,7 @@ const Publication = ({ product_data }: any) => {
     setpublication_pdf_link("");
     setadd_publication(true);
     setedit_ID("");
+    setimage_link("");
   };
 
   // this is to implement tracking
@@ -187,6 +191,8 @@ const Publication = ({ product_data }: any) => {
           setpublication_data_link={setpublication_data_link}
           setpublication_pdf_link={setpublication_pdf_link}
           edit_ID={edit_ID}
+          image_link={image_link}
+          setimage_link={setimage_link}
         />
       )}
 
@@ -216,6 +222,7 @@ const Publication = ({ product_data }: any) => {
                       view_data={e.data_link}
                       pdf_data={e.pdf_link}
                       id={e.id}
+                      img={e.image_link}
                       setadd_publdcication={setadd_publication}
                     />
                   )}

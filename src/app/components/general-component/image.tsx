@@ -72,7 +72,7 @@ const uploadFile = async (
   });
 };
 
-const Image_list = ({ setopen_img }: any) => {
+const Image_list = ({ setopen_img, setimage_link }: any) => {
   const [active, setactive] = useState<any>(null);
   const [uploadProgress, setUploadProgress] = useState("");
   const [selectedImage, setSelectedImage] = useState<File | null>(null);
@@ -336,11 +336,13 @@ const Image_list = ({ setopen_img }: any) => {
                         <img src={e.file_url} alt="example" className="" />
                       </div>
                       <div className="flex w-[60%] flex-col md:gap-[1vw]">
-                        <p>
-                          {" "}
-                          <strong>description</strong> :{" "}
-                          {formatText(e.alt_text)}
-                        </p>
+                        {e.alt_text && (
+                          <p>
+                            {" "}
+                            <strong>description</strong> :{" "}
+                            {formatText(e.alt_text)}
+                          </p>
+                        )}{" "}
                         <div className="flex gap-[3vw]  md:gap-[1vw]">
                           <p className="">{e.file_name}</p>
                           <button
@@ -366,7 +368,13 @@ const Image_list = ({ setopen_img }: any) => {
                 >
                   Close
                 </button>
-                <button className="w-full md:h-[3vw] h-[10vw] bg-[#440C0C] text-white">
+                <button
+                  className="w-full md:h-[3vw] h-[10vw] bg-[#440C0C] text-white"
+                  onClick={() => {
+                    setimage_link(active_img[0].file_url);
+                    setopen_img(false);
+                  }}
+                >
                   confirm select
                 </button>
               </div>
