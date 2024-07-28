@@ -250,7 +250,7 @@ const Image_list = ({ setopen_img }: any) => {
   return (
     <>
       <div className="w-full  h-full flex justify-center items-center z-[10000] fixed top-0 left-0 bg-black bg-opacity-[70%]">
-        <div className="md:w-[70%] w-[95%] md:flex-row flex-col h-[95vh] flex md:h-[39vw]  bg-white rounded-[4vw] md:rounded-none overflow-hidden ">
+        <div className="md:w-[70%] w-[95%] md:flex-row flex-col h-[90vh] flex md:h-[39vw]  bg-white rounded-[4vw] md:rounded-none overflow-hidden ">
           {/* this is for uploading */}
           <div className="w-full h-[60%] md:h-full flex flex-col  ">
             {/* this is the first section to upload  */}

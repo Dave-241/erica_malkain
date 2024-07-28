@@ -1,7 +1,7 @@
 "use client";
 
 import Image from "next/image";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { ColorPicker, useColor } from "react-color-palette";
 import "react-color-palette/css";
 import Image_list from "../general-component/image";
@@ -40,37 +40,58 @@ const Modal_edit_consulation = ({
 
   // console.log(consultation_bg_color);
   const [open_img, setopen_img] = useState(false);
+  // this is to calculate for the width
 
+  const [calWidth, setCalWidth] = useState(0);
+  const width = globalThis.innerWidth;
+  const handleResize = () => {
+    setCalWidth(globalThis.innerWidth);
+  };
+
+  useEffect(() => {
+    window.addEventListener("resize", handleResize);
+
+    // Initial call to set the width on component mount
+    handleResize();
+
+    return () => {
+      window.removeEventListener("resize", handleResize);
+    };
+  }, [width]);
+
+  useEffect(() => {
+    handleResize();
+  }, [width]);
   return (
     <>
       {open_img && <Image_list setopen_img={setopen_img} />}
-      <div className="w-full  h-full flex justify-center items-center z-[1000] fixed top-0 left-0 bg-black bg-opacity-[60%] md:px-[3%]">
+      <div className="w-full  h-full flex  justify-center items-center z-[1000] fixed top-0 left-0 bg-black bg-opacity-[60%] md:px-[3%]">
         <div
-          className="md:w-auto  bg-white md:p-[2vw] justify-between flex flex-col md:h-auto md:gap-[1vw] md:rounded-[2vw]
+          className="md:w-auto  w-[95%]  bg-white md:p-[2vw] justify-between flex flex-col md:h-auto md:gap-[1vw] md:rounded-[2vw]
         "
         >
           <p className="md:text-[2vw] capitalize text-center">
             {" "}
             {consultation_title ? "edit" : "Add new"} publication here
           </p>{" "}
-          <div className=" flex  justify-center  w-fit md:gap-[3vw]">
+          <div className=" flex   justify-center md:flex-row flex-col   md:w-fit md:gap-[3vw]">
             {/* the color section */}
-            <div className="flex  w-fit   capitalize md:gap-[2vw]">
+            <div className="flex w-full    md:w-fit border2 md:text-[1vw] text-[3.5vw]  capitalize md:gap-[2vw]">
               <div className="flex flex-col  md:gap-[1vw] text-center">
-                <p className="md:text-[1vw]">select backgroundColor here</p>
+                <p className="">select backgroundColor here</p>
                 <ColorPicker
                   hideInput={["rgb", "hsv"]}
-                  height={200}
+                  height={calWidth < 768 ? 50 : 200}
                   color={consultation_bg_color}
                   onChange={setconsultation_bg_color}
                 />
               </div>
               <div className="flex flex-col  md:gap-[1vw] text-center">
-                <p className="md:text-[1vw]">select title color here </p>
+                <p className="">select title color here </p>
                 <ColorPicker
                   hideInput={["rgb", "hsv"]}
                   color={consultation_heading_text_color}
-                  height={200}
+                  height={calWidth < 768 ? 50 : 200}
                   onChange={setconsultation_heading_text_color}
                 />
               </div>
@@ -157,7 +178,7 @@ const Modal_edit_consulation = ({
                     onChange={(e) => {
                       setconsultation_institute(e.target.value);
                     }}
-                    className="border rounded-[0.5vw] outline-none bg-[black] bg-opacity-[70%] placeholder:text-white placeholder:text-opacity-[50%] capitalize text-white md:h-[3vw] md:px-[3%] md:text-[1vw]"
+                    className="border rounded-[0.5vw]  w-full outline-none bg-[black] bg-opacity-[70%] placeholder:text-white placeholder:text-opacity-[50%] capitalize text-white md:h-[3vw] md:px-[3%] md:text-[1vw]"
                     placeholder="Eg : Wharton University, Wet Cement  .."
                   />
                 </div>
@@ -173,7 +194,7 @@ const Modal_edit_consulation = ({
                       setconsultation_year(e.target.value);
                     }}
                     value={consultation_year || ""}
-                    className="border rounded-[0.5vw] outline-none bg-[black] bg-opacity-[70%] placeholder:text-white placeholder:text-opacity-[50%] capitalize text-white md:h-[3vw] md:px-[3%] md:text-[1vw]"
+                    className="border rounded-[0.5vw] outline-none  w-full bg-[black] bg-opacity-[70%] placeholder:text-white placeholder:text-opacity-[50%] capitalize text-white md:h-[3vw] md:px-[3%] md:text-[1vw]"
                     placeholder="Eg : 2023, 2024.."
                   />
                 </div>
