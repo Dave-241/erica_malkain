@@ -80,44 +80,44 @@ const Each_consultation = ({ product_data }: any) => {
     useColor("#000000");
   const [add_consulation, setadd_consulation] = useState(false);
 
-  const data_array = [
-    {
-      bg: "#4CB163",
-      institue: "Wharton University",
-      year: "2023",
-      heading: "NEGOTIATION COURSE",
-      text: "#BFCFC5",
-      img: example,
-      link: "/",
-      body: 'Erica teaches a course on Negotiations at The Wharton School at the University of Pennsylvania, for which she has received a Wharton Teaching Excellence award. Her course has received an average rating of 3.8/4.0 and consistently receives among the highest marks in "overall quality" across the entire Wharton School. Erica was named one of <a href="malkain.com"> Poets&Quants 50 Best Professors of 2023. </a>',
-    },
-    {
-      bg: "#2F8F45",
-      institue: "Wet Cement",
-      heading: "Workshops",
-      year: "2024",
-      img: example2,
-      link: "/",
+  // const data_array = [
+  //   {
+  //     bg: "#4CB163",
+  //     institue: "Wharton University",
+  //     year: "2023",
+  //     heading: "NEGOTIATION COURSE",
+  //     text: "#BFCFC5",
+  //     img: example,
+  //     link: "/",
+  //     body: 'Erica teaches a course on Negotiations at The Wharton School at the University of Pennsylvania, for which she has received a Wharton Teaching Excellence award. Her course has received an average rating of 3.8/4.0 and consistently receives among the highest marks in "overall quality" across the entire Wharton School. Erica was named one of <a href="malkain.com"> Poets&Quants 50 Best Professors of 2023. </a>',
+  //   },
+  //   {
+  //     bg: "#2F8F45",
+  //     institue: "Wet Cement",
+  //     heading: "Workshops",
+  //     year: "2024",
+  //     img: example2,
+  //     link: "/",
 
-      text: "#B2EECA",
-      body: 'Erica works with <a href="malkain.com"> Wet Cement </a>, a purpose-driven company whose mission is to empower people, teams, and organizations to fearlessly achieve their potential, to co-design and <a href="malkain.com"> lead Wet Cements Win-Win Negotiations training </a>.  Wet Cement especially aims to empower women and other members of underrepresented groups at the negotiating table, so that they can more effectively advance their careers. ',
-    },
-    {
-      bg: "#1A6E30",
-      institue: "Behavioralize",
-      heading: "BEHAVIORAL SCIENCE CONSULTING",
-      year: "2023",
-      img: example3,
-      link: "/",
+  //     text: "#B2EECA",
+  //     body: 'Erica works with <a href="malkain.com"> Wet Cement </a>, a purpose-driven company whose mission is to empower people, teams, and organizations to fearlessly achieve their potential, to co-design and <a href="malkain.com"> lead Wet Cements Win-Win Negotiations training </a>.  Wet Cement especially aims to empower women and other members of underrepresented groups at the negotiating table, so that they can more effectively advance their careers. ',
+  //   },
+  //   {
+  //     bg: "#1A6E30",
+  //     institue: "Behavioralize",
+  //     heading: "BEHAVIORAL SCIENCE CONSULTING",
+  //     year: "2023",
+  //     img: example3,
+  //     link: "/",
 
-      text: "#8DCE9F",
-      body: "Erica is a consultant with <a href='malkain.com'> Behavioralize </a> , a data-driven company that applies behavioral science to understand and influence customer and managerial decision making, helping companies drive growth by identifying and solving their key behavioral challenges",
-    },
-  ];
+  //     text: "#8DCE9F",
+  //     body: "Erica is a consultant with <a href='malkain.com'> Behavioralize </a> , a data-driven company that applies behavioral science to understand and influence customer and managerial decision making, helping companies drive growth by identifying and solving their key behavioral challenges",
+  //   },
+  // ];
 
   const [edit_ID, setedit_ID] = useState("");
 
-  const y = useTransform(scrollYProgress, [0, 1], [1, data_array.length + 0.5]);
+  const y = useTransform(scrollYProgress, [0, 1], [1, data.length + 0.5]);
   const parent_height = useTransform(scrollYProgress, [0, 1], [1, 10]);
 
   useMotionValueEvent(y, "change", (latest) => {
@@ -304,8 +304,8 @@ const Each_consultation = ({ product_data }: any) => {
         style={{
           height:
             calwidth > 768
-              ? `${data_array.length * 100}vh`
-              : `${data_array.length * 110}vh`,
+              ? `${data.length * 100}vh`
+              : `${data.length * 110}vh`,
         }}
         ref={sectionRef}
       >
