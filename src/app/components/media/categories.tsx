@@ -283,10 +283,12 @@ const Categories = ({ product_data }: any) => {
                             className="md:w-[30.6vw] relative  rounded-[5vw] p-[2vw]  md:rounded-[1.5vw] md:gap-0 gap-[3vw] flex flex-col md:p-[0.5vw] group md:mt-[0.4vw] bg-white"
                           >
                             {" "}
-                            <Edit_each_category
-                              setopen_edit={setopen_edit}
-                              id={internal.id}
-                            />
+                            {isloggedin && (
+                              <Edit_each_category
+                                setopen_edit={setopen_edit}
+                                id={internal.id}
+                              />
+                            )}
                             <Link
                               href={internal.link}
                               key={internal_index}
