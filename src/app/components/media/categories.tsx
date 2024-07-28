@@ -278,7 +278,10 @@ const Categories = ({ product_data }: any) => {
                     <div className=" flex  flex-wrap gap-[5vw] md:gap-[1.7vw]">
                       {e.body.map((internal: any, internal_index: any) => {
                         return (
-                          <div className="md:w-[30.6vw] relative  rounded-[5vw] p-[2vw]  md:rounded-[1.5vw] md:gap-0 gap-[3vw] flex flex-col md:p-[0.5vw] group md:mt-[0.4vw] bg-white">
+                          <div
+                            key={internal_index}
+                            className="md:w-[30.6vw] relative  rounded-[5vw] p-[2vw]  md:rounded-[1.5vw] md:gap-0 gap-[3vw] flex flex-col md:p-[0.5vw] group md:mt-[0.4vw] bg-white"
+                          >
                             {" "}
                             <Edit_each_category
                               setopen_edit={setopen_edit}
@@ -311,7 +314,7 @@ const Categories = ({ product_data }: any) => {
                                       internal_index
                                     ] = el;
                                   }}
-                                  className={` md:p-[1.5vw] p-[3vw]   ${spline_font.className} font-medium md:text-[1vw] text-[4vw] md:leading-[1.4vw] leading-[5vw]`}
+                                  className={` md:p-[1.5vw] p-[3vw]   ${spline_font.className}  font-medium md:text-[1vw] text-[4vw] md:leading-[1.4vw] leading-[5vw]`}
                                 >
                                   {internal.caption}
                                 </p>
