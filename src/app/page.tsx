@@ -8,8 +8,22 @@ import Hero_home from "./components/home/hero";
 import Home_research from "./components/home/research";
 import Reviews from "./components/home/reviews";
 import Workshop_ad from "./components/home/workshop_ad";
+import { supabase } from "./utils/supabaseClient";
+export const revalidate = 0;
+const fetchProducts = async () => {
+  const { data, error } = await supabase
+    .from("publication")
+    .select("*")
+    .order("created_at", { ascending: false })
+    .limit(4);
 
-export default function Home() {
+  // if (error) throw notFound();
+  console.log(data);
+  return data;
+};
+export default async function Home() {
+  const product_data = await fetchProducts();
+
   return (
     <>
       <>
@@ -19,7 +33,7 @@ export default function Home() {
           {/* <div className="h-[20vw] bg-black"></div> */}
           {/* <Approach /> */}
           <Home_research />
-          <Recent_publication />
+          <Recent_publication product_data={product_data} />
           <Recent_media />
           <Workshop_ad />
           <Reviews />

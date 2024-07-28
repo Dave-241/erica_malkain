@@ -50,6 +50,7 @@ const Recent_publication = ({ product_data }: any) => {
   //  const itemsRefs = useRef<any>([]);
   const [heights, setHeights] = useState<number[]>([]);
   const [active, setactive] = useState<any>(0);
+  const [data, setdata] = useState<any>(product_data ? product_data : []);
 
   useEffect(() => {
     const observer = new IntersectionObserver(
@@ -103,7 +104,7 @@ const Recent_publication = ({ product_data }: any) => {
         </h2>
 
         <div className="flex flex-col  gap-[5vw] md:gap-[2vw]">
-          {product_data.map((e: any, index: any) => {
+          {data.map((e: any, index: any) => {
             return (
               <div
                 key={index}
