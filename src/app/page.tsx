@@ -18,7 +18,7 @@ const fetchProducts = async () => {
     .limit(4);
 
   // if (error) throw notFound();
-  console.log(data);
+  // console.log(data);
   return data;
 };
 export default async function Home() {
@@ -35,7 +35,7 @@ export default async function Home() {
           <Home_research />
           <Recent_publication product_data={product_data} />
           <Recent_media />
-          <Workshop_ad />
+          {/* <Workshop_ad /> */}
           <Reviews />
           <Contact />
           <Footer />
