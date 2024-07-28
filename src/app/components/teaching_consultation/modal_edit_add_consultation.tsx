@@ -118,27 +118,14 @@ const Modal_edit_consulation = ({
                     placeholder="Eg : NEGOTIATION COURSE , WORKSHOPS . . ."
                   />
                 </div>
-                {/* <button
-                  style={{ whiteSpace: "nowrap" }}
-                  className=" md:h-[80%] text-[3vw] md:text-[0.9vw] md:px-[1.3vw] bg-[#103210] text-white md:rounded-[1vw] hover:bg-white hover:text-black hover:border-black transition duration-[0.6s] border-[#103210] border"
-                  onClick={() => {
-                    setopen_img(true);
-                  }}
-                >
-                  {consultation_image_link ? "Replace" : "Choose"} Image
-                </button>
-                {consultation_image_link && (
-                  <Image
-                    src={consultation_image_link}
-                    alt="image link"
-                    className="w-[20%] h-fit"
-                  />
-                )} */}
 
                 <div className="flex w-full md:h-[3vw]  h-[10vw] md:gap-[1vw] gap-[5%] ">
                   <button
                     style={{ whiteSpace: "nowrap" }}
                     className="  h-full w-full md:text-[0.9vw] md:px-[1.3vw] bg-[#103210] text-white md:rounded-[0.5vw] hover:bg-white hover:text-black text-[3vw]  rounded-[2vw] hover:border-black border-[#103210] border"
+                    onClick={() => {
+                      setopen_img(true);
+                    }}
                   >
                     {consultation_image_link ? "Replace" : "Choose"} Image
                   </button>

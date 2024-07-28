@@ -374,31 +374,42 @@ const Image_list = ({ setopen_img }: any) => {
           </div>
           {/* this is for imeagesl */}
           <div className="w-full overflow-y-scroll  bg-[whitesmoke] md:h-full h-[40%] flex justify-center  ">
-            <div className="w-full gap-[5vw] p-[5%] md:gap-[2vw]  md:p-[3vw]  h-fit  flex flex-wrap items-center">
-              {img_array.map((e: any, index: any) => {
-                return (
-                  <div
-                    onClick={() => {
-                      setactive(index);
-                      setactive_img([img_array[index]]);
-                      //   console.log();
-                    }}
-                    className={`md:h-[5vw] h-[25vw] w-[25vw] rounded-[5vw] border md:rounded-[1vw] overflow-hidden cursor-pointer ${
-                      index == active
-                        ? "border-[#440C0C] border-[1.5vw] md:border-[0.4vw]"
-                        : ""
-                    } md:w-[5vw] relative transition duration-[0.5s]`}
-                    key={index}
-                  >
-                    <img
-                      src={e.file_url}
-                      alt="images"
-                      className="absolute w-full h-full absolute_center"
-                    />
-                  </div>
-                );
-              })}
-            </div>
+            {img_array.length ? (
+              <>
+                {" "}
+                <div className="w-full gap-[5vw] p-[5%] md:gap-[2vw]  md:p-[3vw]  h-fit  flex flex-wrap items-center">
+                  {img_array.map((e: any, index: any) => {
+                    return (
+                      <div
+                        onClick={() => {
+                          setactive(index);
+                          setactive_img([img_array[index]]);
+                          //   console.log();
+                        }}
+                        className={`md:h-[5vw] h-[25vw] w-[25vw] rounded-[5vw] border md:rounded-[1vw] overflow-hidden cursor-pointer ${
+                          index == active
+                            ? "border-[#440C0C] border-[1.5vw] md:border-[0.4vw]"
+                            : ""
+                        } md:w-[5vw] relative transition duration-[0.5s]`}
+                        key={index}
+                      >
+                        <img
+                          src={e.file_url}
+                          alt="images"
+                          className="absolute w-full h-full absolute_center"
+                        />
+                      </div>
+                    );
+                  })}
+                </div>{" "}
+              </>
+            ) : (
+              <>
+                <div className="w-full h-full flex justify-center items-center">
+                  <p className="md:text-[1.2vw] text-[4vw]">LOADING ...</p>
+                </div>
+              </>
+            )}
           </div>
         </div>
       </div>
