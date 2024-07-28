@@ -149,6 +149,7 @@ const Image_list = ({ setopen_img, setimage_link }: any) => {
     const handleInserts = (payload: any) => {
       console.log("Insert received!", payload);
       setimg_array((prevData: any) => [payload.new, ...prevData]);
+      fetchInitialData();
     };
 
     const handleUpdates = (payload: any) => {

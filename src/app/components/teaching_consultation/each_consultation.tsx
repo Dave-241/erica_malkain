@@ -20,7 +20,7 @@ import Modal_edit_consulation from "./modal_edit_add_consultation";
 import { useColor } from "react-color-palette";
 import { useRouter } from "next/navigation";
 import { supabase } from "@/app/utils/supabaseClient";
-const Each_consultation = () => {
+const Each_consultation = ({ product_data }: any) => {
   const sectionRef = useRef(null);
   const { scrollYProgress } = useScroll({
     target: sectionRef,
@@ -60,6 +60,9 @@ const Each_consultation = () => {
       window.removeEventListener("resize", handleResize);
     };
   }, [width]);
+
+  const [data, setdata] = useState<any>(product_data ? product_data : []);
+
   const [calwidth, setcalwidth] = useState(0);
   const [yvalue, setyvalue] = useState(1);
   const [height, setheight] = useState(1);
@@ -112,6 +115,8 @@ const Each_consultation = () => {
     },
   ];
 
+  const [edit_ID, setedit_ID] = useState("");
+
   const y = useTransform(scrollYProgress, [0, 1], [1, data_array.length + 0.5]);
   const parent_height = useTransform(scrollYProgress, [0, 1], [1, 10]);
 
@@ -122,31 +127,42 @@ const Each_consultation = () => {
   useMotionValueEvent(parent_height, "change", (latest) => {
     setheight(latest);
   });
-
+  const [image_link, setimage_link] = useState("");
+  const [image_bg_link, setimage_bg_link] = useState("");
   const edit_each_consulation_modal_param = (
     title: any,
     body: any,
     institue: any,
     year: any,
     read_more: any,
-    img: any,
+    normal_img: any,
     bg_color: any,
     text_color: any,
+    id: any,
+    bg_img: any,
   ) => {
     setconsultation_title(title);
     setconsultation_body(body);
     setconsultation_institute(institue);
     setconsultation_year(year);
     setconsulation_readmore_link(read_more);
-    setconsultation_image_link(img);
+    // setconsultation_image_link(normal_img);
     setconsultation_bg_color((prevstate) => ({
       ...prevstate,
-      hex: bg_color,
+      hex: bg_color.hex,
+      rgb: bg_color.rgb,
+      hsv: bg_color.hsv,
     }));
     setconsultation_heading_text_color((prevstate) => ({
       ...prevstate,
-      hex: text_color,
+      hex: text_color.hex,
+      rgb: text_color.rgb,
+      hsv: text_color.hsv,
     }));
+    setedit_ID(id);
+    setimage_link(normal_img);
+    setimage_bg_link(bg_img);
+    // console.log(text_color, bg_color, image_link, normal_img);
     setadd_consulation(true);
   };
 
@@ -164,8 +180,73 @@ const Each_consultation = () => {
       ...prevstate,
       hex: "#000000",
     }));
+    setedit_ID("");
     setadd_consulation(true);
   };
+
+  useEffect(() => {
+    const fetchInitialData = async () => {
+      const { data, error } = await supabase
+        .from("consultation")
+        .select("*")
+        .order("created_at", { ascending: false });
+
+      if (error) {
+        console.error("Error fetching initial data:", error);
+      } else {
+        setdata(data);
+      }
+    };
+
+    fetchInitialData();
+
+    // Real-time subscription
+    const handleInserts = (payload: any) => {
+      console.log("Insert received!", payload);
+      window.location.reload();
+    };
+
+    const handleUpdates = (payload: any) => {
+      console.log("Update received!", payload);
+      setdata((prevData: any) =>
+        prevData.map((item: any) =>
+          item.id === payload.new.id ? payload.new : item,
+        ),
+      );
+    };
+
+    const handleDeletes = (payload: any) => {
+      console.log("Delete received!", payload);
+      setdata((prevData: any) =>
+        prevData.filter((item: any) => item.id !== payload.old.id),
+      );
+    };
+
+    const subscription = supabase
+      .channel("consultation_channel")
+      .on(
+        "postgres_changes",
+        { event: "INSERT", schema: "public", table: "consultation" },
+        handleInserts,
+      )
+      .on(
+        "postgres_changes",
+        { event: "UPDATE", schema: "public", table: "consultation" },
+        handleUpdates,
+      )
+      .on(
+        "postgres_changes",
+        { event: "DELETE", schema: "public", table: "consultation" },
+        handleDeletes,
+      )
+      .subscribe();
+
+    // Cleanup subscription on unmount
+    return () => {
+      supabase.removeChannel(subscription);
+    };
+  }, []);
+
   return (
     <>
       {/* buttons to add consultation */}
@@ -208,6 +289,12 @@ const Each_consultation = () => {
           setconsultation_heading_text_color={
             setconsultation_heading_text_color
           }
+          image_link={image_link}
+          image_bg_link={image_bg_link}
+          setimage_link={setimage_link}
+          setimage_bg_link={setimage_bg_link}
+          setedit_ID={setedit_ID}
+          edit_ID={edit_ID}
         />
       )}
       {/* the wrapper */}
@@ -224,21 +311,28 @@ const Each_consultation = () => {
       >
         <div className="flex  justify-center items-center   sticky bottom-0 h-[100vh]  w-full ">
           {/* the customize scroll bar starts */}
-          <div className="absolute md:right-[3vw] z-[10] border-[#0e257756]  flex w-[2%] right-[1.5%]  top-[50%] translate-y-[-50%] md:w-[0.6vw] rounded-[3vw]  lg:h-[28vw] md:h-[40vw] bg-black mix-blend-overlay border2 h-[140vw]  overflow-hidden">
+          <div className="absolute md:right-[3vw] z-[10] border-[#0e257756]  flex w-[2%] right-[1.5%]  top-[50%] translate-y-[-50%] md:w-[0.6vw] rounded-[3vw]  lg:h-[28vw] md:h-[40vw] bg-black mix-blend-overlay  h-[140vw]  overflow-hidden">
             <div
               className="w-full    bg-[#0E2477]"
               style={{ height: `${height * 10}%` }}
             ></div>
           </div>
           {/* the customized scroll bar ends */}
-          {data_array.map((e: any, index: any) => {
+          {data.map((e: any, index: any) => {
+            // Parse the JSON string to get the color object
+            const bg_color_Object = JSON.parse(e.bg_color);
+            const text_color_Object = JSON.parse(e.text_color);
+            // Extract the hex value
+            const bgColor = bg_color_Object.hex;
+            const textColor = text_color_Object.hex;
+
             return (
               <div
                 key={index}
                 className={` absolute top-[50%] translate-x-[-50%] left-[50%] translate-y-[-50%]  w-full md:gap-[4vw] flex flex-col md:justify-center justify-end md:pb-0 pb-[10vw] items-center gap-[7vw] h-full  overflow-hidden   `}
                 style={{
                   transition: "opacity 0.6s ease",
-                  backgroundColor: e.bg,
+                  backgroundColor: bgColor,
                   transform:
                     index + 1 - yvalue >= 0 && index + 1 - yvalue <= 1
                       ? `translateY(${
@@ -260,28 +354,30 @@ const Each_consultation = () => {
                     setconsultation_title={setconsultation_title}
                     title={e.heading}
                     body={e.body}
-                    bg={e.bg}
-                    text_color={e.text}
+                    bg={bg_color_Object}
+                    text_color={text_color_Object}
                     img={e.img}
                     institue={e.institue}
                     year={e.year}
+                    id={e.id}
                     read_more={e.link}
+                    bg_img={e.bg_img}
                   />
                 )}
                 <div className="flex md:px-[10vw] px-[5%] md:flex-row flex-col  md:justify-between w-full md:gap-0 gap-[7vw] ">
                   {/* the left section */}
                   <div
-                    className="flex  flex-col  md:w-[30vw] md:gap-[4vw]"
-                    style={{ backgroundColor: e.bg }}
+                    className="flex  flex-col  md:w-[30vw]  md:gap-[4vw]"
+                    style={{ backgroundColor: e.bgColor }}
                   >
                     <h2
-                      className={` ${spline_font.className} font-semibold md:text-[4vw] md:leading-[4.4vw] border2 text-[10vw] leading-[11vw]`}
-                      style={{ color: e.text }}
+                      className={` ${spline_font.className} uppercase font-semibold md:text-[4vw] md:leading-[4.4vw]  text-[10vw] leading-[11vw]`}
+                      style={{ color: textColor }}
                     >
                       {e.heading}
                     </h2>
 
-                    <Image
+                    <img
                       src={e.img}
                       alt={e.heading}
                       className="w-full md:inline-block hidden h-fit md:rounded-[6vw]"
@@ -319,10 +415,9 @@ const Each_consultation = () => {
                     </Link>
                   </div>
                 </div>
-
                 {/* this image is for mobile */}
                 <div className="md:hidden px-[5%]">
-                  <Image
+                  <img
                     src={e.img}
                     alt={e.heading}
                     className="w-full   h-fit rounded-[10vw]"

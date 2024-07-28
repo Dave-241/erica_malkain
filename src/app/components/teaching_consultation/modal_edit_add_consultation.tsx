@@ -5,6 +5,7 @@ import { useEffect, useState } from "react";
 import { ColorPicker, useColor } from "react-color-palette";
 import "react-color-palette/css";
 import Image_list from "../general-component/image";
+import { supabase } from "@/app/utils/supabaseClient";
 const Modal_edit_consulation = ({
   setadd_consulation,
   consultation_title,
@@ -23,6 +24,12 @@ const Modal_edit_consulation = ({
   setconsultation_bg_color,
   consultation_heading_text_color,
   setconsultation_heading_text_color,
+  image_link,
+  image_bg_link,
+  setimage_link,
+  edit_ID,
+  setedit_ID,
+  setimage_bg_link,
 }: any) => {
   // title, background color, heading color , body, image
   // const [bg_color, setbg_color] = useColor("#000000");
@@ -40,6 +47,7 @@ const Modal_edit_consulation = ({
 
   // console.log(consultation_bg_color);
   const [open_img, setopen_img] = useState(false);
+  const [open_bg_img, setopen_bg_img] = useState(false);
   // this is to calculate for the width
 
   const [calWidth, setCalWidth] = useState(0);
@@ -62,9 +70,107 @@ const Modal_edit_consulation = ({
   useEffect(() => {
     handleResize();
   }, [width]);
+  const [loading, setLoading] = useState(false);
+  const [error, setError] = useState("");
+  // this is for upating the database
+  const submit_form = async () => {
+    // Validation check
+    if (
+      !consultation_title ||
+      !consultation_body ||
+      !consulation_readmore_link ||
+      !consultation_institute ||
+      !consultation_year ||
+      !image_link ||
+      !image_bg_link ||
+      !consultation_bg_color ||
+      !consultation_heading_text_color
+    ) {
+      setError("All fields are required.");
+      return;
+    }
+
+    setLoading(true);
+    setError("");
+    // Parse the stringified JSON in the hex property, then extract the hex value
+    // const heading_text_color = JSON.parse(
+    //   consultation_heading_text_color.hex,
+    // ).hex;
+    // const bg_color = JSON.parse(consultation_bg_color.hex).hex;
+    let result;
+    if (edit_ID) {
+      // Update existing publication
+      result = await supabase
+        .from("consultation")
+        .update({
+          img: image_link,
+          link: consulation_readmore_link,
+          text_color: consultation_heading_text_color,
+          bg_color: consultation_bg_color,
+          bg_img: image_bg_link,
+          institue: consultation_institute,
+          year: consultation_year,
+          heading: consultation_title,
+          body: consultation_body,
+        })
+        .eq("id", edit_ID);
+
+      console.log(edit_ID);
+    } else {
+      console.log("its adding");
+      // Add new publication
+      result = await supabase.from("consultation").insert([
+        {
+          img: image_link,
+          link: consulation_readmore_link,
+          text_color: consultation_heading_text_color,
+          bg_color: consultation_bg_color,
+          bg_img: image_bg_link,
+          institue: consultation_institute,
+          year: consultation_year,
+          heading: consultation_title,
+          body: consultation_body,
+        },
+      ]);
+    }
+
+    const { data, error } = result;
+    setLoading(false);
+
+    if (error) {
+      setError(error.message);
+    } else {
+      setadd_consulation(false);
+      // Optionally reset the form fields if adding a new publication
+
+      setconsultation_title("");
+      setconsultation_body("");
+      setconsultation_institute("");
+      setconsultation_year("");
+      setconsultation_image_link("");
+      setconsultation_bg_color((prevstate: any) => ({
+        ...prevstate,
+        hex: "#000000",
+      }));
+      setconsultation_heading_text_color((prevstate: any) => ({
+        ...prevstate,
+        hex: "#000000",
+      }));
+      setedit_ID("");
+    }
+  };
+
   return (
     <>
-      {open_img && <Image_list setopen_img={setopen_img} />}
+      {open_img && (
+        <Image_list setopen_img={setopen_img} setimage_link={setimage_link} />
+      )}
+      {open_bg_img && (
+        <Image_list
+          setopen_img={setopen_bg_img}
+          setimage_link={setimage_bg_link}
+        />
+      )}
       <div className="w-full   h-full flex py-[5vw]  justify-center items-start md:py-[5vw] overflow-x-hidden z-[1000] fixed top-0 left-0 bg-black bg-opacity-[60%] overflow-y-scroll md:px-[3%]">
         <div
           className="md:w-auto w-full gap-[5vw] py-[7vw]   bg-white md:p-[2vw] justify-between flex flex-col md:h-auto md:gap-[1vw] md:rounded-[2vw]
@@ -129,13 +235,13 @@ const Modal_edit_consulation = ({
                         setopen_img(true);
                       }}
                     >
-                      {consultation_image_link ? "Replace" : "Choose"} institue
-                      image
+                      {image_link ? "Replace" : "Choose"} institue image
                     </button>
-                    {consultation_image_link && (
+                    {/* {} */}
+                    {image_link && (
                       <div className="h-full w-full md:rounded-[0.5vw] rounded-[2vw] relative overflow-hidden">
-                        <Image
-                          src={consultation_image_link}
+                        <img
+                          src={image_link}
                           alt="image link"
                           className="w-full  absolute  absolute_center h-fit"
                         />
@@ -147,15 +253,15 @@ const Modal_edit_consulation = ({
                       style={{ whiteSpace: "nowrap" }}
                       className="  h-full w-full md:text-[0.7vw] md:px-[1.3vw] bg-[#103210] text-white md:rounded-[0.5vw] hover:bg-white hover:text-black text-[3.5vw]  rounded-[2vw] hover:border-black border-[#103210] border"
                       onClick={() => {
-                        setopen_img(true);
+                        setopen_bg_img(true);
                       }}
                     >
-                      {consultation_image_link ? "Replace" : "Choose"} bg Image
+                      {image_bg_link ? "Replace" : "Choose"} bg Image
                     </button>
-                    {consultation_image_link && (
+                    {image_bg_link && (
                       <div className="h-full w-full md:rounded-[0.5vw] rounded-[2vw] relative overflow-hidden">
-                        <Image
-                          src={consultation_image_link}
+                        <img
+                          src={image_bg_link}
                           alt="image link"
                           className="w-full  absolute  absolute_center h-fit"
                         />
@@ -253,6 +359,11 @@ const Modal_edit_consulation = ({
                   />
                 </div>
               </div>
+              {error && (
+                <p className="text-red-500 md:text-[1vw] text-[3.5vw]">
+                  {error}
+                </p>
+              )}
             </div>
           </div>
           {/* the buttons for call to action */}
@@ -269,8 +380,10 @@ const Modal_edit_consulation = ({
             <button
               type="submit"
               className=" md:px-[4vw] md:py-[0.5vw] md:w-auto w-full md:h-auto h-[10vw] capitalize text-white  md:rounded-[0.5vw] hover:bg-opacity-[60%] md:text-[1vw] text-[3.5vw] backdrop-blur-2xl text-center bg-red-500 border"
+              onClick={submit_form}
+              disabled={loading}
             >
-              upload consulation
+              {loading ? "Uploading..." : "Upload Consultation"}{" "}
             </button>
           </div>
         </div>

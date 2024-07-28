@@ -11,6 +11,8 @@ const Edit_each_consulation = ({
   institue,
   year,
   edit_each_consulation_modal_param,
+  bg_img,
+  id,
 }: any) => {
   return (
     <>
@@ -27,6 +29,8 @@ const Edit_each_consulation = ({
               img,
               bg,
               text_color,
+              id,
+              bg_img,
             );
           }}
         >
