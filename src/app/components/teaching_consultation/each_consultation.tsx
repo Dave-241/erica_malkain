@@ -18,6 +18,8 @@ import Delete_consultation from "./delete_consultation";
 import Add_consultation from "./add_consultation";
 import Modal_edit_consulation from "./modal_edit_add_consultation";
 import { useColor } from "react-color-palette";
+import { useRouter } from "next/navigation";
+import { supabase } from "@/app/utils/supabaseClient";
 const Each_consultation = () => {
   const sectionRef = useRef(null);
   const { scrollYProgress } = useScroll({
@@ -32,6 +34,22 @@ const Each_consultation = () => {
     setcalwidth(globalThis.innerWidth);
   };
 
+  const router = useRouter();
+
+  // check if logged in
+  useEffect(() => {
+    // Check initial session
+    const checkInitialSession = async () => {
+      const {
+        data: { session },
+      } = await supabase.auth.getSession();
+      if (session) {
+        setisloggedin(true);
+      }
+    };
+
+    checkInitialSession();
+  }, [router]);
   useEffect(() => {
     window.addEventListener("resize", handleResize);
 

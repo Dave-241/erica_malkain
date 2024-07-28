@@ -4,6 +4,7 @@ import Image from "next/image";
 import { useState } from "react";
 import { ColorPicker, useColor } from "react-color-palette";
 import "react-color-palette/css";
+import Image_list from "../general-component/image";
 const Modal_edit_consulation = ({
   setadd_consulation,
   consultation_title,
@@ -37,22 +38,25 @@ const Modal_edit_consulation = ({
     setIsModalOpen(false);
   };
 
-  console.log(consultation_bg_color);
+  // console.log(consultation_bg_color);
+  const [open_img, setopen_img] = useState(false);
+
   return (
     <>
-      <div className="w-full border2 h-full flex justify-center items-center z-[1000] fixed top-0 left-0 bg-black bg-opacity-[60%]">
+      {open_img && <Image_list setopen_img={setopen_img} />}
+      <div className="w-full  h-full flex justify-center items-center z-[1000] fixed top-0 left-0 bg-black bg-opacity-[60%] md:px-[3%]">
         <div
-          className="md:w-[75vw] bg-white md:p-[2vw] justify-between flex flex-col md:h-[40vw] md:rounded-[2vw]
+          className="md:w-auto  bg-white md:p-[2vw] justify-between flex flex-col md:h-auto md:gap-[1vw] md:rounded-[2vw]
         "
         >
           <p className="md:text-[2vw] capitalize text-center">
             {" "}
             {consultation_title ? "edit" : "Add new"} publication here
           </p>{" "}
-          <div className=" w-full flex justify-center md:gap-[3vw]">
+          <div className=" flex  justify-center  w-fit md:gap-[3vw]">
             {/* the color section */}
-            <div className="flex   w-[40vw] capitalize md:gap-[2vw]">
-              <div className="flex flex-col md:gap-[1vw] text-center">
+            <div className="flex  w-fit   capitalize md:gap-[2vw]">
+              <div className="flex flex-col  md:gap-[1vw] text-center">
                 <p className="md:text-[1vw]">select backgroundColor here</p>
                 <ColorPicker
                   hideInput={["rgb", "hsv"]}
@@ -61,7 +65,7 @@ const Modal_edit_consulation = ({
                   onChange={setconsultation_bg_color}
                 />
               </div>
-              <div className="flex flex-col md:gap-[1vw] text-center">
+              <div className="flex flex-col  md:gap-[1vw] text-center">
                 <p className="md:text-[1vw]">select title color here </p>
                 <ColorPicker
                   hideInput={["rgb", "hsv"]}
@@ -73,7 +77,7 @@ const Modal_edit_consulation = ({
             </div>
 
             {/* the text section */}
-            <div className=" flex w-full flex-col md:gap-[1.5vw]">
+            <div className=" flex md:w-[50%]  flex-col md:gap-[1.5vw]">
               <div className=" flex items-end justify-center md:gap-[1.5vw]">
                 <div className="flex w-full flex-col md:gap-[0.3vw]">
                   <label htmlFor="title" className="capitalize md:text-[1vw]">
@@ -92,7 +96,10 @@ const Modal_edit_consulation = ({
                 </div>
                 <button
                   style={{ whiteSpace: "nowrap" }}
-                  className=" md:h-[80%] md:text-[0.9vw] md:px-[1.3vw] bg-[#103210] text-white md:rounded-[1vw] hover:bg-white hover:text-black hover:border-black border-[#103210] border"
+                  className=" md:h-[80%] md:text-[0.9vw] md:px-[1.3vw] bg-[#103210] text-white md:rounded-[1vw] hover:bg-white hover:text-black hover:border-black transition duration-[0.6s] border-[#103210] border"
+                  onClick={() => {
+                    setopen_img(true);
+                  }}
                 >
                   {consultation_image_link ? "Replace" : "Choose"} Image
                 </button>

@@ -14,9 +14,9 @@ const Edit_each_consulation = ({
 }: any) => {
   return (
     <>
-      <div className="w-full edit_border absolute flex-col top-0 left-0 h-full flex justify-center items-end md:p-[0.5vw] md:gap-[1.5vw] capitalize bg-black bg-opacity-[30%] z-[100] md:text-[1.5vw]">
+      <div className="w-full  absolute flex-col top-0 left-0 h-full flex justify-center items-end md:p-[0.5vw] md:gap-[1.5vw] capitalize bg-black bg-opacity-[30%] z-[100] md:text-[1.5vw]">
         <button
-          className=" md:w-[10vw] md:h-[4vw] capitalize bg-white  md:rounded-[0.5vw] hover:bg-opacity-[60%] backdrop-blur-2xl text-center border-red-500 border"
+          className=" md:w-[10vw] md:h-[4vw] capitalize bg-white  md:rounded-[0.5vw] hover:bg-opacity-[60%] backdrop-blur-2xl text-center "
           onClick={() => {
             edit_each_consulation_modal_param(
               title,
@@ -33,7 +33,7 @@ const Edit_each_consulation = ({
           edit
         </button>
         <button
-          className=" md:w-[10vw] md:h-[4vw] capitalize bg-white  md:rounded-[0.5vw] hover:bg-opacity-[60%] backdrop-blur-2xl text-center border-red-500 border"
+          className=" md:w-[10vw] md:h-[4vw] capitalize bg-white  md:rounded-[0.5vw] hover:bg-opacity-[60%] backdrop-blur-2xl text-center "
           onClick={() => {
             setdelete_consulation(true);
           }}
