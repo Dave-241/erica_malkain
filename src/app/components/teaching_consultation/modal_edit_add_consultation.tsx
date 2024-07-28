@@ -67,16 +67,16 @@ const Modal_edit_consulation = ({
       {open_img && <Image_list setopen_img={setopen_img} />}
       <div className="w-full  h-full flex  justify-center items-center z-[1000] fixed top-0 left-0 bg-black bg-opacity-[60%] md:px-[3%]">
         <div
-          className="md:w-auto w-full gap-[5vw]  bg-white md:p-[2vw] justify-between flex flex-col md:h-auto md:gap-[1vw] md:rounded-[2vw]
+          className="md:w-auto w-full gap-[5vw] py-[5vw]  bg-white md:p-[2vw] justify-between flex flex-col md:h-auto md:gap-[1vw] md:rounded-[2vw]
         "
         >
-          <p className="md:text-[2vw] capitalize text-center">
+          <p className="md:text-[2vw] capitalize text-[5vw] text-center">
             {" "}
             {consultation_title ? "edit" : "Add new"} publication here
           </p>{" "}
           <div className=" flex   justify-center md:flex-row flex-col   md:w-fit md:gap-[3vw]">
             {/* the color section */}
-            <div className="flex w-full    md:w-fit border2 md:text-[1vw] text-[3.5vw]   capitalize md:gap-[2vw]">
+            <div className="flex w-full    md:w-fit  md:text-[1vw] text-[3.5vw]   capitalize md:gap-[2vw]">
               <div className="flex flex-col  md:gap-[1vw] text-center">
                 <p className="">select backgroundColor here</p>
                 <ColorPicker
@@ -99,7 +99,7 @@ const Modal_edit_consulation = ({
 
             {/* the text section */}
             <div className=" flex md:w-[50%] w-full md:px-0 px-[5%]  flex-col md:gap-[1.5vw]">
-              <div className=" flex items-end justify-center md:gap-[1.5vw]">
+              <div className=" md:flex-row gap-[4vw] flex-col flex md:items-end justify-center md:gap-[1vw]">
                 <div className="flex w-full flex-col md:gap-[0.3vw] gap-[2vw]">
                   <label
                     htmlFor="title"
@@ -114,13 +114,13 @@ const Modal_edit_consulation = ({
                     onChange={(e) => {
                       setconsultation_title(e.target.value);
                     }}
-                    className="border rounded-[1vw] outline-none bg-[black] bg-opacity-[70%] placeholder:text-white placeholder:text-opacity-[50%] capitalize text-white md:h-[3vw] h-[8vw] md:px-[3%] md:text-[1vw] text-[3vw]"
+                    className="border rounded-[1vw] outline-none bg-[black] bg-opacity-[70%] placeholder:text-white placeholder:text-opacity-[50%] capitalize text-white md:h-[3vw] h-[8vw] px-[3%]  md:text-[1vw] text-[3vw]"
                     placeholder="Eg : NEGOTIATION COURSE , WORKSHOPS . . ."
                   />
                 </div>
-                <button
+                {/* <button
                   style={{ whiteSpace: "nowrap" }}
-                  className=" md:h-[80%] md:text-[0.9vw] md:px-[1.3vw] bg-[#103210] text-white md:rounded-[1vw] hover:bg-white hover:text-black hover:border-black transition duration-[0.6s] border-[#103210] border"
+                  className=" md:h-[80%] text-[3vw] md:text-[0.9vw] md:px-[1.3vw] bg-[#103210] text-white md:rounded-[1vw] hover:bg-white hover:text-black hover:border-black transition duration-[0.6s] border-[#103210] border"
                   onClick={() => {
                     setopen_img(true);
                   }}
@@ -133,9 +133,27 @@ const Modal_edit_consulation = ({
                     alt="image link"
                     className="w-[20%] h-fit"
                   />
-                )}
+                )} */}
+
+                <div className="flex w-full md:h-[3vw]  h-[10vw] md:gap-[1vw] gap-[5%] ">
+                  <button
+                    style={{ whiteSpace: "nowrap" }}
+                    className="  h-full w-full md:text-[0.9vw] md:px-[1.3vw] bg-[#103210] text-white md:rounded-[0.5vw] hover:bg-white hover:text-black text-[3vw]  rounded-[2vw] hover:border-black border-[#103210] border"
+                  >
+                    {consultation_image_link ? "Replace" : "Choose"} Image
+                  </button>
+                  {consultation_image_link && (
+                    <div className="h-full w-full md:rounded-[0.5vw] rounded-[2vw] relative overflow-hidden">
+                      <Image
+                        src={consultation_image_link}
+                        alt="image link"
+                        className="w-full  absolute  absolute_center h-fit"
+                      />
+                    </div>
+                  )}
+                </div>
               </div>
-              <div className="flex flex-col md:gap-[0.3vw] gap-[2vw]">
+              <div className="flex flex-col md:mt-0 mt-[5vw] md:gap-[0.3vw] gap-[2vw]">
                 <label
                   htmlFor="description"
                   className="capitalize md:text-[1vw] text-[3vw]"
@@ -159,7 +177,7 @@ const Modal_edit_consulation = ({
                   onChange={(e) => {
                     setconsultation_body(e.target.value);
                   }}
-                  className="border resize-none rounded-[1vw] outline-none bg-[black] bg-opacity-[70%] placeholder:text-white placeholder:text-opacity-[50%]  capitalize text-white  md:p-[2%] md:text-[1vw] text-[3vw]"
+                  className="border resize-none rounded-[1vw] outline-none bg-[black] bg-opacity-[70%] placeholder:text-white placeholder:text-opacity-[50%]  p-[3%] capitalize text-white  md:p-[2%] md:text-[1vw] text-[3vw]"
                   placeholder="Eg : Erica is a consultant with <a href='Link_To_Behavioralize'> Behavioralize </a> , a data-driven company that applies behavioral science to understand and influence customer and managerial decision making, helping companies drive growth by identifying and solving their key behavioral challenges .."
                 />
               </div>
@@ -181,7 +199,7 @@ const Modal_edit_consulation = ({
                     onChange={(e) => {
                       setconsultation_institute(e.target.value);
                     }}
-                    className="border rounded-[0.5vw]  w-full outline-none bg-[black] bg-opacity-[70%] placeholder:text-white placeholder:text-opacity-[50%] capitalize text-white md:h-[3vw] h-[8vw] md:px-[3%] md:text-[1vw] text-[3vw]"
+                    className="border rounded-[0.5vw]  w-full outline-none bg-[black] bg-opacity-[70%] placeholder:text-white placeholder:text-opacity-[50%] capitalize text-white md:h-[3vw] h-[8vw] px-[3%] md:text-[1vw] text-[3vw]"
                     placeholder="Eg : Wharton University, Wet Cement  .."
                   />
                 </div>
@@ -200,7 +218,7 @@ const Modal_edit_consulation = ({
                       setconsultation_year(e.target.value);
                     }}
                     value={consultation_year || ""}
-                    className="border rounded-[0.5vw] outline-none  w-full bg-[black] bg-opacity-[70%] placeholder:text-white placeholder:text-opacity-[50%] capitalize text-white md:h-[3vw] h-[8vw] md:px-[3%] md:text-[1vw] text-[3vw]"
+                    className="border rounded-[0.5vw] outline-none  w-full bg-[black] bg-opacity-[70%] placeholder:text-white placeholder:text-opacity-[50%] capitalize text-white md:h-[3vw] h-[8vw] px-[3%] md:text-[1vw] text-[3vw]"
                     placeholder="Eg : 2023, 2024.."
                   />
                 </div>
@@ -219,7 +237,7 @@ const Modal_edit_consulation = ({
                       setconsulation_readmore_link(e.target.value);
                     }}
                     value={consulation_readmore_link || ""}
-                    className="border rounded-[0.5vw] outline-none bg-[black] bg-opacity-[70%] placeholder:text-white placeholder:text-opacity-[50%] normal-case text-white md:h-[3vw] h-[8vw] md:px-[3%] md:text-[1vw] text-[3vw]"
+                    className="border rounded-[0.5vw] outline-none bg-[black] bg-opacity-[70%] placeholder:text-white placeholder:text-opacity-[50%] normal-case text-white md:h-[3vw] h-[8vw] px-[3%] md:text-[1vw] text-[3vw]"
                     placeholder="Eg : https://www.eric.com/consulation "
                   />
                 </div>
@@ -227,9 +245,9 @@ const Modal_edit_consulation = ({
             </div>
           </div>
           {/* the buttons for call to action */}
-          <div className="w-full md:pt-[2vw] flex justify-center  md:gap-[4vw] ">
+          <div className="w-full md:pt-[2vw] md:px-0 gap-[5%] px-[5%] flex justify-center  md:gap-[4vw] ">
             <button
-              className=" md:px-[4vw] md:py-[0.5vw]capitalize bg-white  md:rounded-[0.5vw] hover:bg-opacity-[60%] md:text-[1vw] text-[3vw] backdrop-blur-2xl text-center border-red-500 border"
+              className=" md:px-[4vw] md:w-auto w-full md:h-auto h-[10vw] md:py-[0.5vw]capitalize bg-white  md:rounded-[0.5vw] hover:bg-opacity-[60%] md:text-[1vw] text-[3vw] backdrop-blur-2xl text-center border-red-500 border"
               onClick={() => {
                 // setadd_publdcication(false);
                 setadd_consulation(false);
@@ -239,7 +257,7 @@ const Modal_edit_consulation = ({
             </button>
             <button
               type="submit"
-              className=" md:px-[4vw] md:py-[0.5vw] capitalize text-white  md:rounded-[0.5vw] hover:bg-opacity-[60%] md:text-[1vw] text-[3vw] backdrop-blur-2xl text-center bg-red-500 border"
+              className=" md:px-[4vw] md:py-[0.5vw] md:w-auto w-full md:h-auto h-[10vw] capitalize text-white  md:rounded-[0.5vw] hover:bg-opacity-[60%] md:text-[1vw] text-[3vw] backdrop-blur-2xl text-center bg-red-500 border"
             >
               upload consulation
             </button>
@@ -257,7 +275,7 @@ const Modal_edit_consulation = ({
             onClick={(e) => {
               e.stopPropagation();
             }}
-            className="bg-white p-6 rounded-md shadow-md w-11/12 md:w-1/2"
+            className="bg-white p-6 text-[3.5vw] rounded-md shadow-md w-11/12 md:w-1/2"
           >
             <h2 className=" font-bold mb-4 md:text-[1.2vw]">
               How to Add Links
@@ -280,12 +298,12 @@ const Modal_edit_consulation = ({
               URL and {'"ADD_TEXT_HERE"'} with the text you want to display.
               <br />
               <span className="font-bold">
-                {'<a href="ADD_LINK_HERE">ADD_TEXT_HERE</a>'}
+                {'<a href="ADD_LINK_HERE"> ADD_TEXT_HERE </a>'}
               </span>
             </p>
             <button
               onClick={handleCloseModal}
-              className="md:mt-[1vw] md:px-[2.3vw] md:py-[0.7vw] bg-red-500 text-white md:rounded-[1vw]"
+              className="md:mt-[1vw] mt-[5vw] md:px-[2.3vw] py-[2vw] px-[7vw] md:py-[0.7vw] bg-red-500 text-white md:rounded-[1vw]"
             >
               Close
             </button>
