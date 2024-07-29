@@ -2,7 +2,7 @@
 
 import { supabase } from "@/app/utils/supabaseClient";
 
-const Edit_each_category = ({ setopen_edit, id }: any) => {
+const Edit_each_category = ({ setopen_edit, id, setedit_ID }: any) => {
   const deleteMediapost = async (id: any) => {
     try {
       console.log(id);
@@ -33,6 +33,7 @@ const Edit_each_category = ({ setopen_edit, id }: any) => {
         <button
           className=" md:w-[10vw]  h-[10vw] w-[30vw] md:h-[4vw] capitalize bg-white  md:rounded-[0.5vw] hover:bg-opacity-[60%] backdrop-blur-2xl text-center "
           onClick={() => {
+            setedit_ID(id);
             setopen_edit(true);
           }}
         >

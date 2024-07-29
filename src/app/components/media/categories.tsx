@@ -224,7 +224,7 @@ const Categories = ({ product_data }: any) => {
           <Add_media setedit_ID={setedit_ID} setopen_edit={setopen_edit} />
         )}
 
-        <div className=" md:h-[100vh] md:w-[30vw] flex items-center md:justify-start justify-between md:px-0 px-[3%] sticky  md:bg-transparent bg-[#DFE4DF] bg-opacity-[10%] backdrop-blur-2xl md:backdrop-blur-none z-[10] top-0 pt-[25vw] left-0 md:pt-[8vw] md:pb-0 pb-[5vw] md:gap-[2vw] md:flex-col ">
+        <div className=" md:h-[100vh] md:w-[30vw] flex items-center md:justify-start justify-between md:px-0 px-[3%] sticky  md:bg-transparent bg-[#DFE4DF] bg-opacity-[10%] backdrop-blur-2xl md:backdrop-blur-none z-[100] top-0 pt-[25vw] left-0 md:pt-[8vw] md:pb-0 pb-[5vw] md:gap-[2vw] md:flex-col ">
           {groupedItems.map((e: any, index: any) => {
             return (
               <button
@@ -287,6 +287,7 @@ const Categories = ({ product_data }: any) => {
                               <Edit_each_category
                                 setopen_edit={setopen_edit}
                                 id={internal.id}
+                                setedit_ID={setedit_ID}
                               />
                             )}
                             <Link

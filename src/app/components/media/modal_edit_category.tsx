@@ -243,6 +243,14 @@ const Modal_edit_category = ({
           ) : (
             <>
               <p>loading ...</p>
+              <button
+                className=" md:px-[4vw] md:w-auto w-full py-[2.6vw]  md:py-[0.5vw] capitalize bg-white  rounded-[2.5vw] md:rounded-[0.5vw] hover:bg-opacity-[60%] md:text-[1vw] text-[3.5vw] backdrop-blur-2xl text-center border-red-500 border"
+                onClick={() => {
+                  setopen_edit(false);
+                }}
+              >
+                Cancel
+              </button>
             </>
           )}{" "}
         </div>
