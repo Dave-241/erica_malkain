@@ -47,6 +47,7 @@ const Modal_edit_category = ({
           setcaption(data[0].caption);
         }
       } else {
+        // setdaa;
         return;
       }
     };
@@ -120,12 +121,12 @@ const Modal_edit_category = ({
 
       <div className="w-full h-full fixed top-0 left-0  bg-black bg-opacity-[80%] md:bg-opacity-[50%] overflow-x-hidden overflow-y-scroll z-[1000] flex justify-center  items-center">
         <div className="bg-white md:px-[5%] justify-center md:rounded-[1vw]  md:py-[3vw] py-[10vw] w-[95%] px-[3%] md:w-[50vw]  rounded-[5vw] flex md:gap-[1vw] capitalize flex-col gap-[6vw]">
-          {article_link ? (
+          {!edit_ID || (edit_ID && article_link) ? (
             <>
               {" "}
               <p className="md:text-[2vw] text-[8vw] text-center">
                 {" "}
-                {edit_ID ? "edit" : "Add new"} publication here
+                {edit_ID ? "edit" : "Add new"} media here
               </p>
               {/* title and image section */}
               <div className="md:flex-row gap-[4vw] flex-col flex md:items-end justify-center md:gap-[1vw]">
@@ -137,7 +138,7 @@ const Modal_edit_category = ({
                       setopen_img(true);
                     }}
                   >
-                    {image_link ? "Replace" : "Choose"} Article Image
+                    {image_link ? "Replace" : "Choose"} media Image
                   </button>
                   {image_link && (
                     <div className="md:h-[5vw] border2  h-[13vw] w-full md:rounded-[0.5vw] rounded-[2vw] relative overflow-hidden">

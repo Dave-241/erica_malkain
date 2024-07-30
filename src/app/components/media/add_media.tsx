@@ -38,7 +38,7 @@ const Add_media = ({ setopen_edit, setedit_ID }: any) => {
             setopen_edit(true);
           }}
         >
-          Add new publication
+          Add new media
         </button>
         <button
           className=" md:px-[3vw] py-[3%] md:w-auto w-full md:py-[1vw] capitalize bg-white rounded-[0.5rem]  md:rounded-[0.5vw] hover:bg-opacity-[60%] backdrop-blur-2xl text-center "
@@ -46,7 +46,7 @@ const Add_media = ({ setopen_edit, setedit_ID }: any) => {
             deleteAllMediapost();
           }}
         >
-          delete all publications
+          delete all media
         </button>
       </div>
     </>
