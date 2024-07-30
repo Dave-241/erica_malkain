@@ -1,4 +1,5 @@
 import Contact from "../components/general-component/contact";
+import Contact_wrappeer from "../components/general-component/contact_wrapper";
 import Footer from "../components/general-component/footer";
 import Nav from "../components/general-component/nav";
 import Categories from "../components/media/categories";
@@ -24,7 +25,7 @@ export default async function Meida() {
         <Nav />
         <Media_hero />
         <Categories product_data={product_data} />
-        <Contact />
+        <Contact_wrappeer />
         <Footer />
       </>
     </>

@@ -7,7 +7,12 @@ import example2 from "../../../../public/images/consultation/example2.png";
 import { v4 } from "uuid";
 import Image_list from "../general-component/image";
 
-const Modal_text_edit = ({ setedit_text, edit_text, record_Name }: any) => {
+const Modal_text_edit = ({
+  setedit_text,
+  edit_text,
+  record_Name,
+  table,
+}: any) => {
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState("");
   const [text, settext] = useState(edit_text);
@@ -28,7 +33,7 @@ const Modal_text_edit = ({ setedit_text, edit_text, record_Name }: any) => {
     // Add new publication
     // console.log(edit_text, record_Name);
     const { data, error } = await supabase
-      .from("about")
+      .from(table)
       .update(updateData)
       .eq("id", "1"); // Replace 'your_record_id' with the actual ID of the record you want to update
 

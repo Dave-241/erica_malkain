@@ -5,6 +5,7 @@ import Nav from "../components/general-component/nav";
 import Publication_hero from "../components/publication/hero";
 import Publication from "../components/publication/publication";
 import { supabase } from "../utils/supabaseClient";
+import Contact_wrappeer from "../components/general-component/contact_wrapper";
 export const revalidate = 0;
 const fetchProducts = async () => {
   const { data, error } = await supabase
@@ -24,7 +25,7 @@ export default async function Home() {
         <Nav />
         <Publication_hero />
         <Publication product_data={product_data} />
-        <Contact />
+        <Contact_wrappeer />
         <Footer />
       </>
     </>

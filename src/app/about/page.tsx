@@ -1,6 +1,7 @@
 import About_hero from "../components/about/hero";
 import Consulation_advert from "../components/general-component/consultation_ad";
 import Contact from "../components/general-component/contact";
+import Contact_wrappeer from "../components/general-component/contact_wrapper";
 import Footer from "../components/general-component/footer";
 import Nav from "../components/general-component/nav";
 import Recent_publication from "../components/general-component/recent_publication";
@@ -36,7 +37,7 @@ export default async function Meida() {
         <About_hero user_data={user_data || [{}]} />
         <Recent_publication product_data={product_data} />
         <Consulation_advert user_data={user_data || [{}]} />
-        <Contact />
+        <Contact_wrappeer />
         <Footer />
       </>
     </>

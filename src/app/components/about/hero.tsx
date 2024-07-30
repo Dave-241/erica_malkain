@@ -184,6 +184,7 @@ const About_hero = ({ user_data }: any) => {
           edit_text={edit_text}
           record_Name={record_Name}
           setedit_text={setedit_text}
+          table={"about"}
         />
       )}
       {edit_img && (

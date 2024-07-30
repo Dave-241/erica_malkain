@@ -1,4 +1,5 @@
 import Contact from "../components/general-component/contact";
+import Contact_wrappeer from "../components/general-component/contact_wrapper";
 import Footer from "../components/general-component/footer";
 import Nav from "../components/general-component/nav";
 import Publication_hero from "../components/publication/hero";
@@ -28,7 +29,7 @@ export default async function Home() {
         <Nav />
         <Teaching_hero />
         <Each_consultation product_data={product_data} />
-        <Contact />
+        <Contact_wrappeer />
 
         <Footer />
       </>

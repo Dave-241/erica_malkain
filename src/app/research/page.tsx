@@ -1,4 +1,5 @@
 import Contact from "../components/general-component/contact";
+import Contact_wrappeer from "../components/general-component/contact_wrapper";
 import Footer from "../components/general-component/footer";
 import Nav from "../components/general-component/nav";
 import Each_research from "../components/research/each_research";
@@ -11,7 +12,7 @@ export default function Home() {
         <Nav />
         <Research_hero />
         <Each_research />
-        <Contact />
+        <Contact_wrappeer />
         <Footer />
       </>
     </>
