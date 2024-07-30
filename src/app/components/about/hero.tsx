@@ -11,9 +11,21 @@ import hero2 from "../../../../public/images/about/hero2.webp";
 import Image from "next/image";
 import bg from "../../../../public/images/about/bg.webp";
 import Link from "next/link";
-import { useMotionValueEvent, useScroll, useTransform } from "framer-motion";
-const About_hero = () => {
+import {
+  useMotionValueEvent,
+  useScroll,
+  useTransform,
+  motion,
+} from "framer-motion";
+import { supabase } from "@/app/utils/supabaseClient";
+import { useRouter } from "next/navigation";
+import Edit_text from "../general-component/edit_text";
+import Modal_text_edit from "../general-component/modal_text_edit";
+import Modal_img_edit from "../general-component/modal_img_edit";
+import Edit_img from "../general-component/edit_img";
+const About_hero = ({ user_data }: any) => {
   const [start_anime, setstart_anime] = useState(false);
+  const [active_user_data, setactive_user_data] = useState(user_data);
   useEffect(() => {
     setstart_anime(true);
   }, []);
@@ -48,15 +60,12 @@ const About_hero = () => {
   const opac_two = useTransform(scrollYProgress1, [0, 1], [0, 1]);
 
   useMotionValueEvent(y, "change", (latest) => {
-    console.log(latest);
     setyvalue(latest);
   });
   useMotionValueEvent(opac_one, "change", (latest) => {
-    console.log(latest);
     setopac_one_img(latest);
   });
   useMotionValueEvent(opac_two, "change", (latest) => {
-    console.log(latest);
     setopac_two_img(latest);
   });
 
@@ -81,8 +90,110 @@ const About_hero = () => {
   useEffect(() => {
     handleResize();
   }, [width]);
+  const [isloggedin, setisloggedin] = useState(false);
+  const router = useRouter();
+
+  // check if logged in
+  useEffect(() => {
+    // Check initial session
+    const checkInitialSession = async () => {
+      const {
+        data: { session },
+      } = await supabase.auth.getSession();
+      if (session) {
+        setisloggedin(true);
+      }
+    };
+
+    checkInitialSession();
+  }, [router]);
+
+  const [edit_text, setedit_text] = useState(false);
+  const [edit_img, setedit_img] = useState(false);
+  const [record_Name, setrecord_Name] = useState("");
+  const [btn_text, setbtn_text] = useState("");
+
+  useEffect(() => {
+    const fetchInitialData = async () => {
+      const { data, error } = await supabase
+        .from("about")
+        .select("*")
+        .order("created_at", { ascending: false });
+
+      if (error) {
+        console.error("Error fetching initial data:", error);
+      } else {
+        setactive_user_data(data);
+      }
+    };
+
+    fetchInitialData();
+
+    // Real-time subscription
+    const handleInserts = (payload: any) => {
+      console.log("Insert received!", payload);
+      window.location.reload();
+    };
+
+    const handleUpdates = (payload: any) => {
+      console.log("Update received!", payload);
+      setactive_user_data((prevData: any) =>
+        prevData.map((item: any) =>
+          item.id === payload.new.id ? payload.new : item,
+        ),
+      );
+
+      fetchInitialData();
+    };
+
+    const handleDeletes = (payload: any) => {
+      console.log("Delete received!", payload);
+      setactive_user_data((prevData: any) =>
+        prevData.filter((item: any) => item.id !== payload.old.id),
+      );
+    };
+
+    const subscription = supabase
+      .channel("about_channel")
+      .on(
+        "postgres_changes",
+        { event: "INSERT", schema: "public", table: "about" },
+        handleInserts,
+      )
+      .on(
+        "postgres_changes",
+        { event: "UPDATE", schema: "public", table: "about" },
+        handleUpdates,
+      )
+      .on(
+        "postgres_changes",
+        { event: "DELETE", schema: "public", table: "about" },
+        handleDeletes,
+      )
+      .subscribe();
+
+    // Cleanup subscription on unmount
+    return () => {
+      supabase.removeChannel(subscription);
+    };
+  }, []);
   return (
     <>
+      {edit_text && (
+        <Modal_text_edit
+          edit_text={edit_text}
+          record_Name={record_Name}
+          setedit_text={setedit_text}
+        />
+      )}
+      {edit_img && (
+        <Modal_img_edit
+          edit_img={edit_img}
+          record_Name={record_Name}
+          setedit_img={setedit_img}
+          btn_text={btn_text}
+        />
+      )}
       <div className="w-full pt-[30vw]  md:py-[4vw] gap-[7vw] pb-[10vw] flex-col px-[3%] md:px-[7vw]  md:gap-[3vw]  flex">
         <div className="md:overflow-hidden  ">
           <h1
@@ -101,7 +212,7 @@ const About_hero = () => {
           </h1>
         </div>
 
-        <div className="overflow-hidden md:mt-[-2vw] md:text-start text-center">
+        <div className="overflow-hidden md:mt-[-2vw]  md:w-[50%]  md:px-[4vw] md:text-start text-center">
           <p
             style={{
               transition: "0.65s ease",
@@ -127,6 +238,11 @@ const About_hero = () => {
             </div>
           </div>
           <div
+            // animate={{
+            //   // translateX: `${yvalue}%`,
+            //   translateX:
+            //     calWidth < 760 ? "" : yvalue >= 50 ? `-50% ` : ` ${yvalue}%  `,
+            // }}
             style={{
               transform:
                 calWidth < 760
@@ -135,11 +251,17 @@ const About_hero = () => {
                   ? `translateX(${-50}%) `
                   : ` translateX(${yvalue}%)  `,
             }}
-            className="md:sticky md:top-0 md:left-[25%] z-[20]  md:w-[40%] md:h-[100vh] flex items-center"
+            // transition={{ ease: "easeOut", duration: 0 }}
+            className="md:sticky  md:top-0 md:left-[25%] z-[20]  md:w-[40%] md:h-[100vh] flex items-center"
           >
-            <div className="w-full md:h-[36vw] overflow-hidden relative ">
+            <div className="w-full md:h-[36vw]    overflow-hidden relative ">
+              {isloggedin && <Edit_text />}
+
               <Image
-                src={hero1}
+                src={active_user_data[0].dp_img_one}
+                unoptimized
+                width="0"
+                height="0"
                 style={{
                   opacity: calWidth < 768 ? "" : opac_one_img,
                   transition: "0.65s ease",
@@ -152,29 +274,63 @@ const About_hero = () => {
                   filter: start_anime ? "" : "blur(4px)",
                 }}
                 alt="Erica Boothby"
-                className="w-full md:absolute md:top-[50%]   md:translate-x-[-50%] md:left-[50%] md:translate-y-[-50%] h-fit z-[10]"
+                className="w-full md:absolute md:top-[50%] md:scale-[1.1]  md:translate-x-[-50%] md:left-[50%] md:translate-y-[-50%] h-fit z-[10]"
               />
               <Image
-                src={hero2}
+                src={active_user_data[0].dp_img_two}
+                unoptimized
+                width="0"
+                height="0"
                 style={{ opacity: calWidth < 768 ? "" : opac_two_img }}
                 alt="Erica Boothby"
                 className="w-full md:absolute md:top-[50%]  md:block hidden md:translate-x-[-50%] md:left-[50%] md:translate-y-[-50%] h-fit "
               />
+
+              {/* THIS IS TO EDIT THE TWO IMAGES */}
+              {isloggedin && (
+                <div className="absolute left-0 top-0 h-full w-[50%]">
+                  <Edit_img
+                    record={"dp_img_one"}
+                    btn_text={"image 1"}
+                    setbtn_text={setbtn_text}
+                    setedit_img={setedit_img}
+                    setrecord_Name={setrecord_Name}
+                    text={active_user_data[0].dp_img_one}
+                    // zzz={opac_one_img}
+                  />{" "}
+                </div>
+              )}
+
+              {isloggedin && (
+                <div className="absolute right-0 border-red-600 border top-0 h-full w-[50%]">
+                  <Edit_img
+                    record={"dp_img_two"}
+                    btn_text={"image 2"}
+                    setbtn_text={setbtn_text}
+                    setedit_img={setedit_img}
+                    setrecord_Name={setrecord_Name}
+                    text={active_user_data[0].dp_img_two}
+                    // zzz={opac_two_img}
+                  />
+                </div>
+              )}
             </div>
           </div>
 
           {/* <div className="  flex justify-end md:px-[10%]"> */}
-          <div className="flex flex-col   md:w-[60%] md:px-[6%] md:h-[100vh] justify-center  items-start md:gap-[2vw]">
+          <div className="flex flex-col   md:w-[60%] md:px-[6%] z-[10] md:h-[100vh] justify-center   items-start md:gap-[2vw]">
             <p
-              className={`${Helvetica_light.className} md:text-[1.1vw] text-center md:text-start text-[3.5vw] text-[#707270] md:text-[black]`}
+              className={`${Helvetica_light.className} relative  md:text-[1.1vw] text-center md:text-start text-[3.5vw] text-[#707270] md:text-[black]`}
             >
-              Erica Boothby is a Researcher and Instructor in the Operations,
-              Information, & Decisions Department at The Wharton School at the
-              University of Pennsylvania, where she teaches Negotiations. Ericas
-              research examines peoples perceptions of what others think of
-              them, including illusions and biases that interfere with social
-              connection and interventions designed to improve peoples social
-              lives.
+              {isloggedin && (
+                <Edit_text
+                  record={"des_one"}
+                  setedit_text={setedit_text}
+                  setrecord_Name={setrecord_Name}
+                  text={active_user_data[0].des_one}
+                />
+              )}
+              {active_user_data[0].des_one || "LOADING ..."}
             </p>
 
             <Link
@@ -198,20 +354,21 @@ const About_hero = () => {
 
         {/* the below content */}
         <p
-          className={`text-[#707270] md:text-[1.3vw] md:mt-[-2vw] text-[3.5vw] md:px-[12vw] ${Helvetica_light.className} text-center`}
+          className={`text-[#707270] md:text-[1.3vw] md:mt-[-2vw] text-[3.5vw] md:px-[12vw] relative ${Helvetica_light.className} text-center`}
         >
           {" "}
-          In 2022, she was awarded the American Psychological Societys Rising
-          Star Award. Prior to arriving at Wharton, Erica completed her Ph.D. in
-          Social Psychology at Yale University and was a Postdoctoral Fellow in
-          the Behavioral Economics and Decision Research Center at Cornell
-          University. She has a B.A. in Philosophy and a Minor in Italian from
-          Boston University. A native of Santa Cruz, California, Erica is
-          passionate about surfing, painting, playing the fiddle, and all things
-          Italian.
+          {isloggedin && (
+            <Edit_text
+              record={"des_two"}
+              setedit_text={setedit_text}
+              setrecord_Name={setrecord_Name}
+              text={active_user_data[0].des_two}
+            />
+          )}
+          {active_user_data[0].des_two || "LOADING ..."}
         </p>
 
-        <div className="flex justify-center w-full md:hidden  ">
+        <div className="flex justify-center w-full md:hidden   ">
           <Link
             style={{
               whiteSpace: "nowrap",

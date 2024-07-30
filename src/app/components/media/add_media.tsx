@@ -30,7 +30,7 @@ const Add_media = ({ setopen_edit, setedit_ID }: any) => {
 
   return (
     <>
-      <div className="w-full py-[5vw] gap-[5%] px-[3%] md:py-[2vw] md:px-[10vw] flex md:gap-[2vw] md:justify-end  z-[100] absolute top-0 md:text-[1vw] text-[3.5vw]">
+      <div className="w-full py-[5vw] gap-[5%] px-[3%] md:py-[2vw] md:px-[10vw] flex md:gap-[2vw] md:justify-end  z-[90] absolute top-0 md:text-[1vw] text-[3.5vw]">
         <button
           className=" md:px-[3vw] py-[3%] md:w-auto w-full md:py-[1vw] capitalize bg-white rounded-[0.5rem]  md:rounded-[0.5vw] hover:bg-opacity-[60%] backdrop-blur-2xl text-center "
           onClick={() => {
