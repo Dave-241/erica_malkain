@@ -131,6 +131,7 @@ const Consulation_advert = ({ user_data }: any) => {
           edit_img={edit_img}
           record_Name={record_Name}
           setedit_img={setedit_img}
+          table={"about"}
         />
       )}
       <div

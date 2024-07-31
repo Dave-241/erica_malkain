@@ -19,18 +19,25 @@ const fetchProducts = async () => {
   // console.log(data);
   return data;
 };
-
+const fetchpage_data = async () => {
+  const { data, error } = await supabase
+    .from("consultation_page")
+    .select("*")
+    .order("created_at", { ascending: false });
+  // console.log(data);
+  return data;
+};
 export default async function Home() {
   const product_data = await fetchProducts();
+  const page_data = await fetchpage_data();
 
   return (
     <>
       <>
         <Nav />
-        <Teaching_hero />
-        <Each_consultation product_data={product_data} />
+        <Teaching_hero page_data={page_data || [{}]} />
+        <Each_consultation product_data={product_data || [{}]} />
         <Contact_wrappeer />
-
         <Footer />
       </>
     </>

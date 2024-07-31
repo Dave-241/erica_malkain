@@ -12,6 +12,7 @@ const Modal_img_edit = ({
   edit_img,
   record_Name,
   btn_text,
+  table,
 }: any) => {
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState("");
@@ -33,7 +34,7 @@ const Modal_img_edit = ({
     // Add new publication
     // console.log(edit_text, record_Name);
     const { data, error } = await supabase
-      .from("about")
+      .from(table)
       .update(updateData)
       .eq("id", "1"); // Replace 'your_record_id' with the actual ID of the record you want to update
 

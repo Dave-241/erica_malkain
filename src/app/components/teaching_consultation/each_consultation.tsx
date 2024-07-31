@@ -329,7 +329,7 @@ const Each_consultation = ({ product_data }: any) => {
             return (
               <div
                 key={index}
-                className={` absolute top-[50%] translate-x-[-50%] left-[50%] translate-y-[-50%]  w-full md:gap-[4vw] flex flex-col md:justify-center justify-end md:pb-0 pb-[10vw] items-center gap-[7vw] h-full  overflow-hidden   `}
+                className={` absolute top-[50%] translate-x-[-50%] left-[50%] translate-y-[-50%]  w-full md:gap-[4vw] flex flex-col md:justify-center justify-end  md:pb-0 pb-[10vw] items-center gap-[7vw] h-full  overflow-hidden   `}
                 style={{
                   transition: "opacity 0.6s ease",
                   backgroundColor: bgColor,
@@ -387,7 +387,7 @@ const Each_consultation = ({ product_data }: any) => {
                   {/* now the writing  */}
                   <div className=" md:w-[30vw] gap-[3vw] flex flex-col md:gap-[2vw]">
                     <p
-                      className={` ${Helvetica_light.className} md:border-l-[0.3vw] text-[3.5vw] pl-[3vw] border-l-[1.2vw] py-[3vw] border-[white] md:pl-[1vw] md:py-[1vw] text-[white] md:text-[1vw] [&_a]:underline underline-offset-4`}
+                      className={` ${Helvetica_light.className} md:border-l-[0.3vw] text-[3.5vw] pl-[3vw] border-l-[1.2vw] py-[3vw] border-[white] md:pl-[1vw] md:py-[1vw] text-[white] md:text-[1.2vw] [&_a]:underline underline-offset-4`}
                       dangerouslySetInnerHTML={{ __html: e.body }}
                     ></p>
 
