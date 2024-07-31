@@ -71,7 +71,7 @@ const Recent_media = ({ product_data }: any) => {
         </h1>
 
         <div className="w-full relative  overflow-hidden">
-          {/* {isloggedin && <Refer_edit text={"media"} />} */}
+          {isloggedin && <Refer_edit text={"media"} />}
 
           <div
             className=" flex md:flex-nowrap

@@ -211,6 +211,8 @@ const Home_research = () => {
           </div>{" "}
           {/* AND THIS IS FOR THE MOBILE PAGE  */}
           <div className="w-full relative md:hidden overflow-hidden">
+            {isloggedin && <Refer_edit text={"research"} />}
+
             <div
               className=" flex md:flex-nowrap
         overflow-x-auto 
