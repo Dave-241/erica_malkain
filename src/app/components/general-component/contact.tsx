@@ -112,7 +112,10 @@ const Contact = ({ product_data }: any) => {
           table={"contact"}
         />
       )}
-      <div className="w-full  md:py-[6vw] flex md:flex-row flex-col px-[3%] py-[20vw]  justify-between items-start md:px-[14vw] gap-[10vw]">
+      <div
+        id="contact"
+        className="w-full  md:py-[6vw] flex md:flex-row flex-col px-[3%] py-[20vw]  justify-between items-start md:px-[14vw] gap-[10vw]"
+      >
         {/* the left section */}
         <div className="flex flex-col gap-[4vw] md:w-[30vw]  md:gap-[2vw]">
           <h3

@@ -2,7 +2,7 @@
 
 import { Bt_Beau_Regualr } from "@/app/utils/fonts";
 import Link from "next/link";
-import { usePathname } from "next/navigation";
+import { usePathname, useRouter, useSearchParams } from "next/navigation";
 import { useEffect, useState } from "react";
 import ham from "../../../../public/images/general/ham.png";
 import Image from "next/image";
@@ -39,7 +39,8 @@ const Nav = () => {
     },
     {
       text: "contact ",
-      link: "/contact",
+      // link: "/contact",
+      btn: true,
     },
   ];
 
@@ -60,6 +61,24 @@ const Nav = () => {
   //   }
   //   // eslint-disable-next-line react-hooks/exhaustive-deps
   // }, []);
+
+  const searchParams = useSearchParams();
+  const router = useRouter();
+
+  const search = searchParams.get("contact");
+
+  useEffect(() => {
+    if (search) {
+      const element = document.getElementById("contact");
+      if (element) {
+        element.scrollIntoView({ behavior: "smooth" });
+      }
+    }
+  }, [search]);
+
+  const scroll_to_contact = () => {
+    router.push(`?contact=${true}`);
+  };
 
   const [open_menu, setopen_menu] = useState(false);
   return (
@@ -121,24 +140,51 @@ const Nav = () => {
         <div className=" flex ">
           {items_right.map((e: any, index: any) => {
             return (
-              <Link
-                href={e.link}
-                style={{ whiteSpace: "nowrap" }}
-                key={index}
-                className={`uppercase overflow-hidden  ${
-                  e.link == pathname ? " bg-[#440C0C] " : " bg-[#440C0C] "
-                }   md:p-[0.4vw] p-[1.3vw] group hover:[#103210] duration-[1s] md:rounded-[1.5vw] rounded-[8vw]  backdrop-blur-2xl bg-opacity-[10%] `}
-              >
-                <div
-                  className={`  ${
-                    e.link == pathname ? "bg-[#103210]" : "bg-[#440C0C] "
-                  } group-hover:bg-white md:rounded-[1.3vw] rounded-[7vw] flex justify-center items-center  md:h-auto md:w-auto w-[25vw]  h-[10vw]  md:py-[0.7vw] md:px-[1.5vw]`}
-                >
-                  <p className="inline-block md:text-[0.8vw] text-[white] group-hover:text-[#440C0C] text-[3vw]">
-                    {e.text}
-                  </p>
-                </div>
-              </Link>
+              <>
+                {e.link && (
+                  <Link
+                    href={e.link}
+                    style={{ whiteSpace: "nowrap" }}
+                    key={index}
+                    className={`uppercase overflow-hidden  ${
+                      e.link == pathname ? " bg-[#440C0C] " : " bg-[#440C0C] "
+                    }   md:p-[0.4vw] p-[1.3vw] group hover:[#103210] duration-[1s] md:rounded-[1.5vw] rounded-[8vw]  backdrop-blur-2xl bg-opacity-[10%] `}
+                  >
+                    <div
+                      className={`  ${
+                        e.link == pathname ? "bg-[#103210]" : "bg-[#440C0C] "
+                      } group-hover:bg-white md:rounded-[1.3vw] rounded-[7vw] flex justify-center items-center  md:h-auto md:w-auto w-[25vw]  h-[10vw]  md:py-[0.7vw] md:px-[1.5vw]`}
+                    >
+                      <p className="inline-block md:text-[0.8vw] text-[white] group-hover:text-[#440C0C] text-[3vw]">
+                        {e.text}
+                      </p>
+                    </div>
+                  </Link>
+                )}
+                {e.btn && (
+                  <button
+                    // href={e.link}
+                    style={{ whiteSpace: "nowrap" }}
+                    onClick={() => {
+                      scroll_to_contact();
+                    }}
+                    key={index}
+                    className={`uppercase overflow-hidden  ${
+                      e.link == pathname ? " bg-[#440C0C] " : " bg-[#440C0C] "
+                    }   md:p-[0.4vw] p-[1.3vw] group hover:[#103210] duration-[1s] md:rounded-[1.5vw] rounded-[8vw]  backdrop-blur-2xl bg-opacity-[10%] `}
+                  >
+                    <div
+                      className={`  ${
+                        e.link == pathname ? "bg-[#103210]" : "bg-[#440C0C] "
+                      } group-hover:bg-white md:rounded-[1.3vw] rounded-[7vw] flex justify-center items-center  md:h-auto md:w-auto w-[25vw]  h-[10vw]  md:py-[0.7vw] md:px-[1.5vw]`}
+                    >
+                      <p className="inline-block md:text-[0.8vw] text-[white] group-hover:text-[#440C0C] text-[3vw]">
+                        {e.text}
+                      </p>
+                    </div>
+                  </button>
+                )}
+              </>
             );
           })}
         </div>
