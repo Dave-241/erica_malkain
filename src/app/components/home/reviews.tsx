@@ -18,6 +18,7 @@ import { supabase } from "@/app/utils/supabaseClient";
 import { useRouter } from "next/navigation";
 import Edit_each_review from "./edit_each_review";
 import Modal_edit_reiview from "./modal_edit_review";
+import Add_review from "./add_review";
 const Reviews = ({ product_data }: any) => {
   const items = [
     {
@@ -139,7 +140,7 @@ const Reviews = ({ product_data }: any) => {
   const [calwidth, setcalwidth] = useState(0);
 
   // THIS IS FOR THE CMS LOGIC WHICH INCLUDES LOGGING AND TRACKING UPDATE DETAILS
-  const [data, setdata] = useState(product_data);
+  const [data, setdata] = useState(product_data || []);
 
   // this is to implement tracking
   // Set up real-time subscription
@@ -162,7 +163,8 @@ const Reviews = ({ product_data }: any) => {
     // Real-time subscription
     const handleInserts = (payload: any) => {
       console.log("Insert received!", payload);
-      window.location.reload();
+      // window.location.reload();
+      fetchInitialData();
     };
 
     const handleUpdates = (payload: any) => {
@@ -172,6 +174,7 @@ const Reviews = ({ product_data }: any) => {
           item.id === payload.new.id ? payload.new : item,
         ),
       );
+      fetchInitialData();
     };
 
     const handleDeletes = (payload: any) => {
@@ -179,6 +182,7 @@ const Reviews = ({ product_data }: any) => {
       setdata((prevData: any) =>
         prevData.filter((item: any) => item.id !== payload.old.id),
       );
+      fetchInitialData();
     };
 
     const subscription = supabase
@@ -237,7 +241,9 @@ const Reviews = ({ product_data }: any) => {
         >
           WHAT PEOPLE SAY ABOUT ERICA{" "}
         </h2>
-
+        {isloggedin && (
+          <Add_review setedit_ID={setedit_ID} setopen_edit={setopen_edit} />
+        )}
         <div className=" w-full md:overflow-hidden  h-[120vw] md:h-[35vw]  relative   ">
           <div
             ref={ref}
@@ -250,7 +256,7 @@ const Reviews = ({ product_data }: any) => {
               transition: "0.7s ease",
             }}
           >
-            {items.map((e: any, index: any) => {
+            {data.map((e: any, index: any) => {
               return (
                 <div
                   // ref={itemRefs[index]}
@@ -286,13 +292,13 @@ const Reviews = ({ product_data }: any) => {
                       <h2
                         className={` text-white  ${Helvetica_light.className} md:text-[1.3vw] text-[6vw]`}
                       >
-                        {e.title}
+                        {e.name}
                       </h2>
 
                       <p
                         className={` text-white  ${Helvetica_light.className} md:text-[1.1vw] text-[4vw] text-opacity-[60%]`}
                       >
-                        {e.postion}
+                        {e.position}
                       </p>
                     </div>
 
@@ -306,7 +312,7 @@ const Reviews = ({ product_data }: any) => {
                       <p
                         className={` ${Helvetica_light.className} md:text-[1vw]  text-white text-[3.5vw] md:leading-[1.4vw] leading-[4.5vw] `}
                       >
-                        {e.body}
+                        {e.comment}
                       </p>
                     </div>
                   </div>

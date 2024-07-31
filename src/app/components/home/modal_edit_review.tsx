@@ -7,23 +7,13 @@ import example2 from "../../../../public/images/consultation/example2.png";
 import { v4 } from "uuid";
 import Image_list from "../general-component/image";
 
-const Modal_edit_reiview = ({
-  setopen_edit,
-  publication_title,
-  publication_body,
-  publication_data_link,
-  publication_pdf_link,
-  setpublication_title,
-  setpublication_body,
-  setpublication_data_link,
-  setpublication_pdf_link,
-  edit_ID,
-}: any) => {
+const Modal_edit_reiview = ({ setopen_edit, edit_ID }: any) => {
   const [loading, setLoading] = useState(false);
-  const [selectedType, setSelectedType] = useState(""); // State for dropdown
   const [error, setError] = useState("");
-  const [caption, setcaption] = useState("");
-  const [article_link, setarticle_link] = useState("");
+  const [comment, setcomment] = useState("");
+  const [name, setname] = useState("");
+  const [postion, setpostion] = useState(""); // State for dropdown
+
   //   const [category, setcategory] = useState("");
 
   useEffect(() => {
@@ -41,10 +31,9 @@ const Modal_edit_reiview = ({
         } else {
           // setdata(data);
           console.log(data);
-          setarticle_link(data[0].link);
-          setimage_link(data[0].img);
-          setSelectedType(data[0].type);
-          setcaption(data[0].caption);
+          setname(data[0].name);
+          setpostion(data[0].position);
+          setcomment(data[0].comment);
         }
       } else {
         // setdaa;
@@ -57,8 +46,8 @@ const Modal_edit_reiview = ({
 
   const submit_form = async () => {
     // Validation check
-    // console.log(caption, article_link, selectedType);
-    if (!caption || !article_link || !selectedType || !image_link) {
+    // console.log(comment, name, postion);
+    if (!comment || !name || !postion) {
       setError("All fields are required.");
       return;
     }
@@ -70,12 +59,11 @@ const Modal_edit_reiview = ({
     if (edit_ID) {
       // Update existing publication
       result = await supabase
-        .from("media")
+        .from("review")
         .update({
-          caption: caption,
-          img: image_link,
-          link: article_link,
-          type: selectedType,
+          comment: comment,
+          name: name,
+          position: postion,
         })
         .eq("id", edit_ID);
 
@@ -83,12 +71,11 @@ const Modal_edit_reiview = ({
     } else {
       console.log("its adding");
       // Add new publication
-      result = await supabase.from("media").insert([
+      result = await supabase.from("review").insert([
         {
-          caption: caption,
-          img: image_link,
-          link: article_link,
-          type: selectedType,
+          comment: comment,
+          name: name,
+          position: postion,
         },
       ]);
     }
@@ -100,58 +87,66 @@ const Modal_edit_reiview = ({
       setError(error.message);
     } else {
       setopen_edit(false);
-      window.location.reload();
+      // window.location.reload();
       // Optionally reset the form fields if adding a new publication
-
-      //   setpublication_title("");
-      //   setpublication_body("");
-      //   setpublication_data_link("");
-      //   setpublication_pdf_link("");
     }
   };
 
-  const [open_img, setopen_img] = useState(false);
-  const [image_link, setimage_link] = useState("");
-
   return (
     <>
-      {open_img && (
-        <Image_list setopen_img={setopen_img} setimage_link={setimage_link} />
-      )}
-
       <div className="w-full h-full fixed top-0 left-0  bg-black bg-opacity-[80%] md:bg-opacity-[50%] overflow-x-hidden overflow-y-scroll z-[1000] flex justify-center  items-center">
         <div className="bg-white md:px-[5%] justify-center md:rounded-[1vw]  md:py-[3vw] py-[10vw] w-[95%] px-[3%] md:w-[50vw]  rounded-[5vw] flex md:gap-[1vw] capitalize flex-col gap-[6vw]">
-          {!edit_ID || (edit_ID && article_link) ? (
+          {!edit_ID || (edit_ID && name) ? (
             <>
               {" "}
               <p className="md:text-[2vw] text-[8vw] text-center">
                 {" "}
-                {edit_ID ? "edit" : "Add new"} media here {edit_ID}
+                {edit_ID ? "edit" : "Add new"} review here
               </p>
               {/* title and image section */}
               <div className="md:flex-row gap-[4vw] flex-col flex md:items-end justify-center md:gap-[1vw]">
-                <div className="flex w-full  md:gap-[1vw] gap-[5%] ">
-                  <button
-                    style={{ whiteSpace: "nowrap" }}
-                    className="  md:h-[3vw]  h-[13vw] w-full md:text-[0.9vw] md:px-[1.3vw] bg-[#103210] text-white md:rounded-[0.5vw] hover:bg-white hover:text-black  rounded-[2vw] hover:border-black border-[#103210] border"
-                    onClick={() => {
-                      setopen_img(true);
-                    }}
+                {/* <div className="border2"></div> */}
+              </div>
+              {/* the links for viewing */}
+              <div className="w-full flex md:gap-[2vw] gap-[5%]  justify-between">
+                {/* the name  */}
+                <div className="flex flex-col md:gap-[0.3vw] gap-[2vw] w-full">
+                  <label
+                    className="capitalize md:text-[1vw] text-[3.5vw]"
+                    htmlFor="pdf_link"
                   >
-                    {image_link ? "Replace" : "Choose"} media Image
-                  </button>
-                  {image_link && (
-                    <div className="md:h-[5vw] border2  h-[13vw] w-full md:rounded-[0.5vw] rounded-[2vw] relative overflow-hidden">
-                      <Image
-                        src={image_link}
-                        unoptimized
-                        width="0"
-                        height="0"
-                        alt="image link"
-                        className="w-full  absolute  absolute_center h-fit"
-                      />
-                    </div>
-                  )}
+                    Name
+                  </label>
+                  <input
+                    type="text"
+                    id="pdf_link"
+                    onChange={(e) => {
+                      setname(e.target.value);
+                    }}
+                    value={name || ""}
+                    className="border md:rounded-[0.5vw] outline-none bg-[black] bg-opacity-[70%] placeholder:text-white capitalize text-white md:h-[3vw] w-full h-[10vw] rounded-[1.5vw] px-[3%] md:text-[1vw] text-[3.5vw]"
+                    placeholder="input name here .."
+                  />
+                </div>
+
+                {/* the download link */}
+                <div className="flex flex-col md:gap-[0.3vw] gap-[2vw] w-full">
+                  <label
+                    className="capitalize md:text-[1vw] text-[3.5vw]"
+                    htmlFor="position"
+                  >
+                    position
+                  </label>
+                  <input
+                    type="text"
+                    id="position"
+                    onChange={(e) => {
+                      setpostion(e.target.value);
+                    }}
+                    value={postion || ""}
+                    className="border md:rounded-[0.5vw] outline-none bg-[black] bg-opacity-[70%] placeholder:text-white capitalize text-white md:h-[3vw] w-full h-[10vw] rounded-[1.5vw] px-[3%] md:text-[1vw] text-[3.5vw]"
+                    placeholder="input position here .."
+                  />
                 </div>
               </div>
               <div className="flex flex-col md:gap-[0.3vw] gap-[2vw]">
@@ -159,63 +154,20 @@ const Modal_edit_reiview = ({
                   className="capitalize md:text-[1vw] text-[3.5vw]"
                   htmlFor="description"
                 >
-                  Media caption
+                  comment
                 </label>
                 <textarea
                   //   type="text"
                   id="description"
                   rows={4}
                   //   rows={50}
-                  value={caption || ""}
+                  value={comment || ""}
                   onChange={(e) => {
-                    setcaption(e.target.value);
+                    setcomment(e.target.value);
                   }}
                   className="border  md:rounded-[1vw] rounded-[1.5vw]  outline-none bg-[black] bg-opacity-[70%] placeholder:text-white capitalize text-white resize-none p-[2%] md:text-[1vw] text-[3.5vw]"
-                  placeholder="input media caption here .."
+                  placeholder="input comment here .."
                 />
-              </div>
-              {/* the links for viewing */}
-              <div className="w-full flex md:gap-[2vw] gap-[5%]  justify-between">
-                {/* the download link */}
-                <div className="flex flex-col md:gap-[0.3vw] gap-[2vw] w-full">
-                  <label
-                    className="capitalize md:text-[1vw] text-[3.5vw]"
-                    htmlFor="pdf_link"
-                  >
-                    Media link
-                  </label>
-                  <input
-                    type="text"
-                    id="pdf_link"
-                    onChange={(e) => {
-                      setarticle_link(e.target.value);
-                    }}
-                    value={article_link || ""}
-                    className="border md:rounded-[0.5vw] outline-none bg-[black] bg-opacity-[70%] placeholder:text-white capitalize text-white md:h-[3vw] w-full h-[10vw] rounded-[1.5vw] px-[3%] md:text-[1vw] text-[3.5vw]"
-                    placeholder="input your media link link here .."
-                  />
-                </div>
-
-                {/* DROPDOWN HERE  */}
-                <div className="flex flex-col md:gap-[0.3vw] gap-[2vw] w-full">
-                  <label
-                    className="capitalize md:text-[1vw] text-[3.5vw]"
-                    htmlFor="type"
-                  >
-                    Media Type
-                  </label>
-                  <select
-                    id="type"
-                    value={selectedType}
-                    onChange={(e) => setSelectedType(e.target.value)}
-                    className="border md:rounded-[0.5vw] outline-none bg-[black] bg-opacity-[70%] placeholder:text-white capitalize text-white md:h-[3vw] w-full h-[10vw] rounded-[1.5vw] px-[3%] md:text-[1vw] text-[3.5vw]"
-                  >
-                    <option value="">Select type</option>
-                    <option value="podcast">Podcast</option>
-                    <option value="News Article">News Article</option>
-                    <option value="Media Outlet">Media Outlet</option>
-                  </select>
-                </div>
               </div>
               {error && (
                 <p className="text-red-500 md:text-[1vw] text-[3.5vw]">
