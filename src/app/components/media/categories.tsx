@@ -219,12 +219,15 @@ const Categories = ({ product_data }: any) => {
         <Modal_edit_category edit_ID={edit_ID} setopen_edit={setopen_edit} />
       )}
       {/* <div className="h-[30vw]"></div> */}
-      <div className="w-full md:gap-0 gap-[15vw]  md:pb-[10vw] md:mt-[-5vw] md:flex-row flex-col  relative flex  ">
-        {isloggedin && (
-          <Add_media setedit_ID={setedit_ID} setopen_edit={setopen_edit} />
-        )}
-
+      <div className="w-full md:gap-0 gap-[15vw]  md:pb-[10vw] md:mt-[-5vw] md:flex-row flex-col   relative flex  ">
+        <div className="md:absolute  z-[101]   w-full">
+          {isloggedin && (
+            <Add_media setedit_ID={setedit_ID} setopen_edit={setopen_edit} />
+          )}
+        </div>
         <div className=" md:h-[100vh] md:w-[30vw] flex items-center md:justify-start justify-between md:px-0 px-[3%] sticky  md:bg-transparent bg-[#DFE4DF] bg-opacity-[10%] backdrop-blur-2xl md:backdrop-blur-none z-[100] top-0 pt-[25vw] left-0 md:pt-[8vw] md:pb-0 pb-[5vw] md:gap-[2vw] md:flex-col ">
+          {/* this is for the mobile editing */}
+
           {groupedItems.map((e: any, index: any) => {
             return (
               <button
@@ -295,7 +298,7 @@ const Categories = ({ product_data }: any) => {
                               key={internal_index}
                               className={``}
                             >
-                              <div className="overflow-hidden border2 w-full md:h-[22.5vw] h-[50vw] rounded-[4vw] md:rounded-[1vw]">
+                              <div className="overflow-hidden  w-full md:h-[22.5vw] h-[50vw] rounded-[4vw] md:rounded-[1vw]">
                                 <Image
                                   src={internal.img}
                                   alt={internal.caption}
