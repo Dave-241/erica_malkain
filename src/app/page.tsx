@@ -33,11 +33,10 @@ export default async function Home() {
           {/* <div className="h-[20vw] bg-black"></div> */}
           {/* <Approach /> */}
           <Home_research />
-          <Recent_publication product_data={product_data} />
-          <Recent_media_wrapper />
-          {/* <Workshop_ad /> */}
+          {/* <Recent_publication product_data={product_data} /> */}
+          {/* <Recent_media_wrapper /> */}
           <Reviews />
-          <Contact_wrappeer />
+          {/* <Contact_wrappeer /> */}
           <Footer />
         </div>
       </>

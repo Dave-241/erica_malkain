@@ -14,7 +14,11 @@ import {
   Helvetica_medium,
   spline_font,
 } from "@/app/utils/fonts";
-const Reviews = () => {
+import { supabase } from "@/app/utils/supabaseClient";
+import { useRouter } from "next/navigation";
+import Edit_each_review from "./edit_each_review";
+import Modal_edit_reiview from "./modal_edit_review";
+const Reviews = ({ product_data }: any) => {
   const items = [
     {
       title: "Jason Jhay",
@@ -134,8 +138,99 @@ const Reviews = () => {
   }, [width]);
   const [calwidth, setcalwidth] = useState(0);
 
+  // THIS IS FOR THE CMS LOGIC WHICH INCLUDES LOGGING AND TRACKING UPDATE DETAILS
+  const [data, setdata] = useState(product_data);
+
+  // this is to implement tracking
+  // Set up real-time subscription
+  useEffect(() => {
+    const fetchInitialData = async () => {
+      const { data, error } = await supabase
+        .from("review")
+        .select("*")
+        .order("created_at", { ascending: false });
+
+      if (error) {
+        console.error("Error fetching initial data:", error);
+      } else {
+        setdata(data);
+      }
+    };
+
+    fetchInitialData();
+
+    // Real-time subscription
+    const handleInserts = (payload: any) => {
+      console.log("Insert received!", payload);
+      window.location.reload();
+    };
+
+    const handleUpdates = (payload: any) => {
+      console.log("Update received!", payload);
+      setdata((prevData: any) =>
+        prevData.map((item: any) =>
+          item.id === payload.new.id ? payload.new : item,
+        ),
+      );
+    };
+
+    const handleDeletes = (payload: any) => {
+      console.log("Delete received!", payload);
+      setdata((prevData: any) =>
+        prevData.filter((item: any) => item.id !== payload.old.id),
+      );
+    };
+
+    const subscription = supabase
+      .channel("review_channel")
+      .on(
+        "postgres_changes",
+        { event: "INSERT", schema: "public", table: "review" },
+        handleInserts,
+      )
+      .on(
+        "postgres_changes",
+        { event: "UPDATE", schema: "public", table: "review" },
+        handleUpdates,
+      )
+      .on(
+        "postgres_changes",
+        { event: "DELETE", schema: "public", table: "review" },
+        handleDeletes,
+      )
+      .subscribe();
+
+    // Cleanup subscription on unmount
+    return () => {
+      supabase.removeChannel(subscription);
+    };
+  }, []);
+
+  // THE CMS LOGIC STARTS FROM HERE
+  const [open_edit, setopen_edit] = useState(false);
+  const [isloggedin, setisloggedin] = useState(false);
+  const [edit_ID, setedit_ID] = useState<any>(1);
+  const router = useRouter();
+
+  // check if logged in
+  useEffect(() => {
+    // Check initial session
+    const checkInitialSession = async () => {
+      const {
+        data: { session },
+      } = await supabase.auth.getSession();
+      if (session) {
+        setisloggedin(true);
+      }
+    };
+
+    checkInitialSession();
+  }, [router]);
   return (
     <>
+      {open_edit && (
+        <Modal_edit_reiview edit_ID={edit_ID} setopen_edit={setopen_edit} />
+      )}
       <div className=" gap-[10vw]  md:py-0 pt-[20vw] pb-[4vw]  md:mt-[10vw]  flex flex-col md:gap-[3.5vw]  items-center">
         <h2
           className={` text-center  uppercase ${spline_font.className} font-medium md:text-[5.3vw] text-[9vw] leading-[10vw] md:leading-[6vw]  text-[#5C3C43] `}
@@ -161,8 +256,17 @@ const Reviews = () => {
                   // ref={itemRefs[index]}
                   data-index={index}
                   key={index}
-                  className="relative  flex-none md:flex-auto h-[100vw] bg-black md:rounded-[2vw] rounded-[5vw] snap-center md:h-[80%]  md:w-[22vw] w-[75vw] md:gap-[2vw] group flex items-end "
+                  className={` relative  flex-none md:flex-auto h-[100vw] bg-black md:rounded-[2vw] rounded-[5vw] snap-center md:h-[80%]  md:w-[22vw] w-[75vw] md:gap-[2vw] ${
+                    !isloggedin ? "group" : ""
+                  }  flex items-end `}
                 >
+                  {isloggedin && (
+                    <Edit_each_review
+                      setopen_edit={setopen_edit}
+                      id={e.id}
+                      setedit_ID={setedit_ID}
+                    />
+                  )}
                   {/* <Image
                     src={e.top_img}
                     alt={e.title}

@@ -84,7 +84,7 @@ const Recent_media = ({ product_data }: any) => {
           >
             {product_data.map((internal: any, index: any) => (
               <Link
-                href={internal.link}
+                href={internal.link || "/"}
                 key={index}
                 style={{ transition: `${(index + 1) / 2}s ease` }}
                 className={`
