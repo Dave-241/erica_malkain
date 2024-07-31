@@ -2,6 +2,7 @@ import Contact_wrappeer from "./components/general-component/contact_wrapper";
 import Footer from "./components/general-component/footer";
 import Nav from "./components/general-component/nav";
 import Recent_media from "./components/general-component/recent_media";
+import Recent_media_wrapper from "./components/general-component/recent_media_wrapper";
 import Recent_publication from "./components/general-component/recent_publication";
 import Hero_home from "./components/home/hero";
 import Home_research from "./components/home/research";
@@ -33,7 +34,7 @@ export default async function Home() {
           {/* <Approach /> */}
           <Home_research />
           <Recent_publication product_data={product_data} />
-          <Recent_media />
+          <Recent_media_wrapper />
           {/* <Workshop_ad /> */}
           <Reviews />
           <Contact_wrappeer />

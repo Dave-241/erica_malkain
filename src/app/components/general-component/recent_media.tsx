@@ -5,8 +5,11 @@ import Image from "next/image";
 import { Helvetica_light, spline_font } from "@/app/utils/fonts";
 import { useEffect, useRef, useState } from "react";
 import { useInView } from "framer-motion";
+import Refer_edit from "../home/refer_edit";
+import { useRouter } from "next/navigation";
+import { supabase } from "@/app/utils/supabaseClient";
 
-const Recent_media = () => {
+const Recent_media = ({ product_data }: any) => {
   const items = [
     {
       img: example,
@@ -37,6 +40,24 @@ const Recent_media = () => {
       setstart_anime(isinview);
     }
   }, [isinview]);
+
+  const [isloggedin, setisloggedin] = useState(false);
+  const router = useRouter();
+
+  // check if logged in
+  useEffect(() => {
+    // Check initial session
+    const checkInitialSession = async () => {
+      const {
+        data: { session },
+      } = await supabase.auth.getSession();
+      if (session) {
+        setisloggedin(true);
+      }
+    };
+
+    checkInitialSession();
+  }, [router]);
   return (
     <>
       <div
@@ -50,6 +71,8 @@ const Recent_media = () => {
         </h1>
 
         <div className="w-full relative  overflow-hidden">
+          {/* {isloggedin && <Refer_edit text={"media"} />} */}
+
           <div
             className=" flex md:flex-nowrap
         overflow-x-auto overflow-y-hidden md:overflow-x-visible
@@ -59,7 +82,7 @@ const Recent_media = () => {
         gap-[5%] md:gap-[1.5vw]
         px-[5%] pb-[10vw] md:pb-0 md:px-0"
           >
-            {items.map((internal, index) => (
+            {product_data.map((internal: any, index: any) => (
               <Link
                 href={internal.link}
                 key={index}
@@ -77,19 +100,22 @@ const Recent_media = () => {
               bg-white
             `}
               >
-                <div className="overflow-hidden rounded-[4vw] md:rounded-[1.5vw]">
+                <div className="overflow-hidden  w-full md:h-[19vw] h-[58vw] rounded-[4vw] md:rounded-[1.5vw]">
                   <Image
                     src={internal.img}
+                    unoptimized
+                    width="0"
+                    height="0"
                     alt={internal.caption}
                     style={{ transition: "0.8s ease" }}
-                    className="w-full scale-[1.1] group-hover:scale-[1] h-auto"
+                    className="w-full  scale-[1.12] group-hover:scale-[1.05] h-fit"
                   />
                 </div>
 
                 <div className="">
                   <p
                     className={`
-                p-[3vw] md:p-[1.5vw]
+                p-[3vw] py-[5vw] md:p-[1.5vw]
                 ${spline_font.className}
                 font-bold
                 text-[4vw] md:text-[1vw]

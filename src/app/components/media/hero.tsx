@@ -123,6 +123,7 @@ const Media_hero = ({ page_data }: any) => {
       supabase.removeChannel(subscription);
     };
   }, []);
+
   return (
     <>
       {edit_text && (
@@ -214,7 +215,7 @@ const Media_hero = ({ page_data }: any) => {
             LECTURE . PRINTS
           </p>
         </div>
-        <div className="md:h-[51%] h-[62.5%] w-[97%] rounded-[5vw]   md:w-[96vw] overflow-hidden  md:rounded-[1vw]   bg-[#a58d90c4] absolute md:top-[1vw] top-[2vw] left-[50%] translate-x-[-50%]">
+        <div className="md:h-[51%]  h-[62%] w-[97%] rounded-[5vw]   md:w-[96vw] overflow-hidden  md:rounded-[1vw]   bg-[#a58d90c4] absolute md:top-[1vw] top-[2vw] left-[50%] translate-x-[-50%]">
           <div className="w-full h-full    bg-black relative">
             <div className="absolute   bottom-0 md:right-0  w-full md:h-full h-[70vw] z-[100]">
               {isloggedin && (

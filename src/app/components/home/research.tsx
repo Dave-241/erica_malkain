@@ -6,6 +6,9 @@ import arrow from "../../../../public/images/home/arrow.png";
 import example from "../../../../public/images/home/example.webp";
 import Image from "next/image";
 import Link from "next/link";
+import Refer_edit from "./refer_edit";
+import { supabase } from "@/app/utils/supabaseClient";
+import { useRouter } from "next/navigation";
 
 const Home_research = () => {
   const items = ["", "", "", "", ""];
@@ -112,7 +115,23 @@ const Home_research = () => {
     };
   }, [width]);
   const [calwidth, setcalwidth] = useState(0);
+  const [isloggedin, setisloggedin] = useState(false);
+  const router = useRouter();
 
+  // check if logged in
+  useEffect(() => {
+    // Check initial session
+    const checkInitialSession = async () => {
+      const {
+        data: { session },
+      } = await supabase.auth.getSession();
+      if (session) {
+        setisloggedin(true);
+      }
+    };
+
+    checkInitialSession();
+  }, [router]);
   return (
     <>
       <div
@@ -134,6 +153,8 @@ const Home_research = () => {
           {/* i had to split the design into mobile and destop because of the complexity of the design  */}
           {/* SO THIS IS THE DESKTOP PAGE */}
           <div className="w-full relative md:block hidden  md:min-h-[33vw]  overflow-hidden  ">
+            {isloggedin && <Refer_edit text={"research"} />}
+
             <div
               style={{
                 opacity: opac_animation,

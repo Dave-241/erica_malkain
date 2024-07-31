@@ -11,6 +11,9 @@ import img_white from "../../../../public/images/publication/white.png";
 import Link from "next/link";
 import example from "../../../../public/images/publication/example.webp";
 import { useEffect, useRef, useState } from "react";
+import Refer_edit from "../home/refer_edit";
+import { useRouter } from "next/navigation";
+import { supabase } from "@/app/utils/supabaseClient";
 
 const Recent_publication = ({ product_data }: any) => {
   const items = [
@@ -94,6 +97,25 @@ const Recent_publication = ({ product_data }: any) => {
       }, 3000);
     }
   }, [active]);
+
+  // track when logged in
+  const [isloggedin, setisloggedin] = useState(false);
+  const router = useRouter();
+
+  // check if logged in
+  useEffect(() => {
+    // Check initial session
+    const checkInitialSession = async () => {
+      const {
+        data: { session },
+      } = await supabase.auth.getSession();
+      if (session) {
+        setisloggedin(true);
+      }
+    };
+
+    checkInitialSession();
+  }, [router]);
   return (
     <>
       <div className="w-full md:gap-[6vw] gap-[6vw] py-[15vw] flex px-[3.5%] md:px-[10vw] bg-[#D8DFD8] md:py-[5vw] flex-col">
@@ -103,7 +125,9 @@ const Recent_publication = ({ product_data }: any) => {
           <span className="md:inline-block hidden">Recent</span> Publications
         </h2>
 
-        <div className="flex flex-col  gap-[5vw] md:gap-[2vw]">
+        <div className="flex flex-col relative  gap-[5vw] md:gap-[2vw]">
+          {isloggedin && <Refer_edit text={"publication"} />}
+
           {data.map((e: any, index: any) => {
             return (
               <div
