@@ -295,7 +295,7 @@ const Categories = ({ product_data }: any) => {
                               key={internal_index}
                               className={``}
                             >
-                              <div className="overflow-hidden rounded-[4vw] md:rounded-[1vw]">
+                              <div className="overflow-hidden border2 w-full md:h-[22.5vw] h-[50vw] rounded-[4vw] md:rounded-[1vw]">
                                 <Image
                                   src={internal.img}
                                   alt={internal.caption}
@@ -303,7 +303,7 @@ const Categories = ({ product_data }: any) => {
                                   width="0"
                                   height="0"
                                   style={{ transition: "0.8s ease" }}
-                                  className="w-full scale-[1.1] group-hover:scale-[1] h-fit"
+                                  className="w-full  scale-[1.1] group-hover:scale-[1] h-fit"
                                 />
                               </div>
 

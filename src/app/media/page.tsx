@@ -13,7 +13,7 @@ const fetchProducts = async () => {
     .order("created_at", { ascending: false });
 
   // if (error) throw notFound();
-  console.log(data);
+  // console.log(data);
   return data;
 };
 export default async function Meida() {
@@ -24,7 +24,7 @@ export default async function Meida() {
       <>
         <Nav />
         <Media_hero />
-        <Categories product_data={product_data} />
+        <Categories product_data={product_data || [{}]} />
         <Contact_wrappeer />
         <Footer />
       </>

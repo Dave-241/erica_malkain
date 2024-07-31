@@ -8,7 +8,7 @@ const fetchProducts = async () => {
     .order("created_at", { ascending: false });
 
   // if (error) throw notFound();
-  console.log(data);
+  //   console.log(data);
   return data;
 };
 export default async function Contact_wrappeer() {
