@@ -305,7 +305,7 @@ const Each_consultation = ({ product_data }: any) => {
           height:
             calwidth > 768
               ? `${data.length * 100}vh`
-              : `${data.length * 110}vh`,
+              : `${data.length * 100}vh`,
         }}
         ref={sectionRef}
       >
