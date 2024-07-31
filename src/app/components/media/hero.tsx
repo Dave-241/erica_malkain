@@ -161,7 +161,7 @@ const Media_hero = ({ page_data }: any) => {
                 record={"heading"}
                 setedit_text={setedit_text}
                 setrecord_Name={setrecord_Name}
-                // text={active_user_data[0].heading}
+                text={active_user_data[0].heading}
               />
             )}
           </h1>
