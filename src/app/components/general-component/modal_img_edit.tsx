@@ -77,7 +77,7 @@ const Modal_img_edit = ({
                 {image_link ? "Replace" : "Choose"} media Image
               </button>
               {image_link && (
-                <div className="md:h-[5vw] border2  h-[13vw] w-full md:rounded-[0.5vw] rounded-[2vw] relative overflow-hidden">
+                <div className="md:h-[5vw]   h-[13vw] w-full md:rounded-[0.5vw] rounded-[2vw] relative overflow-hidden">
                   <Image
                     src={image_link}
                     unoptimized

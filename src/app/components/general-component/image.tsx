@@ -395,17 +395,17 @@ const Image_list = ({ setopen_img, setimage_link }: any) => {
                           setactive_img([img_array[index]]);
                           //   console.log();
                         }}
-                        className={`md:h-[5vw] h-[25vw] w-[25vw] rounded-[5vw] border md:rounded-[1vw] overflow-hidden cursor-pointer ${
+                        className={`md:h-[7vw] h-[25vw] w-[25vw] rounded-[5vw] border-[lightgrey] bg-[lightgrey] border md:rounded-[1vw] overflow-hidden cursor-pointer ${
                           index == active
                             ? "border-[#440C0C] border-[1.5vw] md:border-[0.4vw]"
                             : ""
-                        } md:w-[5vw] relative transition duration-[0.5s]`}
+                        } md:w-[7vw] relative transition duration-[0.5s]`}
                         key={index}
                       >
                         <img
                           src={e.file_url}
                           alt="images"
-                          className="absolute w-full h-full absolute_center"
+                          className="absolute w-full h-fit absolute_center"
                         />
                       </div>
                     );

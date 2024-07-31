@@ -49,10 +49,6 @@ const Nav = () => {
       // link: "/",
       button: true,
     },
-    {
-      text: "WORKSHOP ",
-      link: "/workshop",
-    },
   ];
 
   const pathname = usePathname();
