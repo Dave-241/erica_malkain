@@ -77,9 +77,40 @@ const Nav = () => {
   }, [search]);
 
   const scroll_to_contact = () => {
-    router.push(`?contact=${true}`);
+    if (search) {
+      const element = document.getElementById("contact");
+      if (element) {
+        element.scrollIntoView({ behavior: "smooth" });
+      }
+    } else {
+      router.push(`?contact=${true}`);
+    }
   };
 
+  // THIS IS FOR DETERMINING THE WIDTH OF THE SCREEN
+  // THIS IS FOR DETERMINING THE WIDTH OF THE SCREEN
+  // THIS IS FOR DETERMINING THE WIDTH OF THE SCREEN
+  // THIS IS FOR DETERMINING THE WIDTH OF THE SCREEN
+  // THIS IS FOR DETERMINING THE WIDTH OF THE SCREEN
+  const width = globalThis.innerWidth;
+  useEffect(() => {
+    setcalwidth(width);
+  }, [width]);
+  const handleResize = () => {
+    setcalwidth(globalThis.innerWidth);
+  };
+
+  useEffect(() => {
+    window.addEventListener("resize", handleResize);
+
+    // Initial call to set the width on component mount
+    handleResize();
+
+    return () => {
+      window.removeEventListener("resize", handleResize);
+    };
+  }, [width]);
+  const [calwidth, setcalwidth] = useState(0);
   const [open_menu, setopen_menu] = useState(false);
   return (
     <>
@@ -115,40 +146,58 @@ const Nav = () => {
             );
           })}
         </div>
-        {/* this is mobile ham buger */}
-        <button
-          onClick={() => {
-            setopen_menu(true);
-          }}
-          style={{ whiteSpace: "nowrap" }}
-          className={`uppercase overflow-hidden md:hidden inline-block bg-[white]   md:p-[0.4vw] p-[1.3vw] group hover:[#103210] duration-[1s] md:rounded-[1.5vw] rounded-[8vw]  backdrop-blur-2xl bg-opacity-[20%] `}
-        >
-          <div
-            className={` bg-white group-hover:bg-white md:rounded-[1.3vw] rounded-[7vw] flex justify-center items-center   md:h-auto md:w-auto w-[25vw]  h-[10vw]   md:py-[0.7vw] md:px-[1.5vw]`}
-          >
-            <p className=" md:text-[0.8vw] text-[#103210] group-hover:text-[#440C0C] flex items-center justify-center gap-[10%] text-[3vw]">
-              <Image
-                src={ham}
-                alt="hamburger img"
-                className=" w-[40%]  h-fit"
-              />
-              Menu
-            </p>
-          </div>
-        </button>
+        <div className="overflow-hidden">
+          {" "}
+          <button
+            onClick={() => {
+              setopen_menu(true);
+            }}
+            style={{
+              whiteSpace: "nowrap",
+              // opacity: open_menu && calwidth < 768 ? 0 : "",
+              transition: "0.25s ease",
 
-        <div className=" flex ">
+              transform: open_menu && calwidth < 768 ? "translateY(100%)" : "",
+            }}
+            className={`uppercase overflow-hidden md:hidden inline-block bg-[white]   md:p-[0.4vw] p-[1.3vw] group hover:[#103210] duration-[1s] md:rounded-[1.5vw] rounded-[8vw]  backdrop-blur-2xl bg-opacity-[20%] `}
+          >
+            <div
+              className={` bg-white group-hover:bg-white md:rounded-[1.3vw] rounded-[7vw] flex justify-center items-center   md:h-auto md:w-auto w-[25vw]  h-[10vw]   md:py-[0.7vw] md:px-[1.5vw]`}
+            >
+              <p className=" md:text-[0.8vw] text-[#103210] group-hover:text-[#440C0C] flex items-center justify-center gap-[10%] text-[3vw]">
+                <Image
+                  src={ham}
+                  alt="hamburger img"
+                  className=" w-[40%]  h-fit"
+                />
+                Menu
+              </p>
+            </div>
+          </button>
+        </div>
+        {/* this is mobile ham buger */}
+
+        <div className=" flex overflow-hidden">
           {items_right.map((e: any, index: any) => {
             return (
               <>
                 {e.link && (
                   <Link
                     href={e.link}
-                    style={{ whiteSpace: "nowrap" }}
+                    style={{
+                      whiteSpace: "nowrap",
+                      transition: "0.25s ease",
+
+                      transform:
+                        open_menu && calwidth < 768 ? "translateY(100%)" : "",
+                      // opacity: open_menu && calwidth < 768 ? 0 : "",
+                    }}
                     key={index}
                     className={`uppercase overflow-hidden  ${
                       e.link == pathname ? " bg-[#440C0C] " : " bg-[#440C0C] "
-                    }   md:p-[0.4vw] p-[1.3vw] group hover:[#103210] duration-[1s] md:rounded-[1.5vw] rounded-[8vw]  backdrop-blur-2xl bg-opacity-[10%] `}
+                    }   md:p-[0.4vw] p-[1.3vw] group hover:[#103210] duration-[1s] md:rounded-[1.5vw] rounded-[8vw]  backdrop-blur-2xl bg-opacity-[10%] ${
+                      open_menu ? "" : ""
+                    } `}
                   >
                     <div
                       className={`  ${
@@ -164,7 +213,14 @@ const Nav = () => {
                 {e.btn && (
                   <button
                     // href={e.link}
-                    style={{ whiteSpace: "nowrap" }}
+                    style={{
+                      whiteSpace: "nowrap",
+                      transition: "0.25s ease",
+
+                      transform:
+                        open_menu && calwidth < 768 ? "translateY(100%)" : "",
+                      // opacity: open_menu && calwidth < 768 ? 0 : "",
+                    }}
                     onClick={() => {
                       scroll_to_contact();
                     }}

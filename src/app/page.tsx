@@ -5,6 +5,7 @@ import Recent_media from "./components/general-component/recent_media";
 import Recent_media_wrapper from "./components/general-component/recent_media_wrapper";
 import Recent_publication from "./components/general-component/recent_publication";
 import Review_wrapper from "./components/general-component/review_wrapper";
+import AnimatedLines from "./components/home/approach";
 import Hero_home from "./components/home/hero";
 import Home_research from "./components/home/research";
 import Reviews from "./components/home/reviews";
@@ -32,7 +33,7 @@ export default async function Home() {
           <Nav />
           <Hero_home />
           {/* <div className="h-[20vw] bg-black"></div> */}
-          {/* <Approach /> */}
+          {/* <AnimatedLines /> */}
           <Home_research />
           <Recent_publication product_data={product_data} />
           <Recent_media_wrapper />
