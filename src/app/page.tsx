@@ -11,7 +11,7 @@ import Home_research from "./components/home/research";
 import Reviews from "./components/home/reviews";
 import Workshop_ad from "./components/home/workshop_ad";
 import { supabase } from "./utils/supabaseClient";
-export const revalidate = 60;
+export const revalidate = 10;
 const fetchProducts = async () => {
   const { data, error } = await supabase
     .from("publication")
