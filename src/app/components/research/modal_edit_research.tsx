@@ -23,6 +23,7 @@ const Modal_edit_research = ({ setopen_edit, edit_ID, open_edit }: any) => {
 
   useEffect(() => {
     settitle("loading ...");
+    setSlug("loading ...");
     setText("");
     setimage_link("loading ...");
     setcaption("loading ...");
@@ -46,6 +47,7 @@ const Modal_edit_research = ({ setopen_edit, edit_ID, open_edit }: any) => {
           setValue(data[0].text);
           //   setValue(text)
           setcaption(data[0].caption);
+          setSlug(data[0].slug);
         }
       } else {
         // setdaa;
@@ -84,6 +86,7 @@ const Modal_edit_research = ({ setopen_edit, edit_ID, open_edit }: any) => {
           image: image_link,
           title: title,
           text: text,
+          slug: slug,
         })
         .eq("id", edit_ID);
 
@@ -97,6 +100,7 @@ const Modal_edit_research = ({ setopen_edit, edit_ID, open_edit }: any) => {
           image: image_link,
           title: title,
           text: text,
+          slug: slug,
         },
       ]);
     }
@@ -166,6 +170,29 @@ const Modal_edit_research = ({ setopen_edit, edit_ID, open_edit }: any) => {
     console.log(edit_ID);
     // setText("");
   }, [edit_ID]);
+  function sanitizeSlugInput(input: any) {
+    // Replace spaces with hyphens
+    let slug = input.replace(/\s+/g, "-");
+
+    // Remove any characters that are not alphanumeric or hyphens
+    slug = slug.replace(/[^a-zA-Z0-9-]/g, "");
+
+    // Convert to lowercase
+    slug = slug.toLowerCase();
+
+    return slug;
+  }
+
+  const [slug, setSlug] = useState("");
+
+  const handleSlugChange = () => {
+    const sanitizedSlug = sanitizeSlugInput(title);
+    setSlug(sanitizedSlug);
+  };
+
+  useEffect(() => {
+    handleSlugChange();
+  }, [title]);
   return (
     <>
       {open_img && (
@@ -269,8 +296,25 @@ const Modal_edit_research = ({ setopen_edit, edit_ID, open_edit }: any) => {
                     onChange={(e) => {
                       setcaption(e.target.value);
                     }}
-                    className="border  md:rounded-[1vw] rounded-[1.5vw]  outline-none bg-[black] bg-opacity-[70%] placeholder:text-white capitalize text-white resize-none p-[2%] md:text-[1vw] text-[3.5vw]"
+                    className="border  md:rounded-[1vw] rounded-[1.5vw]  outline-none bg-[black] bg-opacity-[70%] placeholder:text-white  text-white resize-none p-[2%] md:text-[1vw] text-[3.5vw]"
                     placeholder="input Research caption here .."
+                  />
+                </div>
+                <div className="flex flex-col md:gap-[0.3vw] gap-[2vw] w-full">
+                  <label
+                    className="capitalize md:text-[1vw] text-[3.5vw]"
+                    htmlFor="slug"
+                  >
+                    Research slug
+                  </label>
+                  <input
+                    type="text"
+                    id="slug"
+                    //   onChange={handleSlugChange}
+                    value={slug || ""}
+                    disabled
+                    className="border md:rounded-[0.5vw] outline-none bg-[black] bg-opacity-[70%] placeholder:text-white capitalize text-white md:h-[3vw] w-full h-[10vw] rounded-[1.5vw] px-[3%] md:text-[1vw] text-[3.5vw]"
+                    // placeholder="slug title here (no spaces)"
                   />
                 </div>
                 {error && (

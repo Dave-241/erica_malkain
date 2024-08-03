@@ -89,13 +89,13 @@ const Each_research = ({ product_data }: any) => {
               className="w-full  border-none md:border-t border-[#9CA09C] md:py-[5vw] md:gap-[6vw] flex  justify-center md:rounded-none rounded-[5vw] overflow-hidden md:bg-transparent bg-[#F2F2F0] md:flex-row flex-col items-start px-[4%] py-[6%] gap-[3vw] relative"
             >
               {/* CMS LOGIC */}
-              {isloggedin && (
+              {/* {isloggedin && (
                 <Edit_each_research
                   setedit_ID={setedit_ID}
                   setopen_edit={setopen_edit}
                   id={e.id}
                 />
-              )}
+              )} */}
               {/* the details */}
               <div className="  overflow-hidden">
                 <div
@@ -117,7 +117,7 @@ const Each_research = ({ product_data }: any) => {
                     {e.caption}
                   </p>
                   <Link
-                    href={"/"}
+                    href={`research/${e.slug}`}
                     className={`uppercase md:w-[8.6vw] md:h-[2.9vw] md:rounded-[2vw]  md:text-[1.1vw]  group overflow-hidden relative items-center justify-center  ${Helvetica_light.className} bg-white uppercase md:flex hidden `}
                   >
                     <p
@@ -147,7 +147,7 @@ const Each_research = ({ product_data }: any) => {
               </div>
 
               <Link
-                href={`${e.title}`}
+                href={`research/${e.slug}`}
                 className={`uppercase w-full h-[12vw] border-[#440C0C] border md:rounded-[2vw] flex md:hidden md:text-[1.1vw]  group overflow-hidden relative items-center text-[#440C0C] rounded-[5vw] justify-center  ${Helvetica_light.className} bg-[#FEF6F6] uppercase`}
               >
                 <p

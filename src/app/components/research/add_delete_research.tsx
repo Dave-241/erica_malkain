@@ -11,7 +11,7 @@ const Add_research = ({ setopen_edit, setedit_ID }: any) => {
       if (window.confirm("Are you sure you want to delete all Media post?")) {
         // Perform the delete operation
         const { data, error } = await supabase
-          .from("media")
+          .from("research_blog")
           .delete()
           .neq("id", 0); // Assuming 'id' is a non-nullable primary key
 

@@ -10,7 +10,7 @@ const Edit_each_research = ({ setopen_edit, id, setedit_ID }: any) => {
       if (window.confirm("Are you sure you want to delete this Media post?")) {
         // Perform the delete operation
         const { data, error } = await supabase
-          .from("media")
+          .from("research_blog")
           .delete()
           .eq("id", id); // Filter by id
 
