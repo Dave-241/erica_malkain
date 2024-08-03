@@ -16,6 +16,14 @@ const fetchProducts = async (slug: any) => {
   return data;
 };
 
+export async function generateStaticParams() {
+  const { data: posts } = await supabase.from("research_blog").select("slug");
+
+  return posts?.map(({ slug }) => ({
+    slug,
+  }));
+}
+
 export async function generateMetadata({ params }: any, parent: any) {
   const product_data = await fetchProducts(params.slug);
   console.log(params.slug);
