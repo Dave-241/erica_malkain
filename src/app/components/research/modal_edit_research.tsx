@@ -9,7 +9,13 @@ import { v4 } from "uuid";
 import Image_list from "../general-component/image";
 import { plugins, toolbars } from "./tinymce";
 
-const Modal_edit_research = ({ setopen_edit, setText, text, edit_ID }: any) => {
+const Modal_edit_research = ({
+  setopen_edit,
+  setText,
+  text,
+  edit_ID,
+  open_edit,
+}: any) => {
   const [loading, setLoading] = useState(false);
   const [selectedType, setSelectedType] = useState(""); // State for dropdown
   const [error, setError] = useState("");
@@ -124,14 +130,40 @@ const Modal_edit_research = ({ setopen_edit, setText, text, edit_ID }: any) => {
     // Update the key to force reinitialization
     setEditorKey((prevKey) => prevKey + 1);
   }, [open_img]);
+
+  const [calWidth, setCalWidth] = useState(0);
+  const width = globalThis.innerWidth;
+  const handleResize = () => {
+    setCalWidth(globalThis.innerWidth);
+  };
+
+  useEffect(() => {
+    window.addEventListener("resize", handleResize);
+
+    // Initial call to set the width on component mount
+    handleResize();
+
+    return () => {
+      window.removeEventListener("resize", handleResize);
+    };
+  }, [width]);
+
+  useEffect(() => {
+    handleResize();
+  }, [width]);
   return (
     <>
       {open_img && (
         <Image_list setopen_img={setopen_img} setimage_link={setimage_link} />
       )}
 
-      <div className="w-full h-full fixed top-0 left-0  bg-white bg-opacity-[80%] md:bg-opacity-[100%] overflow-x-hidden overflow-y-scroll z-[1000] flex justify-center  items-center">
-        <div className="bg-white md:px-[5%] justify-center md:rounded-[1vw]  md:py-[3vw] py-[10vw] w-[95%] px-[3%] md:w-[30vw]  rounded-[5vw] flex md:gap-[1vw] capitalize flex-col gap-[6vw]">
+      <div
+        className={`w-full md:h-full min-h-[100vh] md:py-0 py-[20vw] fixed top-0  ${
+          !open_edit ? "left-[-100%]" : "left-0"
+        }
+       bg-white bg-opacity-[100%] overflow-x-hidden overflow-y-scroll z-[1000] flex md:justify-around justify-start md:flex-row  flex-col  items-center`}
+      >
+        <div className="bg-white md:px-[5%] justify-center md:rounded-[1vw]  md:py-[3vw] py-[10vw]  w-[95%] px-[3%] md:w-[30vw]  rounded-[5vw] flex md:gap-[1vw] capitalize flex-col gap-[6vw]">
           {!edit_ID || (edit_ID && article_link) ? (
             <>
               {" "}
@@ -255,8 +287,8 @@ const Modal_edit_research = ({ setopen_edit, setText, text, edit_ID }: any) => {
           onInit={(evt, editor) => setText(editor.getContent())}
           value={value}
           init={{
-            height: "80vh",
-            width: "60vw",
+            height: calWidth < 768 ? "50vh" : "80vh",
+            width: calWidth < 768 ? "95%" : "60vw",
             plugins: plugins,
             toolbar: toolbars,
           }}

@@ -62,13 +62,16 @@ const Each_research = () => {
 
   return (
     <>
-      {open_edit && (
-        <Modal_edit_research
-          setopen_edit={setopen_edit}
-          text={text}
-          setText={setText}
-        />
-      )}
+      {/* BECAUSAE OF THE LOAD SPEED OF THIS TINY MCE EDITOR MODAL, WE WOULD PRELOAD THE MODAL FOR FASTER LOAD TIME */}
+      {/* AND USE CSS TO HIDE AND SHOW  */}
+      {/* {true && ( */}
+      <Modal_edit_research
+        setopen_edit={setopen_edit}
+        text={text}
+        open_edit={open_edit}
+        setText={setText}
+      />
+      {/* )} */}
       {/* <div className="mt-4 p-4 border2 ">
         <h2>HTML Content from Editor</h2>
         <div dangerouslySetInnerHTML={{ __html: text }}></div>
