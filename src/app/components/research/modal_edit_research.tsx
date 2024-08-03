@@ -151,6 +151,10 @@ const Modal_edit_research = ({
   useEffect(() => {
     handleResize();
   }, [width]);
+
+  useEffect(() => {
+    console.log(open_edit);
+  }, [open_edit]);
   return (
     <>
       {open_img && (

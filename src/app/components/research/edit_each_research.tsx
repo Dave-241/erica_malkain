@@ -29,7 +29,7 @@ const Edit_each_research = ({ setopen_edit, id, setedit_ID }: any) => {
 
   return (
     <>
-      <div className="w-full  absolute  flex-col top-0 left-0 h-full flex justify-center items-end md:p-[0.5vw] md:gap-[1.5vw] capitalize bg-black bg-opacity-[30%] z-[60] md:text-[1.5vw] p-[5vw] leading-normal text-[3.5vw] gap-[5vw]">
+      <div className="w-full border-white border absolute  flex-col top-0 left-0 h-full flex justify-center items-end md:p-[0.5vw] md:gap-[1.5vw] capitalize bg-black bg-opacity-[30%] z-[60] md:text-[1.5vw] p-[5vw] leading-normal text-[3.5vw] gap-[5vw]">
         <button
           className=" md:w-[10vw]  h-[10vw] w-[30vw] md:h-[4vw] capitalize bg-white  md:rounded-[0.5vw] hover:bg-opacity-[60%] backdrop-blur-2xl text-center "
           onClick={() => {
