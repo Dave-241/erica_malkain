@@ -11,7 +11,7 @@ import { useRouter } from "next/navigation";
 import Edit_each_research from "./edit_each_research";
 import Add_research from "./add_delete_research";
 
-const Each_research = () => {
+const Each_research = ({ product_data }: any) => {
   const itemsRefs = useRef<any>([]);
 
   useEffect(() => {
@@ -45,7 +45,9 @@ const Each_research = () => {
   const [open_edit, setopen_edit] = useState(false);
   const [isloggedin, setisloggedin] = useState(false);
   const [edit_ID, setedit_ID] = useState<any>(1);
-
+  const [image_link, setimage_link] = useState("");
+  const [caption, setcaption] = useState("");
+  const [title, settitle] = useState("");
   // check if logged in
   useEffect(() => {
     // Check initial session
@@ -71,6 +73,12 @@ const Each_research = () => {
         text={text}
         open_edit={open_edit}
         setText={setText}
+        caption={caption}
+        setcaption={setcaption}
+        title={title}
+        settitle={settitle}
+        setimage_link={setimage_link}
+        image_link={image_link}
       />
 
       {/* )} */}
@@ -84,7 +92,7 @@ const Each_research = () => {
         {isloggedin && (
           <Add_research setedit_ID={setedit_ID} setopen_edit={setopen_edit} />
         )}
-        {items.map((e: any, index: any) => {
+        {product_data.map((e: any, index: any) => {
           return (
             <div
               key={index}
@@ -95,6 +103,9 @@ const Each_research = () => {
                 <Edit_each_research
                   setedit_ID={setedit_ID}
                   setopen_edit={setopen_edit}
+                  setText={setText}
+                  setcaption={setcaption}
+                  settitle={settitle}
                 />
               )}
               {/* the details */}
@@ -110,13 +121,12 @@ const Each_research = () => {
                   <h3
                     className={`${spline_font.className} uppercase  md:text-[2vw]  font-medium md:leading-[2.2vw] text-[7vw] leading-[7.8vw]`}
                   >
-                    Do we know what people think of us?
+                    {e.title}
                   </h3>
                   <p
                     className={`${Helvetica_light.className} md:text-[1vw] text-[#707270] text-[4vw] leading-[4.8vw] md:leading-[1.3vw]`}
                   >
-                    Beliefs about whether our colleagues like us affect our
-                    sense of belonging in the workplace and how{" "}
+                    {e.caption}
                   </p>
                   <Link
                     href={"/"}
@@ -136,17 +146,21 @@ const Each_research = () => {
                   </Link>
                 </div>
               </div>
+              {/* {e.image} */}
               {/* the picture */}
               <div className="md:w-[45vw] ">
                 <Image
-                  src={example}
+                  src={e.image}
+                  unoptimized
+                  height="0"
+                  width="0"
                   alt="example blog"
                   className="w-full h-fit md:rounded-none rounded-[3vw]"
                 />
               </div>
 
               <Link
-                href={"/"}
+                href={`${e.title}`}
                 className={`uppercase w-full h-[12vw] border-[#440C0C] border md:rounded-[2vw] flex md:hidden md:text-[1.1vw]  group overflow-hidden relative items-center text-[#440C0C] rounded-[5vw] justify-center  ${Helvetica_light.className} bg-[#FEF6F6] uppercase`}
               >
                 <p

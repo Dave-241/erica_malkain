@@ -15,34 +15,37 @@ const Modal_edit_research = ({
   text,
   edit_ID,
   open_edit,
+  caption,
+  setcaption,
+  title,
+  settitle,
+  setimage_link,
+  image_link,
 }: any) => {
   const [loading, setLoading] = useState(false);
-  //   const [selectedType, setSelectedType] = useState(""); // State for dropdown
   const [error, setError] = useState("");
-  const [caption, setcaption] = useState("");
-  const [title, settitle] = useState("");
+  //   const [selectedType, setSelectedType] = useState(""); // State for dropdown
+
   //   const [category, setcategory] = useState("");
 
   useEffect(() => {
     const fetchInitialData = async () => {
       if (edit_ID) {
-        const { data, error } = await supabase
-
-          .from("media")
-          .select("*")
-          .eq("id", edit_ID) // Filter by id
-          .order("created_at", { ascending: false });
-
-        if (error) {
-          console.error("Error fetching initial data:", error);
-        } else {
-          // setdata(data);
-          //   console.log(data);
-          //   settitle(data[0].title);
-          //   setimage_link(data[0].image);
-          //   setText(data[0].text);
-          //   setcaption(data[0].caption);
-        }
+        // const { data, error } = await supabase
+        //   .from("media")
+        //   .select("*")
+        //   .eq("id", edit_ID) // Filter by id
+        //   .order("created_at", { ascending: false });
+        // if (error) {
+        //   console.error("Error fetching initial data:", error);
+        // } else {
+        //   // setdata(data);
+        //   //   console.log(data);
+        //   //   settitle(data[0].title);
+        //   //   setimage_link(data[0].image);
+        //   //   setText(data[0].text);
+        //   //   setcaption(data[0].caption);
+        // }
       } else {
         // setdaa;
         settitle("");
@@ -114,7 +117,6 @@ const Modal_edit_research = ({
   };
 
   const [open_img, setopen_img] = useState(false);
-  const [image_link, setimage_link] = useState("");
 
   //   THIS IS FOR THE TINY MCE EDITOR
   //   THIS IS FOR THE TINY MCE EDITOR

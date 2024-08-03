@@ -1,6 +1,6 @@
 import { supabase } from "../../utils/supabaseClient";
 import Reviews from "../home/reviews";
-export const revalidate = 0;
+export const revalidate = 10;
 const fetchProducts = async () => {
   const { data, error } = await supabase
     .from("review")
