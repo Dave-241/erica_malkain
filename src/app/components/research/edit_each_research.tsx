@@ -33,6 +33,7 @@ const Edit_each_research = ({ setopen_edit, id, setedit_ID }: any) => {
         <button
           className=" md:w-[10vw]  h-[10vw] w-[30vw] md:h-[4vw] capitalize bg-white  md:rounded-[0.5vw] hover:bg-opacity-[60%] backdrop-blur-2xl text-center "
           onClick={() => {
+            console.log(id);
             setedit_ID(id);
             setopen_edit(true);
           }}

@@ -1,7 +1,6 @@
 export const plugins = `
   fullscreen 
   image 
-  jbimages
   editimage 
   accordion 
   footnotes 

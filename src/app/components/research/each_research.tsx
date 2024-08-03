@@ -41,13 +41,10 @@ const Each_research = ({ product_data }: any) => {
   }, []);
 
   const items = ["", "", "", "", "", ""];
-  const [text, setText] = useState("");
   const [open_edit, setopen_edit] = useState(false);
   const [isloggedin, setisloggedin] = useState(false);
   const [edit_ID, setedit_ID] = useState<any>(1);
-  const [image_link, setimage_link] = useState("");
-  const [caption, setcaption] = useState("");
-  const [title, settitle] = useState("");
+
   // check if logged in
   useEffect(() => {
     // Check initial session
@@ -70,15 +67,8 @@ const Each_research = ({ product_data }: any) => {
       {/* {true && ( */}
       <Modal_edit_research
         setopen_edit={setopen_edit}
-        text={text}
         open_edit={open_edit}
-        setText={setText}
-        caption={caption}
-        setcaption={setcaption}
-        title={title}
-        settitle={settitle}
-        setimage_link={setimage_link}
-        image_link={image_link}
+        edit_ID={edit_ID}
       />
 
       {/* )} */}
@@ -103,9 +93,7 @@ const Each_research = ({ product_data }: any) => {
                 <Edit_each_research
                   setedit_ID={setedit_ID}
                   setopen_edit={setopen_edit}
-                  setText={setText}
-                  setcaption={setcaption}
-                  settitle={settitle}
+                  id={e.id}
                 />
               )}
               {/* the details */}
@@ -146,7 +134,6 @@ const Each_research = ({ product_data }: any) => {
                   </Link>
                 </div>
               </div>
-              {/* {e.image} */}
               {/* the picture */}
               <div className="md:w-[45vw] ">
                 <Image

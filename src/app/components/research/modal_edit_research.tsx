@@ -9,57 +9,59 @@ import { v4 } from "uuid";
 import Image_list from "../general-component/image";
 import { plugins, toolbars } from "./tinymce";
 
-const Modal_edit_research = ({
-  setopen_edit,
-  setText,
-  text,
-  edit_ID,
-  open_edit,
-  caption,
-  setcaption,
-  title,
-  settitle,
-  setimage_link,
-  image_link,
-}: any) => {
+const Modal_edit_research = ({ setopen_edit, edit_ID, open_edit }: any) => {
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState("");
+  const [image_link, setimage_link] = useState("");
+  const [caption, setcaption] = useState("");
+  const [title, settitle] = useState("");
+  const [text, setText] = useState("");
+
   //   const [selectedType, setSelectedType] = useState(""); // State for dropdown
 
   //   const [category, setcategory] = useState("");
 
   useEffect(() => {
+    settitle("loading ...");
+    setText("");
+    setimage_link("loading ...");
+    setcaption("loading ...");
+    setValue("loading ...");
+    console.log("this was just opened" + edit_ID);
     const fetchInitialData = async () => {
       if (edit_ID) {
-        // const { data, error } = await supabase
-        //   .from("media")
-        //   .select("*")
-        //   .eq("id", edit_ID) // Filter by id
-        //   .order("created_at", { ascending: false });
-        // if (error) {
-        //   console.error("Error fetching initial data:", error);
-        // } else {
-        //   // setdata(data);
-        //   //   console.log(data);
-        //   //   settitle(data[0].title);
-        //   //   setimage_link(data[0].image);
-        //   //   setText(data[0].text);
-        //   //   setcaption(data[0].caption);
-        // }
+        const { data, error } = await supabase
+          .from("research_blog")
+          .select("*")
+          .eq("id", edit_ID) // Filter by id
+          .order("created_at", { ascending: false });
+        if (error) {
+          console.error("Error fetching initial data:", error);
+        } else {
+          console.log(data);
+          // setdata(data);
+          //   console.log(data);
+          settitle(data[0].title);
+          setimage_link(data[0].image);
+          setValue(data[0].text);
+          //   setValue(text)
+          setcaption(data[0].caption);
+        }
       } else {
         // setdaa;
-        settitle("");
-        setText("");
-        setimage_link("");
-        setcaption("");
-        setValue("");
-        setEditorKey((prevKey) => prevKey + 1);
+        console.log("no data");
+        // settitle("");
+        // setText("");
+        // setimage_link("");
+        // setcaption("");
+        // setValue("");
+        // setEditorKey((prevKey) => prevKey + 1);
         return;
       }
     };
 
     fetchInitialData();
-  }, [open_edit]);
+  }, [open_edit, edit_ID]);
 
   const submit_form = async () => {
     // Validation check
@@ -130,9 +132,9 @@ const Modal_edit_research = ({
     setText(editor.getContent());
   };
 
-  useEffect(() => {
-    console.log(text);
-  }, [text]);
+  //   useEffect(() => {
+  //     console.log(text);
+  //   }, [text]);
   const [editorKey, setEditorKey] = useState(0);
   useEffect(() => {
     // Update the key to force reinitialization
@@ -160,10 +162,10 @@ const Modal_edit_research = ({
     handleResize();
   }, [width]);
 
-  //   useEffect(() => {
-  //     console.log(edit_ID);
-  //     setText("");
-  //   }, [edit_ID]);
+  useEffect(() => {
+    console.log(edit_ID);
+    // setText("");
+  }, [edit_ID]);
   return (
     <>
       {open_img && (
