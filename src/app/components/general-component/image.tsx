@@ -3,6 +3,7 @@ import Image from "next/image";
 import example3 from "../../../../public/images/consultation/example3.png";
 import { useEffect, useRef, useState } from "react";
 import { supabase } from "@/app/utils/supabaseClient";
+import Link from "next/link";
 const tus = require("tus-js-client");
 // import {tus} from 'tus-js-client'
 const generateRandomFileName = (originalName: any) => {
@@ -344,8 +345,14 @@ const Image_list = ({ setopen_img, setimage_link }: any) => {
                             {formatText(e.alt_text)}
                           </p>
                         )}{" "}
-                        <div className="flex gap-[3vw]  md:gap-[1vw]">
-                          <p className="">{e.file_name}</p>
+                        <div className="flex  gap-[3vw]  md:gap-[1vw]">
+                          <Link
+                            href={e.file_url}
+                            target="_blank"
+                            className="underline underline-offset-4"
+                          >
+                            <p className="">{e.file_name}</p>
+                          </Link>
                           <button
                             className="text-[red] underline underline-offset-4"
                             onClick={() => {
@@ -395,7 +402,7 @@ const Image_list = ({ setopen_img, setimage_link }: any) => {
                           setactive_img([img_array[index]]);
                           //   console.log();
                         }}
-                        className={`md:h-[7vw] h-[25vw] w-[25vw] rounded-[5vw] border-[lightgrey] bg-[lightgrey] border md:rounded-[1vw] overflow-hidden cursor-pointer ${
+                        className={`md:h-[7vw] h-[25vw] w-[25vw] rounded-[5vw]  bg-[lightgrey] border md:rounded-[1vw] overflow-hidden cursor-pointer ${
                           index == active
                             ? "border-[#440C0C] border-[1.5vw] md:border-[0.4vw]"
                             : ""
