@@ -119,6 +119,11 @@ const Modal_edit_research = ({ setopen_edit, setText, text, edit_ID }: any) => {
   useEffect(() => {
     console.log(text);
   }, [text]);
+  const [editorKey, setEditorKey] = useState(0);
+  useEffect(() => {
+    // Update the key to force reinitialization
+    setEditorKey((prevKey) => prevKey + 1);
+  }, [open_img]);
   return (
     <>
       {open_img && (
@@ -242,6 +247,7 @@ const Modal_edit_research = ({ setopen_edit, setText, text, edit_ID }: any) => {
         </div>
         {/* this is for the editor  */}
         <Editor
+          key={editorKey}
           apiKey={"o6poh8mrrg3olm60uzci8redu8zma5ystr23b8f78hku2msu"} // your api key here
           onEditorChange={(newValue, editor) =>
             onEditorInputChange(newValue, editor)
