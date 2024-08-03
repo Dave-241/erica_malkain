@@ -9,6 +9,7 @@ import Modal_edit_research from "./modal_edit_research";
 import { supabase } from "@/app/utils/supabaseClient";
 import { useRouter } from "next/navigation";
 import Edit_each_research from "./edit_each_research";
+import Add_research from "./add_delete_research";
 
 const Each_research = () => {
   const itemsRefs = useRef<any>([]);
@@ -71,12 +72,18 @@ const Each_research = () => {
         open_edit={open_edit}
         setText={setText}
       />
+
       {/* )} */}
       {/* <div className="mt-4 p-4 border2 ">
         <h2>HTML Content from Editor</h2>
         <div dangerouslySetInnerHTML={{ __html: text }}></div>
       </div>{" "} */}
-      <div className="w-full flex flex-col md:gap-0 gap-[7.5vw]  md:px-0 px-[3%]">
+      <div className="w-full relative flex flex-col md:gap-0 gap-[7.5vw]  md:px-0 px-[3%]">
+        {/* FOR ADDING RESEARCH */}
+
+        {isloggedin && (
+          <Add_research setedit_ID={setedit_ID} setopen_edit={setopen_edit} />
+        )}
         {items.map((e: any, index: any) => {
           return (
             <div
@@ -130,7 +137,7 @@ const Each_research = () => {
                 </div>
               </div>
               {/* the picture */}
-              <div className="md:w-[45vw]  ">
+              <div className="md:w-[45vw] ">
                 <Image
                   src={example}
                   alt="example blog"

@@ -17,10 +17,10 @@ const Modal_edit_research = ({
   open_edit,
 }: any) => {
   const [loading, setLoading] = useState(false);
-  const [selectedType, setSelectedType] = useState(""); // State for dropdown
+  //   const [selectedType, setSelectedType] = useState(""); // State for dropdown
   const [error, setError] = useState("");
   const [caption, setcaption] = useState("");
-  const [article_link, setarticle_link] = useState("");
+  const [title, settitle] = useState("");
   //   const [category, setcategory] = useState("");
 
   useEffect(() => {
@@ -37,25 +37,31 @@ const Modal_edit_research = ({
           console.error("Error fetching initial data:", error);
         } else {
           // setdata(data);
-          console.log(data);
-          setarticle_link(data[0].link);
-          setimage_link(data[0].img);
-          setSelectedType(data[0].type);
-          setcaption(data[0].caption);
+          //   console.log(data);
+          //   settitle(data[0].title);
+          //   setimage_link(data[0].image);
+          //   setText(data[0].text);
+          //   setcaption(data[0].caption);
         }
       } else {
         // setdaa;
+        settitle("");
+        setText("");
+        setimage_link("");
+        setcaption("");
+        setValue("");
+        setEditorKey((prevKey) => prevKey + 1);
         return;
       }
     };
 
     fetchInitialData();
-  }, []);
+  }, [open_edit]);
 
   const submit_form = async () => {
     // Validation check
-    // console.log(caption, article_link, selectedType);
-    if (!caption || !article_link || !selectedType || !image_link) {
+    // console.log(caption, title, selectedType);
+    if (!caption || !title || !text || !image_link) {
       setError("All fields are required.");
       return;
     }
@@ -67,12 +73,12 @@ const Modal_edit_research = ({
     if (edit_ID) {
       // Update existing publication
       result = await supabase
-        .from("media")
+        .from("research_blog")
         .update({
           caption: caption,
-          img: image_link,
-          link: article_link,
-          type: selectedType,
+          image: image_link,
+          title: title,
+          text: text,
         })
         .eq("id", edit_ID);
 
@@ -80,12 +86,12 @@ const Modal_edit_research = ({
     } else {
       console.log("its adding");
       // Add new publication
-      result = await supabase.from("media").insert([
+      result = await supabase.from("research_blog").insert([
         {
           caption: caption,
-          img: image_link,
-          link: article_link,
-          type: selectedType,
+          image: image_link,
+          title: title,
+          text: text,
         },
       ]);
     }
@@ -97,7 +103,7 @@ const Modal_edit_research = ({
       setError(error.message);
     } else {
       setopen_edit(false);
-      window.location.reload();
+      //   window.location.reload();
       // Optionally reset the form fields if adding a new publication
 
       //   setpublication_title("");
@@ -152,9 +158,10 @@ const Modal_edit_research = ({
     handleResize();
   }, [width]);
 
-  useEffect(() => {
-    console.log(open_edit);
-  }, [open_edit]);
+  //   useEffect(() => {
+  //     console.log(edit_ID);
+  //     setText("");
+  //   }, [edit_ID]);
   return (
     <>
       {open_img && (
@@ -183,11 +190,11 @@ const Modal_edit_research = ({
               plugins: plugins,
               toolbar: toolbars,
             }}
-            initialValue={"Write your research here..."}
+            initialValue={""}
           />{" "}
           {/* FIELDS TO ADD CONTENT  */}
           <div className="bg-white md:px-[5%] justify-center md:rounded-[1vw]  md:py-[3vw] py-[10vw]  w-[95%] px-[3%] md:w-[30vw]  rounded-[5vw] flex md:gap-[1vw] capitalize flex-col gap-[6vw]">
-            {!edit_ID || (edit_ID && article_link) ? (
+            {!edit_ID || (edit_ID && title) ? (
               <>
                 {" "}
                 <p className="md:text-[2vw] text-[8vw] text-center">
@@ -226,17 +233,17 @@ const Modal_edit_research = ({
                   <div className="flex flex-col md:gap-[0.3vw] gap-[2vw] w-full">
                     <label
                       className="capitalize md:text-[1vw] text-[3.5vw]"
-                      htmlFor="pdf_link"
+                      htmlFor="title"
                     >
                       Research title
                     </label>
                     <input
                       type="text"
-                      id="pdf_link"
+                      id="title"
                       onChange={(e) => {
-                        setarticle_link(e.target.value);
+                        settitle(e.target.value);
                       }}
-                      value={article_link || ""}
+                      value={title || ""}
                       className="border md:rounded-[0.5vw] outline-none bg-[black] bg-opacity-[70%] placeholder:text-white capitalize text-white md:h-[3vw] w-full h-[10vw] rounded-[1.5vw] px-[3%] md:text-[1vw] text-[3.5vw]"
                       placeholder="input your Research title here .."
                     />
@@ -245,13 +252,13 @@ const Modal_edit_research = ({
                 <div className="flex flex-col md:gap-[0.3vw] gap-[2vw]">
                   <label
                     className="capitalize md:text-[1vw] text-[3.5vw]"
-                    htmlFor="description"
+                    htmlFor="caption"
                   >
                     Research caption
                   </label>
                   <textarea
                     //   type="text"
-                    id="description"
+                    id="caption"
                     rows={4}
                     //   rows={50}
                     value={caption || ""}
