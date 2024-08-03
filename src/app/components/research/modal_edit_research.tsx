@@ -241,79 +241,6 @@ const Modal_edit_research = ({ setopen_edit, setText, text, edit_ID }: any) => {
           )}{" "}
         </div>
         {/* this is for the editor  */}
-        {/* <Editor
-          apiKey="o6poh8mrrg3olm60uzci8redu8zma5ystr23b8f78hku2msu"
-          onInit={(_evt, editor) => (editorRef.current = editor)}
-          initialValue="<p>This is the initial content of the editor.</p>"
-          init={{
-            height: 500,
-            menubar: false,
-            // plugins: "n1ed",
-            // plugins: [
-            //   "advlist", // Advanced lists plugin
-            //   "anchor", // Anchor for creating bookmarks
-            //   "autolink", // Automatically create links
-            //   "autosave", // Autosave feature
-            //   "bbcode", // BBCode support
-            //   "charmap", // Special character map
-            //   "code", // Source code editor
-            //   "codesample", // Code sample
-            //   "directionality", // Text direction
-            //   "emoticons", // Emoticons
-            //   "fullscreen", // Fullscreen mode
-            //   "help", // Help dialog
-            //   "hr", // Horizontal rule
-            //   "image", // Image plugin
-            //   "imagetools", // Image tools for image manipulation
-            //   "importcss", // Import CSS
-            //   "insertdatetime", // Insert date/time
-            //   "legacyoutput", // Legacy output support
-            //   "link", // Link creation
-            //   "lists", // Lists support
-            //   "media", // Media plugin for embedding videos
-            //   "nonbreaking", // Non-breaking space
-            //   "noneditable", // Non-editable elements
-            //   "pagebreak", // Page break
-            //   "paste", // Paste from clipboard
-            //   "preview", // Preview content
-            //   "print", // Print content
-            //   "quickbars", // Quick toolbars
-            //   "save", // Save button
-            //   "searchreplace", // Search and replace
-            //   "spellchecker", // Spellchecker
-            //   "tabfocus", // Tab focus navigation
-            //   "table", // Table support
-            //   "template", // Template plugin
-            //   "textcolor", // Text color
-            //   "textpattern", // Text pattern replacement
-            //   "toc", // Table of contents
-            //   "visualblocks", // Visual blocks
-            //   "visualchars", // Visual character
-            //   "wordcount", // Word count
-            // ],
-            // toolbar: [
-            //   "undo redo | formatselect | fontselect fontsizeselect |",
-            //   "bold italic underline strikethrough | forecolor backcolor removeformat |",
-            //   "alignleft aligncenter alignright alignjustify | outdent indent | numlist bullist |",
-            //   "link image media | codesample code |",
-            //   "blockquote subscript superscript |",
-            //   "hr pagebreak |",
-            //   "charmap emoticons |",
-            //   "insertdatetime |",
-            //   "table tabledelete | tableprops tablerowprops tablecellprops |",
-            //   "tableinsertrowbefore tableinsertrowafter tabledeleterow |",
-            //   "tableinsertcolbefore tableinsertcolafter tabledeletecol |",
-            //   "visualblocks visualchars |",
-            //   "searchreplace |",
-            //   "fullscreen preview | print |",
-            //   "template | help",
-            // ].join(" "),
-            toolbar:
-              "undo redo | blocks fontfamily fontsize | bold italic underline strikethrough | link image media table mergetags | addcomment showcomments | spellcheckdialog a11ycheck typography | align lineheight | checklist numlist bullist indent outdent | emoticons charmap | removeformat",
-            content_style:
-              "body { font-family:Helvetica,Arial,sans-serif; font-size:14px }",
-          }}
-        /> */}
         <Editor
           apiKey={"o6poh8mrrg3olm60uzci8redu8zma5ystr23b8f78hku2msu"} // your api key here
           onEditorChange={(newValue, editor) =>
@@ -329,7 +256,6 @@ const Modal_edit_research = ({ setopen_edit, setText, text, edit_ID }: any) => {
           }}
           initialValue={"Write your research here..."}
         />{" "}
-        {/* <button onClick={log}>Log editor content</button> */}
       </div>
     </>
   );

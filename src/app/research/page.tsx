@@ -12,7 +12,7 @@ export default function Home() {
         <Nav />
         <Research_hero />
         <Each_research />
-        <Contact_wrappeer />
+        {/* <Contact_wrappeer /> */}
         <Footer />
       </>
     </>
