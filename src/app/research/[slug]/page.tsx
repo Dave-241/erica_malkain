@@ -18,9 +18,16 @@ const fetchProducts = async (slug: any) => {
 };
 
 export async function generateStaticParams() {
-  const { data: posts } = await supabase.from("research_blog").select("slug");
+  const { data: posts, error } = await supabase
+    .from("research_blog")
+    .select("slug");
 
-  return posts?.map(({ slug }) => ({
+  if (error) {
+    console.error("Error fetching posts:", error);
+    return [];
+  }
+
+  return posts.map(({ slug }) => ({
     slug,
   }));
 }
@@ -47,7 +54,7 @@ export async function generateStaticParams() {
 // }
 export default async function Home({ params }: { params: { slug: string } }) {
   const product_data = await fetchProducts(params.slug);
-  console.log(product_data);
+  // console.log(product_data);
 
   return (
     <>

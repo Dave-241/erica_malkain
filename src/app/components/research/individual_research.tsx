@@ -8,7 +8,7 @@ const Individual_research = ({ text }: any) => {
         <div
           className={`md:container flex flex-col items-center mx-auto p-4 pt-6 md:p-6 lg:p-12 bg-transparent text-dark-blue dark:text-white 
             [&_p]:text-lg [&_p_md]:text-xl [&_p_lg]:text-2xl [&_p]:leading-relaxed [&_p]:mb-4 
-            [&_h1]:text-3xl [&_h1]:w-full  [&_h1_md]:text-4xl [&_h1_lg]:text-5xl [&_h1]:font-bold [&_h1]:mb-4 
+            [&_h1]:text-3xl [&_h1]:w-full [&_h1_md]:text-4xl [&_h1_lg]:text-5xl [&_h1]:font-bold [&_h1]:mb-4 
             [&_h2]:text-2xl [&_h2]:w-full [&_h2_md]:text-3xl [&_h2_lg]:text-4xl [&_h2]:font-bold [&_h2]:mb-4 
             [&_h3]:text-xl [&_h3]:w-full [&_h3_md]:text-2xl [&_h3_lg]:text-3xl [&_h3]:font-bold [&_h3]:mb-4 
             [&_h4]:text-lg [&_h4]:w-full [&_h4_md]:text-xl [&_h4_lg]:text-2xl [&_h4]:font-bold [&_h4]:mb-4 
@@ -19,7 +19,9 @@ const Individual_research = ({ text }: any) => {
             [&_li]:mb-2 
             [&_table]:w-full [&_table]:border-collapse [&_table]:border 
             [&_th]:border [&_th]:px-4 [&_th]:py-2 [&_th]:bg-gray-200 [&_th]:text-left 
-            [&_td]:border [&_td]:px-4 [&_td]:py-2`}
+            [&_td]:border [&_td]:px-4 [&_td]:py-2
+            [&_img]:inline [&_img]:m-2
+            `}
           dangerouslySetInnerHTML={{ __html: text }}
         ></div>
       </div>{" "}

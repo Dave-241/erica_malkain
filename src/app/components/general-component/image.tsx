@@ -249,6 +249,15 @@ const Image_list = ({ setopen_img, setimage_link }: any) => {
     }
     return text;
   };
+
+  // copy text
+  const [copy_text, setcopy_text] = useState(" copy link");
+
+  useEffect(() => {
+    setTimeout(() => {
+      setcopy_text(" copy link");
+    }, 3000);
+  }, [copy_text]);
   return (
     <>
       <div className="w-full  h-full flex justify-center items-center z-[10000] fixed top-0 left-0 bg-black bg-opacity-[70%]">
@@ -346,13 +355,15 @@ const Image_list = ({ setopen_img, setimage_link }: any) => {
                           </p>
                         )}{" "}
                         <div className="flex  gap-[3vw]  md:gap-[1vw]">
-                          <Link
-                            href={e.file_url}
-                            target="_blank"
-                            className="underline underline-offset-4"
+                          <p
+                            className="underline cursor-pointer underline-offset-4"
+                            onClick={() => {
+                              navigator.clipboard.writeText(e.file_url);
+                              setcopy_text("copied");
+                            }}
                           >
-                            <p className="">{e.file_name}</p>
-                          </Link>
+                            {copy_text}
+                          </p>
                           <button
                             className="text-[red] underline underline-offset-4"
                             onClick={() => {
