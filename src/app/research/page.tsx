@@ -5,7 +5,7 @@ import Nav from "../components/general-component/nav";
 import Each_research from "../components/research/each_research";
 import Research_hero from "../components/research/hero";
 import { supabase } from "../utils/supabaseClient";
-export const revalidate = 0;
+export const revalidate = 5;
 const fetchProducts = async () => {
   const { data, error } = await supabase
     .from("research_blog")
