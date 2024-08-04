@@ -1,6 +1,7 @@
 "use client";
 
 import {
+  Bt_Beau_Regualr,
   Helvetica_light,
   Helvetica_medium,
   spline_font,
@@ -57,6 +58,17 @@ const Individual_research = ({ product_data }: any) => {
             `}
           dangerouslySetInnerHTML={{ __html: product_data[0].text }}
         ></div>
+
+        <div
+          className={`w-full  py-[3rem] flex gap-[10%] justify-center ${Bt_Beau_Regualr.className}`}
+        >
+          <button className="md:px-[2.5rem] md:py-[1rem]    rounded-[2rem] md:w-auto md:h-auto w-full py-[1.5rem] hover:bg-[#440C0C] hover:text-white border border-[#000000] ">
+            PREV POST{" "}
+          </button>
+          <button className="md:px-[2.5rem] md:py-[1rem]  rounded-[2rem] md:w-auto md:h-auto w-full hover:bg-[#440C0C] hover:text-white py-[1.5rem] border border-[#000000] ">
+            NEXT POST{" "}
+          </button>
+        </div>
       </div>{" "}
     </>
   );
