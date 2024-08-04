@@ -64,7 +64,7 @@ export default async function Home({ params }: { params: { slug: string } }) {
         product_data={product_data}
         text={product_data[0].text}
       />
-      <Footer />
+      <Footer bg={"white"} />
     </>
   );
 }

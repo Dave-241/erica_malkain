@@ -9,16 +9,16 @@ import {
 const Individual_research = ({ text }: any) => {
   return (
     <>
-      <div className=" md:pt-[8vw] pt-[20vw] p-4 border2 bg-white ">
-        <div className="w-full md:container md:flex-row flex-col mx-auto border2 bg-white flex md:justify-between">
+      <div className=" md:pt-[8vw] pt-[25vw] p-4  bg-white ">
+        <div className="w-full md:container md:flex-row flex-col mx-auto  bg-white flex md:justify-between md:gap-[10%] gap-[2rem]">
           <h1
-            className={`${spline_font.className}  text-3xl leading-relaxed w-full md:text-4xl lg:text-5xl font-bold`}
+            className={`${spline_font.className} text-4xl  w-full md:text-5xl lg:text-6xl font-bold`}
           >
             Do we know what people think of us?
           </h1>
 
           <p
-            className={`${Helvetica_medium.className} w-full text-[1rem] md:text-xl  leading-relaxed`}
+            className={`${Helvetica_medium.className} w-full text-[1rem] md:text-xl  `}
           >
             Having conversations with new people is an important and rewarding
             part of social life. Yet conversations are also intimidating and
@@ -43,6 +43,7 @@ const Individual_research = ({ text }: any) => {
             [&_th]:border [&_th]:px-4 [&_th]:py-2 [&_th]:bg-gray-200 [&_th]:text-left 
             [&_td]:border [&_td]:px-4 [&_td]:py-2
             [&_img]:inline [&_img]:m-2
+            [&_a]:underline [&_a]:underline-offset-[5px] [&_a]:text-[#440C0C]
             `}
           dangerouslySetInnerHTML={{ __html: text }}
         ></div>

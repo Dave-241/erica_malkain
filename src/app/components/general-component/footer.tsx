@@ -9,7 +9,7 @@ import Link from "next/link";
 import img from "../../../../public/images/footer/telegram.png";
 import Image from "next/image";
 
-const Footer = () => {
+const Footer = ({ bg }: any) => {
   const socai_items = [
     {
       link: "/",
