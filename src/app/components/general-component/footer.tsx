@@ -30,7 +30,10 @@ const Footer = ({ bg }: any) => {
 
   return (
     <>
-      <div className="w-full p-[1.7%]  md:p-[1.5vw]">
+      <div
+        style={{ backgroundColor: bg ? bg : "" }}
+        className="w-full p-[1.7%]  md:p-[1.5vw]"
+      >
         <div className="w-full flex flex-col md:gap-[3vw] bg-[#001901] md:px-[4vw] md:pt-[4vw] pt-[15vw] pb-[8vw] gap-[7vw] md:pb-[2vw] md:rounded-[1.3vw] rounded-[5vw] items-center">
           {/* footer name */}
           <div className="flex flex-col md:gap-[2vw] gap-[7vw] items-center ">

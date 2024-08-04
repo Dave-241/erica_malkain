@@ -5,30 +5,40 @@ import {
   Helvetica_medium,
   spline_font,
 } from "@/app/utils/fonts";
+import { useEffect } from "react";
 
-const Individual_research = ({ text }: any) => {
+const Individual_research = ({ product_data }: any) => {
+  useEffect(() => {
+    const container = document.querySelector(".content-container");
+
+    if (container) {
+      const images = container.querySelectorAll("img");
+      if (images.length > 1) {
+        images.forEach((img) => {
+          img.classList.add("inline");
+          img.classList.add("m-2");
+        });
+      }
+    }
+  }, []);
   return (
     <>
-      <div className=" md:pt-[8vw] pt-[25vw] p-4  bg-white ">
-        <div className="w-full md:container md:flex-row flex-col mx-auto  bg-white flex md:justify-between md:gap-[10%] gap-[2rem]">
+      <div className=" md:pt-[10vw] pt-[25vw] p-4  bg-white ">
+        <div className="w-full md:px-[3%] md:container md:flex-row flex-col mx-auto  bg-white flex md:justify-between md:gap-[10%] gap-[2rem]">
           <h1
             className={`${spline_font.className} text-4xl  w-full md:text-5xl lg:text-6xl font-bold`}
           >
-            Do we know what people think of us?
+            {product_data[0].title}
           </h1>
 
           <p
             className={`${Helvetica_medium.className} w-full text-[1rem] md:text-xl  `}
           >
-            Having conversations with new people is an important and rewarding
-            part of social life. Yet conversations are also intimidating and
-            anxiety provoking, and people wonder and worry about what their
-            conversation partners really think of them. Are people accurate in
-            their estimates?
+            {product_data[0].caption}
           </p>
         </div>
         <div
-          className={` ${Helvetica_light.className} md:container flex flex-col items-center mx-auto  pt-6 md:p-6 lg:p-12 bg-transparent text-dark-blue dark:text-white 
+          className={`content-container ${Helvetica_light.className} md:container flex flex-col items-center mx-auto  pt-6 md:p-6 lg:p-12 bg-transparent text-dark-blue dark:text-white 
             [&_p]:text-[1rem] [&_p_md]:text-xl  [&_p]:leading-relaxed [&_p]:mb-4 
             [&_h1]:text-3xl [&_h1]:w-full [&_h1_md]:text-4xl [&_h1_lg]:text-5xl [&_h1]:font-bold [&_h1]:mb-4 
             [&_h2]:text-2xl [&_h2]:w-full [&_h2_md]:text-3xl [&_h2_lg]:text-4xl [&_h2]:font-bold [&_h2]:mb-4 
@@ -45,7 +55,7 @@ const Individual_research = ({ text }: any) => {
             [&_img]:inline [&_img]:m-2
             [&_a]:underline [&_a]:underline-offset-[5px] [&_a]:text-[#440C0C]
             `}
-          dangerouslySetInnerHTML={{ __html: text }}
+          dangerouslySetInnerHTML={{ __html: product_data[0].text }}
         ></div>
       </div>{" "}
     </>

@@ -62,7 +62,7 @@ export default async function Home({ params }: { params: { slug: string } }) {
       <Nav />
       <Individual_research
         product_data={product_data}
-        text={product_data[0].text}
+        // text={product_data[0].text}
       />
       <Footer bg={"white"} />
     </>
