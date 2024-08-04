@@ -1,3 +1,4 @@
+import Footer from "@/app/components/general-component/footer";
 import Nav from "@/app/components/general-component/nav";
 import Individual_research from "@/app/components/research/individual_research";
 import { supabase } from "@/app/utils/supabaseClient";
@@ -17,20 +18,20 @@ const fetchProducts = async (slug: any) => {
   return data;
 };
 
-export async function generateStaticParams() {
-  const { data: posts, error } = await supabase
-    .from("research_blog")
-    .select("slug");
+// export async function generateStaticParams() {
+//   const { data: posts, error } = await supabase
+//     .from("research_blog")
+//     .select("slug");
 
-  if (error) {
-    console.error("Error fetching posts:", error);
-    return [];
-  }
+//   if (error) {
+//     console.error("Error fetching posts:", error);
+//     return [];
+//   }
 
-  return posts.map(({ slug }) => ({
-    slug,
-  }));
-}
+//   return posts.map(({ slug }) => ({
+//     slug,
+//   }));
+// }
 
 // export async function generateMetadata({ params }: any, parent: any) {
 //   const product_data = await fetchProducts(params.slug);
@@ -63,6 +64,7 @@ export default async function Home({ params }: { params: { slug: string } }) {
         product_data={product_data}
         text={product_data[0].text}
       />
+      <Footer />
     </>
   );
 }

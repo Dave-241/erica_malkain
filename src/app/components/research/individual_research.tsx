@@ -1,13 +1,35 @@
 "use client";
 
+import {
+  Helvetica_light,
+  Helvetica_medium,
+  spline_font,
+} from "@/app/utils/fonts";
+
 const Individual_research = ({ text }: any) => {
   return (
     <>
-      <div className="mt-4 p-4 border2 ">
-        <h2>HTML Content from Editor</h2>
+      <div className=" md:pt-[8vw] pt-[20vw] p-4 border2 bg-white ">
+        <div className="w-full md:container md:flex-row flex-col mx-auto border2 bg-white flex md:justify-between">
+          <h1
+            className={`${spline_font.className}  text-3xl leading-relaxed w-full md:text-4xl lg:text-5xl font-bold`}
+          >
+            Do we know what people think of us?
+          </h1>
+
+          <p
+            className={`${Helvetica_medium.className} w-full text-[1rem] md:text-xl  leading-relaxed`}
+          >
+            Having conversations with new people is an important and rewarding
+            part of social life. Yet conversations are also intimidating and
+            anxiety provoking, and people wonder and worry about what their
+            conversation partners really think of them. Are people accurate in
+            their estimates?
+          </p>
+        </div>
         <div
-          className={`md:container flex flex-col items-center mx-auto p-4 pt-6 md:p-6 lg:p-12 bg-transparent text-dark-blue dark:text-white 
-            [&_p]:text-lg [&_p_md]:text-xl [&_p_lg]:text-2xl [&_p]:leading-relaxed [&_p]:mb-4 
+          className={` ${Helvetica_light.className} md:container flex flex-col items-center mx-auto  pt-6 md:p-6 lg:p-12 bg-transparent text-dark-blue dark:text-white 
+            [&_p]:text-[1rem] [&_p_md]:text-xl  [&_p]:leading-relaxed [&_p]:mb-4 
             [&_h1]:text-3xl [&_h1]:w-full [&_h1_md]:text-4xl [&_h1_lg]:text-5xl [&_h1]:font-bold [&_h1]:mb-4 
             [&_h2]:text-2xl [&_h2]:w-full [&_h2_md]:text-3xl [&_h2_lg]:text-4xl [&_h2]:font-bold [&_h2]:mb-4 
             [&_h3]:text-xl [&_h3]:w-full [&_h3_md]:text-2xl [&_h3_lg]:text-3xl [&_h3]:font-bold [&_h3]:mb-4 
