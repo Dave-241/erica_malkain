@@ -1,5 +1,7 @@
 import Nav from "@/app/components/general-component/nav";
+import Individual_research from "@/app/components/research/individual_research";
 import { supabase } from "@/app/utils/supabaseClient";
+import { notFound } from "next/navigation";
 
 export const revalidate = 0;
 const fetchProducts = async (slug: any) => {
@@ -12,7 +14,7 @@ const fetchProducts = async (slug: any) => {
     .eq("slug", slug);
 
   console.log(data);
-  if (error) throw new Error(error.message);
+  if (error) notFound();
   return data;
 };
 
@@ -46,11 +48,15 @@ export async function generateMetadata({ params }: any, parent: any) {
 }
 export default async function Home({ params }: { params: { slug: string } }) {
   const product_data = await fetchProducts(params.slug);
-  console.log(params.slug);
+  console.log(product_data);
 
   return (
     <>
       <Nav />
+      <Individual_research
+        product_data={product_data}
+        text={product_data[0].text}
+      />
     </>
   );
 }
