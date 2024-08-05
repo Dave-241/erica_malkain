@@ -256,7 +256,7 @@ const About_hero = ({ user_data }: any) => {
             className="md:sticky  md:top-0 md:left-[25%] z-[20]  md:w-[40%] md:h-[100vh] flex items-center"
           >
             <div className="w-full md:h-[36vw]    overflow-hidden relative ">
-              {isloggedin && <Edit_text />}
+              {/* {isloggedin && <Edit_text />} */}
 
               <Image
                 src={active_user_data[0].dp_img_one}
@@ -303,7 +303,7 @@ const About_hero = ({ user_data }: any) => {
               )}
 
               {isloggedin && (
-                <div className="absolute right-0 border-red-600 border top-0 h-full w-[50%]">
+                <div className="absolute right-0 bg-white border-red-600 border top-0 h-full w-[50%]">
                   <Edit_img
                     record={"dp_img_two"}
                     btn_text={"image 2"}
