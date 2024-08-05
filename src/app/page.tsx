@@ -23,8 +23,20 @@ const fetchProducts = async () => {
   // console.log(data);
   return data;
 };
+const fetch_research_items = async () => {
+  const { data, error } = await supabase
+    .from("research_blog")
+    .select("*")
+    .order("created_at", { ascending: false })
+    .limit(5);
+
+  // if (error) throw notFound();
+  // console.log(data);
+  return data;
+};
 export default async function Home() {
   const product_data = await fetchProducts();
+  const research_items = await fetch_research_items();
 
   return (
     <>
@@ -34,8 +46,8 @@ export default async function Home() {
           <Hero_home />
           {/* <div className="h-[20vw] bg-black"></div> */}
           {/* <AnimatedLines /> */}
-          <Home_research />
-          <Recent_publication product_data={product_data} />
+          <Home_research research_items={research_items || []} />
+          <Recent_publication product_data={product_data || []} />
           <Recent_media_wrapper />
           <Review_wrapper />
           <Contact_wrappeer />

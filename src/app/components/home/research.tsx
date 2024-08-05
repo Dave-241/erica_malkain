@@ -10,7 +10,7 @@ import Refer_edit from "./refer_edit";
 import { supabase } from "@/app/utils/supabaseClient";
 import { useRouter } from "next/navigation";
 
-const Home_research = () => {
+const Home_research = ({ research_items }: any) => {
   const items = ["", "", "", "", ""];
 
   // const [calWidth, setCalWidth] = useState(0);
@@ -132,6 +132,14 @@ const Home_research = () => {
 
     checkInitialSession();
   }, [router]);
+
+  const truncateText = (text: any, wordLimit: any) => {
+    const words = text.split(" ");
+    if (words.length > wordLimit) {
+      return words.slice(0, wordLimit).join(" ") + ". . .";
+    }
+    return text;
+  };
   return (
     <>
       <div
@@ -180,29 +188,32 @@ const Home_research = () => {
               }}
               className="absolute  md:gap-[1.2vw]  md:px-[1.5vw] z-[10] flex h-full top-0 left-[22vw]"
             >
-              {items.map((e: any, index: any) => {
+              {research_items.map((e: any, index: any) => {
                 return (
                   <Link
-                    href={"/"}
+                    href={`/research/${e.slug}`}
                     key={index}
                     className={`md:w-[26vw] group  flex flex-col justify-between  md:h-full `}
                   >
-                    <div className="w-full md:h-[29vw]  md:rounded-[1.5vw]  overflow-hidden relative flex justify-center items-center ">
+                    <div className="w-full md:h-[29vw]  md:rounded-[1.5vw]   overflow-hidden relative flex justify-center items-center ">
                       <Image
-                        src={example}
+                        unoptimized
+                        height="0"
+                        width="0"
+                        src={e.image}
                         alt={e.title}
                         style={{
                           transition: "0.7s ease",
                           //   transform: `translate(-50%,-50%)`,
                         }}
-                        className="w-full  group-hover:scale-[1] scale-[1.1]   h-fit"
+                        className="w-full  group-hover:scale-[1.8] scale-[1.9]   h-fit"
                       />
                     </div>
 
                     <p
                       className={`${dm_sans_font.className} md:pl-[0.5vw] uppercase md:pr-[2vw] font-medium md:text-[1.1vw]`}
                     >
-                      Do we know what people think of us ? people think of us?
+                      {truncateText(e.caption, 13)}{" "}
                     </p>
                   </Link>
                 );
@@ -221,7 +232,7 @@ const Home_research = () => {
         gap-[5%] 
         px-[5%] pb-[10vw] "
             >
-              {items.map((e: any, index: any) => {
+              {research_items.map((e: any, index: any) => {
                 return (
                   <Link
                     href={"/"}
@@ -230,12 +241,15 @@ const Home_research = () => {
                   >
                     <div className="w-full h-[100vw]     overflow-hidden rounded-[5vw] relative flex justify-center items-center ">
                       <Image
-                        src={example}
+                        unoptimized
+                        height="0"
+                        width="0"
+                        src={e.image}
                         alt={e.title}
                         style={{
                           transition: "0.7s ease",
                         }}
-                        className="w-full  group-hover:scale-[1] scale-[1.1]   h-fit"
+                        className="w-full  group-hover:scale-[1.8] scale-[1.9]   h-fit"
                       />
                     </div>
 
@@ -243,7 +257,7 @@ const Home_research = () => {
                       className={`${dm_sans_font.className} uppercase  font-medium leading-[5vw] p-[3vw]  text-[4vw] 
                  `}
                     >
-                      Do we know what people think of us ? people think of us?
+                      {truncateText(e.caption, 15)}{" "}
                     </p>
                   </Link>
                 );
