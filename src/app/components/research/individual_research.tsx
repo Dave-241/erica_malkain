@@ -78,7 +78,7 @@ const Individual_research = ({ product_data }: any) => {
   return (
     <>
       <div className=" md:pt-[10vw]  relative  pt-[25vw] p-4  bg-white ">
-        {isloggedin && <Refer_edit text={"research"} />}
+        {/* {isloggedin && <Refer_edit text={"research"} />} */}
 
         <div className="pb-[4rem]  md:container mx-auto  w-full md:px-[3%] ">
           <button
@@ -103,6 +103,17 @@ const Individual_research = ({ product_data }: any) => {
           >
             {product_data[0].caption}
           </p>
+        </div>
+
+        <div className="w-full relative  lg:h-[35rem] mt-[1.5rem] md:mt-[2rem] overflow-hidden md:h-[30rem] h-[19rem] ">
+          <Image
+            src={product_data[0].image}
+            unoptimized
+            height="0"
+            width="0"
+            className="w-full h-fit absolute absolute_center"
+            alt={product_data[0].title}
+          />
         </div>
         <div
           className={` ${Helvetica_light.className} md:container flex flex-col items-center mx-auto  pt-6 md:p-6 lg:p-12 bg-transparent text-dark-blue dark:text-white 
