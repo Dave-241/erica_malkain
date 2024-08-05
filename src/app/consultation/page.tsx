@@ -29,7 +29,7 @@ const fetchpage_data = async () => {
 };
 
 export async function generateMetadata() {
-  const product_data = await fetchProducts();
+  const product_data = await fetchpage_data();
   // console.log(params.slug);
 
   if (!product_data) {
