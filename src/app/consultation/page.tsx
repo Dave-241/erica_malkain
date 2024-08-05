@@ -8,7 +8,7 @@ import Each_consultation from "../components/teaching_consultation/each_consulta
 import Teaching_hero from "../components/teaching_consultation/hero";
 import { supabase } from "../utils/supabaseClient";
 
-export const revalidate = 10;
+export const revalidate = 2;
 const fetchProducts = async () => {
   const { data, error } = await supabase
     .from("consultation")

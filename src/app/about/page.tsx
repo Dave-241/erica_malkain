@@ -8,7 +8,7 @@ import Recent_publication from "../components/general-component/recent_publicati
 import Categories from "../components/media/categories";
 import Media_hero from "../components/media/hero";
 import { supabase } from "../utils/supabaseClient";
-export const revalidate = 10;
+export const revalidate = 2;
 const publications = async () => {
   const { data, error } = await supabase
     .from("publication")

@@ -5,7 +5,7 @@ import Individual_research from "@/app/components/research/individual_research";
 import { supabase } from "@/app/utils/supabaseClient";
 import { notFound } from "next/navigation";
 
-export const revalidate = 5;
+export const revalidate = 2;
 const fetchProducts = async (slug: any) => {
   // Decode the slug to handle special characters
 
@@ -62,10 +62,7 @@ export default async function Home({ params }: { params: { slug: string } }) {
   return (
     <>
       <Nav />
-      <Individual_research
-        product_data={product_data}
-        // text={product_data[0].text}
-      />
+      <Individual_research product_data={product_data} />
       <Contact_wrappeer />
       <Footer bg={"white"} />
     </>

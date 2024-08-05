@@ -5,7 +5,7 @@ import Nav from "../components/general-component/nav";
 import Categories from "../components/media/categories";
 import Media_hero from "../components/media/hero";
 import { supabase } from "../utils/supabaseClient";
-export const revalidate = 10;
+export const revalidate = 2;
 const fetchProducts = async () => {
   const { data, error } = await supabase
     .from("media")

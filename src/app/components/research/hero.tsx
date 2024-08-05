@@ -6,8 +6,12 @@ import { Helvetica_light, spline_font } from "@/app/utils/fonts";
 import Link from "next/link";
 import { useEffect, useRef, useState } from "react";
 import { useMotionValueEvent, useScroll, useTransform } from "framer-motion";
+import Edit_text from "../general-component/edit_text";
+import { useRouter } from "next/navigation";
+import { supabase } from "@/app/utils/supabaseClient";
+import Modal_text_edit from "../general-component/modal_text_edit";
 
-const Research_hero = () => {
+const Research_hero = ({ page_data }: any) => {
   // this is to calculate for the width
 
   const [calWidth, setCalWidth] = useState(0);
@@ -50,10 +54,37 @@ const Research_hero = () => {
     setyvalue(latest);
   });
 
+  const [isloggedin, setisloggedin] = useState(false);
+  const router = useRouter();
+
+  // check if logged in
+  useEffect(() => {
+    // Check initial session
+    const checkInitialSession = async () => {
+      const {
+        data: { session },
+      } = await supabase.auth.getSession();
+      if (session) {
+        setisloggedin(true);
+      }
+    };
+
+    checkInitialSession();
+  }, [router]);
   // this is to calculate for the width
 
+  const [edit_text, setedit_text] = useState(false);
+  const [record_Name, setrecord_Name] = useState("");
   return (
     <>
+      {edit_text && (
+        <Modal_text_edit
+          edit_text={edit_text}
+          record_Name={record_Name}
+          setedit_text={setedit_text}
+          table={"research_page"}
+        />
+      )}
       <div
         ref={ref}
         className="w-full flex flex-col  bg-[#908E8E]  items-center justify-end md:h-[55vw] h-[180vw] relative overflow-hidden  md:gap-[1.1vw] md:pb-[7vw] gap-[4vw] md:px-[12vw] pb-[12vw] px-[3.5%]"
@@ -76,9 +107,17 @@ const Research_hero = () => {
               transition: "0.5s ease",
               transform: start_anime ? "translate(0,0)" : "translate(0%,100%)",
             }}
-            className={`${spline_font.className} font-bold z-[10] text-[#DFE4DF] md:text-[7vw]  md:leading-[7vw]  text-[10vw] leading-[11vw]`}
+            className={`${spline_font.className} font-bold z-[10] text-[#DFE4DF] md:text-[7vw] relative  md:leading-[7vw]  text-[10vw] leading-[11vw]`}
           >
-            RESEARCH OVERVIEW.
+            {page_data[0].hero}
+            {isloggedin && (
+              <Edit_text
+                record={"hero"}
+                setedit_text={setedit_text}
+                setrecord_Name={setrecord_Name}
+                text={page_data[0].hero}
+              />
+            )}
           </h1>
         </div>
 
@@ -88,17 +127,17 @@ const Research_hero = () => {
               transition: "0.9s ease",
               transform: start_anime ? "translate(0,0)" : "translate(0%,100%)",
             }}
-            className={`text-[#DFE4DF] md:leading-[1.6vw] z-[10] md:text-[1.2vw] text-[4vw] leading-[4.8vw]  ${Helvetica_light.className}`}
+            className={`text-[#DFE4DF] md:leading-[1.6vw] z-[10] md:text-[1.2vw] text-[4vw] relative leading-[4.8vw]  ${Helvetica_light.className}`}
           >
-            Much of Erica{"'"}s research examines people{"'"}s beliefs about
-            what others think of them (i.e., “metaperception”), starting with
-            the idea that we often know what we think of others, but it is
-            harder to know what others think of us. After all, people don{"'"}t
-            often tell us, and so, lacking direct evidence, we must rely on our
-            own (often biased) estimates. These metaperceptions (your own
-            estimate of someo else{"'"}s judgement of you) can have a profound
-            influence on our sense of self and our performance in organizational
-            settings
+            {page_data[0].sub_hero}
+            {isloggedin && (
+              <Edit_text
+                record={"sub_hero"}
+                setedit_text={setedit_text}
+                setrecord_Name={setrecord_Name}
+                text={page_data[0].sub_hero}
+              />
+            )}
           </p>
         </div>
 
@@ -124,20 +163,30 @@ const Research_hero = () => {
       {/* second section */}
       <div className="w-full  md:px-[12vw] px-[4%] py-[20vw] gap-[8vw] flex-col flex  md:gap-[2vw] md:py-[7vw] ">
         <h2
-          className={`md:text-[5vw]  md:leading-[5vw] ${spline_font.className} text-[#1E1E1E] md:font-light font-medium text-[10vw] leading-[11vw]`}
+          className={`md:text-[5vw]  md:leading-[5vw] ${spline_font.className} text-[#1E1E1E] md:font-light font-medium text-[10vw] leading-[11vw] relative`}
         >
-          A SCIENCE OF DATA & ANALYTICS
+          {page_data[0].title}
+          {isloggedin && (
+            <Edit_text
+              record={"title"}
+              setedit_text={setedit_text}
+              setrecord_Name={setrecord_Name}
+              text={page_data[0].title}
+            />
+          )}
         </h2>
         <p
-          className={`${Helvetica_light.className} text-[#707270] text-[4vw] leading-[5vw] md:text-[1.2vw] md:leading-[1.8vw]`}
+          className={`${Helvetica_light.className} text-[#707270] text-[4vw] leading-[5vw] relative md:text-[1.2vw] md:leading-[1.8vw]`}
         >
-          Beliefs about whether our colleagues like us affect our sense of
-          belonging in the workplace and how psychologically safe we feel.
-          Beliefs about whether our managers take our contributions seriously
-          affect our sense of efficacy and satisfaction with our job. Thus, our
-          beliefs about how others see us shapes our sense of social connection,
-          with implications for our workplace performance, health, and
-          well-being. But to what extent are these metaperceptions accurate?
+          {page_data[0].sub_title}
+          {isloggedin && (
+            <Edit_text
+              record={"sub_title"}
+              setedit_text={setedit_text}
+              setrecord_Name={setrecord_Name}
+              text={page_data[0].sub_title}
+            />
+          )}
         </p>
       </div>
     </>

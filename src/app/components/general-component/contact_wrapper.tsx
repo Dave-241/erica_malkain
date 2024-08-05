@@ -1,6 +1,6 @@
 import { supabase } from "@/app/utils/supabaseClient";
 import Contact from "./contact";
-export const revalidate = 10;
+export const revalidate = 2;
 const fetchProducts = async () => {
   const { data, error } = await supabase
     .from("contact")

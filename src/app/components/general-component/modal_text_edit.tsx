@@ -44,7 +44,7 @@ const Modal_text_edit = ({
       setError(error.message);
     } else {
       setedit_text("");
-      //   window.location.reload();
+      window.location.reload();
     }
   };
 

@@ -112,7 +112,7 @@ const Modal_edit_research = ({ setopen_edit, edit_ID, open_edit }: any) => {
       setError(error.message);
     } else {
       setopen_edit(false);
-      //   window.location.reload();
+      window.location.reload();
       // Optionally reset the form fields if adding a new publication
 
       //   setpublication_title("");
