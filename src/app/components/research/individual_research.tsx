@@ -78,7 +78,7 @@ const Individual_research = ({ product_data }: any) => {
   return (
     <>
       <div className=" md:pt-[10vw]  relative  pt-[25vw] p-4  bg-white ">
-        {/* {isloggedin && <Refer_edit text={"research"} />} */}
+        {isloggedin && <Refer_edit text={"research"} />}
 
         <div className="pb-[4rem]  md:container mx-auto  w-full md:px-[3%] ">
           <button
