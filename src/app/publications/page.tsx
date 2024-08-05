@@ -17,6 +17,7 @@ const fetchProducts = async () => {
   console.log(data);
   return data;
 };
+
 export default async function Home() {
   const product_data = await fetchProducts();
   return (

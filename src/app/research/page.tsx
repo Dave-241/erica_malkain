@@ -25,6 +25,19 @@ const fetchpage_data = async () => {
   // console.log(data);
   return data;
 };
+export async function generateMetadata() {
+  const product_data = await fetchpage_data();
+  if (!product_data) {
+    return;
+  }
+  return {
+    title: product_data[0].hero,
+    description: product_data[0].sub_hero,
+    openGraph: {
+      type: "website",
+    },
+  };
+}
 export default async function Home() {
   const product_data = await fetchProducts();
   const page_data = await fetchpage_data();
