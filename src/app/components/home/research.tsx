@@ -235,7 +235,7 @@ const Home_research = ({ research_items }: any) => {
               {research_items.map((e: any, index: any) => {
                 return (
                   <Link
-                    href={"/"}
+                    href={`/research/${e.slug}`}
                     key={index}
                     className={`md:w-[26vw] group gap-[2vw]  flex flex-col justify-between w-[80vw]   flex-none md:flex-auto snap-center`}
                   >
