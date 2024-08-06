@@ -1,5 +1,6 @@
 "use client";
 import {
+  Bt_Beau_Regualr,
   Helvetica_light,
   Helvetica_medium,
   dm_sans_font,
@@ -136,13 +137,13 @@ const Recent_publication = ({ product_data }: any) => {
                   transition: "0.7s ease",
                   height: active == index ? "" : heights[index] || "auto",
                 }}
-                onMouseEnter={() => setactive(index)}
-                onMouseLeave={() => setactive(null)}
+                onClick={() => setactive(index)}
+                // onMouseLeave={() => setactive(null)}
                 className={`w-full cursor-cell overflow-hidden  md:h-[37vw] h-[95vw]  relative ${
                   active == index
                     ? "md:border-none rounded-[2vw] md:rounded-none md:px-0 px-[5%]"
                     : ""
-                } flex-col  flex justify-end   group border-b-[#565956] border-b-[0.1vw] `}
+                } flex-col  flex justify-end    border-b-[#565956] border-b-[0.1vw] `}
               >
                 <div
                   className={` md:w-[46.5%]  h-[95vw] w-full left-0 flex justify-center  items-center  ${
@@ -188,9 +189,7 @@ const Recent_publication = ({ product_data }: any) => {
                       transition: "0.5s ease",
                     }}
                     className={`flex md:gap-[2vw] h-full  md:h-fit  ${
-                      active == index
-                        ? "md:translate-x-[160%] md:translate-y-[-130%]"
-                        : ""
+                      active == index ? "md:translate-x-[160%]" : ""
                     } md:w-[35%] md:text-[1.2vw] text-[4.5vw] z-[20] md:leading-[1.8vw] leading-[5vw] items-center  ${
                       Helvetica_medium.className
                     }`}
@@ -209,53 +208,78 @@ const Recent_publication = ({ product_data }: any) => {
                     </h2>
                   </div>
                   {/* this includes body  and arrow  */}
-                  <div className="flex md:gap-[1vw] gap-[2vw] z-[20] md:w-[60%] justify-between md:justify-end items-center ">
-                    <p
-                      style={{
-                        transition: "0.7s ease",
-                      }}
-                      className={` ${
-                        active == index
-                          ? "text-[white] md:text-opacity-[100%] text-opacity-[70%] md:text-[black]"
-                          : "text-[black]"
-                      } md:w-[80%] w-[90%] z-[20] text-[3.5vw] md:leading-[1.5vw] leading-[4.15vw] md:text-[1.1vw]  ${
-                        Helvetica_light.className
-                      }`}
-                    >
-                      {e.description} {/* 434543 */}
-                    </p>
 
-                    <Link
-                      href={e.pdf_link}
-                      style={{ whiteSpace: "nowrap" }}
-                      className={`flex justify-center bg-transparent  w-[10vw] h-[10vw] items-center  ${
-                        active == index
-                          ? "md:border-[black] border-[#ffffff7b]"
-                          : "border-[black]"
-                      }  overflow-hidden border-opacity-[50%]   border-[0.1vw] rounded-[100%]  md:w-[2.5vw] md:h-[2.5vw]  relative`}
+                  {/* THIS INCLUDES THE BUTTONS AND THE BODY TEXT */}
+                  <div className="w-full  flex-col-reverse md:gap-[1vw] md:items-end md:w-[60%] gap-[5vw]  flex md:flex-col">
+                    <div
+                      style={{ transition: "0.7s ease" }}
+                      className={`${Bt_Beau_Regualr.className}  ${
+                        active != index ? "translate-x-[100%] h-0" : ""
+                      }  md:w-[20%]  md:text-[1vw] gap-[4vw] text-[3.5vw] flex capitalize overflow-hidden md:gap-[1vw] md:flex-col md:items-end  items-center`}
                     >
-                      <Image
-                        src={img_black}
-                        alt="arrow image"
-                        style={{ transition: "0.5s ease" }}
-                        className={` w-[60%]   ${
-                          active == index ? "opacity-[0%]" : "opacity-[100%]"
-                        } absolute absolute_center md:opacity-[100%] z-[10] h-fit`}
-                      />
-                      <Image
-                        src={img_white}
-                        alt="arrow image"
-                        style={{ transition: "0.5s ease" }}
-                        className={`w-[60%] absolute md:hidden block  ${
-                          active == index ? "opacity-[100%]" : "opacity-[0%]"
-                        } hover:opacity-[100%]  opacity-[0%] absolute_center z-[10] h-fit`}
-                      />
+                      {" "}
+                      <Link
+                        href={`https://${e.data_link}`}
+                        className=" md:rounded-[1.2vw] w-full border-[#440C0C]   md:border-[0.1vw] bg-[#440C0C] flex justify-center items-center md:py-[0.5vw]  py-[3vw] text-white hover:bg-[#C1A391] hover:border-[#C1A391] rounded-[7vw]"
+                      >
+                        PDF
+                      </Link>{" "}
+                      <Link
+                        href={`https://${e.pdf_link}`}
+                        className=" md:rounded-[1.2vw] w-full border-[#440C0C] border-[0.1vw]  bg-[#FEF6F6] flex justify-center items-center md:py-[0.5vw] py-[3vw] text-[#440C0C]  hover:bg-[white] rounded-[7vw]"
+                      >
+                        DATA
+                      </Link>
+                    </div>
+                    <div className="flex md:gap-[3vw]  gap-[2vw] z-[20] md:w-full justify-between md:justify-end items-center ">
+                      <p
+                        style={{
+                          transition: "0.7s ease",
+                        }}
+                        className={` ${
+                          active == index
+                            ? "text-[white] md:text-opacity-[100%] text-opacity-[70%] md:text-[black]"
+                            : "text-[black]"
+                        } md:w-[80%] w-[90%] z-[20] text-[3.5vw] md:leading-[1.5vw] leading-[4.15vw] md:text-[1.1vw]  ${
+                          Helvetica_light.className
+                        }`}
+                      >
+                        {e.description} {/* 434543 */}
+                      </p>
 
-                      {/* <div
-                        className="w-full h-full bg-[#440C0C] absolute left-0 top-[100%] group-hover:top-0 "
-                        style={{ transition: "0.5s ease" }}
-                      ></div> */}
-                    </Link>
+                      <button
+                        onClick={() => setactive(index)}
+                        // href={e.pdf_link}
+                        style={{ whiteSpace: "nowrap" }}
+                        className={`flex justify-center group  bg-transparent  w-[10vw] h-[10vw] items-center  ${
+                          active == index
+                            ? "md:border-[black] border-[#ffffff7b]"
+                            : "border-[black]"
+                        }  overflow-hidden border-opacity-[50%]   border-[0.1vw] rounded-[100%]  md:w-[2.5vw] md:h-[2.5vw]  relative`}
+                      >
+                        <Image
+                          src={img_black}
+                          alt="arrow image"
+                          style={{ transition: "0.5s ease" }}
+                          className={` w-[60%]   ${
+                            active == index ? "opacity-[0%]" : "opacity-[100%]"
+                          } absolute absolute_center md:opacity-[100%] z-[10] h-fit`}
+                        />
+                        <Image
+                          src={img_white}
+                          alt="arrow image"
+                          style={{ transition: "0.5s ease" }}
+                          className={`w-[60%] absolute   ${
+                            active == index ? "opacity-[0] " : "opacity-[0%]"
+                          } block  group-hover:opacity-[100%]  opacity-[0%] absolute_center z-[10] h-fit`}
+                        />
+
+                        <div
+                          className="w-full h-full bg-[#440C0C] absolute left-0 top-[100%] group-hover:top-0 "
+                          style={{ transition: "0.5s ease" }}
+                        ></div>
+                      </button>
+                    </div>
                   </div>
                 </div>
               </div>

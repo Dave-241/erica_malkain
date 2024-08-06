@@ -44,14 +44,14 @@ export default async function Home() {
         <div className="bg-[#DFE4DF]">
           <Nav />
           <Hero_home />
-          <div className="h-[20vw] bg-black"></div>
-          <AnimatedLines />
-          {/* <Home_research research_items={research_items || []} />
+          {/* <div className="h-[20vw] bg-black"></div>
+          <AnimatedLines /> */}
+          <Home_research research_items={research_items || []} />
           <Recent_publication product_data={product_data || []} />
           <Recent_media_wrapper />
           <Review_wrapper />
           <Contact_wrappeer />
-          <Footer /> */}
+          <Footer />
         </div>
       </>
     </>
