@@ -3,57 +3,90 @@ import React, { useState } from "react";
 import { motion } from "framer-motion";
 
 const AnimatedLines: React.FC = () => {
-  const fullPath =
-    "M.3 7.1a1 1 0 0 0 0 1.5l6.3 6.3a1 1 0 0 0 1.5-1.4L2.4 8l5.7-5.7A1 1 0 0 0 6.7.8L.3 7Zm1237.4 1.5c.4-.4.4-1 0-1.4l-6.2-6.5a1 1 0 0 0-1.5 0 1 1 0 0 0 0 1.4l5.6 5.7-5.8 5.6a1 1 0 0 0 0 1.4c.4.4 1 .4 1.4 0l6.5-6.2Zm-612.8 52 .8-.5-.8.6Zm-34.6 49.6-1-.2 1 .2Zm19.1-46-.8-.5.8.5ZM588 138.8l-1 .1h1Zm1.9-26.6 1 .2-1-.2Zm-.4 54h1-1Zm50.6 18.5.7.7-.7-.7Zm8.4-19.1h-1 1Zm-8 18.8-.8-.7.7.7Zm9.6-48.6h1-1ZM1 7.8v1a15875 15875 0 0 1 79.8.3c48.1 0 112.6.3 178 .5 130.9.5 265.6 1.3 281.3 2.1l.1-2c-15.7-.8-150.6-1.6-281.4-2A175778.1 175778.1 0 0 0 2.5 6.8H1.4a15725.9 15725.9 0 0 0-.4 0v1Zm539.1 4a69 69 0 0 1 25.1 7c8.7 3.8 17.4 8.8 25.2 13.8A302.2 302.2 0 0 1 617 51.8l.4.3.1.1.7-.8.6-.7-.1-.1a62.6 62.6 0 0 0-2-1.6A270.7 270.7 0 0 0 566 16.9c-8.8-4-17.7-6.7-25.8-7.2v2Zm109 124-1.6 29.7 2 .2 1.6-29.8-2-.1Zm-9.4 47.9-.3.3 1.4 1.4.4-.3-1.5-1.4Zm-49.2-17.5-1.5-27.4-2 .1 1.5 27.4 2-.1Zm27.7-114.8.6.8.4-.3a174.1 174.1 0 0 1 6-4.5c4-3 9.9-7 16.8-11.4 13.8-8.8 32.1-19 50-24.3l-.6-2a219.5 219.5 0 0 0-50.5 24.6 332.3 332.3 0 0 0-23 16l-.3.3.6.8Zm73.7-39.7a64 64 0 0 1 11.9-1.8c5.7-.6 13-1 21.6-1.4 17.4-.9 40.2-1.4 66.6-1.8 52.8-.8 119.9-.8 185.8-.5a25671 25671 0 0 1 257.7 2.6h1.5l.1-1v-1h-1.5a9410.6 9410.6 0 0 0-78.7-1c-48.3-.6-113-1.3-179-1.6-66-.3-133-.3-185.8.5-26.4.4-49.3 1-66.6 1.8-8.7.4-16 .9-21.8 1.4-5.7.5-9.9 1.1-12.2 1.9l.5 1.9ZM591 112.4l.4-2-2-.4-.4 2 2 .4Zm19.4-47.6L619 52l-1.7-1.1-8.7 12.8 1.7 1.1Zm7-12.8 6.8 9.2 1.6-1.1-6.7-9.3-1.6 1.2Zm6.8 9.2a136.2 136.2 0 0 1 23.6 54.2l2-.4c-3.9-19.9-12-38.6-24-55l-1.6 1.2Zm-32.8 49.2a123 123 0 0 1 19-45.6l-1.7-1.1a126 126 0 0 0-19.3 46.3l2 .4Zm-2.3 28.4c-.4-8.8.2-17.7 1.9-26.4l-2-.4c-1.7 8.9-2.4 17.9-1.9 26.9l2-.1Zm8.6 44.6a28.3 28.3 0 0 1-7-17.2l-2 .1a30 30 0 0 0 7.6 18.5l1.4-1.4Zm41.8.6a28.3 28.3 0 0 1-41.8-.6l-1.4 1.4a30.3 30.3 0 0 0 44.6.6l-1.4-1.4Zm8-18.5a28.7 28.7 0 0 1-7.7 18.2l1.5 1.4c5-5.3 7.9-12.2 8.3-19.4l-2-.2Zm3.7-29.6c.4-7 0-14-1.4-21l-2 .5a82.7 82.7 0 0 1 1.4 20.4h2Z";
+  const [isHalfway, setIsHalfway] = useState(true);
 
-  const [animationStage, setAnimationStage] = useState(0);
-
-  const handleClick = () => {
-    setAnimationStage((prev) => (prev + 1) % 4); // 0, 1, 2, 3 (3 resets to 0)
+  const handleButtonClick = () => {
+    setIsHalfway((prev) => !prev);
   };
 
-  const getPathLength = () => {
-    switch (animationStage) {
-      case 0:
-        return 0;
-      case 1:
-        return 0.5;
-      case 2:
-        return 0.75;
-      case 3:
-        return 1;
-      default:
-        return 0;
-    }
-  };
+  const getPathLength1 = () => (isHalfway ? 0.5 : 1);
+  const getPathLength2 = () => (isHalfway ? 0 : 1);
 
   return (
     <div className="w-full flex flex-col items-center md:py-[10vw]">
       <button
-        onClick={handleClick}
         className="mb-4 px-4 py-2 bg-blue-500 text-white rounded hover:bg-blue-600 transition-colors"
+        onClick={handleButtonClick}
       >
-        {animationStage === 3 ? "Reset" : "Continue Animation"}
+        Animate Arrow
       </button>
       <svg
-        width="90%"
-        height="100%"
-        viewBox="0 0 1238 195"
-        fill="none"
         xmlns="http://www.w3.org/2000/svg"
+        width="100"
+        height="200"
+        viewBox="0 0 44 75"
       >
-        <motion.path
-          d={fullPath}
-          stroke="#4F0A19"
-          strokeWidth="2"
-          fill="none"
-          initial={{ pathLength: 0 }}
-          animate={{ pathLength: getPathLength() }}
-          transition={{
-            duration: 2,
-            ease: "easeInOut",
-          }}
+        <defs>
+          {/* <mask id="mask1" maskUnits="userSpaceOnUse">
+            <motion.path
+              fill="none"
+              stroke="white"
+              strokeWidth="6"
+              strokeDasharray="100.8186"
+              strokeDashoffset="100.8186"
+              d="M 24.3018,49.658 C 15.0191,46.9092 18.5393,38.1126 25.6256,38.2163 35.5458,38.3614 34.8431,54.3874 22.6943,54.1023 12.0123,53.8516 7.34095,40.0402 18.4391,30.1787 29.5373,20.3173 29.9235,12.5622 27.8005,9.28112"
+              initial={{ strokeDashoffset: 100.8186 }}
+              animate={{ strokeDashoffset: getPathLength1() * 100.8186 }}
+              transition={{ duration: 2, ease: "easeInOut" }}
+            />
+          </mask> */}
+          <mask id="mask2" maskUnits="userSpaceOnUse">
+            <motion.path
+              fill="none"
+              stroke="white"
+              strokeWidth="6"
+              strokeDasharray="83.6713"
+              strokeDashoffset="83.6713"
+              d="M 27.8005,9.28112 C 25.1382,5.16638 17.6602,8.86888 20.5194,22.1412 L 28.1788,57.6956 C 31.6264,73.699 16.4903,72.3627 15.035,62.329"
+              initial={{ strokeDashoffset: 83.6713 }}
+              animate={{ strokeDashoffset: getPathLength2() * 83.6713 }}
+              transition={{
+                duration: 2,
+                ease: "easeInOut",
+                delay: isHalfway ? 0 : 2,
+              }}
+            />
+          </mask>
+        </defs>
+        <path
+          className="clef"
+          fill="black"
+          stroke="black"
+          strokeWidth="0.1"
+          mask="url(#mask1)"
+          d="M 26.8522,9.90048 C 26.912,9.95039 26.9649,10.0085 27.0101,10.075 27.4815,10.7683 28.6214,14.0098 25.3767,19.8157 22.846,24.3437 11.0718,30.2815 10.2077,40.9075 9.45969,50.1477 19.1325,56.9723 27.4811,54.2894 33.0239,52.5081 35.8812,44.0959 32.4504,39.7568 23.3964,28.3057 8.87616,45.8309 22.9422,50.6319 21.4126,49.4286 20.37,48.4968 20.1759,47.3578 18.286,36.2692 34.9591,39.1968 30.4666,49.7165 28.6194,54.0421 21.1577,54.879 16.9085,51.0198 13.3489,47.787 11.7693,41.5593 15.7305,37.0885 21.0956,31.0332 27.4302,25.5974 29.1125,17.3081 29.7841,13.9988 29.4887,10.9357 28.6445,8.70078 Z"
         />
+        <path
+          className="clef"
+          fill="black"
+          stroke="black"
+          strokeWidth="0.1"
+          mask="url(#mask2)"
+          d="M 15.7311,63.3465 C 15.3353,65.46 17.5402,69.8491 21.9764,69.9924 27.3392,70.1658 30.7655,66.0634 29.1692,59.3682 L 21.164,22.4229 C 20.2111,18.0249 20.9262,15.6394 21.4351,14.2178 22.7185,10.6326 25.8192,9.03863 26.8522,9.90048 L 28.6445,8.70078 C 26.9883,4.31578 23.2199,3.11893 20.4997,9.50576 19.1217,12.7412 18.6085,15.989 19.9279,22.2128 L 27.9268,59.9444 C 28.4995,62.6457 28.1161,66.3629 25.595,68.0714 24.3461,68.9177 19.9267,69.5001 18.8455,67.48"
+        />
+        <path
+          className="clef dot"
+          opacity="0"
+          d="M 15.6702,63.6634 A 3.77139,3.8362 1.075 0 1 19.5129,59.8986 3.77139,3.8362 1.075 0 1 23.2116,63.8049 3.77139,3.8362 1.075 0 1 19.3689,67.5697 3.77139,3.8362 1.075 0 1 15.6702,63.6634 Z"
+        >
+          <animate
+            attributeName="opacity"
+            dur="0.05s"
+            values="0;1"
+            begin="an2.end-0.05s"
+            fill="freeze"
+          />
+        </path>
       </svg>
     </div>
   );
