@@ -10,10 +10,6 @@ import Refer_edit from "./refer_edit";
 import { supabase } from "@/app/utils/supabaseClient";
 import { useRouter } from "next/navigation";
 import { gsap } from "gsap";
-import { ScrollTrigger } from "gsap/ScrollTrigger";
-
-// Register ScrollTrigger with GSAP
-gsap.registerPlugin(ScrollTrigger);
 
 const Home_research = ({ research_items }: any) => {
   const items = ["", "", "", "", ""];

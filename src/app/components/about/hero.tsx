@@ -9,6 +9,8 @@ import { useEffect, useRef, useState } from "react";
 import hero1 from "../../../../public/images/about/hero1.webp";
 import hero2 from "../../../../public/images/about/hero2.webp";
 import Image from "next/image";
+import { gsap } from "gsap";
+
 import bg from "../../../../public/images/about/bg.webp";
 import Link from "next/link";
 import {
@@ -32,6 +34,9 @@ const About_hero = ({ user_data }: any) => {
 
   //   this is to handle scrolling
   const ref = useRef(null);
+  const image_ref = useRef(null);
+  const image_ref_one = useRef(null);
+  const image_ref_two = useRef(null);
 
   const { scrollYProgress: scrollYProgress1 } = useScroll({
     target: ref,
@@ -50,7 +55,7 @@ const About_hero = ({ user_data }: any) => {
     setbg_img_opacity(latest);
   });
 
-  const [yvalue, setyvalue] = useState(-50);
+  const [yvalue, setyvalue] = useState(globalThis.innerWidth > 760 ? -50 : 0);
   const [opac_one_img, setopac_one_img] = useState(1);
   const [opac_two_img, setopac_two_img] = useState(0);
   const [bg_img_opacity, setbg_img_opacity] = useState(0);
@@ -67,10 +72,27 @@ const About_hero = ({ user_data }: any) => {
   });
   useMotionValueEvent(opac_two, "change", (latest) => {
     setopac_two_img(latest);
-  });
-
-  // this is for width calculation
+  }); // this is for width calculation
   const [calWidth, setCalWidth] = useState(0);
+  // const [start_anime, setstart_anime] = useState(false)
+
+  // GSAP for applying translations and opacity
+  useEffect(() => {
+    gsap.to(image_ref.current, {
+      xPercent: calWidth < 760 ? 0 : yvalue >= 50 ? -50 : yvalue,
+      duration: 0.5, // Adjust duration as needed
+    });
+    console.log("this is trackign");
+    gsap.to(image_ref_one.current, {
+      opacity: calWidth < 768 ? "" : opac_one_img,
+      duration: 0.4, // Adjust duration as needed
+    });
+    gsap.to(image_ref_two.current, {
+      opacity: calWidth < 768 ? "" : opac_two_img,
+      duration: 0.4, // Adjust duration as needed
+    });
+  }, [yvalue, opac_one_img, opac_two_img, calWidth]);
+
   const width = globalThis.innerWidth;
   const handleResize = () => {
     setCalWidth(globalThis.innerWidth);
@@ -239,19 +261,17 @@ const About_hero = ({ user_data }: any) => {
             </div>
           </div>
           <div
-            // animate={{
-            //   // translateX: `${yvalue}%`,
-            //   translateX:
-            //     calWidth < 760 ? "" : yvalue >= 50 ? `-50% ` : ` ${yvalue}%  `,
-            // }}
-            style={{
-              transform:
-                calWidth < 760
-                  ? ""
-                  : yvalue >= 50
-                  ? `translateX(${-50}%) `
-                  : ` translateX(${yvalue}%)  `,
-            }}
+            ref={image_ref}
+            style={
+              {
+                // transform:
+                //   calWidth < 760
+                //     ? ""
+                //     : yvalue >= 50
+                //     ? `translateX(${-50}%) `
+                //     : ` translateX(${yvalue}%)  `,
+              }
+            }
             // transition={{ ease: "easeOut", duration: 0 }}
             className="md:sticky  md:top-0 md:left-[25%] z-[20]  md:w-[40%] md:h-[100vh] flex items-center"
           >
@@ -259,12 +279,13 @@ const About_hero = ({ user_data }: any) => {
               {/* {isloggedin && <Edit_text />} */}
 
               <Image
+                ref={image_ref_one}
                 src={active_user_data[0].dp_img_one}
                 unoptimized
                 width="0"
                 height="0"
                 style={{
-                  opacity: calWidth < 768 ? "" : opac_one_img,
+                  // opacity: calWidth < 768 ? "" : opac_one_img,
                   transition: "0.65s ease",
                   transform:
                     calWidth < 760
@@ -278,11 +299,12 @@ const About_hero = ({ user_data }: any) => {
                 className="w-full md:absolute md:top-[50%] md:scale-[1.1]  md:translate-x-[-50%] md:left-[50%] md:translate-y-[-50%] h-fit z-[10]"
               />
               <Image
+                ref={image_ref_two}
                 src={active_user_data[0].dp_img_two}
                 unoptimized
                 width="0"
                 height="0"
-                style={{ opacity: calWidth < 768 ? "" : opac_two_img }}
+                // style={{ opacity: calWidth < 768 ? "" : opac_two_img }}
                 alt="Erica Boothby"
                 className="w-full md:absolute md:top-[50%]  md:block hidden md:translate-x-[-50%] md:left-[50%] md:translate-y-[-50%] h-fit "
               />
