@@ -219,7 +219,7 @@ const AnimatedLines: React.FC = () => {
               </div>
             </foreignObject>
           </svg>
-          {value_2}
+          {/* {value_2} */}
         </div>
       </div>{" "}
       <div
