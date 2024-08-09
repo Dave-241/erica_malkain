@@ -275,7 +275,7 @@ const About_hero = ({ user_data }: any) => {
             }
             // transition={{ ease: "easeOut", duration: 0 }}
             className={`md:sticky ${
-              start_anime ? " md:left-[25%]" : " md:left-[0%]"
+              start_anime ? " md:left-[25%]" : " md:left-[10%]"
             }  md:top-0 z-[20]  md:w-[40%] md:h-[100vh] flex items-center`}
           >
             <div className="w-full md:h-[36vw]    overflow-hidden relative ">
