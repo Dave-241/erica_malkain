@@ -94,7 +94,6 @@ const Each_consultation = ({ product_data }: any) => {
   // this is for using gsap
   useEffect(() => {
     itemsRefs.current.forEach((ref: any, index: any) => {
-      console.log(ref);
       gsap.to(ref, {
         yPercent:
           index + 1 - yvalue >= 0 && index + 1 - yvalue <= 1
