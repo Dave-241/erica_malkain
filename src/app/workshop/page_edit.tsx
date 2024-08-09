@@ -12,8 +12,8 @@ export default function Home() {
         <Nav />
         <Workshop_hero />
         <Each_workshop />
-        <Recent_media />
-        <Contact />
+        {/* <Recent_media /> */}
+        {/* <Contact /> */}
         <Footer />
       </>
     </>
