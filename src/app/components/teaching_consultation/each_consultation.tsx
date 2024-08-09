@@ -101,7 +101,7 @@ const Each_consultation = ({ product_data }: any) => {
             : index + 1 - yvalue <= 0
             ? -50
             : yvalue + 1 + index * 100,
-        duration: 0.4, // Adjust duration as needed
+        duration: 0.3, // Adjust duration as needed
       });
     });
   }, [yvalue]);
