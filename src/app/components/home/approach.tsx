@@ -77,7 +77,7 @@ const AnimatedLines: React.FC = () => {
   return (
     <>
       <h2
-        className={`uppercase md:text-[4vw] text-[8vw] md:pt-0 pt-[10vw] md:px-0 px-[3%] text-center ${spline_font.className} font-medium text-[#5C3C43]`}
+        className={`uppercase md:text-[4vw] text-[8vw]  leading-[9.5vw] md:leading-[4.5vw] md:pt-0 pt-[10vw] md:px-0 px-[3%] text-center ${spline_font.className} font-medium text-[#5C3C43]`}
       >
         She takes a multi-method approach
       </h2>
