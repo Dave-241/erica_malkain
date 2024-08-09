@@ -9,32 +9,20 @@ import Link from "next/link";
 import Refer_edit from "./refer_edit";
 import { supabase } from "@/app/utils/supabaseClient";
 import { useRouter } from "next/navigation";
+import { gsap } from "gsap";
+import { ScrollTrigger } from "gsap/ScrollTrigger";
+
+// Register ScrollTrigger with GSAP
+gsap.registerPlugin(ScrollTrigger);
 
 const Home_research = ({ research_items }: any) => {
   const items = ["", "", "", "", ""];
 
-  // const [calWidth, setCalWidth] = useState(0);
-  // const width = globalThis.innerWidth;
-  // const handleResize = () => {
-  //   setCalWidth(globalThis.innerWidth);
-  // };
-
-  // useEffect(() => {
-  //   window.addEventListener("resize", handleResize);
-
-  //   // Initial call to set the width on component mount
-  //   handleResize();
-
-  //   return () => {
-  //     window.removeEventListener("resize", handleResize);
-  //   };
-  // }, [width]);
-
-  // useEffect(() => {
-  //   handleResize();
-  // }, [width]);
   //   this is to handle scrolling
   const ref = useRef(null);
+  const inside_ref = useRef(null);
+  const text_ref = useRef(null);
+  const scroll_opac = useRef(null);
 
   //   this is for switching animation values
   const [opac_animation, setopac_animation] = useState(1);
@@ -90,6 +78,22 @@ const Home_research = ({ research_items }: any) => {
     [0, 1],
     [1, 10],
   );
+
+  // GSAP for applying translations and opacity
+  useEffect(() => {
+    gsap.to(scroll_opac.current, {
+      opacity: calwidth < 768 ? "" : opac_animation,
+      duration: 0.5, // Adjust duration as needed
+    });
+    gsap.to(text_ref.current, {
+      xPercent: calwidth < 768 ? "" : -switch_animation_value,
+      duration: 0.5, // Adjust duration as needed
+    });
+    gsap.to(inside_ref.current, {
+      xPercent: calwidth < 768 ? "" : translate_value,
+      duration: 0.5, // Adjust duration as needed
+    });
+  }, [switch_animation_value, opac_animation, translate_value]);
 
   // THIS IS FOR DETERMINING THE WIDTH OF THE SCREEN
   // THIS IS FOR DETERMINING THE WIDTH OF THE SCREEN
@@ -150,10 +154,11 @@ const Home_research = ({ research_items }: any) => {
         {/* this is the section for the scrollable elements */}
         <div className="w-full md:h-[100vh] gap-[10vw] flex-col justify-center sticky top-0 left-0  flex md:gap-[2vw] overflow-hidden ">
           <h2
-            style={{
-              transform:
-                calwidth < 768 ? "" : `translateX(-${switch_animation_value}%)`,
-            }}
+            ref={text_ref}
+            // style={{
+            //   transform:
+            //     calwidth < 768 ? "" : `translateX(-${switch_animation_value}%)`,
+            // }}
             className={`${spline_font.className} z-[60]  md:text-[7vw] md:px-[10vw] font-medium text-[#5C3C43] md:text-start text-center  md:leading-[7vw] text-[10vw] leading-[11.5vw] `}
           >
             RESEARCH
@@ -164,9 +169,10 @@ const Home_research = ({ research_items }: any) => {
             {isloggedin && <Refer_edit text={"research"} />}
 
             <div
-              style={{
-                opacity: opac_animation,
-              }}
+              ref={scroll_opac}
+              // style={{
+              //   opacity: opac_animation,
+              // }}
               className={`md:w-[25vw]   bg-[#DFE4DF] z-[5]   flex  justify-center items-center md:h-full   absolute left-0 md:gap-[1vw] `}
             >
               <p
@@ -182,10 +188,11 @@ const Home_research = ({ research_items }: any) => {
             </div>
 
             <div
-              style={{
-                transform:
-                  calwidth < 765 ? "" : `translateX(${translate_value}%)`,
-              }}
+              ref={inside_ref}
+              // style={{
+              //   transform:
+              //     calwidth < 765 ? "" : `translateX(${translate_value}%)`,
+              // }}
               className="absolute  md:gap-[1.2vw]  md:px-[1.5vw] z-[10] flex h-full top-0 left-[22vw]"
             >
               {research_items.map((e: any, index: any) => {
