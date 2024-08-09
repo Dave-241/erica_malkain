@@ -30,19 +30,19 @@ const AnimatedLines: React.FC = () => {
 
   const { scrollYProgress: scrollYProgress1 } = useScroll({
     target: ref,
-    offset: ["-40% -40%", "35% end"],
+    offset: ["-40% -40%", "40% end"],
   });
   const { scrollYProgress: scrollYProgress_middle } = useScroll({
     target: ref,
-    offset: ["40% 40%", "60% end"],
+    offset: ["35% 35%", "70% end"],
   });
   const { scrollYProgress: scrollYProgress_end } = useScroll({
     target: ref,
-    offset: ["55% 55%", "90% end"],
+    offset: ["65% 65%", "95% end"],
   });
 
   const bg_img_opac = useTransform(scrollYProgress1, [0, 1], [100, 0]);
-  const middle_opac = useTransform(scrollYProgress_middle, [0, 1], [0, 100]);
+  const middle_opac = useTransform(scrollYProgress_middle, [0, 1], [100, 0]);
   const end_opac = useTransform(scrollYProgress_end, [0, 1], [100, 0]);
   useMotionValueEvent(bg_img_opac, "change", (latest) => {
     setvalue_1(latest);
@@ -165,6 +165,8 @@ const AnimatedLines: React.FC = () => {
           </svg>
           {/* {value_1} */}
         </div>
+
+        {/* THIS IS FOR MOBILE */}
         <div className="w-full md:hidden  h-[100vh] flex justify-center items-center sticky top-0 left-0 ">
           <svg
             xmlns="http://www.w3.org/2000/svg"
@@ -196,7 +198,7 @@ const AnimatedLines: React.FC = () => {
                     }}
                   ></div>
                 </div>
-                <div className="h-[20%] ">
+                <div className="h-[20%]  ">
                   <div
                     className=" h-full   bg-[#DFE4DF]"
                     style={{
@@ -217,7 +219,7 @@ const AnimatedLines: React.FC = () => {
               </div>
             </foreignObject>
           </svg>
-          {/* {value_1} */}
+          {value_2}
         </div>
       </div>{" "}
       <div
