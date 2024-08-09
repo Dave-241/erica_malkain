@@ -44,8 +44,12 @@ export default async function Home() {
         <div className="bg-[#DFE4DF]">
           <Nav />
           <Hero_home />
-          <div className="h-[20vw] bg-black"></div>
-          <AnimatedLines />
+          <div className="md:py-[6vw]">
+            {/* <div className="h-[20vw] bg-black"></div> */}
+            <AnimatedLines />
+          </div>
+          {/* <div className="h-[20vw] bg-black"></div> */}
+
           {/* <Home_research research_items={research_items || []} />
           <Recent_publication product_data={product_data || []} />
           <Recent_media_wrapper />
