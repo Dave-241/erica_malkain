@@ -50,12 +50,12 @@ export default async function Home() {
           </div>
           {/* <div className="h-[20vw] bg-black"></div> */}
 
-          {/* <Home_research research_items={research_items || []} />
+          <Home_research research_items={research_items || []} />
           <Recent_publication product_data={product_data || []} />
           <Recent_media_wrapper />
           <Review_wrapper />
           <Contact_wrappeer />
-          <Footer /> */}
+          <Footer />
         </div>
       </>
     </>
