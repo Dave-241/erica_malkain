@@ -19,9 +19,12 @@ import Add_consultation from "./add_consultation";
 import Modal_edit_consulation from "./modal_edit_add_consultation";
 import { useColor } from "react-color-palette";
 import { useRouter } from "next/navigation";
+import { gsap } from "gsap";
 import { supabase } from "@/app/utils/supabaseClient";
 const Each_consultation = ({ product_data }: any) => {
   const sectionRef = useRef(null);
+
+  const itemsRefs = useRef<any>([]);
   const { scrollYProgress } = useScroll({
     target: sectionRef,
     // offset: ["end start", "end 50%"],
@@ -33,6 +36,14 @@ const Each_consultation = ({ product_data }: any) => {
   const handleResize = () => {
     setcalwidth(globalThis.innerWidth);
   };
+
+  // useEffect(() => {
+  //   gsap.to(image_ref.current, {
+  //     xPercent: calWidth < 768 ? "" : yvalue >= 50 ? -50 : yvalue,
+  //     duration: 0.5, // Adjust duration as needed
+  //   });
+
+  // }, [yvalue, opac_one_img, opac_two_img, calWidth, start_anime]);
 
   const router = useRouter();
 
@@ -79,6 +90,22 @@ const Each_consultation = ({ product_data }: any) => {
   const [consultation_heading_text_color, setconsultation_heading_text_color] =
     useColor("#000000");
   const [add_consulation, setadd_consulation] = useState(false);
+
+  // this is for using gsap
+  useEffect(() => {
+    itemsRefs.current.forEach((ref: any, index: any) => {
+      console.log(ref);
+      gsap.to(ref, {
+        yPercent:
+          index + 1 - yvalue >= 0 && index + 1 - yvalue <= 1
+            ? (index + 2 - yvalue) * 100 - 150 * (-index + yvalue)
+            : index + 1 - yvalue <= 0
+            ? -50
+            : yvalue + 1 + index * 100,
+        duration: 0.4, // Adjust duration as needed
+      });
+    });
+  }, [yvalue]);
 
   // const data_array = [
   //   {
@@ -313,7 +340,7 @@ const Each_consultation = ({ product_data }: any) => {
           {/* the customize scroll bar starts */}
           <div className="absolute md:right-[3vw] z-[10] border-[#0e257756]  flex w-[2%] right-[1.5%]  top-[50%] translate-y-[-50%] md:w-[0.6vw] rounded-[3vw]  lg:h-[28vw] md:h-[40vw] bg-black mix-blend-overlay  h-[140vw]  overflow-hidden">
             <div
-              className="w-full    bg-[#0E2477]"
+              className="w-full bg-[#0E2477]"
               style={{ height: `${height * 10}%` }}
             ></div>
           </div>
@@ -329,20 +356,27 @@ const Each_consultation = ({ product_data }: any) => {
             return (
               <div
                 key={index}
+                ref={(ref) => {
+                  if (ref) {
+                    itemsRefs.current[index] = ref;
+                  }
+                }}
                 className={` absolute top-[50%] translate-x-[-50%] left-[50%] translate-y-[-50%]  w-full md:gap-[4vw] flex flex-col md:justify-center justify-end  md:pb-0 pb-[10vw] items-center gap-[7vw] h-full  overflow-hidden   `}
                 style={{
                   transition: "opacity 0.6s ease",
                   backgroundColor: bgColor,
-                  transform:
-                    index + 1 - yvalue >= 0 && index + 1 - yvalue <= 1
-                      ? `translateY(${
-                          (index + 2 - yvalue) * 100 - 150 * (-index + yvalue)
-                        }%) translateX(-50%)`
-                      : index + 1 - yvalue <= 0
-                      ? ``
-                      : `translateY(${
-                          yvalue + 1 + index * 100
-                        }%) translateX(-50%)`,
+                  // transform:
+                  //   index + 1 - yvalue >= 0 && index + 1 - yvalue <= 1
+                  //     ? `translateY(${
+                  //         (index + 2 - yvalue) * 100 - 150 * (-index + yvalue)
+                  //       }%) translateX(-50%)`
+                  //     : index + 1 - yvalue <= 0
+                  //     ? ``
+                  //     : `translateY(${
+                  //         yvalue + 1 + index * 100
+                  //       }%) translateX(-50%)`,
+
+                  transform: "translateX(-50%)",
                 }}
               >
                 {isloggedin && (
