@@ -270,7 +270,7 @@ const Recent_publication = ({ product_data }: any) => {
                           alt="arrow image"
                           style={{ transition: "0.5s ease" }}
                           className={`w-[60%] absolute   ${
-                            active == index ? "opacity-[0] " : "opacity-[0%]"
+                            active == index ? "opacity-[100%] " : "opacity-[0%]"
                           } block  group-hover:opacity-[100%]  opacity-[0%] absolute_center z-[10] h-fit`}
                         />
 
