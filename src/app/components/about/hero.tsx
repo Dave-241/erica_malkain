@@ -55,7 +55,8 @@ const About_hero = ({ user_data }: any) => {
     setbg_img_opacity(latest);
   });
 
-  const [yvalue, setyvalue] = useState(globalThis.innerWidth > 760 ? -50 : 0);
+  const [yvalue, setyvalue] = useState(-50);
+  // const [start_anime, setstart_anime] = useState(-50);
   const [opac_one_img, setopac_one_img] = useState(1);
   const [opac_two_img, setopac_two_img] = useState(0);
   const [bg_img_opacity, setbg_img_opacity] = useState(0);
@@ -79,19 +80,19 @@ const About_hero = ({ user_data }: any) => {
   // GSAP for applying translations and opacity
   useEffect(() => {
     gsap.to(image_ref.current, {
-      xPercent: calWidth < 760 ? 0 : yvalue >= 50 ? -50 : yvalue,
+      xPercent: calWidth < 768 ? "" : yvalue >= 50 ? -50 : yvalue,
       duration: 0.5, // Adjust duration as needed
     });
     console.log("this is trackign");
     gsap.to(image_ref_one.current, {
       opacity: calWidth < 768 ? "" : opac_one_img,
-      duration: 0.4, // Adjust duration as needed
+      duration: 0.2, // Adjust duration as needed
     });
     gsap.to(image_ref_two.current, {
       opacity: calWidth < 768 ? "" : opac_two_img,
-      duration: 0.4, // Adjust duration as needed
+      duration: 0.2, // Adjust duration as needed
     });
-  }, [yvalue, opac_one_img, opac_two_img, calWidth]);
+  }, [yvalue, opac_one_img, opac_two_img, calWidth, start_anime]);
 
   const width = globalThis.innerWidth;
   const handleResize = () => {
@@ -273,7 +274,9 @@ const About_hero = ({ user_data }: any) => {
               }
             }
             // transition={{ ease: "easeOut", duration: 0 }}
-            className="md:sticky  md:top-0 md:left-[25%] z-[20]  md:w-[40%] md:h-[100vh] flex items-center"
+            className={`md:sticky ${
+              start_anime ? " md:left-[25%]" : " md:left-[0%]"
+            }  md:top-0 z-[20]  md:w-[40%] md:h-[100vh] flex items-center`}
           >
             <div className="w-full md:h-[36vw]    overflow-hidden relative ">
               {/* {isloggedin && <Edit_text />} */}
@@ -285,14 +288,14 @@ const About_hero = ({ user_data }: any) => {
                 width="0"
                 height="0"
                 style={{
-                  // opacity: calWidth < 768 ? "" : opac_one_img,
+                  // opacity: start_anime ? 1 : 0,
                   transition: "0.65s ease",
                   transform:
                     calWidth < 760
                       ? ""
                       : start_anime
                       ? ""
-                      : "translateY(-50%) translateX(-50%)  scale(1.6)",
+                      : "translateY(-50%)  translateX(-50%)  scale(1.6)",
                   filter: start_anime ? "" : "blur(4px)",
                 }}
                 alt="Erica Boothby"
