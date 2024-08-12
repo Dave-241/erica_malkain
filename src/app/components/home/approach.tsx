@@ -217,7 +217,7 @@ const AnimatedLines: React.FC = () => {
         </Link>
       </div>
       <p
-        className={`text-[5vw] mb-[5vw] md:hidden uppercase text-[#000000] text-center`}
+        className={`text-[4.5vw] mb-[7vw] mt-[4vw] md:hidden uppercase text-[#000000] text-center`}
       >
         Education
       </p>{" "}
@@ -369,7 +369,7 @@ const AnimatedLines: React.FC = () => {
               Ph.D. Social Psychology
             </p>
             <p
-              ref={right_second_text}
+              ref={right_first_text}
               className={`border-[#000000] z-[10] w-fit px-[3vw] border py-[1vw] rounded-[4vw] text-[4vw]  bg-[#DFE4DF]`}
             >
               Senior Lecturer{" "}
@@ -445,7 +445,7 @@ const AnimatedLines: React.FC = () => {
         </p>
       </div>
       {/* A BIT ABOUT ERICA */}
-      <div className="flex justify-center md:hidden mt-[12vw]">
+      <div className="flex justify-center md:hidden mt-[15vw] mb-[2.5vw]">
         <p
           ref={right_second_text}
           className={`border-[#000000] z-[10] w-fit px-[3vw] border py-[1vw] rounded-[4vw] text-[4vw]  bg-[#DFE4DF]`}
