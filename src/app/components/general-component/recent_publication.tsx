@@ -139,7 +139,7 @@ const Recent_publication = ({ product_data }: any) => {
                 }}
                 onClick={() => setactive(index)}
                 // onMouseLeave={() => setactive(null)}
-                className={`w-full cursor-cell overflow-hidden  md:h-[37vw] h-[95vw]  relative ${
+                className={`w-full cursor-cell  overflow-hidden  md:h-[37vw] h-[95vw]  relative ${
                   active == index
                     ? "md:border-none rounded-[2vw] md:rounded-none md:px-0 px-[5%]"
                     : ""
@@ -189,7 +189,9 @@ const Recent_publication = ({ product_data }: any) => {
                       transition: "0.5s ease",
                     }}
                     className={`flex md:gap-[2vw] h-full  md:h-fit  ${
-                      active == index ? "md:translate-x-[160%]" : ""
+                      active == index
+                        ? "md:translate-x-[152%] md:translate-y-[-130%]"
+                        : ""
                     } md:w-[35%] md:text-[1.2vw] text-[4.5vw] z-[20] md:leading-[1.8vw] leading-[5vw] items-center  ${
                       Helvetica_medium.className
                     }`}
@@ -210,12 +212,12 @@ const Recent_publication = ({ product_data }: any) => {
                   {/* this includes body  and arrow  */}
 
                   {/* THIS INCLUDES THE BUTTONS AND THE BODY TEXT */}
-                  <div className="w-full  flex-col-reverse md:gap-[1vw] md:items-end md:w-[60%] gap-[5vw]  flex md:flex-col">
+                  <div className="w-full   flex-col-reverse md:gap-[1.5vw] md:items-start md:w-[60%] gap-[5vw]  flex md:flex-col">
                     <div
                       style={{ transition: "0.7s ease" }}
                       className={`${Bt_Beau_Regualr.className}  ${
-                        active != index ? "translate-x-[100%] h-0" : ""
-                      }  md:w-[20%]  md:text-[1vw] gap-[4vw] text-[3.5vw] flex capitalize overflow-hidden md:gap-[1vw] md:flex-col md:items-end  items-center`}
+                        active != index ? "translate-x-[-100%] h-0" : ""
+                      }  md:w-[30%]  md:text-[1vw] md:ml-[7%]  gap-[4vw] text-[3.5vw] flex capitalize overflow-hidden md:gap-[1vw] md:items-start  items-center`}
                     >
                       {" "}
                       <Link
@@ -270,12 +272,16 @@ const Recent_publication = ({ product_data }: any) => {
                           alt="arrow image"
                           style={{ transition: "0.5s ease" }}
                           className={`w-[60%] absolute   ${
-                            active == index ? "opacity-[100%] " : "opacity-[0%]"
+                            active == index
+                              ? "opacity-[100%]  "
+                              : "opacity-[0%]"
                           } block  group-hover:opacity-[100%]  opacity-[0%] absolute_center z-[10] h-fit`}
                         />
 
                         <div
-                          className="w-full h-full bg-[#440C0C] absolute left-0 top-[100%] group-hover:top-0 "
+                          className={`w-full h-full bg-[#440C0C] absolute left-0 top-[100%] group-hover:top-0  ${
+                            active == index ? "top-0" : ""
+                          }`}
                           style={{ transition: "0.5s ease" }}
                         ></div>
                       </button>

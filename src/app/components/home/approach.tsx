@@ -45,6 +45,10 @@ const AnimatedLines: React.FC = () => {
   const left_first_text = useRef(null);
   const left_second_text = useRef(null);
 
+  // THIS IS FOR THE MOBILE UP AND DOWN
+  const mobile_up_text = useRef(null);
+  const mobile_down_text = useRef(null);
+
   const first_is_in_view = useInView(first_text_ref);
   const second_is_in_view = useInView(second_text_ref);
 
@@ -150,7 +154,17 @@ const AnimatedLines: React.FC = () => {
       opacity: (100 - value_1) / 100,
       duration: 0.4, // Adjust duration as needed
     });
-
+    //  THIS IS FOR THE MOBILE
+    gsap.to(mobile_up_text.current, {
+      yPercent: value_1 * 3,
+      opacity: (100 - value_1) / 100,
+      duration: 0.4, // Adjust duration as needed
+    });
+    gsap.to(mobile_down_text.current, {
+      yPercent: value_inner_4,
+      opacity: (100 - value_3) / 100,
+      duration: 0.4, // Adjust duration as needed
+    });
     console.log(value_inner_4);
   }, [value_1, value_2, value_3, value_inner_4]);
 
@@ -363,13 +377,13 @@ const AnimatedLines: React.FC = () => {
         <div className="w-full md:hidden  h-[100vh] flex justify-center items-center sticky top-0 left-0 ">
           <div className="h-full w-full  flex flex-col py-[20vh]  items-center justify-between absolute top-0 left-0">
             <p
-              ref={left_first_text}
+              ref={mobile_up_text}
               className={`border-[#000000] z-[10] w-fit px-[3vw] border py-[1vw] rounded-[4vw] text-[4vw]  bg-[#DFE4DF]`}
             >
               Ph.D. Social Psychology
             </p>
             <p
-              ref={right_first_text}
+              ref={mobile_down_text}
               className={`border-[#000000] z-[10] w-fit px-[3vw] border py-[1vw] rounded-[4vw] text-[4vw]  bg-[#DFE4DF]`}
             >
               Senior Lecturer{" "}
@@ -447,7 +461,7 @@ const AnimatedLines: React.FC = () => {
       {/* A BIT ABOUT ERICA */}
       <div className="flex justify-center md:hidden mt-[15vw] mb-[2.5vw]">
         <p
-          ref={right_second_text}
+          // ref={right_second_text}
           className={`border-[#000000] z-[10] w-fit px-[3vw] border py-[1vw] rounded-[4vw] text-[4vw]  bg-[#DFE4DF]`}
         >
           A bit About Erica
