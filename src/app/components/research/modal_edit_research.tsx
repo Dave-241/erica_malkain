@@ -22,13 +22,6 @@ const Modal_edit_research = ({ setopen_edit, edit_ID, open_edit }: any) => {
   //   const [category, setcategory] = useState("");
 
   useEffect(() => {
-    settitle("loading ...");
-    setSlug("loading ...");
-    setText("");
-    setimage_link("loading ...");
-    setcaption("loading ...");
-    setValue("loading ...");
-    console.log("this was just opened" + edit_ID);
     const fetchInitialData = async () => {
       if (edit_ID) {
         const { data, error } = await supabase
@@ -52,6 +45,13 @@ const Modal_edit_research = ({ setopen_edit, edit_ID, open_edit }: any) => {
       } else {
         // setdaa;
         console.log("no data");
+        settitle("");
+        setSlug("");
+        setText("");
+        setimage_link("");
+        setcaption("");
+        setValue("");
+        console.log("this was just opened" + edit_ID);
         // settitle("");
         // setText("");
         // setimage_link("");

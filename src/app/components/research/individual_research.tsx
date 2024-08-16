@@ -105,7 +105,7 @@ const Individual_research = ({ product_data }: any) => {
           </p>
         </div>
 
-        <div className="w-full relative  lg:h-[35rem] mt-[1.5rem] md:mt-[2rem] overflow-hidden md:h-[30rem] h-[19rem] ">
+        <div className="w-full relative md:w-[100rem] md:max-w-full  mx-auto  lg:h-[35rem] mt-[1.5rem] md:mt-[2rem] overflow-hidden md:h-[30rem] h-[19rem] ">
           <Image
             src={product_data[0].image}
             unoptimized
@@ -116,7 +116,7 @@ const Individual_research = ({ product_data }: any) => {
           />
         </div>
         <div
-          className={` ${Helvetica_light.className} md:container flex flex-col items-center mx-auto  pt-6 md:p-6 lg:p-12 bg-transparent text-dark-blue dark:text-white 
+          className={` ${Helvetica_light.className} md:container flex flex-col  mx-auto  pt-6 md:p-6 lg:p-12 bg-transparent text-dark-blue dark:text-white 
             [&_p]:text-[1rem] [&_p_md]:text-xl  [&_p]:leading-relaxed [&_p]:mb-4 
             [&_h1]:text-3xl [&_h1]:w-full [&_h1_md]:text-4xl [&_h1_lg]:text-5xl [&_h1]:font-bold [&_h1]:mb-4 
             [&_h2]:text-2xl [&_h2]:w-full [&_h2_md]:text-3xl [&_h2_lg]:text-4xl [&_h2]:font-bold [&_h2]:mb-4 
@@ -124,9 +124,9 @@ const Individual_research = ({ product_data }: any) => {
             [&_h4]:text-lg [&_h4]:w-full [&_h4_md]:text-xl [&_h4_lg]:text-2xl [&_h4]:font-bold [&_h4]:mb-4 
             [&_h5]:text-base [&_h5]:w-full [&_h5_md]:text-lg [&_h5_lg]:text-xl [&_h5]:font-bold [&_h5]:mb-4 
             [&_h6]:text-sm [&_h6]:w-full [&_h6_md]:text-base [&_h6_lg]:text-lg [&_h6]:font-bold [&_h6]:mb-4 
-            [&_ul]:list-disc [&_ul]:pl-4 [&_ul]:mb-4 
-            [&_ol]:list-decimal [&_ol]:pl-4 [&_ol]:mb-4 
-            [&_li]:mb-2 
+            [&_ul]:list-disc [&_ul]:pl-4 [&_ul]:mb-5
+            [&_ol]:list-decimal [&_ol]:pl-4 [&_ol]:mb-5
+            [&_li]:mb-6
             [&_table]:w-full [&_table]:border-collapse [&_table]:border 
             [&_th]:border [&_th]:px-4 [&_th]:py-2 [&_th]:bg-gray-200 [&_th]:text-left 
             [&_td]:border [&_td]:px-4 [&_td]:py-2

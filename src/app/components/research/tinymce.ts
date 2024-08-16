@@ -1,8 +1,7 @@
 export const plugins = `
   fullscreen 
   image 
-  accordion 
-  footnotes 
+  accordion  
   lists 
   advlist 
   anchor 
