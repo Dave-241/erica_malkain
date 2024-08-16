@@ -246,7 +246,9 @@ const Publication = ({ product_data }: any) => {
                             {index <
                               e.description.split("Boothby, E. J").length -
                                 1 && (
-                              <strong className={`${Helvetica_bold.className}`}>
+                              <strong
+                                className={`${Helvetica_bold.className} text-[#440c0ccb]`}
+                              >
                                 Boothby, E. J
                               </strong>
                             )}
