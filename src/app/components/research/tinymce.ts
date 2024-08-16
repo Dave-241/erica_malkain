@@ -1,7 +1,6 @@
 export const plugins = `
   fullscreen 
   image 
-  editimage 
   accordion 
   footnotes 
   lists 

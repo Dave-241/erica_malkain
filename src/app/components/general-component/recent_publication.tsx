@@ -171,13 +171,13 @@ const Recent_publication = ({ product_data }: any) => {
                     transition: "0.7s ease",
                   }}
                   className={`w-full ${
-                    active == index ? "h-[70%]" : "h-[0%]"
+                    active == index ? "h-[100%]" : "h-[0%]"
                   } md:h-[0%] bg-gradient-to-t  from-[#000000] absolute bottom-0 left-0 `}
                 ></div>
                 {/* the mobile overlay  */}
                 {/* first section which includes the s/n and also the title */}
                 <div
-                  className="w-full  research_initial py-[6vw] md:flex-row flex-col  gap-[5vw]  md:gap-[10vw] md:py-[1.2vw] border-opacity-[50%] flex justify-between   "
+                  className="w-full  research_initial pt-[6vw] pb-[3vw] md:flex-row flex-col  gap-[5vw]  md:gap-[10vw] md:py-[1.2vw] border-opacity-[50%] flex justify-between   "
                   ref={(ref) => {
                     if (ref) {
                       itemsRefs.current[index] = ref;
@@ -202,7 +202,7 @@ const Recent_publication = ({ product_data }: any) => {
                       }}
                       className={`  ${
                         active == index
-                          ? "text-[white] md:text-opacity-[100%] text-opacity-[70%] md:text-[#000000]"
+                          ? "text-[white] md:text-opacity-[100%] text-opacity-[100%] md:text-[#000000]"
                           : "text-[#000000] "
                       } z-[20] uppercase`}
                     >
@@ -212,11 +212,13 @@ const Recent_publication = ({ product_data }: any) => {
                   {/* this includes body  and arrow  */}
 
                   {/* THIS INCLUDES THE BUTTONS AND THE BODY TEXT */}
-                  <div className="w-full   flex-col-reverse md:gap-[1.5vw] md:items-start md:w-[60%] gap-[5vw]  flex md:flex-col">
+                  <div className="w-full    flex-col-reverse md:gap-[1.5vw] md:items-start md:w-[60%] gap-[5vw]  flex md:flex-col">
                     <div
                       style={{ transition: "0.7s ease" }}
                       className={`${Bt_Beau_Regualr.className}  ${
-                        active != index ? "translate-x-[-100%] h-0" : ""
+                        active != index
+                          ? "translate-x-[-100%] h-0 md:mt-0 mt-[-5vw]"
+                          : ""
                       }  md:w-[30%]  md:text-[1vw] md:ml-[7%]  gap-[4vw] text-[3.5vw] flex capitalize overflow-hidden md:gap-[1vw] md:items-start  items-center`}
                     >
                       {" "}
@@ -240,7 +242,7 @@ const Recent_publication = ({ product_data }: any) => {
                         }}
                         className={` ${
                           active == index
-                            ? "text-[white] md:text-opacity-[100%] text-opacity-[70%] md:text-[black]"
+                            ? "text-[white] md:text-opacity-[100%] text-opacity-[100%] md:text-[black]"
                             : "text-[black]"
                         } md:w-[80%] w-[90%] z-[20] text-[3.5vw] md:leading-[1.5vw] leading-[4.15vw] md:text-[1.1vw]  ${
                           Helvetica_light.className
