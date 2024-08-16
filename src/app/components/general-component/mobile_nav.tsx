@@ -31,6 +31,7 @@ const Mobile_nav = ({ items, mobile_nav, setopen_menu }: any) => {
   return (
     <>
       <div
+        onClick={close_menu}
         className={` md:hidden justify-between  flex-col fixed z-[10000]  top-0 left-0 flex bg-black ${
           start_anime ? "bg-opacity-[40%]" : "bg-opacity-[0%]"
         } w-full h-full`}
@@ -67,6 +68,9 @@ const Mobile_nav = ({ items, mobile_nav, setopen_menu }: any) => {
         </div>
 
         <div
+          onClick={(e) => {
+            e.stopPropagation();
+          }}
           className="w-full h-[115vw] bg-opacity-[40%] backdrop-blur-[60px]  justify-center items-center bg-black  md:hidden flex flex-col px-[5%] gap-[5vw] rounded-t-[5vw] overflow-hidden"
           style={{
             transform: start_anime ? "" : "translateY(100%)",
