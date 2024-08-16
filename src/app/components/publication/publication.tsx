@@ -6,7 +6,7 @@ import {
   Helvetica_light,
   Helvetica_medium,
 } from "@/app/utils/fonts";
-import { useEffect, useRef, useState } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import Edit_each_publication from "./edit_each_publication";
 import Add_publication from "./add_publication";
 import Delete_publication from "./delete_publication";
@@ -238,7 +238,20 @@ const Publication = ({ product_data }: any) => {
                     <p
                       className={`${Helvetica_light.className} md:text-[1.1vw] md:leading-[1.5vw] text-[4vw] leading-[5vw] text-[#a46035]`}
                     >
-                      {e.description}
+                      {e.description
+                        .split("Boothby, E. J")
+                        .map((part: string, index: number) => (
+                          <React.Fragment key={index}>
+                            {part}
+                            {index <
+                              e.description.split("Boothby, E. J").length -
+                                1 && (
+                              <strong className={`${Helvetica_bold.className}`}>
+                                Boothby, E. J
+                              </strong>
+                            )}
+                          </React.Fragment>
+                        ))}{" "}
                     </p>
                   </div>
 
