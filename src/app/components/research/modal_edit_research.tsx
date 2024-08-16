@@ -24,6 +24,12 @@ const Modal_edit_research = ({ setopen_edit, edit_ID, open_edit }: any) => {
   useEffect(() => {
     const fetchInitialData = async () => {
       if (edit_ID) {
+        settitle("loading ...");
+        setSlug("loading ...");
+        setText("loading ...");
+        setimage_link("");
+        setcaption("loading ...");
+        setValue("");
         const { data, error } = await supabase
           .from("research_blog")
           .select("*")
