@@ -240,9 +240,9 @@ const Home_research = ({ research_items }: any) => {
                   <Link
                     href={`/research/${e.slug}`}
                     key={index}
-                    className={`md:w-[26vw] group gap-[2vw]  flex flex-col justify-between w-[80vw]   flex-none md:flex-auto snap-center`}
+                    className={`md:w-[26vw] group gap-[2vw]  flex flex-col  w-[80vw]   flex-none md:flex-auto snap-center`}
                   >
-                    <div className="w-full h-[100vw]     overflow-hidden rounded-[5vw] relative flex justify-center items-center ">
+                    <div className="w-full h-[100vw]  overflow-hidden rounded-[5vw] relative flex justify-center items-center ">
                       <Image
                         unoptimized
                         height="0"
@@ -252,12 +252,13 @@ const Home_research = ({ research_items }: any) => {
                         style={{
                           transition: "0.7s ease",
                         }}
-                        className="w-full  group-hover:scale-[1.8] scale-[1.9]   h-fit"
+                        className="w-full  group-hover:scale-[1.8] scale-[1.95]   h-fit"
+                        // className="h-full w-auto"
                       />
                     </div>
 
                     <p
-                      className={`${dm_sans_font.className} uppercase  font-medium leading-[5vw] p-[3vw]  text-[4vw] 
+                      className={`${dm_sans_font.className} uppercase border2  font-medium leading-[5vw] p-[3vw]  text-[4vw] 
                  `}
                     >
                       {truncateText(e.caption, 15)}{" "}

@@ -218,7 +218,9 @@ const AnimatedLines: React.FC = () => {
             transition: "0.8s ease",
             opacity: start_frist_text ? 1 : 0,
           }}
-          href={"/"}
+          href={
+            "https://static1.squarespace.com/static/53dd6293e4b0d1d6aa7a2e72/t/64d3dc81cfc33c11b43dbb2a/1691606146249/Erica+Boothby+CV.pdf"
+          }
           className={` ${Helvetica_light.className} ${
             start_frist_text ? "" : "translate-y-[100%]"
           } uppercase overflow-hidden  md:p-[0.5vw] p-[2vw] rounded-[8vw] w-fit group hover:[#103210]  hover:bg-[black] hover:bg-opacity-[20%] md:hidden  md:rounded-[2vw] bg-[black] backdrop-blur-2xl bg-opacity-[20%] `}
@@ -272,7 +274,9 @@ const AnimatedLines: React.FC = () => {
                 // transition: "0.9s ease",
                 // transform: start_anime ? "translate(0,0)" : "translate(0%,80%)",
               }}
-              href={"/"}
+              href={
+                "https://static1.squarespace.com/static/53dd6293e4b0d1d6aa7a2e72/t/64d3dc81cfc33c11b43dbb2a/1691606146249/Erica+Boothby+CV.pdf"
+              }
               className={` ${Helvetica_light.className}  absolute top-[1vw] left-[50%] translate-x-[-50%] uppercase overflow-hidden  md:p-[0.5vw] p-[2vw] rounded-[8vw] w-fit group hover:[#103210]  hover:bg-[black] hover:bg-opacity-[20%]  md:rounded-[2vw] bg-[black] backdrop-blur-2xl bg-opacity-[20%] `}
             >
               <div className="w-full h-full bg-[#440C0C] group-hover:bg-[#103210] md:rounded-[1.7vw] rounded-[7vw] flex justify-center items-center   py-[2.5vw] px-[8vw] md:py-[0.7vw] md:px-[1.5vw]">
