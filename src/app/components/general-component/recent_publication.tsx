@@ -224,6 +224,7 @@ const Recent_publication = ({ product_data }: any) => {
                       {" "}
                       {e.data_link && (
                         <Link
+                          target="_blank"
                           href={`${e.data_link}`}
                           className=" md:rounded-[1.2vw] w-full border-[#440C0C] border-[0.1vw]  bg-[#FEF6F6] flex justify-center items-center md:py-[0.5vw] py-[3vw] text-[#440C0C]  hover:bg-[white] rounded-[7vw]"
                         >
@@ -231,6 +232,7 @@ const Recent_publication = ({ product_data }: any) => {
                         </Link>
                       )}
                       <Link
+                        target="_blank"
                         className=" md:rounded-[1.2vw] w-full border-[#440C0C]   md:border-[0.1vw] bg-[#440C0C] flex justify-center items-center md:py-[0.5vw]  py-[3vw] text-white hover:bg-[#C1A391] hover:border-[#C1A391] rounded-[7vw]"
                         href={`${e.pdf_link}`}
                       >
