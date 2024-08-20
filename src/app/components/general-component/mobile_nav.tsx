@@ -128,7 +128,8 @@ const Mobile_nav = ({ items, mobile_nav, setopen_menu }: any) => {
                   key={index}
                 >
                   <Link
-                    href={"/"}
+                    href={e.href}
+                    target="_blank"
                     style={{
                       transform: start_text
                         ? "translateY(0)"

@@ -48,6 +48,7 @@ const Nav = () => {
     {
       text: "View CV",
       // link: "/",
+      href: "https://static1.squarespace.com/static/53dd6293e4b0d1d6aa7a2e72/t/64d3dc81cfc33c11b43dbb2a/1691606146249/Erica+Boothby+CV.pdf",
       button: true,
     },
   ];

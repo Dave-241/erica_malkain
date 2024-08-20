@@ -29,7 +29,6 @@ const Modal_add_publication = ({
     if (
       !publication_title ||
       !publication_body ||
-      !publication_data_link ||
       !publication_pdf_link ||
       !image_link
     ) {

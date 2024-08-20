@@ -222,17 +222,19 @@ const Recent_publication = ({ product_data }: any) => {
                       }  md:w-[30%]  md:text-[1vw] md:ml-[7%]  gap-[4vw] text-[3.5vw] flex capitalize overflow-hidden md:gap-[1vw] md:items-start  items-center`}
                     >
                       {" "}
+                      {e.data_link && (
+                        <Link
+                          href={`https://${e.data_link}`}
+                          className=" md:rounded-[1.2vw] w-full border-[#440C0C] border-[0.1vw]  bg-[#FEF6F6] flex justify-center items-center md:py-[0.5vw] py-[3vw] text-[#440C0C]  hover:bg-[white] rounded-[7vw]"
+                        >
+                          DATA
+                        </Link>
+                      )}
                       <Link
-                        href={`https://${e.data_link}`}
                         className=" md:rounded-[1.2vw] w-full border-[#440C0C]   md:border-[0.1vw] bg-[#440C0C] flex justify-center items-center md:py-[0.5vw]  py-[3vw] text-white hover:bg-[#C1A391] hover:border-[#C1A391] rounded-[7vw]"
+                        href={`https://${e.pdf_link}`}
                       >
                         PDF
-                      </Link>{" "}
-                      <Link
-                        href={`https://${e.pdf_link}`}
-                        className=" md:rounded-[1.2vw] w-full border-[#440C0C] border-[0.1vw]  bg-[#FEF6F6] flex justify-center items-center md:py-[0.5vw] py-[3vw] text-[#440C0C]  hover:bg-[white] rounded-[7vw]"
-                      >
-                        DATA
                       </Link>
                     </div>
                     <div className="flex md:gap-[3vw]  gap-[2vw] z-[20] md:w-full justify-between md:justify-end items-center ">
