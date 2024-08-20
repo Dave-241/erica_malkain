@@ -27,10 +27,10 @@ const Nav = () => {
       link: "/consultation",
     },
 
-    {
-      text: "MEDIA",
-      link: "/media",
-    },
+    // {
+    //   text: "MEDIA",
+    //   link: "/media",
+    // },
   ];
   const items_right = [
     {
