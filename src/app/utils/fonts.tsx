@@ -21,6 +21,12 @@ export const eb_gramond_italic_font = EB_Garamond({
 export const Bt_Beau_Regualr = localFont({
   src: "../../../public/fonts/BT-BeauSans/BT-BeauSans-Regular-BF64d45952e54c1.ttf",
 });
+export const Bt_Beau_medium = localFont({
+  src: "../../../public/fonts/BT-BeauSans/BT-BeauSans-Medium-BF64d4595383d81.ttf",
+});
+export const Bricolage_grotesk_bold = localFont({
+  src: "../../../public/fonts/bricolage_grbricolage/BricolageGrotesque48pt-Bold-BF648bd57837d48.otf",
+});
 export const Helvetica_bold = localFont({
   src: "../../../public/fonts/helvetica_neue/HelveticaNeueBold.otf",
 });

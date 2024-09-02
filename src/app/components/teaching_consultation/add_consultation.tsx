@@ -1,5 +1,6 @@
 "use client";
 
+import { supabase } from "@/app/utils/supabaseClient";
 import { useState } from "react";
 
 const Add_consultation = ({
@@ -8,6 +9,32 @@ const Add_consultation = ({
   refresh_all_params,
 }: any) => {
   const [add_publication, setadd_publication] = useState(false);
+  const deleteAllconsultation = async () => {
+    try {
+      // Make sure to confirm the action with the user before proceeding
+      if (
+        window.confirm(
+          "Are you sure you want to delete all consultation?. Note : This can't be undone",
+        )
+      ) {
+        // Perform the delete operation
+        const { data, error } = await supabase
+          .from("consultation")
+          .delete()
+          .neq("id", 0); // Assuming 'id' is a non-nullable primary key
+
+        if (error) {
+          throw new Error(error.message);
+        }
+
+        console.log("All publications have been deleted.");
+        // Optionally, reload the page or update the UI
+        window.location.reload();
+      }
+    } catch (error) {
+      console.error("Error deleting publications:", error);
+    }
+  };
 
   return (
     <>
@@ -22,7 +49,8 @@ const Add_consultation = ({
           className=" md:px-[3vw] py-[3%] md:w-auto w-full md:py-[1vw] capitalize bg-white rounded-[0.5rem]  md:rounded-[0.5vw] hover:bg-opacity-[60%] backdrop-blur-2xl text-center"
           onClick={() => {
             setconsultation_title("");
-            setdelete_consulation(true);
+            deleteAllconsultation();
+            // setdelete_consulation(true);
           }}
         >
           delete all Consulations

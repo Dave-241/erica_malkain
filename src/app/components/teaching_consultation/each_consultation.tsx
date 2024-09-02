@@ -21,6 +21,7 @@ import { useColor } from "react-color-palette";
 import { useRouter } from "next/navigation";
 import { gsap } from "gsap";
 import { supabase } from "@/app/utils/supabaseClient";
+import Read_more from "./read_more_modal";
 const Each_consultation = ({ product_data }: any) => {
   const sectionRef = useRef(null);
 
@@ -273,6 +274,21 @@ const Each_consultation = ({ product_data }: any) => {
     };
   }, []);
 
+  // THIS IS FOR SPLITTING THE TEXT
+  // THIS IS FOR SPLITTING THE TEXT
+  // THIS IS FOR SPLITTING THE TEXT
+  // THIS IS FOR SPLITTING THE TEXT
+
+  const getCaption = (text: any, wordLimit: any) => {
+    const words = text.split(" ").slice(0, wordLimit).join(" ");
+    return words + (text.split(" ").length > wordLimit ? " . . . " : "");
+  };
+
+  // THIS FOR READMORE STATE
+  const [read_more_body, setread_more_body] = useState("");
+  const [read_more_title, setread_more_title] = useState("");
+  const [open_read_more, setopen_read_more] = useState(false);
+
   return (
     <>
       {/* buttons to add consultation */}
@@ -339,7 +355,7 @@ const Each_consultation = ({ product_data }: any) => {
           {/* the customize scroll bar starts */}
           <div className="absolute md:right-[3vw] z-[10] border-[#0e257756]  flex w-[2%] right-[1.5%]  top-[50%] translate-y-[-50%] md:w-[0.6vw] rounded-[3vw]  lg:h-[28vw] md:h-[40vw] bg-black mix-blend-overlay  h-[140vw]  overflow-hidden">
             <div
-              className="w-full bg-[#0E2477]"
+              className="fw-full bg-[#0E2477]"
               style={{ height: `${height * 10}%` }}
             ></div>
           </div>
@@ -421,11 +437,19 @@ const Each_consultation = ({ product_data }: any) => {
                   <div className=" md:w-[30vw] gap-[3vw] flex flex-col md:gap-[2vw]">
                     <p
                       className={` ${Helvetica_light.className} md:border-l-[0.3vw] text-[3.5vw] pl-[3vw] border-l-[1.2vw] py-[3vw] border-[white] md:pl-[1vw] md:py-[1vw] text-[white] md:text-[1.2vw] [&_a]:underline underline-offset-4`}
-                      dangerouslySetInnerHTML={{ __html: e.body }}
+                      // dangerouslySetInnerHTML={{ __html: e.body }}
+                      dangerouslySetInnerHTML={{
+                        __html: getCaption(e.body, 60),
+                      }}
                     ></p>
 
-                    <Link
-                      href={e.link}
+                    <button
+                      onClick={() => {
+                        setread_more_body(e.body);
+                        setread_more_title(e.heading);
+                        setopen_read_more(true);
+                      }}
+                      // href={e.div}
                       className={` ${Bt_Beau_Regualr.className} md:text-[1vw] md:w-[10vw] w-[40vw] h-[10vw] ml-[5vw] flex justify-center items-center md:h-[2.6vw]  border-[white] border-[0.1vw] md:rounded-[3.7vw]  md:ml-[1vw] group relative overflow-hidden rounded-[3vw]`}
                     >
                       <p
@@ -445,7 +469,7 @@ const Each_consultation = ({ product_data }: any) => {
                         className="w-full h-full bg-[#440C0C] absolute left-0 top-[100%] group-hover:top-0 "
                         style={{ transition: "0.5s ease" }}
                       ></div>
-                    </Link>
+                    </button>
                   </div>
                 </div>
                 {/* this image is for mobile */}
@@ -475,6 +499,15 @@ const Each_consultation = ({ product_data }: any) => {
           })}
         </div>
       </div>
+
+      {/* this is read more wrapper */}
+      {open_read_more && (
+        <Read_more
+          body={read_more_body}
+          title={read_more_title}
+          setopen_read_more={setopen_read_more}
+        />
+      )}
     </>
   );
 };

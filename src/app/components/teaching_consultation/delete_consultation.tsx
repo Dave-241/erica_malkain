@@ -1,5 +1,7 @@
 "use client";
 
+import { supabase } from "@/app/utils/supabaseClient";
+
 const Delete_consultation = ({ setdelete_consulation, title }: any) => {
   return (
     <>
