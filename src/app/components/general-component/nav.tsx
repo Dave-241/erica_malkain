@@ -7,8 +7,25 @@ import { useEffect, useState } from "react";
 import ham from "../../../../public/images/general/ham.png";
 import Image from "next/image";
 import Mobile_nav from "./mobile_nav";
+import Edit_nav from "./edit_nav";
+import { supabase } from "@/app/utils/supabaseClient";
 
 const Nav = () => {
+  const [show_media, setshow_media] = useState(false);
+  const [open_edit, setopen_edit] = useState(false);
+
+  useEffect(() => {
+    const fetchProducts = async () => {
+      const { data, error }: any = await supabase
+        .from("nav")
+        .select("*")
+        .order("created_at", { ascending: false });
+      setshow_media(data[0].media);
+      return data;
+    };
+
+    fetchProducts();
+  }, [open_edit]);
   const items = [
     {
       text: "Home",
@@ -26,7 +43,7 @@ const Nav = () => {
       text: "teaching & consultation",
       link: "/consultation",
     },
-
+    ...(show_media ? [{ text: "MEDIA", link: "/media" }] : []),
     // {
     //   text: "MEDIA",
     //   link: "/media",
@@ -113,6 +130,24 @@ const Nav = () => {
   }, [width]);
   const [calwidth, setcalwidth] = useState(0);
   const [open_menu, setopen_menu] = useState(false);
+  const [isloggedin, setisloggedin] = useState(false);
+
+  // CHECK IF LOGGED IN
+  // check if logged in
+  useEffect(() => {
+    // Check initial session
+    const checkInitialSession = async () => {
+      const {
+        data: { session },
+      } = await supabase.auth.getSession();
+      if (session) {
+        setisloggedin(true);
+      }
+    };
+
+    checkInitialSession();
+  }, [router]);
+
   return (
     <>
       <nav
@@ -245,14 +280,38 @@ const Nav = () => {
             );
           })}
         </div>
+        {/* THIS IS FOR THE LOGGED IN SESSION */}
+
+        {isloggedin && (
+          <div className="w-full Z-[100]  absolute top-0 left-0 h-full flex justify-end items-start md:px-[0.5vw] md:gap-[1.5vw] px-[5vw]  text-[3.5vw] gap-[5vw] md:text-[1vw] capitalize bg-black bg-opacity-[50%]  md:rounded-[1vw]">
+            <button
+              className=" md:w-[8vw] md:h-[3vw] h-[10vw] w-[30vw] rounded-[2vw] capitalize bg-white  md:rounded-[0.5vw] hover:bg-opacity-[60%] backdrop-blur-2xl text-center "
+              onClick={() => {
+                // edit_each_publication_modal_param(
+                //   title,
+                //   body,
+                //   view_data,
+                //   pdf_data,
+                //   id,
+                //   img,
+                // );
+                setopen_edit(true);
+              }}
+            >
+              edit
+            </button>
+          </div>
+        )}
       </nav>
       {open_menu && (
         <Mobile_nav
           setopen_menu={setopen_menu}
           items={items}
+          show_media={show_media}
           mobile_nav={mobile_nav}
         />
       )}
+      {open_edit && <Edit_nav setopen_edit={setopen_edit} />}
     </>
   );
 };

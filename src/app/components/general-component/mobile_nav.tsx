@@ -7,7 +7,7 @@ import { usePathname } from "next/navigation";
 import exit from "../../../../public/images/general/exit.png";
 import { useEffect, useState } from "react";
 
-const Mobile_nav = ({ items, mobile_nav, setopen_menu }: any) => {
+const Mobile_nav = ({ items, mobile_nav, setopen_menu, show_media }: any) => {
   const [start_anime, setstart_anime] = useState(false);
   const [start_text, setstart_text] = useState(false);
   useEffect(() => {
