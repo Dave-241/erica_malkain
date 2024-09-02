@@ -71,7 +71,7 @@ const Mobile_nav = ({ items, mobile_nav, setopen_menu, show_media }: any) => {
           onClick={(e) => {
             e.stopPropagation();
           }}
-          className="w-full h-[115vw] bg-opacity-[40%] backdrop-blur-[60px]  justify-center items-center bg-black  md:hidden flex flex-col px-[5%] gap-[5vw] rounded-t-[5vw] overflow-hidden"
+          className="w-full py-[12vw] bg-opacity-[40%] backdrop-blur-[60px]  justify-center items-center bg-black  md:hidden flex flex-col px-[5%] gap-[5vw] rounded-t-[5vw] overflow-hidden"
           style={{
             transform: start_anime ? "" : "translateY(100%)",
             // transformOrigin: "top left",
