@@ -407,10 +407,16 @@ const Each_consultation = ({ product_data }: any) => {
                   />
                 )}
 
-                <div className="flex md:px-[10vw] px-[5%] md:flex-row flex-col  md:justify-between w-full md:items-center md:gap-0 gap-[7vw] ">
+                <div
+                  className={`${
+                    (index + 1) % 2 === 1
+                      ? "md:flex-row"
+                      : "md:flex-row-reverse"
+                  } flex md:px-[10vw] px-[5%]  flex-col  md:justify-between w-full md:items-center md:gap-0 gap-[7vw] `}
+                >
                   {/* the left section */}
                   <div
-                    className="flex  flex-col w-[50%]  md:w-[30%]  md:gap-[4vw]"
+                    className="flex  flex-col w-[60%]  md:w-[30%]  md:gap-[4vw]"
                     style={{ backgroundColor: e.bgColor }}
                   >
                     <img
