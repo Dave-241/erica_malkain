@@ -92,10 +92,10 @@ const Footer = ({ bg }: any) => {
               </h2>
             </div> */}
 
-            <div className="w-full md:justify-between   md:flex-row flex-col md:gap-[5%] gap-[5vw] flex ">
+            <div className="w-full  md:justify-between   md:flex-row flex-col md:gap-[5%] gap-[5vw] flex ">
               <div className="md:w-[80%] gap-[3vw]  md:gap-[1.2vw] flex flex-col  text-white ">
                 <h3
-                  className={` ${Bricolage_grotesk_bold.className} tracking-wider items-center flex md:text-[8vw] text-[10vw] md:leading-[8vw] `}
+                  className={` ${Bricolage_grotesk_bold.className} tracking-wider items-center flex md:text-[8vw]  text-[10vw] md:leading-[6vw] `}
                 >
                   <span>GET IN T</span>
                   <button
@@ -143,7 +143,7 @@ const Footer = ({ bg }: any) => {
                     <Link
                       key={index}
                       href={e.link}
-                      className={`uppercase text-[#ffffffbe] hover:text-white md:text-[1.2vw] text-[3.5vw] ${Helvetica_medium.className}`}
+                      className={`uppercase underline underline-offset-8 hover:text-[#ffffffbe] text-white md:text-[1.1vw] text-[3.5vw] ${Helvetica_medium.className}`}
                     >
                       {e.text}
                     </Link>

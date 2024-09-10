@@ -62,17 +62,20 @@ const Login = () => {
 
   return (
     <>
-      <div className="w-full flex flex-col items-center h-[100vh] justify-center">
+      <div className="w-full flex  flex-col items-center  h-[100vh] justify-center">
         {!loggedin && (
           <>
             {" "}
             <h1 className="text-[3rem]">
-              {viewToMessageMap[view]?.title || "Authentication"}
+              {/* {viewToMessageMap[view]?.title || "Authentication"} */}
+              Authentication
             </h1>{" "}
             <div className="md:w-[50%] w-[90%]">
               <Auth
                 supabaseClient={supabase}
                 providers={[]}
+                // theme="dark"
+                // providers={["google", "facebook", "twitter"]}
                 // controls whether to display only social providers
                 // onlyThirdPartyProviders
                 redirectTo="/"
@@ -81,7 +84,9 @@ const Login = () => {
                 // controls how to display the social provider icons
                 socialLayout="horizontal"
                 view={view}
-                showLinks={false}
+
+                // onViewChange={(newView:any) => setView(newView)}
+                // showLinks={false}
               />
             </div>
           </>

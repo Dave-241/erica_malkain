@@ -46,10 +46,12 @@ export default async function Home() {
     <>
       <>
         <Nav />
-        <Research_hero page_data={page_data || [{}]} />
-        <Each_research product_data={product_data || []} />
-        <Contact_wrappeer />
-        <Footer />
+        <div className="" style={{ backgroundColor: "#DFE4DF" }}>
+          <Research_hero page_data={page_data || [{}]} />
+          <Each_research product_data={product_data || []} />
+          <Contact_wrappeer />
+          <Footer />{" "}
+        </div>
       </>
     </>
   );
