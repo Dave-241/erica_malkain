@@ -413,30 +413,29 @@ const Each_consultation = ({ product_data }: any) => {
                     bg_img={e.bg_img}
                   />
                 )}
-                <div className="flex md:px-[10vw] px-[5%] md:flex-row flex-col  md:justify-between w-full md:gap-0 gap-[7vw] ">
+                <div className="flex md:px-[10vw] px-[5%] md:flex-row flex-col  md:justify-between w-full md:items-center md:gap-0 gap-[7vw] ">
                   {/* the left section */}
                   <div
-                    className="flex  flex-col  md:w-[30vw]  md:gap-[4vw]"
+                    className="flex  flex-col w-[50%] border2 md:w-[30%]  md:gap-[4vw]"
                     style={{ backgroundColor: e.bgColor }}
                   >
-                    <h2
-                      className={` ${spline_font.className} uppercase font-semibold md:text-[4vw] md:leading-[4.4vw]  text-[10vw] leading-[11vw]`}
-                      style={{ color: textColor }}
-                    >
-                      {e.heading}
-                    </h2>
-
                     <img
                       src={e.img}
                       alt={e.heading}
-                      className="w-full md:inline-block hidden h-fit md:rounded-[6vw]"
+                      className="w-full md:inline-block hidden h-fit md:rounded-[2vw]"
                     />
                   </div>
 
                   {/* now the writing  */}
-                  <div className=" md:w-[30vw] gap-[3vw] flex flex-col md:gap-[2vw]">
+                  <div className=" md:w-[60%] border2 gap-[3vw] flex flex-col md:gap-[1vw]">
+                    <h2
+                      className={` ${spline_font.className} uppercase font-semibold md:text-[4vw] md:leading-[4.4vw] text-white border2  text-[10vw] leading-[11vw]`}
+                      // style={{ color: textColor }}
+                    >
+                      {e.heading}
+                    </h2>
                     <p
-                      className={` ${Helvetica_light.className} md:border-l-[0.3vw] text-[3.5vw] pl-[3vw] border-l-[1.2vw] py-[3vw] border-[white] md:pl-[1vw] md:py-[1vw] text-[white] md:text-[1.2vw] [&_a]:underline underline-offset-4`}
+                      className={` ${Helvetica_light.className}  text-[3.5vw]  py-[3vw]  md:py-[1vw] text-[white] md:text-[1vw] [&_a]:underline underline-offset-4`}
                       // dangerouslySetInnerHTML={{ __html: e.body }}
                       dangerouslySetInnerHTML={{
                         __html: getCaption(e.body, 60),
@@ -450,7 +449,7 @@ const Each_consultation = ({ product_data }: any) => {
                         setopen_read_more(true);
                       }}
                       // href={e.div}
-                      className={` ${Bt_Beau_Regualr.className} md:text-[1vw] md:w-[10vw] w-[40vw] h-[10vw] ml-[5vw] flex justify-center items-center md:h-[2.6vw]  border-[white] border-[0.1vw] md:rounded-[3.7vw]  md:ml-[1vw] group relative overflow-hidden rounded-[3vw]`}
+                      className={` ${Bt_Beau_Regualr.className} md:text-[1vw] md:w-[10vw] w-[40vw] h-[10vw]  flex justify-center items-center md:h-[2.8vw]  border-[white] border-[0.1vw] md:rounded-[3vw]   group relative overflow-hidden rounded-[3vw]`}
                     >
                       <p
                         style={{ transition: "0.5s ease" }}
@@ -482,7 +481,7 @@ const Each_consultation = ({ product_data }: any) => {
                 </div>
                 {/* institue and location segment */}
                 <div
-                  className={` ${Bt_Beau_Regualr.className} w-full border-y border-[white]  md:py-[1.6vw] flex justify-center items-center md:gap-[4vw] text-white text-opacity-[100%] md:text-[1.1vw] text-[3.5vw]  md:px-[10vw] px-[5%] gap-[3vw] py-[3vw]`}
+                  className={` opacity-[70%] ${Bt_Beau_Regualr.className} w-full border-y border-[white]  md:py-[1.6vw] flex justify-center items-center md:gap-[4vw] text-white text-opacity-[100%] md:text-[1.1vw] text-[3.5vw]  md:px-[10vw] px-[5%] gap-[3vw] py-[3vw]`}
                 >
                   <p className="" style={{ whiteSpace: "nowrap" }}>
                     {e.institue}

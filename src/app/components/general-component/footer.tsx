@@ -137,13 +137,13 @@ const Footer = ({ bg }: any) => {
                   </div>
                 </button>
               </div>
-              <div className="  flex gap-[3vw] md:w-auto w-[70%] flex-wrap  md:flex-col md:gap-[2vw] ">
+              <div className="  flex gap-[3vw] md:w-auto  flex-wrap  md:flex-col md:gap-[2vw] ">
                 {items.map((e: any, index: any) => {
                   return (
                     <Link
                       key={index}
                       href={e.link}
-                      className={`uppercase underline underline-offset-8 hover:text-[#ffffffbe] text-white md:text-[1.1vw] text-[3.5vw] ${Helvetica_medium.className}`}
+                      className={`uppercase underline underline-offset-8 hover:text-[#ffffffbe] text-white md:text-[1.1vw] text-[3vw] ${Helvetica_medium.className}`}
                     >
                       {e.text}
                     </Link>

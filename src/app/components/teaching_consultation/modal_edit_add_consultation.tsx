@@ -248,7 +248,7 @@ const Modal_edit_consulation = ({
                       </div>
                     )}
                   </div>
-                  <div className="flex w-full md:h-[3vw]  h-[10vw]  ">
+                  <div className="flex border2 w-full md:h-[3vw]  h-[10vw]  ">
                     <button
                       style={{ whiteSpace: "nowrap" }}
                       className="  h-full w-full md:text-[0.7vw] md:px-[1.3vw] bg-[#103210] text-white md:rounded-[0.5vw] hover:bg-white hover:text-black text-[3.5vw]  rounded-[2vw] hover:border-black border-[#103210] border"
