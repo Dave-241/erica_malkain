@@ -352,13 +352,6 @@ const Each_consultation = ({ product_data }: any) => {
         ref={sectionRef}
       >
         <div className="flex  justify-center items-center   sticky bottom-0 h-[100vh]  w-full ">
-          {/* the customize scroll bar starts */}
-          <div className="absolute md:right-[3vw] z-[10] border-[#0e257756]  flex w-[2%] right-[1.5%]  top-[50%] translate-y-[-50%] md:w-[0.6vw] rounded-[3vw]  lg:h-[28vw] md:h-[40vw] bg-black mix-blend-overlay  h-[140vw]  overflow-hidden">
-            <div
-              className="fw-full bg-[#0E2477]"
-              style={{ height: `${height * 10}%` }}
-            ></div>
-          </div>
           {/* the customized scroll bar ends */}
           {data.map((e: any, index: any) => {
             // Parse the JSON string to get the color object
@@ -376,7 +369,7 @@ const Each_consultation = ({ product_data }: any) => {
                     itemsRefs.current[index] = ref;
                   }
                 }}
-                className={` absolute top-[50%] translate-x-[-50%] left-[50%] translate-y-[-50%]  w-full md:gap-[4vw] flex flex-col md:justify-center justify-end  md:pb-0 pb-[10vw] items-center gap-[7vw] h-full  overflow-hidden   `}
+                className={` absolute top-[50%] translate-x-[-50%] left-[50%] translate-y-[-50%]  w-full md:gap-[4vw] flex flex-col md:justify-center justify-end  md:pb-0 pb-[15vw] items-center gap-[7vw] h-full  overflow-hidden   `}
                 style={{
                   transition: "opacity 0.6s ease",
                   backgroundColor: bgColor,
@@ -413,29 +406,30 @@ const Each_consultation = ({ product_data }: any) => {
                     bg_img={e.bg_img}
                   />
                 )}
+
                 <div className="flex md:px-[10vw] px-[5%] md:flex-row flex-col  md:justify-between w-full md:items-center md:gap-0 gap-[7vw] ">
                   {/* the left section */}
                   <div
-                    className="flex  flex-col w-[50%] border2 md:w-[30%]  md:gap-[4vw]"
+                    className="flex  flex-col w-[50%]  md:w-[30%]  md:gap-[4vw]"
                     style={{ backgroundColor: e.bgColor }}
                   >
                     <img
                       src={e.img}
                       alt={e.heading}
-                      className="w-full md:inline-block hidden h-fit md:rounded-[2vw]"
+                      className="w-full rounded-[5vw] h-fit md:rounded-[2vw]"
                     />
                   </div>
 
                   {/* now the writing  */}
-                  <div className=" md:w-[60%] border2 gap-[3vw] flex flex-col md:gap-[1vw]">
+                  <div className=" md:w-[60%]  gap-[3vw] flex flex-col md:gap-[1vw]">
                     <h2
-                      className={` ${spline_font.className} uppercase font-semibold md:text-[4vw] md:leading-[4.4vw] text-white border2  text-[10vw] leading-[11vw]`}
+                      className={` ${spline_font.className} uppercase font-semibold md:text-[4vw] md:leading-[4.4vw] text-white   text-[6vw] leading-[7vw]`}
                       // style={{ color: textColor }}
                     >
                       {e.heading}
                     </h2>
                     <p
-                      className={` ${Helvetica_light.className}  text-[3.5vw]  py-[3vw]  md:py-[1vw] text-[white] md:text-[1vw] [&_a]:underline underline-offset-4`}
+                      className={` ${Helvetica_light.className}  text-[3.2vw]  py-[3vw]  md:py-[1vw] text-[white] md:text-[1vw] [&_a]:underline underline-offset-4`}
                       // dangerouslySetInnerHTML={{ __html: e.body }}
                       dangerouslySetInnerHTML={{
                         __html: getCaption(e.body, 60),
@@ -453,7 +447,7 @@ const Each_consultation = ({ product_data }: any) => {
                     >
                       <p
                         style={{ transition: "0.5s ease" }}
-                        className="group-hover:text-white z-[10] text-[white]"
+                        className="group-hover:text-white z-[10] text-[3.5vw] md:text-[1.1vw] text-[white]"
                       >
                         {" "}
                         Read more{" "}
@@ -471,14 +465,7 @@ const Each_consultation = ({ product_data }: any) => {
                     </button>
                   </div>
                 </div>
-                {/* this image is for mobile */}
-                <div className="md:hidden px-[5%]">
-                  <img
-                    src={e.img}
-                    alt={e.heading}
-                    className="w-full   h-fit rounded-[10vw]"
-                  />
-                </div>
+
                 {/* institue and location segment */}
                 <div
                   className={` opacity-[70%] ${Bt_Beau_Regualr.className} w-full border-y border-[white]  md:py-[1.6vw] flex justify-center items-center md:gap-[4vw] text-white text-opacity-[100%] md:text-[1.1vw] text-[3.5vw]  md:px-[10vw] px-[5%] gap-[3vw] py-[3vw]`}
@@ -496,6 +483,14 @@ const Each_consultation = ({ product_data }: any) => {
               </div>
             );
           })}
+
+          {/* the customize scroll bar starts */}
+          {/* <div className="absolute md:right-[3vw]  border-[#0e257756]  flex w-[1%] right-[1.5%]  top-[50%] translate-y-[-50%] md:w-[0.2vw] rounded-[3vw]  lg:h-[28vw] md:h-[40vw]   h-[140vw] z-[1000] bg-white overflow-hidden">
+            <div
+              className="fw-full bg-[black] z-[100]"
+              style={{ height: `${height * 10}%` }}
+            ></div>
+          </div> */}
         </div>
       </div>
 
