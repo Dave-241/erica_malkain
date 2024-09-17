@@ -83,11 +83,11 @@ const Home_research = ({ research_items }: any) => {
     });
     gsap.to(text_ref.current, {
       xPercent: calwidth < 768 ? "" : -switch_animation_value,
-      duration: 0.5, // Adjust duration as needed
+      duration: 1, // Adjust duration as needed
     });
     gsap.to(inside_ref.current, {
       xPercent: calwidth < 768 ? "" : translate_value,
-      duration: 0.5, // Adjust duration as needed
+      duration: 1, // Adjust duration as needed
     });
   }, [switch_animation_value, opac_animation, translate_value]);
 

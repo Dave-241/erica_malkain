@@ -53,8 +53,8 @@ const AnimatedLines: React.FC = () => {
   const second_is_in_view = useInView(second_text_ref);
 
   useEffect(() => {
-    setstart_frist_text(first_is_in_view);
-    setstart_second_text(second_is_in_view);
+    first_is_in_view && setstart_frist_text(first_is_in_view);
+    second_is_in_view && setstart_second_text(second_is_in_view);
   }, [first_is_in_view, second_is_in_view]);
 
   const { scrollYProgress: scrollYProgress1 } = useScroll({
@@ -167,14 +167,6 @@ const AnimatedLines: React.FC = () => {
     });
     console.log(value_inner_4);
   }, [value_1, value_2, value_3, value_inner_4]);
-
-  useEffect(() => {
-    // TRANSLATE THE RIGHT TEXT
-    // TRANSLATE THE RIGHT TEXT
-    // TRANSLATE THE RIGHT TEXT
-
-    console.log(right_first_text.current);
-  }, [value_3]);
 
   return (
     <>
