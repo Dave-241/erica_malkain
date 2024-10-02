@@ -209,7 +209,7 @@ const Home_research = ({ research_items }: any) => {
                           transition: "0.7s ease",
                           //   transform: `translate(-50%,-50%)`,
                         }}
-                        className="w-full  group-hover:scale-[1.8] scale-[1.9]   h-fit"
+                        className="w-full h-full  object-cover group-hover:scale-[1.1]"
                       />
                     </div>
 
@@ -252,7 +252,7 @@ const Home_research = ({ research_items }: any) => {
                         style={{
                           transition: "0.7s ease",
                         }}
-                        className="w-full  group-hover:scale-[1.8] scale-[1.95]   h-fit"
+                        className="w-full h-full  object-cover group-hover:scale-[1.1]"
                         // className="h-full w-auto"
                       />
                     </div>
