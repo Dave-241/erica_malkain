@@ -139,15 +139,17 @@ const Recent_publication = ({ product_data }: any) => {
                 }}
                 onClick={() => setactive(index)}
                 // onMouseLeave={() => setactive(null)}
-                className={`w-full cursor-cell  overflow-hidden  md:h-[37vw] h-[95vw]  relative ${
+                className={`w-full cursor-pointer  overflow-hidden  md:h-[40vw] h-[95vw]  relative ${
                   active == index
-                    ? "md:border-none rounded-[2vw] md:rounded-none md:px-0 px-[5%]"
+                    ? "md:pb-[2%] border-b-0 md:border-b-[0.1vw]  rounded-[2vw] md:rounded-none md:px-0 px-[5%]"
                     : ""
                 } flex-col  flex justify-end    border-b-[#565956] border-b-[0.1vw] `}
               >
                 <div
-                  className={` md:w-[46.5%]  h-[95vw] w-full left-0 flex justify-center  items-center  ${
-                    active == index ? "bottom-0" : "bottom-[100%]"
+                  className={` md:w-[46.5%]   h-[95vw] w-full left-0 flex justify-center  items-center  ${
+                    active == index
+                      ? "md:bottom-[3%] bottom-0"
+                      : "bottom-[100%]"
                   } absolute md:h-[37vw] overflow-hidden md:rounded-[1vw]`}
                   style={{
                     transition: "0.7s ease",
@@ -161,7 +163,7 @@ const Recent_publication = ({ product_data }: any) => {
                       width="0"
                       height="0"
                       alt={e.title}
-                      className={` w-full absolute h-fit left-[50%] top-[50%] translate-x-[-50%] scale-[1.1] translate-y-[-50%] `}
+                      className={`  absolute w-full h-full  object-cover  left-[50%] top-[50%] translate-x-[-50%] scale-[1.1] translate-y-[-50%] `}
                     />
                   </div>
                 </div>
@@ -171,8 +173,8 @@ const Recent_publication = ({ product_data }: any) => {
                     transition: "0.7s ease",
                   }}
                   className={`w-full ${
-                    active == index ? "h-[100%]" : "h-[0%]"
-                  } md:h-[0%] bg-gradient-to-t  from-[#000000] absolute bottom-0 left-0 `}
+                    active == index ? "h-[80%]" : "h-[0%]"
+                  } md:h-[0%] bg-gradient-to-t  from-[#000000] via-[#000000] absolute bottom-0 left-0 `}
                 ></div>
                 {/* the mobile overlay  */}
                 {/* first section which includes the s/n and also the title */}
@@ -255,8 +257,9 @@ const Recent_publication = ({ product_data }: any) => {
                         {e.description} {/* 434543 */}
                       </p>
 
-                      <button
-                        onClick={() => setactive(index)}
+                      <Link
+                        href={"/publication"}
+                        // onClick={() => setactive(index)}
                         // href={e.pdf_link}
                         style={{ whiteSpace: "nowrap" }}
                         className={`flex justify-center group  bg-transparent  w-[10vw] h-[10vw] items-center  ${
@@ -290,7 +293,7 @@ const Recent_publication = ({ product_data }: any) => {
                           }`}
                           style={{ transition: "0.5s ease" }}
                         ></div>
-                      </button>
+                      </Link>
                     </div>
                   </div>
                 </div>

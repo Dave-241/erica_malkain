@@ -244,7 +244,7 @@ const Reviews = ({ product_data }: any) => {
         {isloggedin && (
           <Add_review setedit_ID={setedit_ID} setopen_edit={setopen_edit} />
         )}
-        <div className=" w-full md:overflow-hidden  h-[120vw] md:h-[35vw]  relative   ">
+        <div className=" w-full md:overflow-hidden  h-[110vw] md:h-[40vw]   relative   ">
           <div
             ref={ref}
             className={`md:absolute md:top-[50%] md:translate-y-[-50%]  md:h-full md:overflow-hidden overflow-x-auto overflow-y-hidden left-0  w-auto   md:px-[3vw] px-[3%] h-full gap-[5vw]  flex md:gap-[2vw]  snap-x snap-mandatory md:snap-none`}
@@ -282,7 +282,7 @@ const Reviews = ({ product_data }: any) => {
                   <div
                     className={` md:h-full md:rounded-[2vw]  ${
                       animate_modal == index ? "h-[75%]" : "h-full"
-                    }  cursor-pointer md:rounded-[1.5vw] rounded-[5vw] md:px-[1.5vw] md:py-[2.5vw] group-hover:md:translate-y-[20%] group-hover:translate-y-[12%] group-hover:rotate-[5deg] py-[6vw] px-[4vw] flex flex-col justify-between md:gap-[4vw]  relative  w-full h-full main_item `}
+                    }  cursor-pointer md:rounded-[1.5vw] rounded-[5vw] md:px-[1.5vw] md:py-[2.5vw] group-hover:md:translate-y-[20%] group-hover:translate-y-[12%] group-hover:rotate-[5deg] py-[6vw] px-[4vw] flex flex-col justify-between md:gap-[3vw]  relative  w-full h-full main_item `}
                     style={{
                       backgroundColor: "#4F0A19",
                       transition: "1s ease",
@@ -303,12 +303,12 @@ const Reviews = ({ product_data }: any) => {
                     </div>
 
                     <div className="flex flex-col gap-[5vw] md:gap-[3vw]">
-                      <Image
+                      {/* <Image
                         src={quote}
                         alt={"quote"}
                         // style={{ transition: "1s ease" }}
                         className="md:w-[2.5vw] w-[10vw] h-fit  "
-                      />
+                      /> */}
                       <p
                         className={` ${Helvetica_light.className} md:text-[1vw]  text-white text-[3.5vw] md:leading-[1.4vw] leading-[4.5vw] `}
                       >
