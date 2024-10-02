@@ -283,7 +283,7 @@ const Categories = ({ product_data }: any) => {
                         return (
                           <div
                             key={internal_index}
-                            className="md:w-[30.6vw] relative  rounded-[5vw] p-[2vw]  md:rounded-[1.5vw] md:gap-0 gap-[3vw] flex flex-col md:p-[0.5vw] group md:mt-[0.4vw] bg-white"
+                            className="md:w-[30.6vw] relative  rounded-[5vw] p-[2vw] w-full md:rounded-[1.5vw] md:gap-0 gap-[3vw] flex flex-col md:p-[0.5vw] group md:mt-[0.4vw] bg-white"
                           >
                             {" "}
                             {isloggedin && (
@@ -295,10 +295,11 @@ const Categories = ({ product_data }: any) => {
                             )}
                             <Link
                               href={internal.link}
+                              target="_blank"
                               key={internal_index}
                               className={``}
                             >
-                              <div className="overflow-hidden  w-full md:h-[22.5vw] h-[50vw] rounded-[4vw] md:rounded-[1vw]">
+                              <div className="overflow-hidden border  w-full md:h-[22.5vw] h-[50vw] rounded-[4vw] md:rounded-[1vw]">
                                 <Image
                                   src={internal.img}
                                   alt={internal.caption}
@@ -306,7 +307,7 @@ const Categories = ({ product_data }: any) => {
                                   width="0"
                                   height="0"
                                   style={{ transition: "0.8s ease" }}
-                                  className="w-full  scale-[1.1] group-hover:scale-[1] h-fit"
+                                  className="w-full h-full  object-cover group-hover:scale-[1.1]"
                                 />
                               </div>
 
