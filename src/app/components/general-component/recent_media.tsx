@@ -108,7 +108,7 @@ const Recent_media = ({ product_data }: any) => {
                     height="0"
                     alt={internal.caption}
                     style={{ transition: "0.8s ease" }}
-                    className="w-full  scale-[1.12] group-hover:scale-[1.05] h-fit"
+                    className="w-full h-full  object-cover group-hover:scale-[1.1]"
                   />
                 </div>
 
