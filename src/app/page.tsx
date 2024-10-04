@@ -30,13 +30,20 @@ const fetch_research_items = async () => {
     .order("created_at", { ascending: false })
     .limit(5);
 
-  // if (error) throw notFound();
-  // console.log(data);
+  return data;
+};
+const fetch_approach_items = async () => {
+  const { data, error } = await supabase
+    .from("approach")
+    .select("*")
+    .order("created_at", { ascending: false });
+
   return data;
 };
 export default async function Home() {
   const product_data = await fetchProducts();
   const research_items = await fetch_research_items();
+  const approach_items = await fetch_approach_items();
 
   return (
     <>
@@ -45,10 +52,8 @@ export default async function Home() {
           <Nav />
           <Hero_home />
           <div className="md:pb-[6vw] md:mt-[8vw] mt-[15vw] ">
-            {/* <div className="h-[20vw] bg-black"></div> */}
-            <AnimatedLines />
+            <AnimatedLines active_user_data={approach_items || []} />
           </div>
-          {/* <div className="h-[20vw] bg-black"></div> */}
 
           <Home_research research_items={research_items || []} />
           <Recent_publication product_data={product_data || []} />
