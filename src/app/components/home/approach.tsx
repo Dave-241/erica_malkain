@@ -14,8 +14,12 @@ import {
 } from "@/app/utils/fonts";
 import { gsap } from "gsap";
 import Link from "next/link";
+import Edit_text from "../general-component/edit_text";
+import { supabase } from "@/app/utils/supabaseClient";
+import { useRouter } from "next/navigation";
+import Modal_text_edit from "../general-component/modal_text_edit";
 
-const AnimatedLines: React.FC = () => {
+const AnimatedLines = ({ active_user_data }: any) => {
   const [value_1, setvalue_1] = useState(100);
   const [value_2, setvalue_2] = useState(100);
   const [value_3, setvalue_3] = useState(100);
@@ -168,38 +172,87 @@ const AnimatedLines: React.FC = () => {
     console.log(value_inner_4);
   }, [value_1, value_2, value_3, value_inner_4]);
 
+  const [record_Name, setrecord_Name] = useState("");
+  const [edit_text, setedit_text] = useState(false);
+
+  const [isloggedin, setisloggedin] = useState(false);
+  const router = useRouter();
+
+  // check if logged in
+  useEffect(() => {
+    // Check initial session
+    const checkInitialSession = async () => {
+      const {
+        data: { session },
+      } = await supabase.auth.getSession();
+      if (session) {
+        setisloggedin(true);
+      }
+    };
+
+    checkInitialSession();
+  }, [router]);
+
   return (
     <>
-      <h2
-        className={`uppercase md:text-[4vw] text-[8vw]  leading-[9.5vw] md:leading-[4.5vw] md:pt-0 pt-[10vw] md:px-0 px-[3%] text-center ${spline_font.className} font-medium text-[#5C3C43]`}
-      >
-        She takes a multi-method approach
-      </h2>
+      {edit_text && (
+        <Modal_text_edit
+          edit_text={edit_text}
+          record_Name={record_Name}
+          setedit_text={setedit_text}
+          table={"approach"}
+        />
+      )}
+      <div className="relative mx-auto w-fit ">
+        {isloggedin && (
+          <Edit_text
+            record={"heading"}
+            setedit_text={setedit_text}
+            setrecord_Name={setrecord_Name}
+            text={active_user_data[0].heading}
+          />
+        )}
+        <h2
+          className={`uppercase  md:text-[4vw] text-[8vw]  leading-[9.5vw] md:leading-[4.5vw] md:pt-0 pt-[10vw] md:px-0 px-[3%] text-center ${spline_font.className} font-medium text-[#5C3C43]`}
+        >
+          {active_user_data[0].heading}
+        </h2>{" "}
+      </div>
       <div
         ref={first_text_ref}
         className={` overflow-hidden w-full md:px-[10vw] ${Helvetica_medium.className} md:text-[1.1vw] text-[4vw] flex-col md:flex-row gap-[5vw] px-[3%] py-[8vw]  md:pb-0 md:pt-[4vw] text-[#000000] flex md:gap-[10%] `}
       >
-        <div className="overflow-hidden">
+        <div className="overflow-hidden  w-full relative">
+          {isloggedin && (
+            <Edit_text
+              record={"caption_one"}
+              setedit_text={setedit_text}
+              setrecord_Name={setrecord_Name}
+              text={active_user_data[0].caption_one}
+            />
+          )}
           <p
             className={`${start_frist_text ? "" : "translate-y-[100%]"}`}
             style={{ transition: "0.8s ease" }}
           >
-            Erica Boothby is a psychologist who studies social connection and
-            the psychological barriers that inhibit connection. Feeling socially
-            disconnected or excluded has many detrimental effects—making
-            employees feel alienated, managers feel burned out,{" "}
+            {active_user_data[0].caption_one}
           </p>
         </div>
 
-        <div className="overflow-hidden">
+        <div className="overflow-hidden w-full  relative">
+          {isloggedin && (
+            <Edit_text
+              record={"caption_two"}
+              setedit_text={setedit_text}
+              setrecord_Name={setrecord_Name}
+              text={active_user_data[0].caption_two}
+            />
+          )}
           <p
             className={`${start_frist_text ? "" : "translate-y-[100%]"}`}
             style={{ transition: "0.8s ease" }}
           >
-            and people from underrepresented groups feel like their voices arent
-            heard. Ericas research aims to illuminate what makes people feel
-            more (or less) connected, and what we can do to improve peoples
-            feelings of connection and inclusion.
+            {active_user_data[0].caption_two}
           </p>
         </div>
 
@@ -469,37 +522,37 @@ const AnimatedLines: React.FC = () => {
         ref={second_text_ref}
         className={`  w-full md:px-[10vw] ${Helvetica_medium.className} md:text-[1.1vw] text-[4vw] flex-col md:flex-row gap-[5vw]  px-[3%] py-[8vw]  md:pb-0 md:pt-[2vw] text-[#000000] flex md:gap-[10%] `}
       >
-        <div className="overflow-hidden">
+        <div className="overflow-hidden relative w-full ">
+          {isloggedin && (
+            <Edit_text
+              record={"caption_three"}
+              setedit_text={setedit_text}
+              setrecord_Name={setrecord_Name}
+              text={active_user_data[0].caption_three}
+            />
+          )}
           <p
             className={`${start_second_text ? "" : "translate-y-[100%]"}`}
             style={{ transition: "0.8s ease" }}
           >
-            She takes a multi-method approach, using laboratory, longitudinal,
-            online, and dyadic experiments, as well as large scale interventions
-            and field experiments in partnership with organizations. Ultimately,
-            her work aims to improve peoples social lives, in the workplace and
-            beyond. Some of Ericas research interests are: early-stage
-            relationship development (e.g., meeting colleagues, making friends),
-            diversity in networking, metaperception, conversation, shared
-            experience, and prosocial behavior.
+            {active_user_data[0].caption_three}
           </p>
         </div>
 
-        <div className="overflow-hidden">
+        <div className="overflow-hidden w-full relative">
+          {isloggedin && (
+            <Edit_text
+              record={"caption_four"}
+              setedit_text={setedit_text}
+              setrecord_Name={setrecord_Name}
+              text={active_user_data[0].caption_four}
+            />
+          )}
           <p
             className={`${start_second_text ? "" : "translate-y-[100%]"}`}
             style={{ transition: "0.8s ease" }}
           >
-            Her work aims to advance our understanding of human behavior while
-            having direct implications for the kinds of real-world challenges
-            people face every day in their roles as friends, romantic partners,
-            colleagues, managers, and consumers. Ericas research has been
-            published in top academic journals, including Psychological Science,
-            Journal of Personality and Social Psychology, and Organizational
-            Behavior and Human Decision Processes, and has featured in media
-            outlets such as Harvard Business Review, The New York Times,
-            National Public Radio, and The Washington Post. Her work was
-            recently covered extensively on NPRs Hidden Brain.
+            {active_user_data[0].caption_four}
           </p>
         </div>
       </div>

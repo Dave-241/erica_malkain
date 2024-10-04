@@ -15,6 +15,8 @@ import goggle from "../../../../public/images/footer/goggle.png";
 import linkden from "../../../../public/images/footer/linkden.png";
 
 import { useRouter, useSearchParams } from "next/navigation";
+import Contact_form from "./contact_form";
+import { useState } from "react";
 const Footer = ({ bg }: any) => {
   const socai_items = [
     {
@@ -72,6 +74,7 @@ const Footer = ({ bg }: any) => {
     }
   };
 
+  const [open_contact_form, setopen_contact_form] = useState(false);
   return (
     <>
       <div style={{ backgroundColor: bg ? bg : "" }} className="w-full">
@@ -99,7 +102,9 @@ const Footer = ({ bg }: any) => {
                 >
                   <span>GET IN T</span>
                   <button
-                    onClick={scroll_to_contact}
+                    onClick={() => {
+                      setopen_contact_form(true);
+                    }}
                     className=" overflow-hidden flex justify-center items-center  border-white w-[10vw] h-[10vw] md:h-[6vw] md:w-[6vw] border md:mx-[0.1vw] mx-[1vw] relative group cursor-pointer  rounded-[100%]"
                   >
                     <Image
@@ -127,6 +132,9 @@ const Footer = ({ bg }: any) => {
                   style={{
                     whiteSpace: "nowrap",
                     transition: "0.5s ease",
+                  }}
+                  onClick={() => {
+                    setopen_contact_form(true);
                   }}
                   className={` ${Bricolage_grotesk_bold.className} uppercase overflow-hidden w-fit  md:p-[0.5vw]  p-[2vw] rounded-[8vw] group hover:[#103210]  hover:bg-[black] hover:bg-opacity-[20%]  md:rounded-[2vw] bg-[white] backdrop-blur-2xl bg-opacity-[10%] `}
                 >
@@ -215,6 +223,10 @@ const Footer = ({ bg }: any) => {
           </div>
         </div>
       </div>
+
+      {open_contact_form && (
+        <Contact_form setopen_contact_form={setopen_contact_form} />
+      )}
     </>
   );
 };

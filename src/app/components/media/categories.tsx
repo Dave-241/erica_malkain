@@ -15,7 +15,7 @@ import { supabase } from "@/app/utils/supabaseClient";
 
 const Categories = ({ product_data }: any) => {
   const [groupedItems, setGroupedItems] = useState<any>([]);
-
+  const categories = ["podcast", "News Article", "Media Outlet", "video"];
   useEffect(() => {
     const groupByCategory = (items: any, categories: any) => {
       return categories.map((category: any) => ({
@@ -24,7 +24,6 @@ const Categories = ({ product_data }: any) => {
       }));
     };
 
-    const categories = ["podcast", "News Article", "Media Outlet"];
     const grouped = groupByCategory(product_data, categories);
     setGroupedItems(grouped);
 
@@ -216,7 +215,11 @@ const Categories = ({ product_data }: any) => {
     <>
       {/* add publication */}
       {open_edit && (
-        <Modal_edit_category edit_ID={edit_ID} setopen_edit={setopen_edit} />
+        <Modal_edit_category
+          edit_ID={edit_ID}
+          categories={categories}
+          setopen_edit={setopen_edit}
+        />
       )}
       {/* <div className="h-[30vw]"></div> */}
       <div className="w-full md:gap-0 gap-[15vw]  md:pb-[10vw] md:mt-[-5vw] md:flex-row flex-col   relative flex  ">

@@ -9,9 +9,13 @@ import {
   Helvetica_light,
   Helvetica_medium,
 } from "@/app/utils/fonts";
-const Contact_form = ({ setopen_contact_form }: any) => {
+const Contact_form = ({ setopen_contact_form, prop_email, prop_body }: any) => {
   const [start_anime, setstart_anime] = useState(false);
   const [movement, setmovement] = useState(false);
+  const [email, setemail] = useState(prop_email ? prop_email : "");
+  const [name, setname] = useState("");
+  const [tel, settel] = useState("");
+  const [body, setbody] = useState(prop_body ? prop_body : "");
 
   useEffect(() => {
     setstart_anime(true);
@@ -41,7 +45,7 @@ const Contact_form = ({ setopen_contact_form }: any) => {
             e.stopPropagation();
           }}
           style={{ transition: "0.9s ease", opacity: start_anime ? 1 : 0 }}
-          className=" border2 mx-auto md:w-[32vw] md:py-[3%] md:px-[2%] px-[4%] py-[10%] w-[96%] relative bg-white gap-[10vw] md:gap-[2vw] flex flex-col rounded-[2rem] overflow-hidden"
+          className=" border2 mx-auto md:w-[32vw] md:py-[3%] md:px-[2%] px-[4%] py-[10%] w-[96%] relative bg-white gap-[10vw] md:gap-[2vw] flex flex-col rounded-[7vw] md:rounded-[2vw] overflow-hidden"
         >
           <Image
             src={exit}
@@ -60,23 +64,39 @@ const Contact_form = ({ setopen_contact_form }: any) => {
             <input
               type="text"
               className="bg-[#EBF3EC] focus:border border-none outline-none md:px-[4%] placeholder:text-[#000000] md:rounded-[1vw] md:h-[3.4vw] h-[15vw] rounded-[3vw] px-[5%] w-full"
+              onChange={(e) => {
+                setname(e.target.value);
+              }}
+              value={name || ""}
               autoComplete="name"
               placeholder="Your name"
             />
             <input
               type="text"
               className="bg-[#EBF3EC] focus:border border-none outline-none md:px-[4%] placeholder:text-[#000000] md:rounded-[1vw] md:h-[3.4vw] h-[15vw] rounded-[3vw] px-[5%] w-full"
+              onChange={(e) => {
+                setemail(e.target.value);
+              }}
+              value={email || ""}
               autoComplete="email"
               placeholder="Your email"
             />
             <input
               type="tel"
               className="bg-[#EBF3EC] focus:border border-none outline-none md:px-[4%] placeholder:text-[#000000] md:rounded-[1vw] md:h-[3.4vw] h-[15vw] rounded-[3vw] px-[5%] w-full"
+              onChange={(e) => {
+                settel(e.target.value);
+              }}
+              value={tel || ""}
               autoComplete="tel"
               placeholder="Your number"
             />
             <textarea
               rows={5}
+              value={body || ""}
+              onChange={(e) => {
+                setbody(e.target.value);
+              }}
               className="resize-none bg-[#EBF3EC] focus:border border-none outline-none md:p-[4%] md:rounded-[1vw] w-full placeholder:text-[#000000]  rounded-[3vw] p-[5%]"
               placeholder="Extra text"
             ></textarea>

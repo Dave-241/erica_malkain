@@ -9,14 +9,15 @@ import Image_list from "../general-component/image";
 
 const Modal_edit_category = ({
   setopen_edit,
-  publication_title,
-  publication_body,
-  publication_data_link,
-  publication_pdf_link,
-  setpublication_title,
-  setpublication_body,
-  setpublication_data_link,
-  setpublication_pdf_link,
+  // publication_title,
+  // publication_body,
+  // publication_data_link,
+  // publication_pdf_link,
+  // setpublication_title,
+  // setpublication_body,
+  // setpublication_data_link,
+  // setpublication_pdf_link,
+  categories,
   edit_ID,
 }: any) => {
   const [loading, setLoading] = useState(false);
@@ -211,9 +212,13 @@ const Modal_edit_category = ({
                     className="border md:rounded-[0.5vw] outline-none bg-[black] bg-opacity-[70%] placeholder:text-white capitalize text-white md:h-[3vw] w-full h-[10vw] rounded-[1.5vw] px-[3%] md:text-[1vw] text-[3.5vw]"
                   >
                     <option value="">Select type</option>
+                    {categories.map((item: any) => {
+                      return <option value={item}>{item}</option>;
+                    })}
+                    {/* 
                     <option value="podcast">Podcast</option>
                     <option value="News Article">News Article</option>
-                    <option value="Media Outlet">Media Outlet</option>
+                    <option value="Media Outlet">Media Outlet</option> */}
                   </select>
                 </div>
               </div>
