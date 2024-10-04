@@ -230,7 +230,7 @@ const Categories = ({ product_data }: any) => {
         </div>
         <div className=" md:h-[100vh] md:w-[30vw] flex items-center md:justify-start justify-between md:px-0 px-[3%] sticky  md:bg-transparent bg-[#DFE4DF] bg-opacity-[10%] backdrop-blur-2xl md:backdrop-blur-none z-[100]  overflow-x-auto top-0 pt-[25vw] md:flex md:flex-col left-0 md:pt-[8vw] md:pb-0 pb-[5vw] ">
           {/* this is for the mobile editing */}
-          <div className="w-auto flex  md:w-fit md:gap-[2vw] gap-[3.5vw] md:flex-col  ">
+          <div className="w-auto flex  md:w-fit md:gap-[2vw] gap-[2vw] md:flex-col  ">
             {groupedItems.map((e: any, index: any) => {
               return (
                 <button
