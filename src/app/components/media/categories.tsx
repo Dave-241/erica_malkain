@@ -228,37 +228,38 @@ const Categories = ({ product_data }: any) => {
             <Add_media setedit_ID={setedit_ID} setopen_edit={setopen_edit} />
           )}
         </div>
-        <div className=" md:h-[100vh] md:w-[30vw] flex items-center md:justify-start justify-between md:px-0 px-[3%] sticky  md:bg-transparent bg-[#DFE4DF] bg-opacity-[10%] backdrop-blur-2xl md:backdrop-blur-none z-[100] top-0 pt-[25vw] left-0 md:pt-[8vw] md:pb-0 pb-[5vw] md:gap-[2vw] md:flex-col ">
+        <div className=" md:h-[100vh] md:w-[30vw] flex items-center md:justify-start justify-between md:px-0 px-[3%] sticky  md:bg-transparent bg-[#DFE4DF] bg-opacity-[10%] backdrop-blur-2xl md:backdrop-blur-none z-[100]  overflow-x-auto top-0 pt-[25vw] md:flex md:flex-col left-0 md:pt-[8vw] md:pb-0 pb-[5vw] ">
           {/* this is for the mobile editing */}
-
-          {groupedItems.map((e: any, index: any) => {
-            return (
-              <button
-                key={index}
-                onClick={() => {
-                  handleClick(e.title);
-                }}
-                style={{ transition: "0.8s ease" }}
-                className={` ${
-                  active == index
-                    ? "scale-[1.05]"
-                    : "md:opacity-[40%] opacity-[60%] hover:opacity-[100%]"
-                } ${
-                  spline_font.className
-                } bg-[black] font-semibold uppercase overflow-hidden  md:w-[13vw] w-[29vw] h-[10vw] rounded-[3vw] p-[1.1vw] md:h-[4.9vw] md:p-[0.6vw]  group hover:[#103210]  hover:bg-[black] hover:bg-opacity-[20%]  md:rounded-[1.8vw]  backdrop-blur-2xl bg-opacity-[20%] `}
-              >
-                <div
-                  className={`w-full   h-full bg-white  group-hover:bg-[#103210] md:rounded-[1.3vw] flex justify-center items-center rounded-[2.3vw]  md:py-[0.6vw] md:px-[1.5vw]`}
+          <div className="w-auto flex  md:w-fit md:gap-[2vw] gap-[3.5vw] md:flex-col  ">
+            {groupedItems.map((e: any, index: any) => {
+              return (
+                <button
+                  key={index}
+                  onClick={() => {
+                    handleClick(e.title);
+                  }}
+                  style={{ transition: "0.8s ease" }}
+                  className={` ${
+                    active == index
+                      ? "scale-[1.05]"
+                      : "md:opacity-[40%] opacity-[60%] hover:opacity-[100%]"
+                  } ${
+                    spline_font.className
+                  } bg-[black] font-semibold uppercase overflow-hidden  md:w-[13vw] w-[29vw] h-[10vw] rounded-[3vw] p-[1.1vw] md:h-[4.9vw] md:p-[0.6vw]  group hover:[#103210]  hover:bg-[black] hover:bg-opacity-[20%]  md:rounded-[1.8vw]  backdrop-blur-2xl bg-opacity-[20%] `}
                 >
-                  <p
-                    className={`inline-block  md:text-[1.1vw] text-[3vw] text-[#103210]  group-hover:text-white`}
+                  <div
+                    className={`w-full   h-full bg-white  group-hover:bg-[#103210] md:rounded-[1.3vw] flex justify-center items-center rounded-[2.3vw]  md:py-[0.6vw] md:px-[1.5vw]`}
                   >
-                    {e.title}
-                  </p>
-                </div>
-              </button>
-            );
-          })}
+                    <p
+                      className={`inline-block  md:text-[1.1vw] text-[3vw] text-[#103210]  group-hover:text-white`}
+                    >
+                      {e.title}
+                    </p>
+                  </div>
+                </button>
+              );
+            })}
+          </div>
         </div>
 
         <div className="md:w-[69vw] md:px-0 gap-[15vw] px-[3%] flex flex-col md:gap-[3vw] justify-center ">
