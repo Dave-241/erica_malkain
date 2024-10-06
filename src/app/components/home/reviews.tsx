@@ -244,7 +244,7 @@ const Reviews = ({ product_data }: any) => {
         {isloggedin && (
           <Add_review setedit_ID={setedit_ID} setopen_edit={setopen_edit} />
         )}
-        <div className=" w-full md:overflow-hidden  h-[110vw] md:h-[40vw]   relative   ">
+        <div className=" w-full md:overflow-hidden  h-[120vw]  md:h-[40vw]   relative   ">
           <div
             ref={ref}
             className={`md:absolute md:top-[50%] md:translate-y-[-50%]  md:h-full md:overflow-hidden overflow-x-auto overflow-y-hidden left-0  w-auto   md:px-[3vw] px-[3%] h-full gap-[5vw]  flex md:gap-[2vw]  snap-x snap-mandatory md:snap-none`}

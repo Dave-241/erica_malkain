@@ -61,9 +61,7 @@ export async function POST(req: Request, res: any) {
           <p><span class="label">Client Name:</span> ${data.name}</p>
           <p><span class="label">Client Email:</span> ${data.email}</p>
           <p><span class="label">Client Phone:</span> ${data.phone}</p>
-          <p><span class="label">Client Is Interested In:</span> ${
-            data.body
-          }</p>
+          <p><span class="label">Client body In:</span> ${data.body}</p>
         </div>
         <p class="footer">This information was submitted from our official site. &copy; ${new Date().getFullYear()} Erica</p>
       </body>
