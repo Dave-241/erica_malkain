@@ -26,7 +26,7 @@ const Success_contact_form = ({ setopen_contact_form, step, setstep }: any) => {
           e.stopPropagation();
         }}
         style={{ transition: "0.8s ease", opacity: step == 1 ? 1 : 0 }}
-        className=" border2 mx-auto md:w-[32vw] md:py-[3%] md:px-[2%] px-[4%] py-[10%] absolute top-[50%] left-[50%] translate-x-[-50%] translate-y-[-50%] w-[96%]  bg-white gap-[10vw] md:gap-[2vw] flex flex-col rounded-[7vw] md:rounded-[2vw] overflow-hidden"
+        className=" border2 mx-auto md:w-[32vw] md:py-[3%] md:px-[2%] px-[4%] py-[10%] absolute top-[10%] left-[50%] translate-x-[-50%]  w-[96%]  bg-white gap-[10vw] md:gap-[2vw] flex flex-col rounded-[7vw] md:rounded-[2vw] overflow-hidden"
       >
         <Image
           src={exit}
