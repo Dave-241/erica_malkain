@@ -10,6 +10,7 @@ import {
   Helvetica_medium,
 } from "@/app/utils/fonts";
 import Success_contact_form from "./success_contact_form";
+import axios from "axios";
 const Contact_form = ({ setopen_contact_form, prop_email, prop_body }: any) => {
   const [start_anime, setstart_anime] = useState(false);
   const [movement, setmovement] = useState(false);
@@ -30,11 +31,56 @@ const Contact_form = ({ setopen_contact_form, prop_email, prop_body }: any) => {
   };
 
   const [step, setstep] = useState(0);
+  const [err, seterr] = useState("");
+  const [disabled, setdisabled] = useState(false);
+  const [sendbtn, setsendbtn] = useState("Submit");
 
-  const handle_submit = (e: any) => {
+  const handle_submit = async (e: any) => {
     e.preventDefault();
-    setstep(1);
+    if (!name || !email || !tel || !body) {
+      seterr("Complete your information below");
+
+      return;
+    } else {
+      seterr("");
+      setsendbtn("Sending...");
+      setdisabled(!disabled);
+      let data = JSON.stringify({
+        name: name,
+        phone: tel,
+        email: email,
+        body: body,
+      });
+
+      await axios
+        .post("/api/contact", data, {
+          headers: { "Content-Type": "application/json" },
+        })
+        .then((response) => {
+          if (response.data.emailSent == true) {
+            // console.log(response.data.emailSent);
+            setsendbtn("Submit");
+            setstep(1);
+          } else {
+            seterr("Something went wrong. Please try again or reload the page");
+            console.log("something went wrong");
+            setdisabled(!disabled);
+          }
+        })
+        .catch((err) => {
+          console.log(err);
+          seterr(
+            "Something went wrong. Please try again or reload the page and try again",
+          );
+          setdisabled(!disabled);
+        });
+    }
   };
+
+  useEffect(() => {
+    seterr("");
+  }, [name, email, tel, body]);
+
   return (
     <>
       <div
@@ -111,8 +157,11 @@ const Contact_form = ({ setopen_contact_form, prop_email, prop_body }: any) => {
                 className="resize-none bg-[#EBF3EC] focus:border border-none outline-none md:p-[4%] md:rounded-[1vw] w-full placeholder:text-[#000000]  rounded-[3vw] p-[5%]"
                 placeholder="Extra text"
               ></textarea>
-
+              <p className="text-red-500 md:text-[1vw] text-[3.5vw] w-full text-start">
+                {err}
+              </p>
               <button
+                disabled={disabled}
                 style={{
                   whiteSpace: "nowrap",
                   transition: "0.5s ease",
@@ -122,7 +171,7 @@ const Contact_form = ({ setopen_contact_form, prop_email, prop_body }: any) => {
               >
                 <div className="w-full h-full bg-[#440C0C] group-hover:bg-[#103210] md:rounded-[1.5vw] rounded-[7vw]  flex justify-center items-center py-[2.5vw] px-[15vw] md:py-[0.8vw] md:px-[4vw]">
                   <p className="inline-block md:text-[1vw] text-[white] group-hover:text-white">
-                    SUBMIT
+                    {sendbtn}
                   </p>
                 </div>
               </button>
