@@ -68,7 +68,7 @@ const Hero_home = () => {
           alt="hero image"
           className="absolute_center left-[50%] top-[50%] absolute w-full h-fit"
         />
-        <div className="w-full md:h-full h-[50%] bg-gradient-to-t from-[black]  md:from-transparent md:via-transparent via-black left-0 md:top-0 bottom-0 z-[10] absolute md:bg-black   md:bg-opacity-[20%]"></div>
+        <div className="w-full md:h-full h-[50%] bg-gradient-to-t from-[black]  md:from-black md:via-transparent via-black left-0 md:top-0 bottom-0 z-[10] absolute md:bg-black   md:bg-opacity-[20%]"></div>
         {/* left text */}
         <div className="z-[10] md:w-[20vw] bottom-[2%]  absolute md:bottom-[50%] translate-y-[-50%] md:px-0  block md:flex justify-start md:right-[10vw]  overflow-hidden ">
           <p

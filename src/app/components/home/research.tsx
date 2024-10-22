@@ -214,7 +214,7 @@ const Home_research = ({ research_items }: any) => {
                     </div>
 
                     <p
-                      className={`${dm_sans_font.className} md:pl-[0.5vw] uppercase md:pr-[2vw] font-medium md:text-[1.1vw]`}
+                      className={`${dm_sans_font.className} md:pl-[0.5vw]  md:pr-[2vw] font-medium md:text-[1.1vw]`}
                     >
                       {truncateText(e.caption, 13)}{" "}
                     </p>
@@ -258,7 +258,7 @@ const Home_research = ({ research_items }: any) => {
                     </div>
 
                     <p
-                      className={`${dm_sans_font.className} uppercase   font-medium leading-[5vw] p-[3vw]  text-[4vw] 
+                      className={`${dm_sans_font.className}    font-medium leading-[5vw] p-[3vw]  text-[4vw] 
                  `}
                     >
                       {truncateText(e.caption, 15)}{" "}
