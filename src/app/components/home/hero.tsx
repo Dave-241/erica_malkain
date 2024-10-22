@@ -87,7 +87,7 @@ const Hero_home = () => {
               transition: "0.65s ease",
               transform: start_anime ? "translate(0,0)" : "translate(0%,100%)",
             }}
-            className={`md:text-[17vw] text-[28vw] leading-[31vw]  z-[10] md:leading-[16.5vw] ${eb_gramond_italic_font.className}`}
+            className={`md:text-[17vw] text-[28vw] leading-[31vw] text-[#AEFCAE]  z-[10] md:leading-[16.5vw] ${eb_gramond_italic_font.className}`}
           >
             Erica
           </h1>
