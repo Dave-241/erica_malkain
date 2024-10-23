@@ -249,7 +249,7 @@ const Publication = ({ product_data }: any) => {
                     />
                   )}
                   {/* the first section */}
-                  <div className="flex flex-col gap-[4vw] md:w-[50%] md:gap-[0.5vw]">
+                  <div className="flex flex-col gap-[2vw] md:w-[50%] md:gap-[0.5vw]">
                     <h2
                       //   ref={hero_ref}
                       className={`${Helvetica_bold.className} text-[5vw] leading-[6vw] md:text-[1.3vw] md:leading-[2vw] uppercase text-[#440C0C]`}
