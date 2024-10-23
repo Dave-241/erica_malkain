@@ -236,7 +236,7 @@ const Recent_publication = ({ product_data }: any) => {
                         className={` ${Helvetica_light.className} md:flex md:w-fit uppercase overflow-hidden w-full p-[2vw] rounded-[8vw] md:p-[0.5vw] group hover:[#103210]  hover:bg-[black] hover:bg-opacity-[20%]  md:rounded-[2vw] bg-[#440C0C] backdrop-blur-2xl bg-opacity-[20%] `}
                       >
                         <div className="w-full h-full bg-[#FEF6F6] group-hover:bg-[#103210] md:rounded-[1.7vw] flex justify-center  rounded-[7vw] items-center py-[2.5vw] px-[8vw] md:py-[0.7vw] md:px-[3vw]">
-                          <p className="inline-block md:text-[1vw]  text-[3.5vw] text-[#440C0C]group-hover:text-white">
+                          <p className="inline-block md:text-[1vw]  text-[3.5vw] text-[#440C0C] group-hover:text-white">
                             DATA
                           </p>
                         </div>
