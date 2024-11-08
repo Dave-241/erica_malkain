@@ -39,6 +39,11 @@ const Categories = ({ product_data }: any) => {
   };
 
   useEffect(() => {
+    console.log(search);
+    setactive(search);
+  }, [search]);
+
+  useEffect(() => {
     // const { scrollTo } = router.;
 
     if (search) {
@@ -49,7 +54,7 @@ const Categories = ({ product_data }: any) => {
     }
   }, [search]);
 
-  const [active, setactive] = useState(0);
+  const [active, setactive] = useState<any>("");
   const items = [
     {
       title: "podcast",
@@ -237,11 +242,11 @@ const Categories = ({ product_data }: any) => {
                   href={`media/?id=${e.title}`}
                   key={index}
                   // onClick={() => {
-                  //   handleClick(e.title);
+                  //   console.log("title", e.title);
                   // }}
                   style={{ transition: "0.8s ease" }}
                   className={` ${
-                    active == index
+                    active == e.title
                       ? "scale-[1.05]"
                       : "md:opacity-[40%] opacity-[60%] hover:opacity-[100%]"
                   } ${
