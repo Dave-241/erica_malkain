@@ -278,11 +278,11 @@ const AnimatedLines = ({ active_user_data }: any) => {
           </div>
         </Link>
       </div>
-      <p
+      {/* <p
         className={`text-[4.5vw] mb-[7vw] mt-[4vw] md:hidden uppercase text-[#000000] text-center`}
       >
         Education
-      </p>{" "}
+      </p>{" "} */}
       <div className="z-[10]  md:hidden flex flex-col items-center">
         <h3
           className={`text-[12vw] text-[#5C3C43] ${spline_font.className}  font-medium`}
@@ -296,9 +296,9 @@ const AnimatedLines = ({ active_user_data }: any) => {
         className="w-full h-[300vh]  flex relative flex-col items-start "
       >
         <div className="w-full hidden   flex-col h-[100vh] md:flex justify-center items-center sticky top-0 left-0 ">
-          <p className={`md:text-[1vw] uppercase text-[#000000] text-center`}>
+          {/* <p className={`md:text-[1vw] uppercase text-[#000000] text-center`}>
             Education
-          </p>
+          </p> */}
 
           <div
             ref={left_first_text}

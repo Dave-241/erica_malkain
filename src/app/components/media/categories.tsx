@@ -15,7 +15,7 @@ import { supabase } from "@/app/utils/supabaseClient";
 
 const Categories = ({ product_data }: any) => {
   const [groupedItems, setGroupedItems] = useState<any>([]);
-  const categories = ["podcast", "News Article", "Media Outlet", "video"];
+  const categories = ["News Article", "podcast", "video", "Media Outlet"];
   useEffect(() => {
     const groupByCategory = (items: any, categories: any) => {
       return categories.map((category: any) => ({
@@ -233,11 +233,12 @@ const Categories = ({ product_data }: any) => {
           <div className="w-auto flex  md:w-fit md:gap-[2vw] gap-[2vw] md:flex-col  ">
             {groupedItems.map((e: any, index: any) => {
               return (
-                <button
+                <Link
+                  href={`media/?id=${e.title}`}
                   key={index}
-                  onClick={() => {
-                    handleClick(e.title);
-                  }}
+                  // onClick={() => {
+                  //   handleClick(e.title);
+                  // }}
                   style={{ transition: "0.8s ease" }}
                   className={` ${
                     active == index
@@ -256,7 +257,7 @@ const Categories = ({ product_data }: any) => {
                       {e.title}
                     </p>
                   </div>
-                </button>
+                </Link>
               );
             })}
           </div>
@@ -325,9 +326,20 @@ const Categories = ({ product_data }: any) => {
                                       internal_index
                                     ] = el;
                                   }}
-                                  className={` md:p-[1.5vw] p-[3vw]   ${spline_font.className}  font-medium md:text-[1vw] text-[4vw] md:leading-[1.4vw] leading-[5vw]`}
+                                  className={` md:p-[1.5vw] p-[3vw]   ${spline_font.className}  font-medium md:text-[1.2vw] text-[4vw] md:leading-[1.4vw] leading-[5vw]`}
                                 >
-                                  {internal.caption}
+                                  {internal.caption.includes("|") ? (
+                                    <>
+                                      <span style={{ fontWeight: "bold" }}>
+                                        {internal.caption.split("|")[1]}
+                                      </span>
+                                      <br />
+
+                                      {internal.caption.split("|")[0]}
+                                    </>
+                                  ) : (
+                                    internal.caption
+                                  )}{" "}
                                 </p>
                               </div>
                             </Link>
