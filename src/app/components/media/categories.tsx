@@ -322,30 +322,24 @@ const Categories = ({ product_data }: any) => {
                               </div>
 
                               <div className="overflow-hidden">
-                                <p
-                                  ref={(el) => {
-                                    if (!subItemsRefs.current[index]) {
-                                      subItemsRefs.current[index] = [];
-                                    }
-                                    subItemsRefs.current[index][
-                                      internal_index
-                                    ] = el;
-                                  }}
-                                  className={` md:p-[1.5vw] p-[3vw]   ${spline_font.className}  font-medium md:text-[1.2vw] text-[4vw] md:leading-[1.4vw] leading-[5vw]`}
+                                <div
+                                  className={` md:p-[1.5vw] p-[3vw] flex flex-col md:gap-[1vw] gap-[3vw]  ${spline_font.className}  font-medium md:text-[1.2vw] text-[4vw] md:leading-[1.4vw] leading-[5vw]`}
                                 >
                                   {internal.caption.includes("|") ? (
                                     <>
-                                      <span style={{ fontWeight: "bold" }}>
+                                      <p
+                                        style={{ fontWeight: "bold" }}
+                                        className="text-[#103210] capitalize md:text-[1.3vw] text-[5vw] "
+                                      >
                                         {internal.caption.split("|")[1]}
-                                      </span>
-                                      <br />
+                                      </p>
 
                                       {internal.caption.split("|")[0]}
                                     </>
                                   ) : (
-                                    internal.caption
+                                    <p className=""> {internal.caption}</p>
                                   )}{" "}
-                                </p>
+                                </div>
                               </div>
                             </Link>
                           </div>

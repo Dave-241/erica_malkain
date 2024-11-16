@@ -112,18 +112,25 @@ const Recent_media = ({ product_data }: any) => {
                   />
                 </div>
 
-                <div className="">
-                  <p
-                    className={`
-                p-[3vw] py-[5vw] md:p-[1.5vw]
-                ${spline_font.className}
-                font-bold
-                text-[4vw] md:text-[1vw]
-                leading-[5vw] md:leading-[1.4vw]
-              `}
+                <div className="overflow-hidden">
+                  <div
+                    className={` md:p-[1.5vw] p-[3vw] flex flex-col md:gap-[1vw] gap-[3vw]  ${spline_font.className}  font-medium md:text-[1.2vw] text-[4vw] md:leading-[1.4vw] leading-[5vw]`}
                   >
-                    {internal.caption}
-                  </p>
+                    {internal.caption.includes("|") ? (
+                      <>
+                        <p
+                          style={{ fontWeight: "bold" }}
+                          className="text-[#103210] capitalize md:text-[1.3vw] text-[5vw] "
+                        >
+                          {internal.caption.split("|")[1]}
+                        </p>
+
+                        {internal.caption.split("|")[0]}
+                      </>
+                    ) : (
+                      <p className=""> {internal.caption}</p>
+                    )}{" "}
+                  </div>
                 </div>
               </Link>
             ))}

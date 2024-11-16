@@ -130,28 +130,9 @@ const Recent_publication = ({ product_data }: any) => {
         </h2>
 
         <div className="flex flex-col relative  gap-[7vw] md:gap-[2.5vw]">
-          {isloggedin && <Refer_edit text={"publication"} />}
+          {isloggedin && <Refer_edit text={"publications"} />}
 
           {data.map((e: any, index: any) => {
-            const titleBeforePeriod = e.title
-              .split(".")
-              .slice(0, 1)
-              .join(".")
-              .trim();
-            const titleAfterPeriod = e.title
-              .split(".")
-              .slice(1)
-              .join(".")
-              .trim();
-
-            // Extract the year using regex
-            const yearMatch = e.description.match(/\((\d{4})\)/);
-            const year = yearMatch ? yearMatch[1] : ""; // Get the year or set it to an empty string
-
-            // Remove the year from the e.description
-            const citationWithoutYear = e.description
-              .replace(/\s*\(\d{4}\)\.\s*/, "")
-              .trim();
             return (
               <div
                 key={index}
@@ -177,19 +158,15 @@ const Recent_publication = ({ product_data }: any) => {
                     //   ref={hero_ref}
                     className={`${Helvetica_medium.className} text-[4.5vw] leading-[5.5vw] md:text-[1.2vw] md:leading-[1.8vw] uppercase text-[#000000]`}
                   >
-                    {titleBeforePeriod}{" "}
-                    {/* Only shows text before the period */} <br />
-                    {/* Display the text after the period in a span */}
-                    {titleAfterPeriod && (
-                      <span className="text-[#000000] md:text-[1vw] text-[4vw] opacity-[50%]">
-                        {year} | {titleAfterPeriod}
-                      </span>
-                    )}
-                  </h2>
+                    {e.title}
+                  </h2>{" "}
+                  <p className="text-[#000000] md:text-[1vw] text-[4vw] opacity-[50%]">
+                    {e.sub_title}{" "}
+                  </p>
                   <p
                     className={`${Helvetica_light.className} md:text-[1.1vw] md:leading-[1.5vw] text-[4vw] leading-[5vw] text-[#000000]`}
                   >
-                    {citationWithoutYear
+                    {e.description
                       .split("Boothby, E. J")
                       .map((part: string, index: number) => (
                         <React.Fragment key={index}>

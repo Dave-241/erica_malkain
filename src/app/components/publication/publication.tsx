@@ -27,6 +27,7 @@ const Publication = ({ product_data }: any) => {
   const [add_publication, setadd_publication] = useState(false);
   const [edit_ID, setedit_ID] = useState("");
   const [image_link, setimage_link] = useState("");
+  const [sub_title, setsub_title] = useState("");
 
   useEffect(() => {
     setstart_anime(true);
@@ -83,6 +84,7 @@ const Publication = ({ product_data }: any) => {
     pdf_link: any,
     id: any,
     img: any,
+    sub_title: any,
   ) => {
     setpublication_title(title);
     setpublication_body(body);
@@ -91,6 +93,7 @@ const Publication = ({ product_data }: any) => {
     setadd_publication(true);
     setedit_ID(id);
     setimage_link(img);
+    setsub_title(sub_title);
   };
 
   const refresh_all_params = () => {
@@ -187,6 +190,7 @@ const Publication = ({ product_data }: any) => {
           publication_body={publication_body}
           publication_data_link={publication_data_link}
           publication_pdf_link={publication_pdf_link}
+          sub_title={sub_title}
           setpublication_title={setpublication_title}
           setpublication_body={setpublication_body}
           setpublication_data_link={setpublication_data_link}
@@ -194,6 +198,7 @@ const Publication = ({ product_data }: any) => {
           edit_ID={edit_ID}
           image_link={image_link}
           setimage_link={setimage_link}
+          setsub_title={setsub_title}
         />
       )}
 
@@ -245,6 +250,7 @@ const Publication = ({ product_data }: any) => {
                       pdf_data={e.pdf_link}
                       id={e.id}
                       img={e.image_link}
+                      sub_title={e.sub_title}
                       setadd_publdcication={setadd_publication}
                     />
                   )}
@@ -254,20 +260,16 @@ const Publication = ({ product_data }: any) => {
                       //   ref={hero_ref}
                       className={`${Helvetica_bold.className} text-[5vw] leading-[6vw] md:text-[1.3vw] md:leading-[2vw] uppercase text-[#440C0C]`}
                     >
-                      {titleBeforePeriod}{" "}
-                      {/* Only shows text before the period */} <br />
-                      {/* Display the text after the period in a span */}
-                      {titleAfterPeriod && (
-                        <span className="text-[#440C0C] md:text-[1vw] text-[4vw] opacity-[50%]">
-                          {year} | {titleAfterPeriod}
-                        </span>
-                      )}
+                      {e.title}
                     </h2>
-
+                    {/* Display the text after the period in a span */}
+                    <p className="text-[#440C0C] md:text-[1vw] text-[4vw] opacity-[50%]">
+                      {e.sub_title}
+                    </p>
                     <p
                       className={`${Helvetica_light.className} md:text-[1.1vw] md:leading-[1.5vw] text-[4vw] leading-[5vw] text-[#a46035]`}
                     >
-                      {citationWithoutYear
+                      {e.description
                         .split("Boothby, E. J")
                         .map((part: string, index: number) => (
                           <React.Fragment key={index}>

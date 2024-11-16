@@ -482,9 +482,9 @@ const Each_consultation = ({ product_data }: any) => {
                   <div className="w-full relative h-[0.5vw] md:h-[0.1vw] bg-[white]  flex justify-end items-center">
                     <div className="md:w-[0.4vw] w-[1vw] h-[1vw] md:h-[0.4vw] rounded-[100%] bg-[white]   "></div>
                   </div>
-                  <p className="" style={{ whiteSpace: "nowrap" }}>
+                  {/* <p className="" style={{ whiteSpace: "nowrap" }}>
                     ({e.year})
-                  </p>
+                  </p> */}
                 </div>
               </div>
             );

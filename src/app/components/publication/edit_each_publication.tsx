@@ -12,6 +12,7 @@ const Edit_each_publication = ({
   edit_each_publication_modal_param,
   id,
   img,
+  sub_title,
 }: any) => {
   const deletePublicationById = async (id: number) => {
     try {
@@ -57,6 +58,7 @@ const Edit_each_publication = ({
               pdf_data,
               id,
               img,
+              sub_title,
             );
           }}
         >

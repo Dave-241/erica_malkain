@@ -6,7 +6,7 @@ export async function POST(req: Request, res: any) {
   const data = await req.json();
   const message = {
     from: data.email,
-    to: ["davisisibor@gmail.com"],
+    to: ["ericajboothby@gmail.com"],
     subject: "New Client submission from " + data.name,
     text: data.name,
 

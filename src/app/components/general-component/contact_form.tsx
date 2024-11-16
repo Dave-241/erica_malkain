@@ -155,7 +155,7 @@ const Contact_form = ({ setopen_contact_form, prop_email, prop_body }: any) => {
                   setbody(e.target.value);
                 }}
                 className="resize-none bg-[#EBF3EC] focus:border border-none outline-none md:p-[4%] md:rounded-[1vw] w-full placeholder:text-[#000000]  rounded-[3vw] p-[5%]"
-                placeholder="Extra text"
+                placeholder=" Text"
               ></textarea>
               <p className="text-red-500 md:text-[1vw] text-[3.5vw] w-full text-start">
                 {err}
