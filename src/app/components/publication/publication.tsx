@@ -363,11 +363,6 @@ const Publication = ({ product_data }: any) => {
                             >
                               {(provided) => (
                                 <div
-                                  // ref={(ref) => {
-                                  //   if (ref) {
-                                  //     itemsRefs.current[index] = ref;
-                                  //   }
-                                  // }}
                                   ref={provided.innerRef}
                                   key={index}
                                   {...provided.draggableProps}
