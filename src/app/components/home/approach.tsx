@@ -203,7 +203,7 @@ const AnimatedLines = ({ active_user_data }: any) => {
           table={"approach"}
         />
       )}
-      <div className="relative mx-auto w-fit ">
+      <div className="relative mx-auto  w-fit ">
         {isloggedin && (
           <Edit_text
             record={"heading"}
@@ -214,13 +214,14 @@ const AnimatedLines = ({ active_user_data }: any) => {
         )}
         <h2
           className={`uppercase  md:text-[4vw] text-[8vw]  leading-[9.5vw] md:leading-[4.5vw] md:pt-0 pt-[10vw] md:px-0 px-[3%] text-center ${spline_font.className} font-medium text-[#5C3C43]`}
+          dangerouslySetInnerHTML={{ __html: active_user_data[0].heading }}
         >
-          {active_user_data[0].heading}
+          {/* {active_user_data[0].heading} */}
         </h2>{" "}
       </div>
       <div
         ref={first_text_ref}
-        className={` overflow-hidden w-full md:px-[10vw] ${Helvetica_medium.className} md:text-[1.1vw] text-[4vw] flex-col md:flex-row gap-[5vw] px-[3%] py-[8vw]  md:pb-0 md:pt-[4vw] text-[#000000] flex md:gap-[10%] `}
+        className={` overflow-hidden w-full  md:mb-[-20vh] md:px-[10vw] ${Helvetica_medium.className} md:text-[1.1vw] text-[4vw] flex-col md:flex-row gap-[5vw] px-[3%] py-[8vw]  md:pb-0 md:pt-[4vw] text-[#000000] flex md:gap-[10%] `}
       >
         <div className="overflow-hidden  w-full relative">
           {isloggedin && (
@@ -232,7 +233,7 @@ const AnimatedLines = ({ active_user_data }: any) => {
             />
           )}
           <p
-            className={`${start_frist_text ? "" : "translate-y-[100%]"}`}
+            // className={`${start_frist_text ? "" : "translate-y-[100%]"}`}
             style={{ transition: "0.8s ease" }}
           >
             {active_user_data[0].caption_one}
@@ -249,7 +250,7 @@ const AnimatedLines = ({ active_user_data }: any) => {
             />
           )}
           <p
-            className={`${start_frist_text ? "" : "translate-y-[100%]"}`}
+            // className={`${start_frist_text ? "" : "translate-y-[100%]"}`}
             style={{ transition: "0.8s ease" }}
           >
             {active_user_data[0].caption_two}
@@ -272,7 +273,7 @@ const AnimatedLines = ({ active_user_data }: any) => {
           } uppercase overflow-hidden  md:p-[0.5vw] p-[2vw] rounded-[8vw] w-fit group hover:[#103210]  hover:bg-[black] hover:bg-opacity-[20%] md:hidden  md:rounded-[2vw] bg-[black] backdrop-blur-2xl bg-opacity-[20%] `}
         >
           <div className="w-full h-full bg-[#440C0C] group-hover:bg-[#103210] md:rounded-[1.7vw] rounded-[7vw] flex justify-center items-center   py-[2.5vw] px-[8vw] md:py-[0.7vw] md:px-[1.5vw]">
-            <p className="inline-block md:text-[1vw] text-[white] group-hover:text-white text-[3.5vw]">
+            <p className="inline-block md:text-[1vw] text-[white] group-hover:text-white text-[3.5vw] relative">
               View CV
             </p>
           </div>
@@ -313,25 +314,35 @@ const AnimatedLines = ({ active_user_data }: any) => {
               <p className={`md:text-[1vw] text-[#000000]`}>University</p>
             </div>
             {/* DOWNLOAD CV */}
-            <Link
+            <div
+              className={` ${Helvetica_light.className}  absolute top-[1vw] left-[50%] translate-x-[-50%] uppercase overflow-hidden  md:p-[0.5vw] p-[2vw] rounded-[8vw] w-fit group hover:[#103210]  hover:bg-[black] hover:bg-opacity-[20%]  md:rounded-[2vw] bg-[black] backdrop-blur-2xl bg-opacity-[20%] `}
               ref={right_second_text}
               style={{
                 whiteSpace: "nowrap",
-                // transition: "0.9s ease",
-                // transform: start_anime ? "translate(0,0)" : "translate(0%,80%)",
               }}
-              href={
-                "https://static1.squarespace.com/static/53dd6293e4b0d1d6aa7a2e72/t/64d3dc81cfc33c11b43dbb2a/1691606146249/Erica+Boothby+CV.pdf"
-              }
-              target="_blank"
-              className={` ${Helvetica_light.className}  absolute top-[1vw] left-[50%] translate-x-[-50%] uppercase overflow-hidden  md:p-[0.5vw] p-[2vw] rounded-[8vw] w-fit group hover:[#103210]  hover:bg-[black] hover:bg-opacity-[20%]  md:rounded-[2vw] bg-[black] backdrop-blur-2xl bg-opacity-[20%] `}
             >
-              <div className="w-full h-full bg-[#440C0C] group-hover:bg-[#103210] md:rounded-[1.7vw] rounded-[7vw] flex justify-center items-center   py-[2.5vw] px-[8vw] md:py-[0.7vw] md:px-[1.5vw]">
-                <p className="inline-block md:text-[1vw] text-[white] group-hover:text-white text-[3.5vw]">
-                  View CV
-                </p>
-              </div>
-            </Link>
+              {" "}
+              {/* {isloggedin && (
+                <Edit_text
+                  record={"caption_two"}
+                  setedit_text={setedit_text}
+                  setrecord_Name={setrecord_Name}
+                  text={active_user_data[0].caption_two}
+                />
+              )} */}
+              <Link
+                href={
+                  "https://static1.squarespace.com/static/53dd6293e4b0d1d6aa7a2e72/t/64d3dc81cfc33c11b43dbb2a/1691606146249/Erica+Boothby+CV.pdf"
+                }
+                target="_blank"
+              >
+                <div className="w-full h-full bg-[#440C0C] group-hover:bg-[#103210] md:rounded-[1.7vw] rounded-[7vw] flex justify-center items-center   py-[2.5vw] px-[8vw] md:py-[0.7vw] md:px-[1.5vw]">
+                  <p className="inline-block md:text-[1vw] text-[white] group-hover:text-white text-[3.5vw] ">
+                    View CV
+                  </p>
+                </div>
+              </Link>
+            </div>
             <div ref={right_first_text} className="z-[10]">
               <h3
                 className={`md:text-[4vw] text-[#5C3C43] md:text-end ${spline_font.className}  font-medium`}
@@ -520,7 +531,7 @@ const AnimatedLines = ({ active_user_data }: any) => {
       </div>
       <div
         ref={second_text_ref}
-        className={`  w-full md:px-[10vw] ${Helvetica_medium.className} md:text-[1.1vw] text-[4vw] flex-col md:flex-row gap-[5vw]  px-[3%] py-[8vw]  md:pb-0 md:pt-[2vw] text-[#000000] flex md:gap-[10%] `}
+        className={`  w-full md:px-[10vw]  md:mt-[-20vh]  ${Helvetica_medium.className} md:text-[1.1vw] text-[4vw] flex-col md:flex-row gap-[5vw]  px-[3%] py-[8vw]  md:pb-0 md:pt-[2vw] text-[#000000] flex md:gap-[10%] `}
       >
         <div className="overflow-hidden relative w-full ">
           {isloggedin && (
@@ -532,7 +543,7 @@ const AnimatedLines = ({ active_user_data }: any) => {
             />
           )}
           <p
-            className={`${start_second_text ? "" : "translate-y-[100%]"}`}
+            // className={`${start_second_text ? "" : "translate-y-[100%]"}`}
             style={{ transition: "0.8s ease" }}
           >
             {active_user_data[0].caption_three}
@@ -549,7 +560,7 @@ const AnimatedLines = ({ active_user_data }: any) => {
             />
           )}
           <p
-            className={`${start_second_text ? "" : "translate-y-[100%]"}`}
+            // className={`${start_second_text ? "" : "translate-y-[100%]"}`}
             style={{ transition: "0.8s ease" }}
           >
             {active_user_data[0].caption_four}
