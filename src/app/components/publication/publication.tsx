@@ -125,7 +125,7 @@ const Publication = ({ product_data }: any) => {
       }
     };
 
-    fetchInitialData();
+    // fetchInitialData();
 
     // Real-time subscription
     const handleInserts = (payload: any) => {
@@ -135,11 +135,13 @@ const Publication = ({ product_data }: any) => {
 
     const handleUpdates = (payload: any) => {
       console.log("Update received!", payload);
-      setdata((prevData) =>
-        prevData.map((item) =>
-          item.id === payload.new.id ? payload.new : item,
-        ),
-      );
+      // setdata((prevData) =>
+      //   prevData.map((item) =>
+      //     item.id === payload.new.id ? payload.new : item,
+      //   ),
+      // );
+      // fetchInitialData();
+      // window.location.reload();
     };
 
     const handleDeletes = (payload: any) => {
@@ -177,54 +179,56 @@ const Publication = ({ product_data }: any) => {
   const onDragEnd = (result: any) => {
     if (!result.destination) return; // Item not moved
 
-    // Create a copy of the current data
     const updatedData = Array.from(data);
-
-    // Reorder items in the data array
     const [reorderedItem] = updatedData.splice(result.source.index, 1);
     updatedData.splice(result.destination.index, 0, reorderedItem);
 
-    // Update the local state
+    setdata(updatedData);
 
-    // setdata(updatedData);
-
-    // Find changes in order
-    const changes = updatedData
-      .map((item, index) =>
-        item.order !== index ? { ...item, order: index } : null,
-      )
-      .filter(Boolean); // Remove unchanged items
-
-    // Call backend only if there are changes
-    if (changes.length > 0) {
-      // saveOrderToDatabase(changes);
-      console.log(changes, "this is order changes ");
-    } else {
-      console.log("No changes to persist.");
-    }
+    // Call backend to persist order
+    // saveOrderToDatabase(updatedData);
   };
-  const saveOrderToDatabase = async (
-    changes: { id: string; order: number }[],
-  ) => {
-    if (changes.length === 0) {
-      console.log("No changes to save.");
-      return;
-    }
 
+  const saveOrderToDatabase = async (updatedData: any[]) => {
     try {
-      // Send only the changed data to the database
-      const { error } = await supabase.from("publication").upsert(changes);
+      const updates = updatedData.map((item, index) => ({
+        id: item.id,
+        order: index,
+      }));
 
-      if (error) {
-        console.error("Error updating order:", error);
+      // Log the updates for debugging
+      updatedData.forEach((item, index) =>
+        console.log("order:" + item.order, index, item.sub_title),
+      );
+
+      // Upsert each update individually and collect promises
+      const updatePromises = updates.map((update) =>
+        supabase.from("publication").upsert(update),
+      );
+
+      // Wait for all updates to complete
+      const results = await Promise.all(updatePromises);
+
+      // Check for any errors in the results
+      const hasErrors = results.some(({ error }) => error);
+      if (hasErrors) {
+        console.error("Some updates failed:", results);
       } else {
-        console.log("Order changes saved successfully:", changes);
+        console.log("All updates completed successfully");
+        // Reload the page after successful updates
+        setTimeout(() => {
+          window.location.reload();
+        }, 2000);
       }
-    } catch (err) {
-      console.error("Unexpected error while saving order changes:", err);
+    } catch (error) {
+      console.error("Error saving order to database:", error);
     }
   };
 
+  const updateOrder = async () => {
+    // Save the updated order to the database
+    await saveOrderToDatabase(data);
+  };
   return (
     <>
       {/* add publication */}
@@ -233,6 +237,7 @@ const Publication = ({ product_data }: any) => {
           refresh_all_params={refresh_all_params}
           setpublication_title={setpublication_title}
           setdelete_publication={setdelete_publication}
+          updateOrder={updateOrder}
         />
       )}
 
