@@ -177,26 +177,51 @@ const Publication = ({ product_data }: any) => {
   const onDragEnd = (result: any) => {
     if (!result.destination) return; // Item not moved
 
+    // Create a copy of the current data
     const updatedData = Array.from(data);
+
+    // Reorder items in the data array
     const [reorderedItem] = updatedData.splice(result.source.index, 1);
     updatedData.splice(result.destination.index, 0, reorderedItem);
 
-    setdata(updatedData);
+    // Update the local state
 
-    // Call backend to persist order
-    saveOrderToDatabase(updatedData);
+    // setdata(updatedData);
+
+    // Find changes in order
+    const changes = updatedData
+      .map((item, index) =>
+        item.order !== index ? { ...item, order: index } : null,
+      )
+      .filter(Boolean); // Remove unchanged items
+
+    // Call backend only if there are changes
+    if (changes.length > 0) {
+      // saveOrderToDatabase(changes);
+      console.log(changes, "this is order changes ");
+    } else {
+      console.log("No changes to persist.");
+    }
   };
-  const saveOrderToDatabase = async (updatedData: any[]) => {
-    const updates = updatedData.map((item, index) => ({
-      id: item.id,
-      order: index,
-    }));
-    console.log(updates);
+  const saveOrderToDatabase = async (
+    changes: { id: string; order: number }[],
+  ) => {
+    if (changes.length === 0) {
+      console.log("No changes to save.");
+      return;
+    }
 
-    const { error } = await supabase.from("publication").upsert(updates);
+    try {
+      // Send only the changed data to the database
+      const { error } = await supabase.from("publication").upsert(changes);
 
-    if (error) {
-      console.error("Error updating order:", error);
+      if (error) {
+        console.error("Error updating order:", error);
+      } else {
+        console.log("Order changes saved successfully:", changes);
+      }
+    } catch (err) {
+      console.error("Unexpected error while saving order changes:", err);
     }
   };
 
@@ -245,9 +270,7 @@ const Publication = ({ product_data }: any) => {
                       }
                     }}
                     key={index}
-                    className={`w-full ${
-                      !isloggedin ? "comeup initial" : ""
-                    }  px-[4%] py-[8%] rounded-[5vw] md:flex-row flex-col  flex md:justify-between md:rounded-[1vw] md:px-[3vw] relative md:py-[1.5vw] bg-[#FEFAFA] bg-opacity-[62%] md:gap-[1vw] gap-[4vw] md:items-center`}
+                    className={`w-full  initial px-[4%] py-[8%] rounded-[5vw] md:flex-row flex-col  flex md:justify-between md:rounded-[1vw] md:px-[3vw] relative md:py-[1.5vw] bg-[#FEFAFA] bg-opacity-[62%] md:gap-[1vw] gap-[4vw] md:items-center`}
                   >
                     <div className="flex flex-col gap-[2vw] md:w-[50%] md:gap-[0.5vw]">
                       <h2
