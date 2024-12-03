@@ -13,7 +13,7 @@ const publications = async () => {
   const { data, error } = await supabase
     .from("publication")
     .select("*")
-    .order("created_at", { ascending: false })
+    .order("order", { ascending: true })
     .limit(4);
 
   return data;

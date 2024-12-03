@@ -18,39 +18,6 @@ import { useRouter } from "next/navigation";
 import { supabase } from "@/app/utils/supabaseClient";
 
 const Recent_publication = ({ product_data }: any) => {
-  const items = [
-    {
-      title: "THEORY OF COLLECTIVE MIND. TRENDS IN COGNITIVE SCIENCES.",
-      body: "Shteynberg, G., Hirsh, J. B., Wolf, W., Bargh, J. A., Boothby, E. J., Colman, A. M., Echterhoff, G., & Rossignac-Milon, M. 2023.",
-      data_link: "malkain.com/data",
-      pdf_link: "malkain.com/pdf",
-    },
-    {
-      title: "THEORY OF COLLECTIVE MIND. TRENDS IN COGNITIVE SCIENCES.",
-      body: "Shteynberg, G., Hirsh, J. B., Wolf, W., Bargh, J. A., Boothby, E. J., Colman, A. M., Echterhoff, G., & Rossignac-Milon, M. 2023.",
-      data_link: "malkain.com/data",
-      pdf_link: "malkain.com/pdf",
-    },
-    {
-      title: "THEORY OF COLLECTIVE MIND. TRENDS IN COGNITIVE SCIENCES.",
-      body: "Shteynberg, G., Hirsh, J. B., Wolf, W., Bargh, J. A., Boothby, E. J., Colman, A. M., Echterhoff, G., & Rossignac-Milon, M. 2023.",
-      data_link: "malkain.com/data",
-      pdf_link: "malkain.com/pdf",
-    },
-    {
-      title: "THEORY OF COLLECTIVE MIND. TRENDS IN COGNITIVE SCIENCES.",
-      body: "Shteynberg, G., Hirsh, J. B., Wolf, W., Bargh, J. A., Boothby, E. J., Colman, A. M., Echterhoff, G., & Rossignac-Milon, M. 2023.",
-      data_link: "malkain.com/data",
-      pdf_link: "malkain.com/pdf",
-    },
-    {
-      title: "THEORY OF COLLECTIVE MIND. TRENDS IN COGNITIVE SCIENCES.",
-      body: "Shteynberg, G., Hirsh, J. B., Wolf, W., Bargh, J. A., Boothby, E. J., Colman, A. M., Echterhoff, G., & Rossignac-Milon, M. 2023.",
-      data_link: "malkain.com/data",
-      pdf_link: "malkain.com/pdf",
-    },
-  ];
-
   const itemsRefs = useRef<any>([]);
   //  const itemsRefs = useRef<any>([]);
   const [heights, setHeights] = useState<number[]>([]);
