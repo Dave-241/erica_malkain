@@ -50,14 +50,14 @@ export default async function Home() {
       <>
         <div className="bg-[#DFE4DF]">
           <Nav />
-          {/* <Hero_home />
+          <Hero_home />
           <div className="md:pb-[6vw] md:mt-[8vw] mt-[15vw] ">
             <AnimatedLines active_user_data={approach_items || []} />
           </div>
 
           <Home_research research_items={research_items || []} />
           <Recent_publication product_data={product_data || []} />
-          <Recent_media_wrapper /> */}
+          <Recent_media_wrapper />
           <Review_wrapper />
           <Contact_wrappeer />
           <Footer />

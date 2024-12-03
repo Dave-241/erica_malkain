@@ -152,6 +152,7 @@ const Reviews = ({ product_data }: any) => {
         .from("review")
         .select("*")
         .order("order", { ascending: true });
+
       if (error) {
         console.error("Error fetching initial data:", error);
       } else {
@@ -406,7 +407,7 @@ const Reviews = ({ product_data }: any) => {
         {isloggedin && (
           <div className=" w-full md:overflow-hidden    relative   ">
             <DragDropContext onDragEnd={onDragEnd}>
-              <Droppable droppableId="review" direction="vertical">
+              <Droppable droppableId="review">
                 {(provided) => (
                   <div
                     {...provided.droppableProps}
@@ -427,7 +428,7 @@ const Reviews = ({ product_data }: any) => {
                               ref={provided.innerRef}
                               {...provided.draggableProps}
                               {...provided.dragHandleProps}
-                              className={` relative  flex-none md:flex-auto  bg-black md:rounded-[2vw] rounded-[5vw] snap-center  w-full md:gap-[1vw]  flex items-end `}
+                              className={` relative  flex-none md:flex-auto  bg-black md:rounded-[2vw] rounded-[5vw] snap-center  md:w-[80%] w-[47%] md:gap-[2vw]  flex items-end `}
                             >
                               {isloggedin && (
                                 <Edit_each_review
