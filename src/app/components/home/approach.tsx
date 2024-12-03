@@ -213,7 +213,7 @@ const AnimatedLines = ({ active_user_data }: any) => {
           />
         )}
         <h2
-          className={`uppercase  md:text-[4vw] text-[8vw]  leading-[9.5vw] md:leading-[4.5vw] md:pt-0 pt-[10vw] md:px-0 px-[3%] text-center ${spline_font.className} font-medium text-[#5C3C43]`}
+          className={`uppercase  md:text-[4vw] text-[7vw]  leading-[8.5vw] md:leading-[4.5vw] md:pt-0 pt-[10vw] md:px-0 px-[3%] text-center ${spline_font.className} font-medium text-[#5C3C43]`}
           dangerouslySetInnerHTML={{ __html: active_user_data[0].heading }}
         >
           {/* {active_user_data[0].heading} */}
@@ -258,26 +258,36 @@ const AnimatedLines = ({ active_user_data }: any) => {
         </div>
 
         {/* DOWNLOAD CV */}
-        <Link
-          style={{
-            whiteSpace: "nowrap",
-            transition: "0.8s ease",
-            opacity: start_frist_text ? 1 : 0,
-          }}
-          target="_blank"
-          href={
-            "https://static1.squarespace.com/static/53dd6293e4b0d1d6aa7a2e72/t/64d3dc81cfc33c11b43dbb2a/1691606146249/Erica+Boothby+CV.pdf"
-          }
+        <div
           className={` ${Helvetica_light.className} ${
             start_frist_text ? "" : "translate-y-[100%]"
           } uppercase overflow-hidden  md:p-[0.5vw] p-[2vw] rounded-[8vw] w-fit group hover:[#103210]  hover:bg-[black] hover:bg-opacity-[20%] md:hidden  md:rounded-[2vw] bg-[black] backdrop-blur-2xl bg-opacity-[20%] `}
         >
-          <div className="w-full h-full bg-[#440C0C] group-hover:bg-[#103210] md:rounded-[1.7vw] rounded-[7vw] flex justify-center items-center   py-[2.5vw] px-[8vw] md:py-[0.7vw] md:px-[1.5vw]">
-            <p className="inline-block md:text-[1vw] text-[white] group-hover:text-white text-[3.5vw] relative">
-              View CV
-            </p>
-          </div>
-        </Link>
+          {" "}
+          {isloggedin && (
+            <Edit_text
+              record={"cv"}
+              setedit_text={setedit_text}
+              setrecord_Name={setrecord_Name}
+              text={active_user_data[0].cv}
+            />
+          )}
+          <Link
+            style={{
+              whiteSpace: "nowrap",
+              transition: "0.8s ease",
+              opacity: start_frist_text ? 1 : 0,
+            }}
+            target="_blank"
+            href={active_user_data[0].cv}
+          >
+            <div className="w-full h-full bg-[#440C0C] group-hover:bg-[#103210] md:rounded-[1.7vw] rounded-[7vw] flex justify-center items-center   py-[2.5vw] px-[8vw] md:py-[0.7vw] md:px-[1.5vw]">
+              <p className="inline-block md:text-[1vw] text-[white] group-hover:text-white text-[3.5vw] relative">
+                View CV
+              </p>
+            </div>
+          </Link>
+        </div>
       </div>
       {/* <p
         className={`text-[4.5vw] mb-[7vw] mt-[4vw] md:hidden uppercase text-[#000000] text-center`}
@@ -322,20 +332,15 @@ const AnimatedLines = ({ active_user_data }: any) => {
               }}
             >
               {" "}
-              {/* {isloggedin && (
+              {isloggedin && (
                 <Edit_text
-                  record={"caption_two"}
+                  record={"cv"}
                   setedit_text={setedit_text}
                   setrecord_Name={setrecord_Name}
-                  text={active_user_data[0].caption_two}
+                  text={active_user_data[0].cv}
                 />
-              )} */}
-              <Link
-                href={
-                  "https://static1.squarespace.com/static/53dd6293e4b0d1d6aa7a2e72/t/64d3dc81cfc33c11b43dbb2a/1691606146249/Erica+Boothby+CV.pdf"
-                }
-                target="_blank"
-              >
+              )}
+              <Link href={active_user_data[0].cv} target="_blank">
                 <div className="w-full h-full bg-[#440C0C] group-hover:bg-[#103210] md:rounded-[1.7vw] rounded-[7vw] flex justify-center items-center   py-[2.5vw] px-[8vw] md:py-[0.7vw] md:px-[1.5vw]">
                   <p className="inline-block md:text-[1vw] text-[white] group-hover:text-white text-[3.5vw] ">
                     View CV

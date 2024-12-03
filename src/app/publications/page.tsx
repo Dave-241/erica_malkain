@@ -12,7 +12,7 @@ const fetchProducts = async () => {
     .from("publication")
     .select("*")
     .order("order", { ascending: true });
-  console.log(data);
+  // console.log(data);
   // if (error) throw notFound();
   // console.log(data);
   return data;
