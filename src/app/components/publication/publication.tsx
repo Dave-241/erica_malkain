@@ -231,138 +231,225 @@ const Publication = ({ product_data }: any) => {
         />
       )}
 
-      <div className="w-full py-[10vw]  md:py-[5vw]  px-[3%]  md:px-[10%]">
-        <div className=" w-full flex flex-col md:gap-[1.5vw] gap-[5vw]">
-          {start_anime && (
-            <DragDropContext onDragEnd={onDragEnd}>
-              <Droppable droppableId="publications">
-                {(provided) => (
+      {/* logged out users screen */}
+      {!isloggedin && (
+        <div className="w-full py-[10vw]  md:py-[5vw]  px-[3%]  md:px-[10%]">
+          <div className=" w-full flex flex-col md:gap-[1.5vw] gap-[5vw]">
+            {data.map((e: any, index: any) => {
+              return (
+                <>
                   <div
-                    {...provided.droppableProps}
-                    className="flex flex-col md:gap-[1.5vw] gap-[5vw]"
-                    ref={provided.innerRef}
+                    ref={(ref) => {
+                      if (ref) {
+                        itemsRefs.current[index] = ref;
+                      }
+                    }}
+                    key={index}
+                    className={`w-full ${
+                      !isloggedin ? "comeup initial" : ""
+                    }  px-[4%] py-[8%] rounded-[5vw] md:flex-row flex-col  flex md:justify-between md:rounded-[1vw] md:px-[3vw] relative md:py-[1.5vw] bg-[#FEFAFA] bg-opacity-[62%] md:gap-[1vw] gap-[4vw] md:items-center`}
                   >
-                    {data.map((e: any, index: any) => {
-                      return (
-                        <>
-                          <Draggable
-                            key={e.id.toString()}
-                            // draggableId={index.toString()}
-                            draggableId={e.id.toString()}
-                            index={index}
-                          >
-                            {(provided) => (
-                              <div
-                                // ref={(ref) => {
-                                //   if (ref) {
-                                //     itemsRefs.current[index] = ref;
-                                //   }
-                                // }}
-                                ref={provided.innerRef}
-                                key={index}
-                                {...provided.draggableProps}
-                                {...provided.dragHandleProps}
-                                className={`w-full ${
-                                  !isloggedin ? "comeup initial" : ""
-                                }  px-[4%] py-[8%] rounded-[5vw] md:flex-row flex-col  flex md:justify-between md:rounded-[1vw] md:px-[3vw] relative md:py-[1.5vw] bg-[#FEFAFA] bg-opacity-[62%] md:gap-[1vw] gap-[4vw] md:items-center`}
-                              >
-                                {isloggedin && (
-                                  <Edit_each_publication
-                                    setpublication_title={setpublication_title}
-                                    setdelete_publication={
-                                      setdelete_publication
-                                    }
-                                    edit_each_publication_modal_param={
-                                      edit_each_publication_modal_param
-                                    }
-                                    title={e.title}
-                                    body={e.description}
-                                    view_data={e.data_link}
-                                    pdf_data={e.pdf_link}
-                                    id={e.id}
-                                    img={e.image_link}
-                                    sub_title={e.sub_title}
-                                    setadd_publdcication={setadd_publication}
-                                  />
+                    <div className="flex flex-col gap-[2vw] md:w-[50%] md:gap-[0.5vw]">
+                      <h2
+                        //   ref={hero_ref}
+                        className={`${Helvetica_bold.className} text-[5vw] leading-[6vw] md:text-[1.3vw] md:leading-[2vw] uppercase text-[#440C0C]`}
+                      >
+                        {e.title}
+                      </h2>
+                      {/* Display the text after the period in a span */}
+                      <p className="text-[#440C0C] md:text-[1vw] text-[4vw] opacity-[50%]">
+                        {e.sub_title}
+                      </p>
+                      <p
+                        className={`${Helvetica_light.className} md:text-[1.1vw] md:leading-[1.5vw] text-[4vw] leading-[5vw] text-[#a46035]`}
+                      >
+                        {e.description &&
+                          e.description
+                            .split("Boothby, E. J")
+                            .map((part: string, index: number) => (
+                              <React.Fragment key={index}>
+                                {part}
+                                {index <
+                                  e.description.split("Boothby, E. J").length -
+                                    1 && (
+                                  <strong
+                                    className={`${Helvetica_bold.className} text-[#440c0ccb]`}
+                                  >
+                                    Boothby, E. J
+                                  </strong>
                                 )}
-                                {/* <button
+                              </React.Fragment>
+                            ))}{" "}
+                      </p>
+                    </div>
+
+                    <div
+                      className={`${Bt_Beau_Regualr.className} md:text-[1vw] gap-[4vw] text-[3.5vw] flex capitalize md:gap-[1vw]  items-center`}
+                    >
+                      {e.data_link && (
+                        <Link
+                          target="_blank"
+                          href={`${e.data_link}`}
+                          className=" md:rounded-[1.7vw] border-[#440C0C] border-[0.1vw]  bg-[#FEF6F6] flex justify-center items-center md:py-[0.8vw] md:px-[2vw] px-[6vw] py-[3vw] text-[#440C0C]  hover:bg-[white] rounded-[7vw]"
+                        >
+                          DATA
+                        </Link>
+                      )}{" "}
+                      <Link
+                        target="_blank"
+                        href={`${e.pdf_link}`}
+                        className=" md:rounded-[1.7vw] border-[#440C0C]   md:border-[0.1vw] bg-[#440C0C] flex justify-center items-center md:py-[0.8vw] md:px-[2vw]  px-[6vw] py-[3vw] text-white hover:bg-[#C1A391] hover:border-[#C1A391] rounded-[7vw]"
+                      >
+                        PDF
+                      </Link>
+                    </div>
+                  </div>
+                </>
+              );
+            })}
+          </div>
+        </div>
+      )}
+
+      {/* logged in users screeen including drag and drop screens  */}
+      {isloggedin && (
+        <div className="w-full py-[10vw]  md:py-[5vw]  px-[3%]  md:px-[10%]">
+          <div className=" w-full flex flex-col md:gap-[1.5vw] gap-[5vw]">
+            {start_anime && (
+              <DragDropContext onDragEnd={onDragEnd}>
+                <Droppable droppableId="publications">
+                  {(provided) => (
+                    <div
+                      {...provided.droppableProps}
+                      className="flex flex-col md:gap-[1.5vw] gap-[5vw]"
+                      ref={provided.innerRef}
+                    >
+                      {data.map((e: any, index: any) => {
+                        return (
+                          <>
+                            <Draggable
+                              key={e.id.toString()}
+                              // draggableId={index.toString()}
+                              draggableId={e.id.toString()}
+                              index={index}
+                            >
+                              {(provided) => (
+                                <div
+                                  // ref={(ref) => {
+                                  //   if (ref) {
+                                  //     itemsRefs.current[index] = ref;
+                                  //   }
+                                  // }}
+                                  ref={provided.innerRef}
+                                  key={index}
+                                  {...provided.draggableProps}
+                                  {...provided.dragHandleProps}
+                                  className={`w-full ${
+                                    !isloggedin ? "comeup initial" : ""
+                                  }  px-[4%] py-[8%] rounded-[5vw] md:flex-row flex-col  flex md:justify-between md:rounded-[1vw] md:px-[3vw] relative md:py-[1.5vw] bg-[#FEFAFA] bg-opacity-[62%] md:gap-[1vw] gap-[4vw] md:items-center`}
+                                >
+                                  {isloggedin && (
+                                    <Edit_each_publication
+                                      setpublication_title={
+                                        setpublication_title
+                                      }
+                                      setdelete_publication={
+                                        setdelete_publication
+                                      }
+                                      edit_each_publication_modal_param={
+                                        edit_each_publication_modal_param
+                                      }
+                                      title={e.title}
+                                      body={e.description}
+                                      view_data={e.data_link}
+                                      pdf_data={e.pdf_link}
+                                      id={e.id}
+                                      img={e.image_link}
+                                      sub_title={e.sub_title}
+                                      setadd_publdcication={setadd_publication}
+                                    />
+                                  )}
+                                  {/* <button
                                 {...provided.draggableProps}
                                 {...provided.dragHandleProps}
                                 className="bg-white p-[1rem] absolute top-[50%] left-[1rem] z-[1000] translate-y-[-50%] "
                               >
                                 Click to drag
                               </button> */}
-                                {/* the first section */}
-                                <div className="flex flex-col gap-[2vw] md:w-[50%] md:gap-[0.5vw]">
-                                  <h2
-                                    //   ref={hero_ref}
-                                    className={`${Helvetica_bold.className} text-[5vw] leading-[6vw] md:text-[1.3vw] md:leading-[2vw] uppercase text-[#440C0C]`}
-                                  >
-                                    {e.title}
-                                  </h2>
-                                  {/* Display the text after the period in a span */}
-                                  <p className="text-[#440C0C] md:text-[1vw] text-[4vw] opacity-[50%]">
-                                    {e.sub_title}
-                                  </p>
-                                  <p
-                                    className={`${Helvetica_light.className} md:text-[1.1vw] md:leading-[1.5vw] text-[4vw] leading-[5vw] text-[#a46035]`}
-                                  >
-                                    {e.description &&
-                                      e.description
-                                        .split("Boothby, E. J")
-                                        .map((part: string, index: number) => (
-                                          <React.Fragment key={index}>
-                                            {part}
-                                            {index <
-                                              e.description.split(
-                                                "Boothby, E. J",
-                                              ).length -
-                                                1 && (
-                                              <strong
-                                                className={`${Helvetica_bold.className} text-[#440c0ccb]`}
-                                              >
-                                                Boothby, E. J
-                                              </strong>
-                                            )}
-                                          </React.Fragment>
-                                        ))}{" "}
-                                  </p>
-                                </div>
+                                  {/* the first section */}
+                                  <div className="flex flex-col gap-[2vw] md:w-[50%] md:gap-[0.5vw]">
+                                    <h2
+                                      //   ref={hero_ref}
+                                      className={`${Helvetica_bold.className} text-[5vw] leading-[6vw] md:text-[1.3vw] md:leading-[2vw] uppercase text-[#440C0C]`}
+                                    >
+                                      {e.title}
+                                    </h2>
+                                    {/* Display the text after the period in a span */}
+                                    <p className="text-[#440C0C] md:text-[1vw] text-[4vw] opacity-[50%]">
+                                      {e.sub_title}
+                                    </p>
+                                    <p
+                                      className={`${Helvetica_light.className} md:text-[1.1vw] md:leading-[1.5vw] text-[4vw] leading-[5vw] text-[#a46035]`}
+                                    >
+                                      {e.description &&
+                                        e.description
+                                          .split("Boothby, E. J")
+                                          .map(
+                                            (part: string, index: number) => (
+                                              <React.Fragment key={index}>
+                                                {part}
+                                                {index <
+                                                  e.description.split(
+                                                    "Boothby, E. J",
+                                                  ).length -
+                                                    1 && (
+                                                  <strong
+                                                    className={`${Helvetica_bold.className} text-[#440c0ccb]`}
+                                                  >
+                                                    Boothby, E. J
+                                                  </strong>
+                                                )}
+                                              </React.Fragment>
+                                            ),
+                                          )}{" "}
+                                    </p>
+                                  </div>
 
-                                <div
-                                  className={`${Bt_Beau_Regualr.className} md:text-[1vw] gap-[4vw] text-[3.5vw] flex capitalize md:gap-[1vw]  items-center`}
-                                >
-                                  {e.data_link && (
+                                  <div
+                                    className={`${Bt_Beau_Regualr.className} md:text-[1vw] gap-[4vw] text-[3.5vw] flex capitalize md:gap-[1vw]  items-center`}
+                                  >
+                                    {e.data_link && (
+                                      <Link
+                                        target="_blank"
+                                        href={`${e.data_link}`}
+                                        className=" md:rounded-[1.7vw] border-[#440C0C] border-[0.1vw]  bg-[#FEF6F6] flex justify-center items-center md:py-[0.8vw] md:px-[2vw] px-[6vw] py-[3vw] text-[#440C0C]  hover:bg-[white] rounded-[7vw]"
+                                      >
+                                        DATA
+                                      </Link>
+                                    )}{" "}
                                     <Link
                                       target="_blank"
-                                      href={`${e.data_link}`}
-                                      className=" md:rounded-[1.7vw] border-[#440C0C] border-[0.1vw]  bg-[#FEF6F6] flex justify-center items-center md:py-[0.8vw] md:px-[2vw] px-[6vw] py-[3vw] text-[#440C0C]  hover:bg-[white] rounded-[7vw]"
+                                      href={`${e.pdf_link}`}
+                                      className=" md:rounded-[1.7vw] border-[#440C0C]   md:border-[0.1vw] bg-[#440C0C] flex justify-center items-center md:py-[0.8vw] md:px-[2vw]  px-[6vw] py-[3vw] text-white hover:bg-[#C1A391] hover:border-[#C1A391] rounded-[7vw]"
                                     >
-                                      DATA
+                                      PDF
                                     </Link>
-                                  )}{" "}
-                                  <Link
-                                    target="_blank"
-                                    href={`${e.pdf_link}`}
-                                    className=" md:rounded-[1.7vw] border-[#440C0C]   md:border-[0.1vw] bg-[#440C0C] flex justify-center items-center md:py-[0.8vw] md:px-[2vw]  px-[6vw] py-[3vw] text-white hover:bg-[#C1A391] hover:border-[#C1A391] rounded-[7vw]"
-                                  >
-                                    PDF
-                                  </Link>
+                                  </div>
                                 </div>
-                              </div>
-                            )}
-                          </Draggable>
-                        </>
-                      );
-                    })}
-                    {provided.placeholder}
-                  </div>
-                )}
-              </Droppable>
-            </DragDropContext>
-          )}
+                              )}
+                            </Draggable>
+                          </>
+                        );
+                      })}
+                      {provided.placeholder}
+                    </div>
+                  )}
+                </Droppable>
+              </DragDropContext>
+            )}
+          </div>
         </div>
-      </div>
+      )}
     </>
   );
 };
