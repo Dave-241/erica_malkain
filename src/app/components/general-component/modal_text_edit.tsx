@@ -63,11 +63,12 @@ const Modal_text_edit = ({
             >
               Type Text here
             </label>
-            {record_Name == "heading" && (
-              <p className="text-sm text-[red]">
-                Include {"<br/>"} tag to enter a new line
-              </p>
-            )}{" "}
+            {record_Name == "heading" ||
+              (record_Name == "occupation" && (
+                <p className="text-sm text-[red]">
+                  Include {"<br/>"} tag to enter a new line
+                </p>
+              ))}{" "}
             <textarea
               //   type="text"
               id="description"
