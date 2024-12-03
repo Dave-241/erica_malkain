@@ -24,8 +24,6 @@
     "react-beautiful-dnd": "^13.1.1",
     "react-color-palette": "^7.2.1",
     "react-dom": "^18",
-    "react-gesture-responder": "^2.1.0",
-    "react-grid-dnd": "^2.1.2",
     "svgo": "^3.3.2",
     "tus-js-client": "^4.1.0",
     "uuid": "^10.0.0"
