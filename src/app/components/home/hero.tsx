@@ -91,7 +91,7 @@ const Hero_home = () => {
               transition: "0.65s ease",
               transform: start_anime ? "translate(0,0)" : "translate(0%,100%)",
             }}
-            className={`md:text-[15vw] text-[19vw] leading-[28vw] text-[white]  z-[10] md:leading-[11.5vw] ${Agatho_regular.className}`}
+            className={`md:text-[15vw] text-[19vw] leading-[28vw] text-[white]  z-[10] md:leading-[12.5vw] ${Agatho_regular.className}`}
           >
             ERICA
           </h1>
