@@ -320,7 +320,7 @@ const Categories = ({ product_data }: any) => {
         // Optionally reload the page after a delay
         setTimeout(() => {
           window.location.reload();
-        }, 2000);
+        }, 3000);
       }
     } catch (error) {
       console.error("Error saving order to database:", error);
