@@ -35,7 +35,7 @@ const Modal_edit_category = ({
           .from("media")
           .select("*")
           .eq("id", edit_ID) // Filter by id
-          .order("created_at", { ascending: false });
+          .order("order", { ascending: true });
 
         if (error) {
           console.error("Error fetching initial data:", error);

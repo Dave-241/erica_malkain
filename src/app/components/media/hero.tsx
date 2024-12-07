@@ -251,7 +251,13 @@ const Media_hero = ({ page_data }: any) => {
           </div>
           <div className="w-full h-full left-0 top-0 absolute bg-[#27070E] bg-opacity-[50%]"></div>
         </div>
-      </div>
+      </div>{" "}
+      {isloggedin && (
+        <p className="text-[red] uppercase text-center text-sm ">
+          Please note that updates may take up to 5 seconds to reflect after
+          each change due to site caching.
+        </p>
+      )}
       <div className="w-full md:h-[8vw]"></div>
     </>
   );
