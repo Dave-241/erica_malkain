@@ -58,7 +58,7 @@ const Hero_home = () => {
     <>
       <div
         ref={ref}
-        className="w-full flex md:px-[10vw] md:pb-[8vw]  flex-col justify-end  overflow-hidden md:h-[62vw] h-[180vw] relative text-[#DFE4DF]  px-[3%] pb-[15vw]"
+        className="w-full flex md:px-[10vw] md:pb-[2vw]  flex-col justify-end  overflow-hidden md:h-[62vw] h-[180vw] relative text-[#DFE4DF]  px-[3%] pb-[15vw]"
       >
         <Image
           style={{
@@ -91,7 +91,7 @@ const Hero_home = () => {
               transition: "0.65s ease",
               transform: start_anime ? "translate(0,0)" : "translate(0%,100%)",
             }}
-            className={`md:text-[15vw] text-[19vw] leading-[28vw] text-[white]  z-[10] md:leading-[12.5vw] ${Agatho_regular.className}`}
+            className={`md:text-[15vw] text-[19vw]  leading-[28vw] text-[white]  z-[10] md:leading-[12.5vw] ${Agatho_regular.className}`}
           >
             ERICA
           </h1>
@@ -104,7 +104,7 @@ const Hero_home = () => {
               transition: "0.65s ease",
               transform: start_anime ? "translate(0,0)" : "translate(0%,100%)",
             }}
-            className={`md:text-[15vw]  md:leading-[17vw] text-[19vw] leading-[28vw]   md:text-end  ${Agatho_regular.className}`}
+            className={`md:text-[15vw]  md:leading-[17vw] text-[19vw] leading-[28vw] text-white   md:text-end  ${Agatho_regular.className}`}
           >
             BOOTHBY
           </h1>

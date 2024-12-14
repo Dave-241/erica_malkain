@@ -232,6 +232,7 @@ const AnimatedLines = ({ active_user_data }: any) => {
               text={active_user_data[0].caption_one}
             />
           )}
+
           <p
             // className={`${start_frist_text ? "" : "translate-y-[100%]"}`}
             style={{ transition: "0.8s ease" }}
@@ -296,11 +297,29 @@ const AnimatedLines = ({ active_user_data }: any) => {
       </p>{" "} */}
       <div className="z-[10]  md:hidden flex flex-col items-center">
         <h3
-          className={`text-[12vw] text-[#5C3C43] ${spline_font.className}  font-medium`}
+          className={`text-[12vw] relative text-[#5C3C43] ${spline_font.className}  font-medium`}
         >
-          Yale
+          {isloggedin && (
+            <Edit_text
+              record={"first_university"}
+              setedit_text={setedit_text}
+              setrecord_Name={setrecord_Name}
+              text={active_user_data[0].first_university}
+            />
+          )}
+          {active_user_data[0].first_university}
         </h3>
-        <p className={`text-[4vw] text-[#000000]`}>University</p>
+        <p className={`text-[4vw] relative text-[#000000]`}>
+          {isloggedin && (
+            <Edit_text
+              record={"first_school_type"}
+              setedit_text={setedit_text}
+              setrecord_Name={setrecord_Name}
+              text={active_user_data[0].first_school_type}
+            />
+          )}
+          {active_user_data[0].first_school_type}
+        </p>
       </div>
       <div
         ref={ref}
@@ -317,11 +336,37 @@ const AnimatedLines = ({ active_user_data }: any) => {
           >
             <div className="z-[10]">
               <h3
-                className={`md:text-[4vw] text-[#5C3C43] ${spline_font.className}  font-medium`}
+                className={`md:text-[4vw] relative text-[#5C3C43] ${spline_font.className}  font-medium`}
               >
-                Yale
+                {isloggedin && (
+                  <Edit_text
+                    record={"first_university"}
+                    setedit_text={setedit_text}
+                    setrecord_Name={setrecord_Name}
+                    text={active_user_data[0].first_university}
+                  />
+                )}
+                {isloggedin && (
+                  <Edit_text
+                    record={"first_school_type"}
+                    setedit_text={setedit_text}
+                    setrecord_Name={setrecord_Name}
+                    text={active_user_data[0].first_school_type}
+                  />
+                )}
+                {active_user_data[0].first_university}
               </h3>
-              <p className={`md:text-[1vw] text-[#000000]`}>University</p>
+              <p className={`md:text-[1vw] text-[#000000] relative`}>
+                {isloggedin && (
+                  <Edit_text
+                    record={"first_school_type"}
+                    setedit_text={setedit_text}
+                    setrecord_Name={setrecord_Name}
+                    text={active_user_data[0].first_school_type}
+                  />
+                )}
+                {active_user_data[0].first_school_type}
+              </p>
             </div>
             {/* DOWNLOAD CV */}
             <div
@@ -350,12 +395,30 @@ const AnimatedLines = ({ active_user_data }: any) => {
             </div>
             <div ref={right_first_text} className="z-[10]">
               <h3
-                className={`md:text-[4vw] text-[#5C3C43] md:text-end ${spline_font.className}  font-medium`}
+                className={`md:text-[4vw] text-[#5C3C43] relative md:text-end ${spline_font.className}  font-medium`}
               >
-                Wharton
+                {isloggedin && (
+                  <Edit_text
+                    record={"second_university"}
+                    setedit_text={setedit_text}
+                    setrecord_Name={setrecord_Name}
+                    text={active_user_data[0].second_university}
+                  />
+                )}
+                {active_user_data[0].second_university}
               </h3>
-              <p className={`md:text-[1vw] text-[#000000] md:text-end`}>
-                University of Pennsylvania
+              <p
+                className={`md:text-[1vw] relative text-[#000000] md:text-end`}
+              >
+                {isloggedin && (
+                  <Edit_text
+                    record={"second_school_type"}
+                    setedit_text={setedit_text}
+                    setrecord_Name={setrecord_Name}
+                    text={active_user_data[0].second_school_type}
+                  />
+                )}
+                {active_user_data[0].second_school_type}
               </p>
             </div>
           </div>
@@ -381,19 +444,43 @@ const AnimatedLines = ({ active_user_data }: any) => {
                   ref={left_second_text}
                   className={`border-[#000000] md:px-[1vw] border md:rounded-[2vw] md:text-[1vw] absolute   left-[2.5vw] z-[10] bg-[#DFE4DF]`}
                 >
-                  Ph.D. Social Psychology
+                  {isloggedin && (
+                    <Edit_text
+                      record={"first_school_position"}
+                      setedit_text={setedit_text}
+                      setrecord_Name={setrecord_Name}
+                      text={active_user_data[0].first_school_position}
+                    />
+                  )}
+                  {active_user_data[0].first_school_position}
                 </p>
                 <p
                   ref={middle_first_text}
                   className={`border-[#000000] md:px-[1vw] border md:rounded-[2vw] md:text-[1vw] absolute bottom-[3vw] left-[50%] z-[10] translate-x-[-50%] bg-[#DFE4DF]`}
                 >
-                  A bit About Erica
+                  {isloggedin && (
+                    <Edit_text
+                      record={"bit_about_erica"}
+                      setedit_text={setedit_text}
+                      setrecord_Name={setrecord_Name}
+                      text={active_user_data[0].bit_about_erica}
+                    />
+                  )}
+                  {active_user_data[0].bit_about_erica}
                 </p>
                 <p
                   ref={right_three_text}
                   className={`border-[#000000] md:px-[1vw] border md:rounded-[2vw] md:text-[1vw] absolute   right-[2.5vw] z-[10] bg-[#DFE4DF]`}
                 >
-                  Senior Lecturer{" "}
+                  {isloggedin && (
+                    <Edit_text
+                      record={"second_school_position"}
+                      setedit_text={setedit_text}
+                      setrecord_Name={setrecord_Name}
+                      text={active_user_data[0].second_school_position}
+                    />
+                  )}
+                  {active_user_data[0].second_school_position}
                 </p>
                 <div
                   className="w-[45%]  relative flex justify-end  overflow-hidden"
@@ -445,15 +532,31 @@ const AnimatedLines = ({ active_user_data }: any) => {
           <div className="h-full w-full  flex flex-col py-[20vh]  items-center justify-between absolute top-0 left-0">
             <p
               ref={mobile_up_text}
-              className={`border-[#000000] z-[10] w-fit px-[3vw] border py-[1vw] rounded-[4vw] text-[4vw]  bg-[#DFE4DF]`}
+              className={`border-[#000000] relative z-[10] w-fit px-[3vw] border py-[1vw] rounded-[4vw] text-[4vw]  bg-[#DFE4DF]`}
             >
-              Ph.D. Social Psychology
+              {isloggedin && (
+                <Edit_text
+                  record={"first_school_position"}
+                  setedit_text={setedit_text}
+                  setrecord_Name={setrecord_Name}
+                  text={active_user_data[0].first_school_position}
+                />
+              )}
+              {active_user_data[0].first_school_position}
             </p>
             <p
               ref={mobile_down_text}
-              className={`border-[#000000] z-[10] w-fit px-[3vw] border py-[1vw] rounded-[4vw] text-[4vw]  bg-[#DFE4DF]`}
+              className={`border-[#000000] z-[10] relative w-fit px-[3vw] border py-[1vw] rounded-[4vw] text-[4vw]  bg-[#DFE4DF]`}
             >
-              Senior Lecturer{" "}
+              {isloggedin && (
+                <Edit_text
+                  record={"second_school_position"}
+                  setedit_text={setedit_text}
+                  setrecord_Name={setrecord_Name}
+                  text={active_user_data[0].second_school_position}
+                />
+              )}
+              {active_user_data[0].second_school_position}{" "}
             </p>
           </div>
 
@@ -516,22 +619,45 @@ const AnimatedLines = ({ active_user_data }: any) => {
       </div>{" "}
       <div className="z-[10]  md:hidden flex flex-col items-center">
         <h3
-          className={`text-[12vw] text-[#5C3C43] ${spline_font.className}  font-medium`}
+          className={`text-[12vw] relative text-[#5C3C43] ${spline_font.className}  font-medium`}
         >
-          Wharton
+          {isloggedin && (
+            <Edit_text
+              record={"second_university"}
+              setedit_text={setedit_text}
+              setrecord_Name={setrecord_Name}
+              text={active_user_data[0].second_university}
+            />
+          )}
+          {active_user_data[0].second_university}
         </h3>
-        <p className={`text-[4vw] text-[#000000]`}>
-          {" "}
-          University of Pennsylvania
+        <p className={`text-[4vw] text-[#000000] relative`}>
+          {isloggedin && (
+            <Edit_text
+              record={"second_school_type"}
+              setedit_text={setedit_text}
+              setrecord_Name={setrecord_Name}
+              text={active_user_data[0].second_school_type}
+            />
+          )}
+          {active_user_data[0].second_school_type}
         </p>
       </div>
       {/* A BIT ABOUT ERICA */}
       <div className="flex justify-center md:hidden mt-[15vw] mb-[2.5vw]">
         <p
           // ref={right_second_text}
-          className={`border-[#000000] z-[10] w-fit px-[3vw] border py-[1vw] rounded-[4vw] text-[4vw]  bg-[#DFE4DF]`}
+          className={`border-[#000000] relative z-[10] w-fit px-[3vw] border py-[1vw] rounded-[4vw] text-[4vw]  bg-[#DFE4DF]`}
         >
-          A bit About Erica
+          {isloggedin && (
+            <Edit_text
+              record={"bit_about_erica"}
+              setedit_text={setedit_text}
+              setrecord_Name={setrecord_Name}
+              text={active_user_data[0].bit_about_erica}
+            />
+          )}
+          {active_user_data[0].bit_about_erica}
         </p>
       </div>
       <div
