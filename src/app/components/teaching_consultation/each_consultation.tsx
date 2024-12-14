@@ -445,7 +445,7 @@ const Each_consultation = ({ product_data }: any) => {
                       }}
                     ></p>
 
-                    <div className=" md:flex-row gap-[5vw] md:gap-[2vw] items-center flex ">
+                    <div className=" md:flex-row gap-[5vw]  md:gap-[2vw] items-center flex ">
                       <button
                         onClick={() => {
                           setread_more_body(e.body);
@@ -453,7 +453,7 @@ const Each_consultation = ({ product_data }: any) => {
                           setopen_read_more(true);
                         }}
                         // href={e.div}
-                        className={` ${Bt_Beau_Regualr.className} md:text-[1vw] md:w-[10vw] w-[40vw] h-[10vw]  flex justify-center items-center md:h-[2.8vw]  border-[white] border-[0.1vw] md:rounded-[3vw]   group relative overflow-hidden rounded-[3vw]`}
+                        className={` ${Bt_Beau_Regualr.className} md:text-[1vw] md:w-[10vw] w-[40vw] h-[95%] flex justify-center items-center md:h-[2.8vw]  border-[white] border-[0.1vw] md:rounded-[3vw]   group relative overflow-hidden rounded-[3vw]`}
                       >
                         <p
                           style={{ transition: "0.5s ease" }}
