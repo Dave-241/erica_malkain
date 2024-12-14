@@ -5,6 +5,7 @@ import { useEffect, useRef, useState } from "react";
 import Image from "next/image";
 import Link from "next/link";
 import {
+  Bricolage_grotesk_bold,
   Bt_Beau_Regualr,
   Helvetica_light,
   spline_font,
@@ -22,6 +23,7 @@ import { useRouter } from "next/navigation";
 import { gsap } from "gsap";
 import { supabase } from "@/app/utils/supabaseClient";
 import Read_more from "./read_more_modal";
+import Contact_form from "../general-component/contact_form";
 const Each_consultation = ({ product_data }: any) => {
   const sectionRef = useRef(null);
 
@@ -288,6 +290,7 @@ const Each_consultation = ({ product_data }: any) => {
   const [read_more_body, setread_more_body] = useState("");
   const [read_more_title, setread_more_title] = useState("");
   const [open_read_more, setopen_read_more] = useState(false);
+  const [open_contact_form, setopen_contact_form] = useState(false);
 
   return (
     <>
@@ -442,33 +445,52 @@ const Each_consultation = ({ product_data }: any) => {
                       }}
                     ></p>
 
-                    <button
-                      onClick={() => {
-                        setread_more_body(e.body);
-                        setread_more_title(e.heading);
-                        setopen_read_more(true);
-                      }}
-                      // href={e.div}
-                      className={` ${Bt_Beau_Regualr.className} md:text-[1vw] md:w-[10vw] w-[40vw] h-[10vw]  flex justify-center items-center md:h-[2.8vw]  border-[white] border-[0.1vw] md:rounded-[3vw]   group relative overflow-hidden rounded-[3vw]`}
-                    >
-                      <p
-                        style={{ transition: "0.5s ease" }}
-                        className="group-hover:text-white z-[10] text-[3.5vw] md:text-[1.1vw] text-[white]"
+                    <div className=" md:flex-row gap-[5vw] md:gap-[2vw] items-center flex ">
+                      <button
+                        onClick={() => {
+                          setread_more_body(e.body);
+                          setread_more_title(e.heading);
+                          setopen_read_more(true);
+                        }}
+                        // href={e.div}
+                        className={` ${Bt_Beau_Regualr.className} md:text-[1vw] md:w-[10vw] w-[40vw] h-[10vw]  flex justify-center items-center md:h-[2.8vw]  border-[white] border-[0.1vw] md:rounded-[3vw]   group relative overflow-hidden rounded-[3vw]`}
                       >
-                        {" "}
-                        Read more{" "}
-                      </p>
+                        <p
+                          style={{ transition: "0.5s ease" }}
+                          className="group-hover:text-white z-[10] text-[3.5vw] md:text-[1.1vw] text-[white]"
+                        >
+                          {" "}
+                          Read more{" "}
+                        </p>
 
-                      {/* <Image
+                        {/* <Image
                         src={arrow}
                         alt="arrow"
                         className="md:w-[1.7vw] z-[10] h-fit"
                       /> */}
-                      <div
-                        className="w-full h-full bg-[#440C0C] absolute left-0 top-[100%] group-hover:top-0 "
-                        style={{ transition: "0.5s ease" }}
-                      ></div>
-                    </button>
+                        <div
+                          className="w-full h-full bg-[#440C0C] absolute left-0 top-[100%] group-hover:top-0 "
+                          style={{ transition: "0.5s ease" }}
+                        ></div>
+                      </button>
+                      {/* REACH OUT TO ME TEXT */}
+                      <button
+                        style={{
+                          whiteSpace: "nowrap",
+                          transition: "0.5s ease",
+                        }}
+                        onClick={() => {
+                          setopen_contact_form(true);
+                        }}
+                        className={` ${Bricolage_grotesk_bold.className} uppercase overflow-hidden w-fit  md:p-[0.3vw]  p-[2vw] rounded-[8vw] group hover:[#103210]  hover:bg-[black] hover:bg-opacity-[20%]  md:rounded-[2vw] bg-[white] backdrop-blur-2xl bg-opacity-[10%] `}
+                      >
+                        <div className="w-full h-full bg-[#440C0C] group-hover:bg-[#103210] md:rounded-[1.7vw] rounded-[7vw]  flex justify-center items-center py-[2.5vw] px-[8vw] md:py-[0.6vw] md:px-[1.5vw]">
+                          <p className="inline-block md:text-[1vw] text-[white] group-hover:text-white">
+                            Reach out to me
+                          </p>
+                        </div>
+                      </button>
+                    </div>
                   </div>
                 </div>
 
@@ -507,6 +529,11 @@ const Each_consultation = ({ product_data }: any) => {
           title={read_more_title}
           setopen_read_more={setopen_read_more}
         />
+      )}
+
+      {/* reach out to use contact modal */}
+      {open_contact_form && (
+        <Contact_form setopen_contact_form={setopen_contact_form} />
       )}
     </>
   );
