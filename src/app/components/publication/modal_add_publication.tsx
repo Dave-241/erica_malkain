@@ -28,13 +28,7 @@ const Modal_add_publication = ({
 
   const submit_form = async () => {
     // Validation check
-    if (
-      !publication_title ||
-      !publication_body ||
-      !publication_pdf_link ||
-      !image_link ||
-      !sub_title
-    ) {
+    if (!publication_title || !publication_body || !image_link || !sub_title) {
       setError("All fields are required.");
       return;
     }

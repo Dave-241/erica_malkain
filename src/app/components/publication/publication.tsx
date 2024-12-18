@@ -452,13 +452,15 @@ const Publication = ({ product_data }: any) => {
                                         DATA
                                       </Link>
                                     )}{" "}
-                                    <Link
-                                      target="_blank"
-                                      href={`${e.pdf_link}`}
-                                      className=" md:rounded-[1.7vw] border-[#440C0C]   md:border-[0.1vw] bg-[#440C0C] flex justify-center items-center md:py-[0.8vw] md:px-[2vw]  px-[6vw] py-[3vw] text-white hover:bg-[#C1A391] hover:border-[#C1A391] rounded-[7vw]"
-                                    >
-                                      PDF
-                                    </Link>
+                                    {e.pdf_link && (
+                                      <Link
+                                        target="_blank"
+                                        href={`${e.pdf_link}`}
+                                        className=" md:rounded-[1.7vw] border-[#440C0C]   md:border-[0.1vw] bg-[#440C0C] flex justify-center items-center md:py-[0.8vw] md:px-[2vw]  px-[6vw] py-[3vw] text-white hover:bg-[#C1A391] hover:border-[#C1A391] rounded-[7vw]"
+                                      >
+                                        PDF
+                                      </Link>
+                                    )}{" "}
                                   </div>
                                 </div>
                               )}
