@@ -299,6 +299,7 @@ const Each_consultation = ({ product_data }: any) => {
       {open_order_consultation && (
         <Order_consultation_modal
           setopen_order_consultation={setopen_order_consultation}
+          data={data}
         />
       )}
       {/* buttons to add consultation */}
