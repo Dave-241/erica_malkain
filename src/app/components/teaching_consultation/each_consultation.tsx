@@ -296,7 +296,11 @@ const Each_consultation = ({ product_data }: any) => {
 
   return (
     <>
-      {open_order_consultation && <Order_consultation_modal />}
+      {open_order_consultation && (
+        <Order_consultation_modal
+          setopen_order_consultation={setopen_order_consultation}
+        />
+      )}
       {/* buttons to add consultation */}
       {isloggedin && (
         <Add_consultation
