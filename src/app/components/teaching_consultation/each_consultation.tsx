@@ -24,6 +24,7 @@ import { gsap } from "gsap";
 import { supabase } from "@/app/utils/supabaseClient";
 import Read_more from "./read_more_modal";
 import Contact_form from "../general-component/contact_form";
+import Order_consultation_modal from "./order_consultation_modal";
 const Each_consultation = ({ product_data }: any) => {
   const sectionRef = useRef(null);
 
@@ -291,13 +292,16 @@ const Each_consultation = ({ product_data }: any) => {
   const [read_more_title, setread_more_title] = useState("");
   const [open_read_more, setopen_read_more] = useState(false);
   const [open_contact_form, setopen_contact_form] = useState(false);
+  const [open_order_consultation, setopen_order_consultation] = useState(false);
 
   return (
     <>
+      {open_order_consultation && <Order_consultation_modal />}
       {/* buttons to add consultation */}
       {isloggedin && (
         <Add_consultation
           // refresh_all_params={refresh_all_params}
+          setopen_order_consultation={setopen_order_consultation}
           setconsultation_title={setconsultation_title}
           setdelete_consulation={setdelete_consulation}
           refresh_all_params={refresh_all_params}
