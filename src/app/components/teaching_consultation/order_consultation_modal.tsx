@@ -10,6 +10,7 @@ const Order_consultation_modal = ({
   data,
 }: any) => {
   const [updated_data, setupdated_data] = useState(data);
+  const [updating_text, setupdating_text] = useState("Update");
   const onDragEnd = (result: any) => {
     if (!result.destination) return; // Item not moved
 
@@ -34,10 +35,10 @@ const Order_consultation_modal = ({
       updatedData.forEach((item, index) =>
         console.log("order:" + item.order, index, item.sub_title),
       );
-
+      setupdating_text("Updating");
       // Upsert each update individually and collect promises
       const updatePromises = updates.map((update) =>
-        supabase.from("consultation_page").upsert(update),
+        supabase.from("consultation").upsert(update),
       );
 
       // Wait for all updates to complete
@@ -47,8 +48,11 @@ const Order_consultation_modal = ({
       const hasErrors = results.some(({ error }) => error);
       if (hasErrors) {
         console.error("Some updates failed:", results);
+        setupdating_text("Try again");
       } else {
         console.log("All updates completed successfully");
+        setupdating_text("Updated");
+
         // Reload the page after successful updates
         setTimeout(() => {
           window.location.reload();
@@ -60,7 +64,7 @@ const Order_consultation_modal = ({
   };
   const updateOrder = async () => {
     // Save the updated order to the database
-    await saveOrderToDatabase(data);
+    await saveOrderToDatabase(updated_data);
   };
   return (
     <>
@@ -107,11 +111,19 @@ const Order_consultation_modal = ({
             </DragDropContext>
           </div>{" "}
           <div className=" h-[15%] items-center justify-center bg-white w-[90%] flex gap-[5%] px-[5%]">
-            <button className="py-[0.5rem] h-fit border px-[2rem] w-full border-red-600  ">
+            <button
+              onClick={() => {
+                setopen_order_consultation(false);
+              }}
+              className="py-[0.5rem] h-fit border px-[2rem] w-full border-red-600  "
+            >
               Cancel{" "}
             </button>
-            <button className="py-[0.5rem] h-fit px-[2rem] w-full bg-red-600 text-white">
-              Update{" "}
+            <button
+              onClick={updateOrder}
+              className="py-[0.5rem] h-fit px-[2rem] w-full bg-red-600 text-white"
+            >
+              {updating_text}{" "}
             </button>
           </div>
         </div>
