@@ -193,7 +193,7 @@ const Publication = ({ product_data }: any) => {
     try {
       const updates = updatedData.map((item, index) => ({
         id: item.id,
-        order: index,
+        order: updatedData.length - index,
       }));
 
       // Log the updates for debugging

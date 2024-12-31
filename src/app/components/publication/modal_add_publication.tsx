@@ -55,6 +55,11 @@ const Modal_add_publication = ({
     } else {
       console.log("its adding");
       // Add new publication
+      const { data, error }: any = await supabase
+        .from("publication")
+        .select("*");
+
+      console.log(data?.length);
       result = await supabase.from("publication").insert([
         {
           title: publication_title,
@@ -63,6 +68,7 @@ const Modal_add_publication = ({
           pdf_link: publication_pdf_link,
           image_link: image_link,
           sub_title: sub_title,
+          order: data?.length + 1,
         },
       ]);
     }
