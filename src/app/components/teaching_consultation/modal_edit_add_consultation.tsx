@@ -118,6 +118,10 @@ const Modal_edit_consulation = ({
       console.log(edit_ID);
     } else {
       console.log("its adding");
+      const { data, error }: any = await supabase
+        .from("consultation")
+        .select("*");
+
       // Add new publication
       result = await supabase.from("consultation").insert([
         {
@@ -130,6 +134,7 @@ const Modal_edit_consulation = ({
           year: consultation_year,
           heading: consultation_title,
           body: consultation_body,
+          order: data?.length + 1,
         },
       ]);
     }

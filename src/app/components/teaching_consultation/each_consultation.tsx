@@ -219,7 +219,7 @@ const Each_consultation = ({ product_data }: any) => {
       const { data, error } = await supabase
         .from("consultation")
         .select("*")
-        .order("order", { ascending: true });
+        .order("order", { ascending: false });
 
       if (error) {
         console.error("Error fetching initial data:", error);
