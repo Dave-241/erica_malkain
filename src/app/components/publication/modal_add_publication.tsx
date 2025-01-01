@@ -230,7 +230,7 @@ const Modal_add_publication = ({ setadd_publication, edit_ID }: any) => {
                 >
                   Order{" "}
                   {data_array.length &&
-                    `(0-${
+                    `(1-${
                       edit_ID ? data_array.length : data_array.length + 1
                     }, with ${
                       edit_ID ? data_array.length : data_array.length + 1
