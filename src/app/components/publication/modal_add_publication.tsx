@@ -2,33 +2,91 @@
 
 import { supabase } from "@/app/utils/supabaseClient";
 import Image from "next/image";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import example2 from "../../../../public/images/consultation/example2.png";
 import { v4 } from "uuid";
 import Image_list from "../general-component/image";
 
-const Modal_add_publication = ({
-  setadd_publdcication,
-  publication_title,
-  publication_body,
-  publication_data_link,
-  publication_pdf_link,
-  setpublication_title,
-  setpublication_body,
-  setpublication_data_link,
-  setpublication_pdf_link,
-  setsub_title,
-  edit_ID,
-  image_link,
-  setimage_link,
-  sub_title,
-}: any) => {
+const Modal_add_publication = ({ setadd_publication, edit_ID }: any) => {
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState("");
+  const [publication_title, setpublication_title] = useState("");
+  const [publication_body, setpublication_body] = useState("");
+  const [publication_data_link, setpublication_data_link] = useState("");
+  const [publication_pdf_link, setpublication_pdf_link] = useState(" ");
+  const [image_link, setimage_link] = useState("");
+  const [sub_title, setsub_title] = useState("");
+  const [order, setorder] = useState("");
+  const [data_array, setdata_array] = useState<any>([]);
+
+  // useeffect for fetching data
+
+  const fetch_data = async () => {
+    const { data, error }: any = await supabase.from("publication").select("*");
+    setdata_array(data);
+  };
+  useEffect(() => {
+    const fetchInitialData = async () => {
+      if (edit_ID) {
+        // Set loading states for the form fields
+        setpublication_title("loading...");
+        setsub_title("loading...");
+        setpublication_body("loading...");
+        setpublication_data_link("loading...");
+        setpublication_pdf_link("loading...");
+        setimage_link("");
+        setorder("loading...");
+        fetch_data();
+        try {
+          const { data, error } = await supabase
+            .from("publication")
+            .select("*")
+            .eq("id", edit_ID)
+            .single(); // Fetch a single record
+
+          if (error) {
+            console.error("Error fetching initial data:", error);
+            setError("Failed to fetch data. Please try again.");
+          } else if (data) {
+            // Update state with fetched data
+            setpublication_title(data.title || "");
+            setsub_title(data.sub_title || "");
+            setpublication_body(data.description || "");
+            setpublication_data_link(data.data_link || "");
+            setpublication_pdf_link(data.pdf_link || "");
+            setimage_link(data.image_link || "");
+            setorder(data.order || "");
+          }
+        } catch (err) {
+          console.error("Unexpected error:", err);
+          setError("An unexpected error occurred. Please try again.");
+        }
+      } else {
+        // Reset form fields if no edit_ID is provided
+        setpublication_title("");
+        setsub_title("");
+        setpublication_body("");
+        setpublication_data_link("");
+        setpublication_pdf_link("");
+        setimage_link("");
+        setError("");
+        setorder("");
+        fetch_data();
+      }
+    };
+
+    fetchInitialData();
+  }, [edit_ID]);
 
   const submit_form = async () => {
     // Validation check
-    if (!publication_title || !publication_body || !image_link || !sub_title) {
+    if (
+      !publication_title ||
+      !publication_body ||
+      !image_link ||
+      !sub_title ||
+      !order
+    ) {
       setError("All fields are required.");
       return;
     }
@@ -48,6 +106,7 @@ const Modal_add_publication = ({
           pdf_link: publication_pdf_link,
           image_link: image_link,
           sub_title: sub_title,
+          order: order,
         })
         .eq("id", edit_ID);
 
@@ -55,11 +114,7 @@ const Modal_add_publication = ({
     } else {
       console.log("its adding");
       // Add new publication
-      const { data, error }: any = await supabase
-        .from("publication")
-        .select("*");
 
-      console.log(data?.length);
       result = await supabase.from("publication").insert([
         {
           title: publication_title,
@@ -68,7 +123,7 @@ const Modal_add_publication = ({
           pdf_link: publication_pdf_link,
           image_link: image_link,
           sub_title: sub_title,
-          order: data?.length + 1,
+          order: order,
         },
       ]);
     }
@@ -79,7 +134,7 @@ const Modal_add_publication = ({
     if (error) {
       setError(error.message);
     } else {
-      setadd_publdcication(false);
+      setadd_publication(false);
       // Optionally reset the form fields if adding a new publication
 
       setpublication_title("");
@@ -149,23 +204,49 @@ const Modal_add_publication = ({
               </div>
             </div>
 
-            <div className="flex flex-col md:gap-[0.3vw] gap-[2vw]">
-              <label
-                className="capitalize md:text-[1vw] text-[3.5vw]"
-                htmlFor="description"
-              >
-                Publication sub-title
-              </label>
-              <textarea
-                id="description"
-                rows={2}
-                value={sub_title || ""}
-                onChange={(e) => {
-                  setsub_title(e.target.value);
-                }}
-                className="border  md:rounded-[1vw] rounded-[1.5vw]  outline-none bg-[black] bg-opacity-[70%] placeholder:text-white capitalize text-white resize-none p-[2%] md:text-[1vw] text-[3.5vw]"
-                placeholder="input publication description here .."
-              />
+            <div className="w-full items-stretch flex gap-[5%] ">
+              <div className="flex w-full flex-col md:gap-[0.3vw] gap-[2vw]">
+                <label
+                  className="capitalize md:text-[1vw] text-[3.5vw]"
+                  htmlFor="description"
+                >
+                  Publication sub-title
+                </label>
+                <input
+                  id="description"
+                  type="text"
+                  value={sub_title || ""}
+                  onChange={(e) => {
+                    setsub_title(e.target.value);
+                  }}
+                  className="border md:rounded-[1vw] outline-none bg-[black] bg-opacity-[70%] h-[10vw] rounded-[1.5vw]  placeholder:text-white capitalize text-white md:h-[3vw] px-[3%] md:text-[1vw] text-[3.5vw]"
+                  placeholder="input publication description here .."
+                />
+              </div>
+              <div className="flex w-full  flex-col md:gap-[0.3vw] gap-[2vw]">
+                <label
+                  className="capitalize md:text-[1vw] text-[3.5vw]"
+                  htmlFor="order"
+                >
+                  Order{" "}
+                  {data_array.length &&
+                    `(0-${
+                      edit_ID ? data_array.length : data_array.length + 1
+                    }, with ${
+                      edit_ID ? data_array.length : data_array.length + 1
+                    } highest)`}
+                </label>
+                <input
+                  id="order"
+                  type="number"
+                  value={order || ""}
+                  onChange={(e) => {
+                    setorder(e.target.value);
+                  }}
+                  className="border   md:rounded-[1vw] h-full rounded-[1.5vw]  outline-none bg-[black] bg-opacity-[70%] placeholder:text-white capitalize text-white resize-none p-[2%] md:text-[1vw] text-[3.5vw]"
+                  placeholder="input order here"
+                />
+              </div>
             </div>
             <div className="flex flex-col md:gap-[0.3vw] gap-[2vw]">
               <label
@@ -236,7 +317,7 @@ const Modal_add_publication = ({
               <button
                 className=" md:px-[4vw] md:w-auto w-full py-[2.6vw]  md:py-[0.5vw] capitalize bg-white  rounded-[2.5vw] md:rounded-[0.5vw] hover:bg-opacity-[60%] md:text-[1vw] text-[3.5vw] backdrop-blur-2xl text-center border-red-500 border"
                 onClick={() => {
-                  setadd_publdcication(false);
+                  setadd_publication(false);
                 }}
               >
                 Cancel
