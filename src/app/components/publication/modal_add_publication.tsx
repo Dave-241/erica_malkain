@@ -204,7 +204,7 @@ const Modal_add_publication = ({ setadd_publication, edit_ID }: any) => {
               </div>
             </div>
 
-            <div className="w-full items-stretch flex gap-[5%] ">
+            <div className="w-full md:items-stretch md:flex-row flex-col  flex gap-[5%] ">
               <div className="flex w-full flex-col md:gap-[0.3vw] gap-[2vw]">
                 <label
                   className="capitalize md:text-[1vw] text-[3.5vw]"
