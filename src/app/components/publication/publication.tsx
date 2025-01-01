@@ -20,11 +20,7 @@ const Publication = ({ product_data }: any) => {
   const [data, setdata] = useState<any[]>(product_data ? product_data : []);
   const [start_anime, setstart_anime] = useState(false);
   const [isloggedin, setisloggedin] = useState(false);
-  const [delete_publication, setdelete_publication] = useState(false);
-  const [publication_title, setpublication_title] = useState("");
-  const [publication_body, setpublication_body] = useState("");
-  const [publication_data_link, setpublication_data_link] = useState("");
-  const [publication_pdf_link, setpublication_pdf_link] = useState(" ");
+
   const [add_publication, setadd_publication] = useState(false);
   const [edit_ID, setedit_ID] = useState("");
   const [image_link, setimage_link] = useState("");
@@ -79,35 +75,6 @@ const Publication = ({ product_data }: any) => {
 
     checkInitialSession();
   }, [router]);
-
-  const edit_each_publication_modal_param = (
-    title: any,
-    body: any,
-    view_data: any,
-    pdf_link: any,
-    id: any,
-    img: any,
-    sub_title: any,
-  ) => {
-    setpublication_title(title);
-    setpublication_body(body);
-    setpublication_data_link(view_data);
-    setpublication_pdf_link(pdf_link);
-    setadd_publication(true);
-    setedit_ID(id);
-    setimage_link(img);
-    setsub_title(sub_title);
-  };
-
-  const refresh_all_params = () => {
-    setpublication_title("");
-    setpublication_body("");
-    setpublication_data_link("");
-    setpublication_pdf_link("");
-    setadd_publication(true);
-    setedit_ID("");
-    setimage_link("");
-  };
 
   // this is to implement tracking
   // Set up real-time subscription
@@ -232,9 +199,8 @@ const Publication = ({ product_data }: any) => {
       {/* add publication */}
       {isloggedin && (
         <Add_publication
-          refresh_all_params={refresh_all_params}
-          setpublication_title={setpublication_title}
-          setdelete_publication={setdelete_publication}
+          setadd_publication={setadd_publication}
+          setedit_ID={setedit_ID}
         />
       )}
 
@@ -366,32 +332,12 @@ const Publication = ({ product_data }: any) => {
                                 >
                                   {isloggedin && (
                                     <Edit_each_publication
-                                      setpublication_title={
-                                        setpublication_title
-                                      }
-                                      setdelete_publication={
-                                        setdelete_publication
-                                      }
-                                      edit_each_publication_modal_param={
-                                        edit_each_publication_modal_param
-                                      }
-                                      title={e.title}
-                                      body={e.description}
-                                      view_data={e.data_link}
-                                      pdf_data={e.pdf_link}
+                                      setedit_ID={setedit_ID}
                                       id={e.id}
-                                      img={e.image_link}
-                                      sub_title={e.sub_title}
                                       setadd_publdcication={setadd_publication}
                                     />
                                   )}
-                                  {/* <button
-                                {...provided.draggableProps}
-                                {...provided.dragHandleProps}
-                                className="bg-white p-[1rem] absolute top-[50%] left-[1rem] z-[1000] translate-y-[-50%] "
-                              >
-                                Click to drag
-                              </button> */}
+
                                   {/* the first section */}
                                   <div className="flex flex-col gap-[2vw] md:w-[50%] md:gap-[0.5vw]">
                                     <h2
