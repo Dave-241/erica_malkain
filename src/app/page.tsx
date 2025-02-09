@@ -13,10 +13,11 @@ import Workshop_ad from "./components/home/workshop_ad";
 import { supabase } from "./utils/supabaseClient";
 export const revalidate = 1;
 const fetchProducts = async () => {
-  const { data, error } = await supabase
+   const { data, error } = await supabase
     .from("publication")
     .select("*")
-    .order("order", { ascending: true })
+    .order("order", { ascending: false })
+    .order("id", { ascending: true }) // Secondary sort key
     .limit(4);
 
   // if (error) throw notFound();
