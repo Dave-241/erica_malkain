@@ -200,15 +200,15 @@ const Home_research = ({ research_items }: any) => {
                   >
                     <div className="w-full md:h-[29vw]  md:rounded-[1.5vw]   overflow-hidden relative flex justify-center items-center ">
                       <Image
-                        unoptimized
-                        height="0"
-                        width="0"
                         src={e.image}
                         alt={e.title}
                         style={{
                           transition: "0.7s ease",
                           //   transform: `translate(-50%,-50%)`,
                         }}
+                        width={500}
+                        height={600}
+                        // fill
                         className="w-full h-full  object-cover group-hover:scale-[1.1]"
                       />
                     </div>

@@ -114,10 +114,10 @@ const Recent_publication = ({ product_data }: any) => {
                   <Image
                     src={e.image_link}
                     alt={e.title}
+                    width={500}
+                    height={600}
+                    // fill
                     className="w-full h-full absolute top-0 left-0 object-cover"
-                    height="0"
-                    width="0"
-                    unoptimized
                   />
                 </div>
                 <div className="w-full gap-[2vw] md:gap-[0.8vw] md:px-[8%] px-[4%] py-[4vw] flex flex-col md:py-[2.5vw]">
