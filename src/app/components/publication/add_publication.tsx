@@ -46,14 +46,14 @@ const Add_publication = ({ setadd_publication, setedit_ID }: any) => {
         >
           Update Order
         </button> */}
-        <button
+        {/* <button
           className=" md:px-[3vw] py-[3%] md:w-auto w-full md:py-[1vw] capitalize bg-white rounded-[0.5rem]  md:rounded-[0.5vw] hover:bg-opacity-[60%] backdrop-blur-2xl text-center "
           onClick={() => {
             deleteAllPublications();
           }}
         >
           delete all publications
-        </button>
+        </button> */}
       </div>
     </>
   );
