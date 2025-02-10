@@ -440,9 +440,8 @@ const Categories = ({ product_data }: any) => {
                                     <Image
                                       src={internal.img}
                                       alt={internal.caption}
-                                      unoptimized
-                                      width="0"
-                                      height="0"
+                                      width={500}
+                                      height={600}
                                       style={{
                                         transition: "0.8s ease",
                                       }}
