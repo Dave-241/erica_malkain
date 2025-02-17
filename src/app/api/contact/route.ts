@@ -69,12 +69,28 @@ export async function POST(req: Request, res: any) {
     `,
   };
 
-  let transporter = nodemailer.createTransport({
-    service: "gmail",
+  // let transporter = nodemailer.createTransport({
+  //   service: "gmail",
+  //   auth: {
+  //     user: process.env.PUBLIC_EMAIL_ID,
+  //     pass: process.env.PUBLIC_EMAIL_ID_KEY,
+  //   },
+  // });
+  let transporter: any = nodemailer.createTransport({
+    // service: "gmail",
+    // name: "bozjewelryco.com",
+    host: process.env.PUBLIC_EMAIL_HOST, // Outgoing SMTP server
+    port: 465,
+    secure: true, // true for 465, false for other ports
+    logger: true,
+    debug: true,
+    // secureConnection: false,
+    tls: { rejectUnauthorized: false },
     auth: {
-      user: process.env.PUBLIC_EMAIL_ID,
-      pass: process.env.PUBLIC_EMAIL_ID_KEY,
+      user: process.env.PUBLIC_EMAIL_USERNAME, // Your email address
+      pass: process.env.PUBLIC_EMAIL_PASSWORD, // Your password
     },
+    socketTimeout: 10000, // Set timeout to 10 seconds or higher
   });
 
   return await transporter
