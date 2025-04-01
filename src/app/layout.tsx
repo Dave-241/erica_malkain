@@ -28,6 +28,7 @@ export default function RootLayout({
         })(window, document, "clarity", "script", '${process.env.NEXT_PUBLIC_BING_CLARITY_ID}');`,
         }}
       />
+
       <body className={``} style={{ backgroundColor: "#DFE4DF" }}>
         {children}
       </body>
