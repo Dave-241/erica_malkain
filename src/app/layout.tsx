@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import "./globals.css";
 import Script from "next/script";
+import WrapperEmailCaptureModal from "./components/general-component/WrapperEmailController";
 
 export const metadata: Metadata = {
   title: "Erica J. Boothby - Psychologist, Researcher, and Educator",
@@ -30,6 +31,7 @@ export default function RootLayout({
       />
 
       <body className={``} style={{ backgroundColor: "#DFE4DF" }}>
+        <WrapperEmailCaptureModal />
         {children}
       </body>
     </html>
