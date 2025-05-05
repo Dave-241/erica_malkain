@@ -30,7 +30,7 @@ const Contact_form = ({ setopen_contact_form, prop_email, prop_body }: any) => {
     }, 400);
   };
 
-  const [step, setstep] = useState(0);
+  const [step, setstep] = useState(1);
   const [err, seterr] = useState("");
   const [disabled, setdisabled] = useState(false);
   const [sendbtn, setsendbtn] = useState("Submit");
@@ -70,7 +70,7 @@ const Contact_form = ({ setopen_contact_form, prop_email, prop_body }: any) => {
         .catch((err) => {
           console.log(err);
           seterr(
-            "Something went wrong. Please try again or reload the page and try again",
+            "Something went wrong. Please try again or reload the page and try again"
           );
           setdisabled(!disabled);
         });
