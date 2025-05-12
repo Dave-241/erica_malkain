@@ -123,54 +123,59 @@ const EmailCaptureModal = ({
                 className="w-full h-full object-cover"
               />
             </div>
-            <p
-              className={`${Helvetica_bold.className} md:px-[0.7rem] text-xl text-center`}
-            >
-              Get in touch{" "}
-            </p>
-
-            <p
-              className={`text-sm md:px-[1rem] text-center ${Helvetica_light.className} `}
-            >
-              If you{"'"}re interested in booking Erica for an event, workshop,
-              consulting, or collaborating as a social science researcher, let
-              {"'"}s talk.
-            </p>
-
-            <form
-              onSubmit={handle_submit}
-              className={` ${Helvetica_light.className}  w-full flex flex-col items-center gap-[1rem] `}
-            >
-              <input
-                type="text"
-                className="bg-[#F0F0F0] focus:border border-none outline-none md:px-[4%] placeholder:text-[#000000] rounded-[1rem] h-[3.5rem]  px-[5%] w-full"
-                onChange={(e) => {
-                  setemail(e.target.value);
-                }}
-                value={email || ""}
-                autoComplete="email"
-                placeholder="Enter email"
-              />
-
-              {err && (
-                <p className="text-red-500 text-sm w-full text-start">{err}</p>
-              )}
-              <button
-                disabled={disabled}
-                style={{
-                  whiteSpace: "nowrap",
-                  transition: "0.5s ease",
-                }}
-                type="submit"
-                className={` ${Bricolage_grotesk_bold.className} uppercase overflow-hidden w-full  p-[0.45rem] rounded-full group hover:[#103210]   hover:bg-opacity-[20%]   bg-[black] backdrop-blur-2xl bg-opacity-[10%] `}
+            <div className=" px-[1rem] flex flex-col gap-[1rem]">
+              <p
+                className={`${Helvetica_bold.className} md:px-[0.7rem] text-xl text-center`}
               >
-                <div className="w-full h-full bg-[#440C0C] group-hover:bg-[#103210] rounded-full  flex justify-center items-center py-[0.8rem] px-[4rem]">
-                  <p className="inline-block  text-[white] group-hover:text-white">
-                    {sendbtn}
+                Get in touch{" "}
+              </p>
+
+              <p
+                className={`text-sm  text-center ${Helvetica_light.className} `}
+              >
+                If you{"'"}re interested in booking Erica for an event,
+                workshop, consulting, or collaborating as a social science
+                researcher, let
+                {"'"}s talk.
+              </p>
+
+              <form
+                onSubmit={handle_submit}
+                className={` ${Helvetica_light.className}  w-full flex flex-col items-center gap-[1rem] `}
+              >
+                <input
+                  type="text"
+                  className="bg-[#F0F0F0] focus:border border-none outline-none md:px-[4%] placeholder:text-[#000000] rounded-[1rem] h-[3.5rem]  px-[5%] w-full"
+                  onChange={(e) => {
+                    setemail(e.target.value);
+                  }}
+                  value={email || ""}
+                  autoComplete="email"
+                  placeholder="Enter email"
+                />
+
+                {err && (
+                  <p className="text-red-500 text-sm w-full text-start">
+                    {err}
                   </p>
-                </div>
-              </button>
-            </form>
+                )}
+                <button
+                  disabled={disabled}
+                  style={{
+                    whiteSpace: "nowrap",
+                    transition: "0.5s ease",
+                  }}
+                  type="submit"
+                  className={` ${Bricolage_grotesk_bold.className} uppercase overflow-hidden w-full  p-[0.45rem] rounded-full group hover:[#103210]   hover:bg-opacity-[20%]   bg-[black] backdrop-blur-2xl bg-opacity-[10%] `}
+                >
+                  <div className="w-full h-full bg-[#440C0C] group-hover:bg-[#103210] rounded-full  flex justify-center items-center py-[0.8rem] px-[4rem]">
+                    <p className="inline-block  text-[white] group-hover:text-white">
+                      {sendbtn}
+                    </p>
+                  </div>
+                </button>
+              </form>
+            </div>
           </div>
         )}
         {/* <Success_contact_form
