@@ -104,9 +104,9 @@ const EmailCaptureModal = ({
               e.stopPropagation();
             }}
             style={{ transition: "0.9s ease", opacity: start_anime ? 1 : 0 }}
-            className="  mx-auto md:w-[30rem] md:max-w-[70%] pt-[0.3rem] md:px-[0.3rem] px-[4%] py-[1rem] z-[10] w-[95%] relative bg-white gap-[1rem] flex flex-col  rounded-[2rem] "
+            className="  mx-auto  md:w-[30rem] md:max-w-[70%] pt-[0.3rem] md:px-[0.3rem] px-[1%] py-[1rem] z-[10] w-[95%] relative bg-white gap-[1rem] flex flex-col  rounded-[2rem] "
           >
-            <div className="w-[3rem] bg-[#F3F3F3] rounded-full absolute cursor-pointer h-fit  left-[50%] translate-x-[-50%] top-[-1.5rem]">
+            <div className="w-[3rem]   bg-[#F3F3F3] rounded-full absolute cursor-pointer h-fit  left-[50%] translate-x-[-50%] top-[-1.5rem]">
               <Image
                 src={exit}
                 onClick={() => {
@@ -116,14 +116,14 @@ const EmailCaptureModal = ({
                 alt="exit"
               />
             </div>
-            <div className="w-full aspect-[1/0.7] rounded-[1.5rem] overflow-hidden ">
+            <div className="w-full  aspect-[1/0.7] md:rounded-[1.5rem] rounded-[2rem] overflow-hidden ">
               <Image
                 src={face}
                 alt="face"
                 className="w-full h-full object-cover"
               />
             </div>
-            <div className=" px-[1rem] flex flex-col gap-[1rem]">
+            <div className=" md:px-[1rem] px-[0.5rem] flex flex-col gap-[1rem]">
               <p
                 className={`${Helvetica_bold.className} md:px-[0.7rem] text-xl text-center`}
               >
