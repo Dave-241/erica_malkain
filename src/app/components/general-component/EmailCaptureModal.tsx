@@ -96,7 +96,7 @@ const EmailCaptureModal = ({
         }}
         className={` ${
           start_anime ? "bg-opacity-[69%] backdrop-blur-xl" : "bg-opacity-[0%]"
-        } bg-black overflow-y-scroll  h-[100vh] gap-[2rem]  justify-center flex items-center  w-full fixed top-0 left-0 z-[3000] `}
+        } bg-black   h-[100vh] gap-[2rem]  justify-center flex items-center  w-full fixed top-0 left-0 z-[3000] `}
       >
         {step === 0 && (
           <div
