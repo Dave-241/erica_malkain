@@ -116,7 +116,7 @@ const EmailCaptureModal = ({
                 alt="exit"
               />
             </div>
-            <div className="w-full aspect-[1/0.7] rounded-[1.5rem] overflow-hidden border2">
+            <div className="w-full aspect-[1/0.7] rounded-[1.5rem] overflow-hidden ">
               <Image
                 src={face}
                 alt="face"
