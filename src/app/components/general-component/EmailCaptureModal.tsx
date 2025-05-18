@@ -12,10 +12,15 @@ import {
 import face from "@/../public/images/emailmarketing/face.webp";
 import Success_contact_form from "./success_contact_form";
 import axios from "axios";
+import { supabase } from "@/app/utils/supabaseClient";
+import EmailCaptureEditModal from "./EditEmailCaptureModal";
 const EmailCaptureModal = ({
   setopen_contact_form,
   prop_email,
   prop_body,
+  prop_image,
+  prop_header,
+  prop_button_text,
 }: any) => {
   const [start_anime, setstart_anime] = useState(false);
   const [movement, setmovement] = useState(false);
@@ -23,12 +28,33 @@ const EmailCaptureModal = ({
   const [name, setname] = useState("");
   const [tel, settel] = useState("");
   const [body, setbody] = useState(prop_body ? prop_body : "");
+  const [isloggedin, setisloggedin] = useState(false);
+  const [showEdit, setshowEdit] = useState(false);
+  console.log(prop_image, "this is me ");
+
+  // check if logged in
+  useEffect(() => {
+    // Check initial session
+    const checkInitialSession = async () => {
+      const {
+        data: { session },
+      } = await supabase.auth.getSession();
+      if (session) {
+        setisloggedin(true);
+        console.log("this is what happens ");
+      }
+    };
+
+    checkInitialSession();
+  }, []);
 
   useEffect(() => {
     setstart_anime(true);
   }, []);
 
   const hide = () => {
+    localStorage.setItem("emailModalStatus", "closed");
+
     setstart_anime(false);
     setTimeout(() => {
       setopen_contact_form(false);
@@ -38,7 +64,9 @@ const EmailCaptureModal = ({
   const [step, setstep] = useState(0);
   const [err, seterr] = useState("");
   const [disabled, setdisabled] = useState(false);
-  const [sendbtn, setsendbtn] = useState("Submit");
+  const [sendbtn, setsendbtn] = useState(
+    prop_button_text ? prop_button_text : "Submit"
+  );
 
   const handle_submit = async (e: any) => {
     e.preventDefault();
@@ -69,12 +97,17 @@ const EmailCaptureModal = ({
         seterr(
           "Success! Please check your email to confirm your subscription."
         );
+        localStorage.setItem("emailModalStatus", "submitted");
+
         // setstep(1);
-        console.log(res);
+        // console.log(res);
+        setTimeout(() => {
+          hide();
+        }, 3000);
       } else {
         seterr("Failed to subscribe. Try again.");
         setdisabled(false);
-        setsendbtn("Submit");
+        setsendbtn(prop_button_text ? prop_button_text : "Submit");
       }
     } catch (error) {
       console.error(error);
@@ -87,6 +120,14 @@ const EmailCaptureModal = ({
   useEffect(() => {
     seterr("");
   }, [name, email, tel, body]);
+  const handleEditSave = () => {
+    // Optional: trigger toast or effect here
+    setshowEdit(false); // close the modal
+  };
+
+  const handleEditClose = () => {
+    setshowEdit(false);
+  };
 
   return (
     <>
@@ -117,8 +158,10 @@ const EmailCaptureModal = ({
               />
             </div>
             <div className="w-full  aspect-[1/0.5] md:rounded-[1.5rem] rounded-[2rem] overflow-hidden ">
-              <Image
-                src={face}
+              <img
+                src={
+                  prop_image ? prop_image : "images/emailmarketing/face.webp"
+                }
                 alt="face"
                 className="w-full h-full object-cover"
               />
@@ -127,16 +170,18 @@ const EmailCaptureModal = ({
               <p
                 className={`${Helvetica_bold.className} md:px-[0.7rem] text-xl text-center`}
               >
-                Get in touch{" "}
+                {prop_header ? prop_header : "Get in touch"}
               </p>
 
               <p
                 className={`text-sm  text-center ${Helvetica_light.className} `}
               >
-                If you{"'"}re interested in booking Erica for an event,
+                {prop_body
+                  ? prop_body
+                  : `   If you{"'"}re interested in booking Erica for an event,
                 workshop, consulting, or collaborating as a social science
                 researcher, let
-                {"'"}s talk.
+                {"'"}s talk.`}
               </p>
 
               <form
@@ -174,6 +219,26 @@ const EmailCaptureModal = ({
                     </p>
                   </div>
                 </button>
+
+                {isloggedin && (
+                  <button
+                    style={{
+                      whiteSpace: "nowrap",
+                      transition: "0.5s ease",
+                    }}
+                    type="button"
+                    onClick={() => {
+                      setshowEdit(true);
+                    }}
+                    className={` ${Bricolage_grotesk_bold.className} uppercase overflow-hidden w-full  p-[0.45rem] rounded-full group hover:[#103210]   hover:bg-opacity-[20%]   bg-[black] backdrop-blur-2xl bg-opacity-[10%] `}
+                  >
+                    <div className="w-full h-full bg-[#440C0C] group-hover:bg-[#103210] rounded-full  flex justify-center items-center py-[0.8rem] px-[4rem]">
+                      <p className="inline-block  text-[white] group-hover:text-white">
+                        edit{" "}
+                      </p>
+                    </div>
+                  </button>
+                )}
               </form>
             </div>
           </div>
@@ -184,6 +249,12 @@ const EmailCaptureModal = ({
           setstep={setstep}
         /> */}
       </div>
+      {isloggedin && showEdit && (
+        <EmailCaptureEditModal
+          onSave={handleEditSave}
+          onClose={handleEditClose}
+        />
+      )}
     </>
   );
 };
